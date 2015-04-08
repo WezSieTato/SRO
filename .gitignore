@@ -1,2 +1,11 @@
 doc/tmp
 *.log
+*.dvi
+*.synctex.gz
+*.out
+*.blg
+*.aux
+*.bib
+*.bbl
+*.run.xml
+*.toc
