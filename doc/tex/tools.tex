@@ -2,6 +2,35 @@
 
 \section{Docker}
 
+\subsection[Czym jest docker?]{Czym jest docker?}
+\par{Docker jest narzędziem przeznaczonym do tworzenie przenośnych, wirtualnych kontenerów pozwalających na prostą i szybką replikację środowiska.}
+
+\par{Oprogramowanie Docker wprowadza standaryzację w środowisko uruchomieniowe. Generowane kontenery są spójne i takie same w różnych środowiskach. W chwili obecnej Docker wymaga jądra Linux do uruchomienia, jednak działa nie tylko w wersji natywnej, ale również poprzez wirtualizację specjalnych minimalistycznych dystrybucji Linux na systemach Mac OS X oraz Windows (na przykład w darmowym narzędziu do wirtualizacji – VirtualBox).}
+
+\subsection[Spójność]{Spójność}
+
+\par{Docker wprowadzenie spójność w środowisko deweloperskie. Często, kiedy nad projektem pracuje więcej niż jeden programista (co w dzisiejszych czasach jest normą) pojawia się problem z różnymi wersjami użytego oprogramowania. Zdarza się, że jedna wersja biblioteki zachowuje się inaczej od drugiej (na przykład z powodu błędu). Kontener z założenia posiada jedną, konkretną wersję każdej biblioteki koniecznej do uruchomienie aplikacji. Zwiększa to przewidywalność oprogramowania. Oczekujemy bowiem, że w tym samym środowisku, aplikacja będzie zachowywać się tak samo. }
+
+\subsection[Cykl Dockera]{Cykl Dockera}
+
+
+\begin{enumerate}
+\item Stworzenie kontenera wraz z wszelkimi narzędziami i bibliotekami koniecznymi do uruchomienia aplikacji. 
+\item Rozprowadzenie kontenera, wraz ze wszystkimi narzędziami i bibliotekami. 
+\item Uruchomienie identycznego kontenera na dowolnej liczbie węzłów. 
+\end{enumerate}
+
+\par{Prowadzi to do znacznych ułatwień w tworzeniu oprogramowania. Ten sam kontener może zostać rozprowadzony pomiędzy deweloperami, testerami, serwerami ciągłej integracji i w końcu środowiskiem produkcyjnym. }
+
+\subsection[Centralne repozytorium]{Centralne repozytorium}
+
+\par{Każdy zarejestrowany użytkownik ma możliwość wgrywania własnych kontenerów do centralnego, ogólnie dostępnego repozytorium. Można tam znaleźć wiele różnych gotowych obrazów do pobrania. Są one przygotowane zarówno przez społeczność jak i przez twórców Dockera. }
+
+\par{Centralne repozytorium pozwala użytkownikom na pobranie interesujących obrazów, szczególnie warte uwagi są repozytoria przygotowane pod konkretne rozwiązania (na przykład specjalnie pod serwer baz danych MySQL lub mongoDB). }
+
+\par{Docker umożliwia również stworzenie prywatnych repozytoriów. Dzięki temu nie musimy upubliczniać prywatnych obrazów, ale jednocześnie możemy je rozprowadzać. Inną dostępną metodą jest zapis obrazu do pliku i przekazanie go w tradycyjny sposób. }
+
+
 \section{Biblioteka ZeroMQ}
 
 \section{Biblioteka protobuf}
