@@ -1,47 +1,63 @@
-
+\pdfoutput=1
+\pdfcompresslevel=9
+\pdfinfo
+{
+    /Author Bartosz Domagała
+    /Title Wektoryzacja obrazów rastrowych przedstawiających obiekty architektoniczne
+    /Subject Wektoryzacja obrazów rastrowych.
+    /Keywords  wektoryzacja, grafika wektorowa, grafika rastrowa, obiekty architektoniczne
+}
 %\documentclass[a4paper,polish,onecolumn,oneside,floatssmall,11pt,titleauthor,wide,openright]{mwrep}
 %\usepackage[scale={0.7,0.8},paper=a4paper,twoside]{geometry}
 \documentclass[a4paper,onecolumn,oneside,11pt,wide,floatssmall]{mwrep}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[MeX]{polski}
+% \usepackage{polish}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{tgpagella}
-\usepackage{geometry}
-%\usepackage[pdftex, bookmarks=true, bookmarksnumbered=true, colorlinks, linkcolor=black]{hyperref}
-\usepackage{color}
+\usepackage{bookman}
 \usepackage{listings}
-\usepackage[final]{graphicx}
-\graphicspath{ {../img/tytulowa/}  {../img/diagramy/} {../img/architektura/}}
+
+\lstset{
+	language=C++,
+    basicstyle=\scriptsize,
+    aboveskip={1.0\baselineskip},
+    columns=fixed,
+    showstringspaces=false,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=4,
+    prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=single,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    identifierstyle=\ttfamily,
+    keywordstyle=\color[rgb]{0,0,1},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{0.627,0.126,0.941},
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    numbersep=5pt,
+    captionpos=b,
+    escapeinside={\%*}{*)}
+}
+
+\usepackage{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+% \usepackage{t1enc}
+% \usepackage[pdftex, bookmarks]{hyperref}
+\usepackage[pdftex, bookmarks=false]{hyperref}
 \def\url#1{{ \tt #1}}
 
+\usepackage[parfill]{parskip}
+\usepackage{listings}
 
-% Mojae include !!!!!!!!!!!!!!!!
-\usepackage{dirtree}
-\usepackage{tabularx}
-\usepackage{hyperref}
-\usepackage{pdflscape}
-
-% glebokie listy
-\usepackage{enumitem}
-\newlist{longenum}{enumerate}{6}
-\setlist[longenum,1]{label=\roman*)}
-\setlist[longenum,2]{label=\alph*)}
-\setlist[longenum,3]{label=\arabic*)}
-\setlist[longenum,4]{label=(\roman*)}
-\setlist[longenum,5]{label=(\alph*)}
-
-% glebokiue spisy
-%\linespread{1.3}
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
-
-%\usepackage[backend=bibtex]{biblatex}
 
 % marginesy
+\parskip = .7\baselineskip
 \textwidth\paperwidth
 \advance\textwidth -55mm
 \oddsidemargin-0.9in
@@ -53,10 +69,6 @@
 \setlength\textheight{48\baselineskip}
 \addtolength\textheight{\topskip}
 \marginparwidth15mm
-
-%\setlength{\parindent}{1em}
-\setlength{\parskip}{1em}
-%\renewcommand{\baselinestretch}{1.5}
 
 \clubpenalty=10000 % to kara za sierotki
 \widowpenalty=10000 % nie pozostawia wdów
@@ -77,13 +89,8 @@
 \newcommand{\footrulewidth}{0.pt}
 \pagestyle{uheadings}
 
-%Symbole używane w listach
-\renewcommand{\labelitemi}{$\bullet$}
-\renewcommand{\labelitemii}{--}
-\renewcommand{\labelitemiii}{$\circ$}
-
-
-
+\usepackage[pdftex]{color,graphicx}
+\usepackage[polish]{babel}
 
 % \textheight232mm
 % \setlength{\textwidth}{\textwidth}
@@ -181,7 +188,7 @@ framerule=0.1pt,
 \pagenumbering{roman}
 \renewcommand{\baselinestretch}{1.0}
 \raggedbottom
-\input {./title}
+\input {title}
 
 \tableofcontents
 % \addcontentsline{toc}{chapter}{{Przedmowa1}{vii}}{vii}
@@ -203,12 +210,22 @@ framerule=0.1pt,
 \appendix
 
 % tutaj załączniki
-
-%\chapter*{Bibliografia}
+%\chapter[Bibliografia][Bibliografia]{Bibliografia}
 \nocite{*}
+%\bibliographystylebk{plplain}
+%\bibliographystylest{plplain}
+%\bibliographystyledoc{plplain}
+% \bibliographystyleweb{plplain}
+%\bibliographybk{BIB/books}
+%\bibliographyst{BIB/books}
+%\bibliographydoc{BIB/books}
+% \bibliographyweb{BIB/books}
 
 
 \end{document}
+
+
+
 
 % ex: set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab fileformat=unix filetype=tex spelllang=pl,en spell:
 
