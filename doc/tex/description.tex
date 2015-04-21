@@ -36,9 +36,21 @@ uwierzytelniania węzłów w SSH).
 
 \end{itemize}
 
+\section[Opis rozwiązania]{Opis rozwiazania}
+
+\par{Nasze rowiązanie to rozproszony system do rejestracji studentów uczelnii wyższych na przemioty. Warstwą wewnątrzną przechowujące dane wrażliwe, w tym przypadku będą węzły rejestrujące studentów ideowo umieszczone w dziekanatach instytutów i obsługiwane przez osoby tam pracujące. Warstwa pośrednia przechowuje informacje o studentach, jednak bez informacji wrażliwej, wie tylko, że istnieje student zapisany na przedmioty RSO, SOI, ANA1 i RS,  nie wie więc, że  student ten nazywa się Jak Kowalski. Owe dane są przetwarzane na żadanie aplikacji klienckiej, dostępnej dla studentów, którzy chcą dowiedzieć się, ile osób zapisanych jest na dany przedmiot.}
+
 \section[Wstępny projekt architektury]{Wstępny projekt architektury}
 
-\par{Wewnętrzna warstwa serwera wytwarza i przechowuje informacje na temat studentów uczelni wyższej - stworzone na podstawie danych wprowadzonych przez pracowników dziekanatu. Następnie ów warstwa przesyła informacje do warstwy zewnętrznej serwera (warstwy przetwarzającej) świadczącej usługi udostępniania informacji przetworzonej rozwiązaniom klienckim. Każda z warst}
+\par{Wewnętrzna warstwa serwera wytwarza i przechowuje informacje na temat studentów uczelni wyższej - stworzone na podstawie danych wprowadzonych przez pracowników dziekanatu. Następnie ów warstwa przesyła informacje do warstwy zewnętrznej serwera (warstwy przetwarzającej) świadczącej usługi udostępniania informacji przetworzonej rozwiązaniom klienckim. Każda z warst komunikować się będzie z użyciem protokołu TCP/IP przesyłając wiadomości zserializowane za pomocą Google Protocols Buffer.}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.9\linewidth]{img/dane_net.png} 
+\caption{Diagram ilustrujący komunikację pomiędzy poszczególnymi warstwami}
+\label{img:docker_tut1}
+\end{center}
+\end{figure}
 
 \subsection*[Warstwa wewnętrzna serwera]{Warstwa wewnętrzna serwera}
 
@@ -67,11 +79,13 @@ uwierzytelniania węzłów w SSH).
 
 \subsection*[Aplikacja kliencka]{Aplikacja kliencka}
 
-\par{Warstwa przeznaczona dla klienta to z założenia lekka i  intuicyjna aplikacja konsolowa. Moduł ten bezpośrednio łączyć będzie się tylko z modułem zewnętrznym serwera.}
+\par{Warstwa przeznaczona dla klienta to z założenia lekka i  intuicyjna aplikacja konsolowa. Moduł ten bezpośrednio łączyć będzie się tylko z modułem zewnętrznym serwera. Użytkownik, za pomocą tej aplikacji będzie mógł dowiedzieć się ile osób w danym momencie jest zapisany na wybranie przez niego przedmiot.}
 
 \section[Opis szczegółowy]{Opis szczegółowy}
 
 \subsection[Założenia]{Założenia}
+
+
 
 \subsubsection*[Założenia ogólne]{Założenia ogólne} \label{z:o}
 
