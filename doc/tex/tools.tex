@@ -30,6 +30,37 @@
 
 \par{Docker umożliwia również stworzenie prywatnych repozytoriów. Dzięki temu nie musimy upubliczniać prywatnych obrazów, ale jednocześnie możemy je rozprowadzać. Inną dostępną metodą jest zapis obrazu do pliku i przekazanie go w tradycyjny sposób. }
 
+\subsection[Przeprowadzone testy]{Przeprowadzone testy}
+
+W ramach zapoznania się z platformą Docker wykonaliśmy następujące czynności: 
+\begin{itemize}
+
+\item Zweryfikowaliśmy możliwość uruchomienia oprogramowania na systemach operacyjnych Ubuntu oraz Mac OS X. 
+
+
+\item Na systemie Max OS X skorzystaliśmy z programu Boot2Docker, tworzącego maszynę wirtualną z minimalistyczną dystrybucją Linux konieczną do uruchomienia aplikacji Docker.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.8\linewidth]{img/docker_tut1.jpg} 
+\caption{Skorzystanie z programu Boot2Docker}
+\label{img:docker_tut1}
+\end{center}
+\end{figure}
+
+\item Pobraliśmy obraz Systemu operacyjnego Ubuntu, na którym zainstalowaliśmy programy nginx oraz vim. 
+
+\item Przy pomocy programu vim, zmodyfikowaliśmy treść domyślnego pliku index.html, który dostępny jest na porcie 80 po uruchomieniu programu nginx. 
+
+\item Zweryfikowaliśmy zmianę w przeglądarce internetowej. 
+
+\item Zapisaliśmy zmiany w kontenerze oraz wgraliśmy zmieniony obraz do centralnego repozytorium. 
+
+\item Pobraliśmy obraz na innym komputerze i po uruchomieniu zweryfikowaliśmy zmiany wprowadzone do podstawowej dystrybucji Ubuntu. 
+
+\item W pobranym obrazie zainstalowane były programy nginx oraz vim. Domyślny plik programu nginx był również zmodyfikowany. 
+
+\end{itemize}
 
 \section{Biblioteka ZeroMQ}
 

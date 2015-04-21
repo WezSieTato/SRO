@@ -1,17 +1,113 @@
-\chapter{Opis projektu}
+\chapter[Opis projektu]{Opis projektu}
 
-\section{Temat projektu}
+\section[Treść zadania]{Treść zadania}
 
-\section{Pomysł rozwiązania}
+\par{Zaprojektować i zaimplementować usługę udostępniania danych statystycznych na temat studentów uczelni wyższej, przy założeniu bezpiecznej i niezawodnej dystrybucji danych wrażliwych - poufnych informacji o studentach.}
 
-\section{Wymagania}
 
-\subsection{Wymagania funkcjonalne}
 
-\subsection{Wymagania niefunkcjonalne}
+\section[Wstępny projekt architektury]{Wstępny projekt architektury}
 
-\section{Wstępny projekt architektury}
+\par{Wewnętrzna warstwa serwera wytwarza i przechowuje informacje na temat studentów uczelni wyższej - stworzone na podstawie danych wprowadzonych przez pracowników dziekanatu. Następnie ów warstwa przesyła informacje do warstwy zewnętrznej serwera (warstwy przetwarzającej) świadczącej usługi udostępniania informacji przetworzonej rozwiązaniom klienckim.}
 
-\section{Potencjalne problemy}
+\subsection*[Warstwa wewnętrzna serwera]{Warstwa wewnętrzna serwera}
 
-\section{Organizacja środowiska programistycznego}
+\par{Warstwa stworzona w technologii token ring. Węzły połączone są w pierścień i przesyłają sobie kolejno token zawierający informacje o potencjalnych zmianach. Tylko węzeł posiadający token może wykonywać operację aktualizacji danych. Każda zmiana musi być zatwierdzona przez pozostałe węzły. Zapewnia to synchronizację danych oraz bieżące sprawdzenie działania pozostałych węzłów. Szczegółowe informacje na ten temat znajdują się w podrozdziale \ref{sec:zalozenia}.}
+
+\par{Dane wrażliwe przechowywane są w postaci rekordów zawierających:}
+
+\begin{itemize}
+\item ID studenta
+\item imię studenta
+\item nazwisko studenta
+\item datę urodzenia
+\item listę przedmiotów na jakie jest zapisany
+\end{itemize}
+
+\par{}
+
+\subsection*[Warstwa zewnętrzna serwera]{Warstwa zewnętrzna serwera (warstwa przetwarzająca)}
+
+\par{}
+
+\subsection*[Aplikacja kliencka]{Aplikacja kliencka}
+
+\par{}
+
+
+\section[Założenia]{Założenia} \label{sec:zalozenia}
+
+\begin{center}
+\par{\textbf{Założenia dotyczące warstwy wewnętrznej serwera}}
+\begin{tabular}{|c|c|l|l|}
+\hline
+\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powód decyzji} \\
+\hline
+\label{z:sw1} SW1 & Technologia token ring &  - & - \\
+\hline
+\label{z:sw2} SW2 & Technologia token ring &  - & - \\
+\hline
+\label{z:sw3} SW3 & Technologia token ring &  - & - \\
+\hline
+\label{z:sw4} SW4 & Technologia token ring &  - & - \\
+\hline
+\label{z:sw5} SW5 & Technologia token ring &  - & - \\
+\hline
+\label{z:sw6} SW6 & Technologia token ring &  - & - \\
+\hline
+\label{z:sw7} SW7 & Technologia token ring &  - & - \\
+\hline
+
+\end{tabular} 
+
+\par{\textbf{Założenia dotyczące warstwy zewnętrznej serwera}}
+\begin{tabular}{|c|c|l|l|}
+\hline
+\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powód decyzji} \\
+\hline
+\label{z:sz1} SZ1 & Technologia token ring &  - & - \\
+\hline
+\label{z:sz2} SZ2 & Technologia token ring &  - & - \\
+\hline
+\label{z:sz3} SZ3 & Technologia token ring &  - & - \\
+\hline
+\label{z:sz4} SZ4 & Technologia token ring &  - & - \\
+\hline
+\label{z:sz5} SZ5 & Technologia token ring &  - & - \\
+\hline
+\label{z:sz6} SZ6 & Technologia token ring &  - & - \\
+\hline
+\label{z:sz7} SZ7 & Technologia token ring &  - & - \\
+\hline
+\end{tabular} 
+
+\par{\textbf{Założenia dotyczące aplikacji klienckiej}}
+\begin{tabular}{|c|c|l|l|}
+\hline
+\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powód decyzji} \\
+\hline
+\label{z:k1} K1 & Technologia token ring &  - & - \\
+\hline
+\label{z:k2} K2 & Technologia token ring &  - & - \\
+\hline
+\label{z:k3} K3 & Technologia token ring &  - & - \\
+\hline
+\label{z:k4} K4 & Technologia token ring &  - & - \\
+\hline
+\label{z:k5} K5 & Technologia token ring &  - & - \\
+\hline
+\label{z:k6} K6 & Technologia token ring &  - & - \\
+\hline
+\label{z:k7} K7 & Technologia token ring &  - & - \\
+\hline
+\end{tabular} 
+
+\end{center}
+
+\subsection[Wymagania funkcjonalne]{Wymagania funkcjonalne}
+
+\subsection[Wymagania niefunkcjonalne]{Wymagania niefunkcjonalne}
+
+\section[Potencjalne problemy]{Potencjalne problemy}
+
+\section[Organizacja środowiska programistycznego]{Organizacja środowiska programistycznego}
