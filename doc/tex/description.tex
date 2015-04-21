@@ -8,11 +8,11 @@
 
 \section[Wstępny projekt architektury]{Wstępny projekt architektury}
 
-\par{Wewnętrzna warstwa serwera wytwarza i przechowuje informacje na temat studentów uczelni wyższej - stworzone na podstawie danych wprowadzonych przez pracowników dziekanatu. Następnie ów warstwa przesyła informacje do warstwy zewnętrznej serwera (warstwy przetwarzającej) świadczącej usługi udostępniania informacji przetworzonej rozwiązaniom klienckim. Każda z warst}
+\par{Wewnętrzna warstwa serwera wytwarza i przechowuje informacje na temat studentów uczelni wyższej - stworzone na podstawie danych wprowadzonych przez pracowników dziekanatu. Następnie ów warstwa przesyła informacje do warstwy zewnętrznej serwera (warstwy przetwarzającej) świadczącej usługi udostępniania informacji przetworzonej rozwiązaniom klienckim.}
 
 \subsection*[Warstwa wewnętrzna serwera]{Warstwa wewnętrzna serwera}
 
-\par{Warstwa stworzona w technologii token ring. Węzły połączone są w pierścień i przesyłają sobie kolejno token zawierający informacje o potencjalnych zmianach. Tylko węzeł posiadający token może wykonywać operację aktualizacji danych. Każda zmiana musi być zatwierdzona przez pozostałe węzły. Zapewnia to synchronizację danych oraz bieżące sprawdzenie działania pozostałych węzłów. Szczegółowe informacje na ten temat znajdują się w podrozdziale \ref{z:sw}.}
+\par{Warstwa stworzona w technologii token ring. Węzły połączone są w pierścień i przesyłają sobie kolejno token zawierający informacje o potencjalnych zmianach. Tylko węzeł posiadający token może wykonywać operację aktualizacji danych. Każda zmiana musi być zatwierdzona przez pozostałe węzły. Zapewnia to synchronizację danych oraz bieżące sprawdzenie działania pozostałych węzłów. Szczegółowe informacje na ten temat znajdują się w podrozdziale \ref{sec:zalozenia}.}
 
 \par{Dane wrażliwe przechowywane są w postaci rekordów zawierających:}
 
@@ -28,89 +28,83 @@
 
 \subsection*[Warstwa zewnętrzna serwera]{Warstwa zewnętrzna serwera (warstwa przetwarzająca)}
 
-\par{}
+\par{Warstwa przeznaczona do komunikacji z aplikacją kliencką. Na żadanie klienta przetwarza wcześniej otrzymane od warstwy wewnętrznej dane i wynik przetwarzania zwraca klientowi. Moduł ten synchronizuje dane, co zadany przez plik konfiguracyjny czas, tak aby administrator sam był wstanie dostosować interwał do aktualnych potrzeb. }
+
+\par{Ta część serwera przechowywać będzie tylko te dane, które nie są wrażliwe i są niezbędne do procesu przetwarzania oraz synchronizacji. Przykładowy rekord studenta w tym module będzie wyglądał tak: }
+
+\begin{itemize}
+\item ID studenta
+\item listę przedmiotów na jakie jest zapisany
+\end{itemize}
 
 \subsection*[Aplikacja kliencka]{Aplikacja kliencka}
 
-\par{}
+\par{Warstwa przeznaczona dla klienta to z założenia lekka i  intuicyjna aplikacja konsolowa. Moduł ten bezpośrednio łączyć będzie się tylko z modułem zewnętrznym serwera.}
 
-\section[Opis szczegółowy]{Opis szczegółowy}
-
-\subsection[Założenia]{Założenia}
-
-\subsubsection*[Założenia ogólne]{Założenia ogólne} \label{z:o}
+\section[Założenia]{Założenia} \label{sec:zalozenia}
 
 \begin{center}
-
+\par{\textbf{Założenia dotyczące warstwy wewnętrznej serwera}}
 \begin{tabular}{|c|c|l|l|}
 \hline
-\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
-\hline
-\label{z:o1} O1 & Protokół TCP/IP &  - & - \\
-\hline
-\label{z:o2} O2 & Plik konfiguracyjny &  - & - \\
-\hline
-\label{z:o3} O3 & Proste komendy serwera &  - & - \\
-\hline
-
-\end{tabular} 
-
-\subsubsection*[Założenia dotyczące warstwy wewnętrznej serwera]{Założenia dotyczące warstwy wewnętrznej serwera} \label{z:sw}
-
-\begin{tabular}{|c|c|l|l|}
-\hline
-\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
+\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powód decyzji} \\
 \hline
 \label{z:sw1} SW1 & Technologia token ring &  - & - \\
 \hline
-\label{z:sw2} SW2 & Zmiana jednego rekordu na raz &  - & - \\
+\label{z:sw2} SW2 & Technologia token ring &  - & - \\
 \hline
-\label{z:sw3} SW3 & - &  - & - \\
+\label{z:sw3} SW3 & Technologia token ring &  - & - \\
 \hline
-\label{z:sw4} SW4 & - &  - & - \\
+\label{z:sw4} SW4 & Technologia token ring &  - & - \\
 \hline
-\label{z:sw5} SW5 & - &  - & - \\
+\label{z:sw5} SW5 & Technologia token ring &  - & - \\
 \hline
-\label{z:sw6} SW6 & - &  - & - \\
+\label{z:sw6} SW6 & Technologia token ring &  - & - \\
 \hline
-\label{z:sw7} SW7 & - &  - & - \\
+\label{z:sw7} SW7 & Technologia token ring &  - & - \\
 \hline
 
 \end{tabular} 
 
-\subsubsection*[Założenia dotyczące warstwy zewnętrznej serwera]{Założenia dotyczące warstwy zewnętrznej serwera} \label{z:sz}
-
+\par{\textbf{Założenia dotyczące warstwy zewnętrznej serwera}}
 \begin{tabular}{|c|c|l|l|}
 \hline
-\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
+\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powód decyzji} \\
 \hline
-\label{z:sz1} SZ1 & Wysyłanie ,,heartbeatów'' &  Zewnętrzne warstwy & - \\
+\label{z:sz1} SZ1 & Technologia token ring &  - & - \\
 \hline
-\label{z:sz2} SZ2 & Okresowa synchronizacja &  - & - \\
+\label{z:sz2} SZ2 & Technologia token ring &  - & - \\
 \hline
-\label{z:sz3} SZ3 & Redundacja danych &  - & - \\
+\label{z:sz3} SZ3 & Technologia token ring &  - & - \\
 \hline
-\label{z:sz4} SZ4 & Udostępnianie usług &  - & - \\
+\label{z:sz4} SZ4 & Technologia token ring &  - & - \\
 \hline
-\label{z:sz5} SZ5 & Obliczanie danych statystycznych &  - & - \\
+\label{z:sz5} SZ5 & Technologia token ring &  - & - \\
 \hline
-\label{z:sz6} SZ6 & Lista serwerów &  - & - \\
+\label{z:sz6} SZ6 & Technologia token ring &  - & - \\
+\hline
+\label{z:sz7} SZ7 & Technologia token ring &  - & - \\
 \hline
 \end{tabular} 
 
-\subsubsection*[Założenia dotyczące aplikacji klienckiej]{Założenia dotyczące aplikacji klienckiej} \label{z:k}
-
+\par{\textbf{Założenia dotyczące aplikacji klienckiej}}
 \begin{tabular}{|c|c|l|l|}
 \hline
-\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
+\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powód decyzji} \\
 \hline
-\label{z:k1} K1 & Brak logowania i autoryzacji użytkownika &  - & - \\
+\label{z:k1} K1 & Technologia token ring &  - & - \\
 \hline
-\label{z:k2} K2 & Brak interfejsu graficznego &  - & - \\
+\label{z:k2} K2 & Technologia token ring &  - & - \\
 \hline
-\label{z:k3} K3 & Usługa wyliczania danych statystycznych &  - & - \\
+\label{z:k3} K3 & Technologia token ring &  - & - \\
 \hline
-\label{z:k4} K4 & Lista serwerów &  - & - \\
+\label{z:k4} K4 & Technologia token ring &  - & - \\
+\hline
+\label{z:k5} K5 & Technologia token ring &  - & - \\
+\hline
+\label{z:k6} K6 & Technologia token ring &  - & - \\
+\hline
+\label{z:k7} K7 & Technologia token ring &  - & - \\
 \hline
 \end{tabular} 
 
