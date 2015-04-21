@@ -4,7 +4,37 @@
 
 \par{Zaprojektować i zaimplementować usługę udostępniania danych statystycznych na temat studentów uczelni wyższej, przy założeniu bezpiecznej i niezawodnej dystrybucji danych wrażliwych - poufnych informacji o studentach.}
 
+\par{Usługa powinna:}
+\begin{itemize}
 
+
+\item mieć dokładnie jeden ten sam tekstowy plik konfiguracyjny dla części 
+serwerowej i klientów usługi,
+\item składać się po stronie serwerowej z dwóch warstw: (1)  wewnętrznej
+  wytwarzającej, przechowującej i przesyłającej przetworzoną wrażliwą
+informację, (2) warstwy zewnętrznej do udostępniania przetworzonej informacji
+oprogramowaniu klienckiemu usługi,
+\item oprogramowanie realizujące część serwerową powinno być współbieżne,
+\item składać się po stronie klienckiej z prostych narzędzi opatulających
+  zaproponowane API protokołu komunikacyjnego,
+\item zapewniać odporność na uszkodzenia węzła, stąd każda z warstw powinna być
+  uruchomiona na co najmniej dwóch węzłach,
+\item zapewniać realizację usługi w trakcie awarii w czasie obsługi,
+\item obsługiwać scenariusz próby ponownego wpięcia się przez węzeł dowolnej z
+  warstw, z którym wcześniej utracono łączność, a zarazem być odporną na próbę
+zastąpienia nieosiągalnego sieciowo węzła (np. w wyniku ataku DoS, odmowa
+usługi) węzłem wrogim do tego nieuprawnionym,
+\item na bieżąco i transparentnie dla oprogramowania klienckiego zarządzać
+  dostępnymi zasobami lokalizacyjnymi,
+\item zapewniać zadany (większy niż 1 ale dopuszczalny konfiguracją mniejszy niż
+  liczba serwerów danych) poziom redundancji - z obsługą uzupełniania kopii na
+innych serwerach w przypadku awarii włącznie,
+\item cała część sewerowa usługi powinna być uruchamiana i zamykana jednokrotnym
+  wywołaniem skryptu na jednym węźle serwera z jednym argumentem
+<start|stop|status> (wykorzystanie nieinteraktywnych metod automatycznego
+uwierzytelniania węzłów w SSH).
+
+\end{itemize}
 
 \section[Wstępny projekt architektury]{Wstępny projekt architektury}
 
@@ -46,11 +76,18 @@
 \hline
 \textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
 \hline
-\label{z:o1} O1 & Protokół TCP/IP &  - & - \\
+\label{z:o1} O1 & 
+Protokół TCP/IP & 
+Komunikacja między warstwami (wewnętrzna serwera - zewnętrzna serwera jak i zewnętrzna serwera - klienci) odbywa się za pomocą protokołów TCP/IP, wykorzystując Google Protocol Buffer (więcej w podrozdziale \ref{protobuf}).
+& Protokół został przez nas wybrany ze względu na elastyczność dla różnych konfiguracji serwerów, tzn. bez względu na to czy warstwy serwera będą działały w obrębie jednego węzła czy nie protokół pozwoli na poprawną komunikację. W przypadku działania obu warstw serwera na jednym komputerze czy nawet w jednym procesie wydajność będzie mniejsza (w porównaniu np. do pamięci współdzielonej), jednak ze względu na ograniczony czas projektu i mniejsze skomplikowanie zostało wybrane to rozwiązanie. \\
 \hline
-\label{z:o2} O2 & Plik konfiguracyjny &  - & - \\
+\label{z:o2} O2 & Plik konfiguracyjny & 
+ Każdy z węzłów danej warstwy będzie posiadała plik konfiguracyjny o tej samej strukturze. W zależności od typu dane z pliku zostaną odpowiednio skonfigurowane. Plik będzie zawierał: ID węzła, listę serwerów (zależnie od typu zewnętrznych lub wewnętrznych), dodatkowe dane konfiguracyjne (np. odpowiadających za redundancję danych, okresową synchronizację, itd.) &
+Takie rozwiązanie jest wymagane w treści zadania. Ponadto ujednolica i ułatwia konfigurację projektu bez potrzeby ponownej kompilacji.\\
 \hline
-\label{z:o3} O3 & Proste komendy serwera &  - & - \\
+\label{z:o3} O3 & Proste komendy serwera &  
+Warstwy serwera będą uruchamiane i zamykane jednokrotnym wywołaniem skryptu na danym węźle serwera z jednym argumentem: start, stop oraz status, które będą kolejno: uruchamiać usługi serwera, wyłączać usługi serwera oraz wyświetlać status serwera. & 
+Takie rozwiązanie jest wymagane w treści zadania. Ponadto pozwoli na łatwą obsługę i testowanie części serwerowej systemu. \\
 \hline
 
 \end{tabular} 
@@ -65,7 +102,7 @@
 \hline
 \label{z:sw2} SW2 & Zmiana jednego rekordu na raz &  - & - \\
 \hline
-\label{z:sw3} SW3 & - &  - & - \\
+\label{z:sw3} SW3 & Bazy danych MySQL &  - & - \\
 \hline
 \label{z:sw4} SW4 & - &  - & - \\
 \hline
