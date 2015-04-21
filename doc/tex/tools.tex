@@ -62,6 +62,16 @@ W ramach zapoznania się z platformą Docker wykonaliśmy następujące czynnoś
 
 \end{itemize}
 
-\section{Biblioteka ZeroMQ}
+\section[IDE IntelliJ]{IDE IntelliJ}
 
-\section{Biblioteka protobuf}
+\subsection*[Powody wyboru biblioteki]{Powody wyboru biblioteki}
+
+\section{Google Protocol Buffers}
+
+\par{Jest to elastyczna i wydajna metoda serializacji strukturyzowanych danych do wykorzystania między innymi w protokołach komunikacyjnych oraz przechowywaniu danych. Określana jest struktura informacji która będzie serializowana poprzez zdefiniowanie typu wiadomości w pliku ,,.proto''. Każda taka wiadomość jest logicznym rekordem informacji zawierającym pary nazwa-wartość. Format takiej wiadomości jest prosty, każdy typ składa się z jednego lub więcej unikatowych, ponumerowanych pól z których każdy ma nazwę i typ wartości. Typem wartości pola mogą być liczby, zmienne logiczne, łańcuchy znaków oraz inne wiadomości PBM. Pozwala to na hierarchiczne ułożenie struktury. Każde pole może być oznaczone na trzy sposoby: opcjonalne, wymagane, powtarzające się z zachowaniem kolejności.}
+
+\par{Kiedy wiadomości są określone należy włączyć kompilator protocol buffer dla języka aplikacji. Generuje on klasy dostępu do danych na podstawie pliku ,,.proto''. Tworzone są podstawowe funkcje dostępu do każdego pola oraz metody do serializowania/parsowania całej struktury. Dla Javy generowane są pliki ,,.java'' z klasami dla każdego typu wiadomości oraz specjalna klasa ,,Builder'' do tworzenia instancji klas wiadomości.}
+
+\par{Można dodać nowe pola do wiadomości nie zaburzając kompatybilności wstecznej. Stare pliki binarne ignorują nowe pola podczas parsowania. W przypadku protokołów komunikacyjnych które wykorzystują protocol buffers jako format danych, można rozszerzyć protokół bez obaw o wpływ na istniejący kod.}
+
+\subsection*[Powody wyboru biblioteki]{Powody wyboru biblioteki}
