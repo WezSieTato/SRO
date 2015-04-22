@@ -36,7 +36,7 @@ uwierzytelniania węzłów w SSH).
 
 \end{itemize}
 
-\section[Opis rozwiązania]{Opis rozwiazania}
+\section[Wstępny opis rozwiązania]{Wstępny opis rozwiazania}
 
 \par{Nasze rowiązanie to rozproszony system do rejestracji studentów uczelnii wyższych na przemioty. Warstwą wewnątrzną przechowujące dane wrażliwe, w tym przypadku będą węzły rejestrujące studentów ideowo umieszczone w dziekanatach instytutów i obsługiwane przez osoby tam pracujące. Warstwa pośrednia przechowuje informacje o studentach, jednak bez informacji wrażliwej, posiada jedynie dane o istnieniu studenta zapisanego na przedmioty RSO, SOI, ANA1 i SR,  bez imienia, nazwiska i daty urodzenia. Owe informacje są przetwarzane na żądanie aplikacji klienckiej, dostępnej dla studentów, którzy chcą dowiedzieć się, ile osób zapisanych jest na dany przedmiot.}
 
@@ -103,7 +103,7 @@ Komunikacja między warstwami (wewnętrzna serwera - zewnętrzna serwera jak i z
 & Protokół został przez nas wybrany ze względu na elastyczność dla różnych konfiguracji serwerów, tzn. bez względu na to czy warstwy serwera będą działały w obrębie jednego węzła czy nie protokół pozwoli na poprawną komunikację. W przypadku działania obu warstw serwera na jednym komputerze czy nawet w jednym procesie wydajność będzie mniejsza (w porównaniu np. do pamięci współdzielonej), jednak ze względu na ograniczony czas projektu i mniejsze skomplikowanie zostało wybrane to rozwiązanie. \\
 \hline
 \label{z:o2} O2 & Plik konfiguracyjny & 
- Każdy z węzłów danej warstwy będzie posiadała plik konfiguracyjny o tej samej strukturze. W zależności od typu dane z pliku zostaną odpowiednio skonfigurowane. Plik będzie zawierał: ID węzła, listę serwerów (zależnie od typu zewnętrznych lub wewnętrznych), dodatkowe dane konfiguracyjne (np. odpowiadających za redundancję danych, okresową synchronizację, itd.) &
+ Każdy z węzłów danej warstwy będzie posiadała plik konfiguracyjny o tej samej strukturze. W zależności od typu dane z pliku zostaną odpowiednio skonfigurowane. Plik będzie zawierał: ID węzła, listę serwerów (zależnie od typu - zewnętrznych lub wewnętrznych), dodatkowe dane konfiguracyjne (np. odpowiadających za redundancję danych, okresową synchronizację, itd.) &
 Takie rozwiązanie jest wymagane w treści zadania. Ponadto ujednolica i ułatwia konfigurację projektu bez potrzeby ponownej kompilacji.\\
 \hline
 \label{z:o3} O3 & Proste komendy serwera &  
@@ -119,23 +119,20 @@ Takie rozwiązanie jest wymagane w treści zadania. Ponadto pozwoli na łatwą o
 \hline
 \textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
 \hline
-\label{z:sw1} SW1 & Technologia token ring &  - & - \\
+\label{z:sw1} SW1 & Technologia token ring &  Serwery warstwy zewnętrznej połączone są ze sobą w pierścień (każdy ma z góry ustalonego poprzednika i następnika w pliku konfiguracyjnym). Jeśli dany następnik nie odpowiada - brany jest następny adres węzła z listy. W ten sposób bez względu na ilość węzłów mamy zawsze do czynienia z taką samą strukturą (w szczególności - mamy tylko jeden węzeł). Każdy z węzłów wysyła swojemu następnikowi token zawierający informacje odnośnie potencjalnych zmian. & Taka architektura warstwy wewnętrznej pozwala na bieżące sprawdzanie stanu kolejnych węzłów. Jeśli token gdzieś się ,,zagubi'' oznacza to, że dany węzeł uległ awarii. Ponadto taka architektura pozwala na szybką i łatwą synchronizację danych. \\
 \hline
-\label{z:sw2} SW2 & Zmiana jednego rekordu na raz &  - & - \\
+\label{z:sw2} SW2 & Zmiana jednego rekordu na raz & 
+Jeśli dany węzeł chce dodać/usunąć/zmodyfikować dane o studencie musi posiadać token, który przesyła do kolejnych serwerów na końcu otrzymując potwierdzenie, że każdy z węzłów wprowadził żądaną zmianę. & 
+Ze względu na to, że w sieci warstwy wewnętrznej serwera istnieje jeden token jest sensowne przyjąć założenie, że na raz można wprowadzić jedną modyfikację w bazie. Ponadto pozwala to utrzymać nieduży rozmiar tokena, co sprzyja jego szybszemu przesyłaniu między węzłami. Nawet w przypadku wielu żądań (od każdego węzła jedno) powinno to działać na tyle szybko, że osoby wprowadzające dane nie odczują opóźnienia. Dodatkowo wprowadzanie pojedynczych informacji pozwala na szybsze wykrycie awarii węzła serwera oraz zaoszczędza większej ilości czasu, niż w przypadku wpisywania dużej ilości danych na raz, a dopiero potem sprawdzania czy węzeł działa poprawnie. \\
 \hline
 \label{z:sw3} SW3 & Bazy danych MySQL & Aplikacja serwerowa wewnętrzna będzie działać w oparciu o relacyjną bazę danych MySQL & 
 Baza MySQL jest popularnym systemem relacyjnych baz danych z dobrą dokumentacją oraz szeroką i aktywną społecznością użytkowników. Ponadto system ten jest powszechnie znany wśród wszystkich członków projektu. Dodatkowo MySQL dobrze współpracuje z wybranym językiem programowania Java.
 \\
 \hline
-\label{z:sw4} SW4 & - &  - & - \\
+\label{z:sw4} SW4 & Pełna redundacja danych  &  
+Każdy z węzłów wewnętrznych ma pełną i aktualną bazę studentów. Dane są synchronizowane na bieżąco. & 
+Natychmiastowa synchronizacja danych i pełna redundancja pozwala uniknąć wielu problemów w trakcie działania serwera, między innymi: dodatkowej synchronizacji po awarii jednego z węzłów, która jest dość problematyczna i skomplikowana. Rozwiązanie to zostało zatwierdzone przez Prowadzącego.\\
 \hline
-\label{z:sw5} SW5 & - &  - & - \\
-\hline
-\label{z:sw6} SW6 & - &  - & - \\
-\hline
-\label{z:sw7} SW7 & - &  - & - \\
-\hline
-
 \end{tabular} 
 
 \subsubsection*[Założenia dotyczące warstwy zewnętrznej serwera]{Założenia dotyczące warstwy zewnętrznej serwera} \label{z:sz}
@@ -144,17 +141,16 @@ Baza MySQL jest popularnym systemem relacyjnych baz danych z dobrą dokumentacj�
 \hline
 \textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
 \hline
-\label{z:sz1} SZ1 & Wysyłanie ,,heartbeatów'' &  Zewnętrzne warstwy & - \\
+\label{z:sz1} SZ1 & Wysyłanie ,,heartbeatów'' &  Zewnętrzne warstwy  & - \\
 \hline
 \label{z:sz2} SZ2 & Okresowa synchronizacja &  - & - \\
 \hline
-\label{z:sz3} SZ3 & Redundacja danych &  - & - \\
+\label{z:sz3} SZ3 & Redundacja danych &  - & To założenie służy spełnieniu warunków zadania. \\
 \hline
-\label{z:sz4} SZ4 & Udostępnianie usług &  - & - \\
+\label{z:sz4} SZ4 & Udostępnianie usług &  - & To założenie służy spełnieniu warunków zadania. \\
 \hline
-\label{z:sz5} SZ5 & Obliczanie danych statystycznych &  - & - \\
-\hline
-\label{z:sz6} SZ6 & Lista serwerów &  - & - \\
+\label{z:sz5} SZ5 & Obliczanie danych statystycznych &  Serwery zewnętrzne, zwane też przetwarzającymi, otrzymują dane od warstwy wewnętrznej, jednak zapisują z nich jedynie dane niewrażliwe używając ich do wyliczania ilości studentów zapisanych na dany przedmiot. Do tej operacji pełne informacje o studentach nie są potrzebne. & 
+To założenie służy spełnieniu warunków zadania. \\
 \hline
 \end{tabular} 
 
@@ -194,7 +190,25 @@ W związku z ograniczonym czasem i głównym celem projektu interaktywna aplikac
 
 \section[Potencjalne problemy]{Potencjalne problemy}
 
+\subsection*[Podłączenie nowego serwera warstwy wewnętrznej]{Podłączenie nowego serwera warstwy wewnętrznej}
+
+\subsection*[Podłączenie nowego serwera warstwy zewnętrznej]{Podłączenie nowego serwera warstwy zewnętrznej}
+
 \subsection*[Awaria węzła warstwy wewnętrznej]{Awaria jednego z węzłów warstwy wewnętrznej}
+
+\par{W przypadku awarii wewnętrznego węzła serwera musimy rozważyć kilka scenariuszy:}
+
+\begin{itemize}
+
+\item \textbf{Brak tokena, brak oczekującej operacji} - 
+
+\item \textbf{Brak tokena, oczekująca operacja} - 
+
+\item \textbf{Posiada token, brak oczekujących operacji} - 
+
+\item \textbf{Posiada token, oczekująca operacja} - 
+
+\end{itemize}
 
 \subsection*[Awaria węzła warstwy zewnętrznej]{Awaria jednego z węzłów warstwy zewnętrznej}
 
