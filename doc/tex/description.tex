@@ -154,8 +154,7 @@ Decyzja została zatwierdzona przez Prowadzącego. Wynika ona z braku konieczno�
 \label{z:k2} K2 & Brak interfejsu graficznego &  Decyzja została zatwierdzona przez Prowadzącego. Wynika ona z braku konieczności stworzenia tej funkcjonalności (w związku z minimalnym wpływem na główny cel projektu) oraz na ograniczony czas i mniejszą ilość osób w grupie projektowej niż przewidywana.  & - \\
 \hline
 
-\label{z:k4} K4 & Komunikacja synchroniczna & Aplikacja kliencka będzie się komunikowała z serwerem w sposób synchroniczny. & Ze względu na ograniczoną funkcjonalność aplikacji klienckiej, sprowadzoną jedynie do wysyłania żądań i uzyskiwania odpowiedzi, ten sposób komunikacji wydaje się najbardziej trafny. \\
-\hline
+
 \label{z:k5} K5 & Brak funkcji ,,heartbeatu'' & 
 Aplikacja kliencka nie będzie na bierząco sprawdzała stanu węzła do którego jest podłączona. Status serwera będzie przez nią sprawdzany jedynie przy logowaniu i wysyłaniu żądania. W przypadku awarii węzła aplikacja będzie przełączała się na kolejny węzeł z listy, aż do skutku. & 
 Ze względu na naszą koncepcję aplikacji klieckiej ta funkcjonalność nie jest potrzebna. Z punktu widzenia użytkownika stan serwera interesuje go tylko przy wysyłaniu żądania. System heartbeatów dodaje duży narzut i komplikuje samego klienta nie dając w zamian znacznego wzrostu szybkości działania. W sytuacji awarii i tak musi nastąpić przełączenie na inny węzeł. Różnica polega jedynie na tym, że w przypadku systemu hearbeatów następuje to w momencie upływu określonego czasu bez odpowiedzi serwera, a w przeciwnym - jedynie wtedy kiedy serwer jest potrzebny, tzn. przy logowaniu bądź wysłąniu żądania.\\
@@ -236,6 +235,91 @@ Jest to dobry przykład funkcjonalności, która zabezpiecza nam dane wrażliwe 
 \end{tabularx}
 
 \subsection[Wymagania niefunkcjonalne]{Wymagania niefunkcjonalne}
+
+\begin{tabularx}{\textwidth}{|c|X|c|}
+\hline
+\textbf{ID} & \textbf{Wymaganie}  & \textbf{Priorytet} \\
+\hline
+
+\label{z:WNF1} WNF1 & \textbf{Czas między awariami} 
+ 
+Średni czas między awariami systemu powinien wynosić przynajmniej trzy miesiące, przy czym awarię definiujemy jako ciągłą niedostępność usługi przez co najmniej 10 minut bądź konieczność wykorzystania kopii zapasowej
+ & bardzo wysoki\\
+\hline
+
+\label{z:WNF2} WNF2 & \textbf{Spójność danych po awarii} 
+ 
+Odzyskane dane nie mogą być starsze niż 6 godzin przed awarią.
+ & bardzo wysoki\\
+\hline
+
+\label{z:WNF4} WNF4 & \textbf{Ochrona danych} 
+ 
+System powinien gwarantować ochronę danych osobowych studentów.
+ & bardzo wysoki\\
+\hline
+
+\label{z:WNF5} WNF5 & \textbf{Czas naprawy} 
+ 
+Maksymalny czas niesprawności systemu po awarii nie może przekraczać 2 godzin.
+ & bardzo wysoki\\
+\hline
+
+\label{z:WNF6} WNF6 & \textbf{Czas odpowiedzi klientowi} 
+ 
+Średni czas odpowiedzi klientowi na zapytanie, nie powinien trwać więcej niż  2 sekundy.
+ & średni\\
+\hline
+
+\label{z:WNF7} WNF7 & \textbf{Maksymalny napływ studentów} 
+ 
+Maksymalny przypływ nowych studentów do rejestracji nie powinien być większy niż 10 na sekundę.
+ & średni\\
+\hline
+
+\label{z:WNF8} WNF8 & \textbf{Średni napływ studentów} 
+ 
+Średni przypływ nowych studentów do rejestracji nie powinien być większy niż 5 na sekundę.
+ & średni\\
+\hline
+
+\label{z:WNF9} WNF9 & \textbf{Dostępność} 
+ 
+Średni czas wyłączenia systemu w roku nie powinien przekraczać dwóch dni roboczych.
+ & wysoki\\
+\hline
+
+\label{z:WNF10} WNF10 & \textbf{Ergonomia} 
+ 
+Użytkowanie systemu powinno być intuicyjne i przejrzyste dla użytkownika.
+ & wysoki\\
+\hline
+
+\label{z:WNF11} WNF11 & \textbf{Praca po awarii węzła} 
+ 
+Awaria pojedyńczego węzła nie powinna powodować awarii całej sieci (przy założeniu, że zachowana zostaje minimalna ilość węzłów).
+ & bardzo wysoki\\
+\hline
+
+\label{z:WNF12} WNF12 & \textbf{Minimalna ilość węzłów do pracy warstwy wewnętrznej} 
+ 
+Warstwa wewnętrzna serwera przechowująca dane powinna poprawnie działać przy minimalnej liczbie węzłów trzy. Jeśli liczba węzłów po awarii spadnie poniżej tej liczby, poprawne działanie nie jest gwarantowane.
+ & bardzo wysoki\\
+\hline
+
+\label{z:WNF13} WNF13 & \textbf{Minimalna ilość węzłów do pracy warstwy zewnętrznej} 
+ 
+Warstwa zewnętrzna serwera przetwarzające dane powinna poprawnie działać jeśli działa przynajmniej jeden węzeł tej warstwy.
+ & bardzo wysoki\\
+\hline
+
+\label{z:WNF13} WNF13 & \textbf{Pomoc} 
+ 
+System powinien posiadać dobrze przygotowaną pomoc dla użytkownika.
+ & niski \\
+\hline
+
+\end{tabularx}
 
 \section[Potencjalne problematyczne scenariusze]{Potencjalne problematyczne scenariusze}
 
