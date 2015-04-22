@@ -237,33 +237,25 @@ Jest to dobry przykład funkcjonalności, która zabezpiecza nam dane wrażliwe 
 
 \subsection[Wymagania niefunkcjonalne]{Wymagania niefunkcjonalne}
 
-\section[Potencjalne problemy]{Potencjalne problemy}
-
-\subsection*[Podłączenie nowego serwera warstwy wewnętrznej]{Podłączenie nowego serwera warstwy wewnętrznej}
-
-\subsection*[Podłączenie nowego serwera warstwy zewnętrznej]{Podłączenie nowego serwera warstwy zewnętrznej}
-
-\subsection*[Awaria węzła warstwy wewnętrznej]{Awaria jednego z węzłów warstwy wewnętrznej}
-
-\par{W przypadku awarii wewnętrznego węzła serwera musimy rozważyć kilka scenariuszy:}
+\section[Potencjalne problematyczne scenariusze]{Potencjalne problematyczne scenariusze}
 
 \begin{itemize}
-
-\item \textbf{Brak tokena, brak oczekującej operacji} - 
-
-\item \textbf{Brak tokena, oczekująca operacja} - 
-
-\item \textbf{Posiada token, brak oczekujących operacji} - 
-
-\item \textbf{Posiada token, oczekująca operacja} - 
-
+\item Podłączenie nowego serwera warstwy wewnętrznej
+\item Podłączenie nowego serwera warstwy zewnętrznej
+\item Awaria węzłów warstwy wewnętrznej serwera
+\item Awaria węzłów warstwy zewnętrznej serwera
+\item Kwestia równomiernego podziału klientów między serwery oraz serwerów zewnętrznych między wewnętrzne
+\item Kwestia rozmieszczenia warstw serwera w obrębie jednego komputera bądź wielu odrębnych
 \end{itemize}
 
-\subsection*[Awaria węzła warstwy zewnętrznej]{Awaria jednego z węzłów warstwy zewnętrznej}
-
-\subsection*[Kwestia równomiernego podziału klientów między serwery oraz serwerów zewnętrznych między wewnętrzne]{Kwestia równomiernego podziału klientów między serwery oraz serwerów zewnętrznych między wewnętrzne}
-
-\subsection*[Kwestia rozmieszczenia warstw serwera w obrębie jednego komputera bądź wielu odrębnych]{Kwestia rozmieszczenia warstw serwera w obrębie jednego komputera bądź wielu odrębnych}
-
-
 \section[Organizacja środowiska programistycznego]{Organizacja środowiska programistycznego}
+
+\subsection[Język programowania Java]{Język programowania Java}
+
+\par{Zdecydowaliśmy się napisać kod źródłowy systemu w Javie. Wybór ten wynika z wielu zalet tego języka programowania. Funkcje sieciowe są dostępne w podstawowych bibliotekach. Wliczone w to są TCP/IP, UDP/IP, wydajne nieblokujące I/O, HTTP, wsparcie REST, XML, JSON oraz SSL.}
+
+\par{Kolejną zaletą jest duży zbiór struktur danych (również w podstawowych bibliotekach). Budowa rozproszonego systemu wymaga wielu, często skomplikowanych i różnorodnych, struktur, które Java posiada. Ważna jest tu także kwestia wątków i synchronizacji między nimi. Na tym polu Java również dostarcza odpowiednie funkcje, struktury danych oraz narzędzie realizujące współdzielony dostęp. Ponadto bez problemu współpracuje z Google Protocol Buffers i jest multiplatformowa.}
+
+\subsection[IntelliJ IDE]{IntelliJ IDE}
+
+\par{Jest to środowisko programistyczne dla Javy. Ów środowisko wyposażono w bardzo bogatą paletę narzędzi pozwalających na komfortowe tworzenie oraz edycję kodu. Mnogość narzędzi oraz znajomość środowiska przez zespół ostatecznie zaważyła na decyzji o wykorzystaniu IntelliJ.}
