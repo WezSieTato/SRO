@@ -81,7 +81,7 @@
 
 \end{itemize}
 
-\section{Google Protocol Buffers} \label{protobuf}
+\section[Google Protocol Buffers]{Google Protocol Buffers} \label{protobuf}
 
 \par{Jest to elastyczna i wydajna metoda serializacji strukturyzowanych danych do wykorzystania między innymi w protokołach komunikacyjnych oraz przechowywaniu danych. Określana jest struktura informacji która będzie serializowana poprzez zdefiniowanie typu wiadomości w pliku ,,.proto''. Każda taka wiadomość jest logicznym rekordem informacji zawierającym pary nazwa-wartość. Format takiej wiadomości jest prosty, każdy typ składa się z jednego lub więcej unikatowych, ponumerowanych pól z których każdy ma nazwę i typ wartości. Typem wartości pola mogą być liczby, zmienne logiczne, łańcuchy znaków oraz inne wiadomości PBM. Pozwala to na hierarchiczne ułożenie struktury. Każde pole może być oznaczone na trzy sposoby: opcjonalne, wymagane, powtarzające się z zachowaniem kolejności.}
 
@@ -90,3 +90,9 @@
 \par{Można dodać nowe pola do wiadomości nie zaburzając kompatybilności wstecznej. Stare pliki binarne ignorują nowe pola podczas parsowania. W przypadku protokołów komunikacyjnych które wykorzystują protocol buffers jako format danych, można rozszerzyć protokół bez obaw o wpływ na istniejący kod.}
 
 \par{Wszystkie wyżej wymienione cechy zaważyły przy wyborze tego narzędzia do tworzenia systemu.}
+
+\section[MySQL]{MySQL}
+
+\par{Aplikacja serwerowa będzie działać w oparciu o relacyjną bazę danych MySQL.} 
+
+\par{Baza MySQL jest popularnym systemem relacyjnych baz danych z dobrą dokumentacją oraz szeroką i aktywną społecznością użytkowników. Ponadto system ten jest powszechnie znany wśród wszystkich członków projektu. Dodatkowo MySQL dobrze współpracuje z wybranym językiem programowania Java. Stąd nasz wybór padł właśnie na MySQL.}

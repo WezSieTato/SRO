@@ -85,89 +85,6 @@ uwierzytelniania węzłów w SSH).
 
 \section[Opis szczegółowy]{Opis szczegółowy}
 
-\subsection[Założenia]{Założenia}
-
-
-
-\subsubsection*[Założenia ogólne]{Założenia ogólne} \label{z:o}
-
-\begin{center}
-
-\begin{tabularx}{\textwidth}{|c|c|X|X|}
-\hline
-\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
-\hline
-\label{z:o1} O1 & 
-Protokół TCP/IP & 
-Komunikacja między warstwami (wewnętrzna serwera - zewnętrzna serwera jak i zewnętrzna serwera - klienci) odbywa się za pomocą protokołów TCP/IP, wykorzystując Google Protocol Buffer (więcej w podrozdziale \ref{protobuf}).
-& Protokół został przez nas wybrany ze względu na elastyczność dla różnych konfiguracji serwerów, tzn. bez względu na to czy warstwy serwera będą działały w obrębie jednego węzła czy nie protokół pozwoli na poprawną komunikację. W przypadku działania obu warstw serwera na jednym komputerze czy nawet w jednym procesie wydajność będzie mniejsza (w porównaniu np. do pamięci współdzielonej), jednak ze względu na ograniczony czas projektu i mniejsze skomplikowanie zostało wybrane to rozwiązanie. \\
-\hline
-
-\label{z:o3} O3 & Proste komendy serwera &  
-Warstwy serwera będą uruchamiane i zamykane jednokrotnym wywołaniem skryptu na danym węźle serwera z jednym argumentem: start, stop oraz status, które będą kolejno: uruchamiać usługi serwera, wyłączać usługi serwera oraz wyświetlać status serwera. & 
-Takie rozwiązanie jest wymagane w treści zadania. Ponadto pozwoli na łatwą obsługę i testowanie części serwerowej systemu. \\
-\hline
-
-\end{tabularx}
-
-\subsubsection*[Założenia dotyczące warstwy wewnętrznej serwera]{Założenia dotyczące warstwy wewnętrznej serwera} \label{z:sw}
-
-\begin{tabular}{|c|c|l|l|}
-\hline
-\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
-\hline
-\label{z:sw1} SW1 & Technologia token ring &  Serwery warstwy zewnętrznej połączone są ze sobą w pierścień (każdy ma z góry ustalonego poprzednika i następnika w pliku konfiguracyjnym). Jeśli dany następnik nie odpowiada - brany jest następny adres węzła z listy. W ten sposób bez względu na ilość węzłów mamy zawsze do czynienia z taką samą strukturą (w szczególności - mamy tylko jeden węzeł). Każdy z węzłów wysyła swojemu następnikowi token zawierający informacje odnośnie potencjalnych zmian. & Taka architektura warstwy wewnętrznej pozwala na bieżące sprawdzanie stanu kolejnych węzłów. Jeśli token gdzieś się ,,zagubi'' oznacza to, że dany węzeł uległ awarii. Ponadto taka architektura pozwala na szybką i łatwą synchronizację danych. \\
-\hline
-
-\label{z:sw3} SW3 & Bazy danych MySQL & Aplikacja serwerowa wewnętrzna będzie działać w oparciu o relacyjną bazę danych MySQL & 
-Baza MySQL jest popularnym systemem relacyjnych baz danych z dobrą dokumentacją oraz szeroką i aktywną społecznością użytkowników. Ponadto system ten jest powszechnie znany wśród wszystkich członków projektu. Dodatkowo MySQL dobrze współpracuje z wybranym językiem programowania Java.
-\\
-\hline
-\label{z:sw4} SW4 & Pełna redundacja danych  &  
-Każdy z węzłów wewnętrznych ma pełną i aktualną bazę studentów. Dane są synchronizowane na bieżąco. & 
-Natychmiastowa synchronizacja danych i pełna redundancja pozwala uniknąć wielu problemów w trakcie działania serwera, między innymi: dodatkowej synchronizacji po awarii jednego z węzłów, która jest dość problematyczna i skomplikowana. Rozwiązanie to zostało zatwierdzone przez Prowadzącego.\\
-\hline
-\end{tabular} 
-
-\subsubsection*[Założenia dotyczące warstwy zewnętrznej serwera]{Założenia dotyczące warstwy zewnętrznej serwera} \label{z:sz}
-
-\begin{tabular}{|c|c|l|l|}
-\hline
-\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
-\hline
-\label{z:sz1} SZ1 & Wysyłanie ,,heartbeatów'' &  Węzły zewnętrznej warstwy będą sprawdzały swoją dostępność za pomocą tzw. ,,uderzeń serce'' \textit{(ang. heartbeat)} wysyłanych w danych odstępach czasu (każdy z serwerów musi mieć ustalony ten sam interwał). Dzięki temu będą miały wiedzę na temat aktywności pozostałych serwerów. Brak ,,heartbeata'' od danego serwera po upływie zadanego czasu będzie równoważny z jego brakiem dostępności. & Takie rozwiązanie pozwala na bieżąco monitorować stan poszczególnych węzłów warstwy zewnętrznej. \\
-\hline
-
-
-\end{tabular} 
-
-\subsubsection*[Założenia dotyczące aplikacji klienckiej]{Założenia dotyczące aplikacji klienckiej} \label{z:k}
-
-\begin{tabular}{|c|c|l|l|}
-\hline
-\textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
-\hline
-\label{z:k1} K1 & Brak funkcji logowania użytkownika &  
-Klient łączy się z systemem identyfikując się jedynie swoim unikatowym ID, które wpisane jest pliku konfiguracyjnym. & 
-Decyzja została zatwierdzona przez Prowadzącego. Wynika ona z braku konieczności stworzenia tej funkcjonalności (w związku z minimalnym wpływem na główny cel projektu) oraz na ograniczony czas i mniejszą ilość osób w grupie projektowej niż przewidywana.  \\
-\hline
-\label{z:k2} K2 & Brak interfejsu graficznego &  Decyzja została zatwierdzona przez Prowadzącego. Wynika ona z braku konieczności stworzenia tej funkcjonalności (w związku z minimalnym wpływem na główny cel projektu) oraz na ograniczony czas i mniejszą ilość osób w grupie projektowej niż przewidywana.  & - \\
-\hline
-
-\label{z:k4} K4 & Komunikacja synchroniczna & Aplikacja kliencka będzie się komunikowała z serwerem w sposób synchroniczny. & Ze względu na ograniczoną funkcjonalność aplikacji klienckiej, sprowadzoną jedynie do wysyłania żądań i uzyskiwania odpowiedzi, ten sposób komunikacji wydaje się najbardziej trafny. \\
-\hline
-\label{z:k5} K5 & Brak funkcji ,,heartbeatu'' & 
-Aplikacja kliencka nie będzie na bierząco sprawdzała stanu węzła do którego jest podłączona. Status serwera będzie przez nią sprawdzany jedynie przy logowaniu i wysyłaniu żądania. W przypadku awarii węzła aplikacja będzie przełączała się na kolejny węzeł z listy, aż do skutku. & 
-Ze względu na naszą koncepcję aplikacji klieckiej ta funkcjonalność nie jest potrzebna. Z punktu widzenia użytkownika stan serwera interesuje go tylko przy wysyłaniu żądania. System heartbeatów dodaje duży narzut i komplikuje samego klienta nie dając w zamian znacznego wzrostu szybkości działania. W sytuacji awarii i tak musi nastąpić przełączenie na inny węzeł. Różnica polega jedynie na tym, że w przypadku systemu hearbeatów następuje to w momencie upływu określonego czasu bez odpowiedzi serwera, a w przeciwnym - jedynie wtedy kiedy serwer jest potrzebny, tzn. przy logowaniu bądź wysłąniu żądania.\\
-\hline
-\label{z:k6} K6 & 
-Brak interaktywności & Aplikacja kliencka będzie ograniczona jedynie do wywoływania określonych funkcji, według określonego z góry scenariusza. & 
-W związku z ograniczonym czasem i głównym celem projektu interaktywna aplikacja kliencka nie jest koniecznością. Funkcjonalność systemu można poprawnie przetestować inicjując konkretne scenariusze (między innymi symulacje awarii czy błędów systemu). Decyzja ta została zatwierdzona przez Prowadzącego.\\
-\hline
-\end{tabular} 
-
-\end{center}
-
 \subsection[Wymagania funkcjonalne]{Wymagania funkcjonalne}
 
 \begin{tabularx}{\textwidth}{|c|X|X|}
@@ -178,7 +95,7 @@ W związku z ograniczonym czasem i głównym celem projektu interaktywna aplikac
 \label{z:WF1} WF1 & \textbf{Plik konfiguracyjny}
 
 
- Każdy z węzłów danej warstwy będzie posiadała plik konfiguracyjny o tej samej strukturze. W zależności od typu dane z pliku zostaną odpowiednio skonfigurowane. Plik będzie zawierał: ID węzła, listę serwerów (zależnie od typu - zewnętrznych lub wewnętrznych), dodatkowe dane konfiguracyjne (np. odpowiadających za redundancję danych, okresową synchronizację, itd.) &
+Każdy z węzłów danej warstwy będzie posiadała plik konfiguracyjny o tej samej strukturze. W zależności od typu dane z pliku zostaną odpowiednio skonfigurowane. Plik będzie zawierał: ID węzła, listę serwerów (zależnie od typu - zewnętrznych lub wewnętrznych), dodatkowe dane konfiguracyjne (np. odpowiadających za redundancję danych, okresową synchronizację, itd.) &
 Takie rozwiązanie jest wymagane w treści zadania. Ponadto ujednolica i ułatwia konfigurację projektu bez potrzeby ponownej kompilacji.\\
 \hline
 
@@ -195,7 +112,7 @@ Ze względu na to, że w sieci warstwy wewnętrznej serwera istnieje jeden token
 \textbf{ID} & \textbf{Wymagania}  & \textbf{Powody decyzji} \\
 \hline
 
-\label{z:WF3} WF3 & \textbf{Okresowa synchronizacja }
+\label{z:WF3} WF3 & \textbf{Okresowa synchronizacja}
 
  Synchronizacja z warstwą wewnętrzną następuje okresowo, w danych odstępach czasu, sterowanych za pomocą pliku konfiguracyjnego. Jest ona wykonywana na rządanie węzłów warstwy zewnętrznej. Synchronizacja polega na pobraniu jedynie zmienionych rekordów bazy, a nie wszystkich. Ostatnia funkcjonalność zostanie rozwiązana za pomocą, tzw. ,,znaczników czasu'' \textit{(ang. timestamp)}. & Synchronizacja o konkretnych porach pozwala na odpowiednie rozporządzanie pracą systemu. W przypadku rzadkiej modyfikacji danych przez warstwę wewnętrzną serwera synchronizacja może być wykonywana, np. raz na dzień. Z drugiej strony można ustawić synchronizację co 1 sekundę, co spowoduje wrażenie ciągłej synchronizacji (oczywiście nie biorąc pod uwagę potencjalnych opóźnień). Takie rozwiązanie pozwala administratorowi na odpowiednią optymalizację działania systemu. Dzięki aktualizacji jedynie konkretnych danych, a nie bazy w całości jest to stosunkowo szybkie. \\
 \hline
@@ -227,7 +144,7 @@ To założenie służy spełnieniu warunków zadania. \\
 
 \label{z:WF7} WF7 & \textbf{Dostęp do usługi pobrania danych statystycznych} 
  
-Aplikacja kliencka po połączeniu z serwerem zewnętrznym może pobrać informacje na temat ilości studentów zapisanych na dany przedmiot. Użytkownik otrzymuje jedynie nazwę przedmiotu i liczbę zapisanych studentó, bez dostępu do danych wrażliwych. Może być wysyłane jedno żądanie na raz od danego użytkownika. Nie ma funkcji agregacji wielu żądań w jedno. & 
+Aplikacja kliencka po połączeniu z serwerem zewnętrznym może pobrać informacje na temat ilości studentów zapisanych na dany przedmiot. Użytkownik otrzymuje jedynie nazwę przedmiotu i liczbę zapisanych studentów, bez dostępu do danych wrażliwych. Może być wysyłane jedno żądanie na raz od danego użytkownika. Nie ma funkcji agregacji wielu żądań w jedno. & 
 Jest to dobry przykład funkcjonalności, która zabezpiecza nam dane wrażliwe przed zwyczajnym użytkownikiem, udostępniając jedynie informacje, które mogą być publiczne. Agregacja bądź wysyłanie wielu żądań na raz nie jest konieczne do sprawdzenia poprawnego działania systemu i nie zmienia w żaden sposób wizji funkcjonowania systemu.\\
 \hline
 
@@ -236,6 +153,92 @@ Jest to dobry przykład funkcjonalności, która zabezpiecza nam dane wrażliwe 
 \end{tabularx}
 
 \subsection[Wymagania niefunkcjonalne]{Wymagania niefunkcjonalne}
+
+
+\subsection[Dodatkowe założenia]{Dodatkowe założenia}
+
+\begin{tabularx}{\textwidth}{|c|X|X|}
+\hline
+\textbf{ID} & \textbf{Wymagania}  & \textbf{Powody decyzji} \\
+\hline
+
+\label{z:ZO1} ZO1 &  \textbf{Protokół TCP/IP }
+
+Komunikacja między warstwami (wewnętrzna serwera - zewnętrzna serwera jak i zewnętrzna serwera - klienci) odbywa się za pomocą protokołów TCP/IP, wykorzystując Google Protocol Buffer (więcej w podrozdziale \ref{protobuf}). & 
+Protokół został przez nas wybrany ze względu na elastyczność dla różnych konfiguracji serwerów, tzn. bez względu na to czy warstwy serwera będą działały w obrębie jednego węzła czy nie protokół pozwoli na poprawną komunikację. W przypadku działania obu warstw serwera na jednym komputerze czy nawet w jednym procesie wydajność będzie mniejsza (w porównaniu np. do pamięci współdzielonej), jednak ze względu na ograniczony czas projektu i mniejsze skomplikowanie zostało wybrane to rozwiązanie. \\
+\hline
+
+\label{z:ZO2} ZO2 &  \textbf{Proste komendy serwera}
+
+Warstwy serwera będą uruchamiane i zamykane jednokrotnym wywołaniem skryptu na danym węźle serwera z jednym argumentem: start, stop oraz status, które będą kolejno: uruchamiać usługi serwera, wyłączać usługi serwera oraz wyświetlać status serwera. & 
+Takie rozwiązanie jest wymagane w treści zadania. Ponadto pozwoli na łatwą obsługę i testowanie części serwerowej systemu. \\
+\hline
+
+\label{z:ZO3} ZO3 &  \textbf{Technologia token ring (warstwa wewnętrzna serwera)}
+
+Serwery warstwy zewnętrznej połączone są ze sobą w pierścień (każdy ma z góry ustalonego poprzednika i następnika w pliku konfiguracyjnym). Jeśli dany następnik nie odpowiada - brany jest następny adres węzła z listy. W ten sposób bez względu na ilość węzłów mamy zawsze do czynienia z taką samą strukturą (w szczególności - mamy tylko jeden węzeł). Każdy z węzłów wysyła swojemu następnikowi token zawierający informacje odnośnie potencjalnych zmian. & 
+Taka architektura warstwy wewnętrznej pozwala na bieżące sprawdzanie stanu kolejnych węzłów. Jeśli token gdzieś się ,,zagubi'' oznacza to, że dany węzeł uległ awarii. Ponadto taka architektura pozwala na szybką i łatwą synchronizację danych. \\
+\hline
+
+\end{tabularx}
+
+\pagebreak
+
+\begin{tabularx}{\textwidth}{|c|X|X|}
+\hline
+\textbf{ID} & \textbf{Wymagania}  & \textbf{Powody decyzji} \\
+\hline
+\label{z:ZO4} ZO4 &  \textbf{Pełna redundacja danych (warstwa wewnętrzna serwera)}
+
+Każdy z węzłów wewnętrznych ma pełną i aktualną bazę studentów. Dane są synchronizowane na bieżąco. & 
+Natychmiastowa synchronizacja danych i pełna redundancja pozwala uniknąć wielu problemów w trakcie działania serwera, między innymi: dodatkowej synchronizacji po awarii jednego z węzłów, która jest dość problematyczna i skomplikowana. Rozwiązanie to zostało zatwierdzone przez Prowadzącego.\\
+\hline
+
+\label{z:ZO5} ZO5 &  \textbf{Wysyłanie ,,heartbeatów'' (warstwa zewnętrzna serwera)}
+
+Węzły zewnętrznej warstwy będą sprawdzały swoją dostępność za pomocą tzw. ,,uderzeń serce'' \textit{(ang. heartbeat)} wysyłanych w danych odstępach czasu (każdy z serwerów musi mieć ustalony ten sam interwał). Dzięki temu będą miały wiedzę na temat aktywności pozostałych serwerów. Brak ,,heartbeata'' od danego serwera po upływie zadanego czasu będzie równoważny z jego brakiem dostępności. & 
+Takie rozwiązanie pozwala na bieżąco monitorować stan poszczególnych węzłów warstwy zewnętrznej. \\
+\hline
+
+\label{z:ZO6} ZO6 &  \textbf{Brak funkcji logowania użytkownika}
+
+Klient łączy się z systemem identyfikując się jedynie swoim unikatowym ID, które wpisane jest pliku konfiguracyjnym. & 
+Decyzja została zatwierdzona przez Prowadzącego. Wynika ona z braku konieczności stworzenia tej funkcjonalności (w związku z minimalnym wpływem na główny cel projektu) oraz na ograniczony czas i mniejszą ilość osób w grupie projektowej niż przewidywana.  \\
+\hline
+
+\label{z:ZO7} ZO7 &  \textbf{Brak interfejsu graficznego (aplikacja kliencka)}
+
+- & 
+Decyzja została zatwierdzona przez Prowadzącego. Wynika ona z braku konieczności stworzenia tej funkcjonalności (w związku z minimalnym wpływem na główny cel projektu) oraz na ograniczony czas i mniejszą ilość osób w grupie projektowej niż przewidywana.
+\\
+\hline
+\label{z:ZO8} ZO8 &  \textbf{Komunikacja synchroniczna (aplikacja kliencka)}
+
+Aplikacja kliencka będzie się komunikowała z serwerem w sposób synchroniczny. & 
+Ze względu na ograniczoną funkcjonalność aplikacji klienckiej, sprowadzoną jedynie do wysyłania żądań i uzyskiwania odpowiedzi, ten sposób komunikacji wydaje się najbardziej trafny. \\
+\hline
+
+\end{tabularx}
+
+\pagebreak
+
+\begin{tabularx}{\textwidth}{|c|X|X|}
+\hline
+\textbf{ID} & \textbf{Wymagania}  & \textbf{Powody decyzji} \\
+\hline
+\label{z:ZO9} ZO9 &  \textbf{Brak funkcji ,,heartbeatu'' (aplikacja kliencka)}
+
+Aplikacja kliencka nie będzie na bieżąco sprawdzała stanu węzła do którego jest podłączona. Status serwera będzie przez nią sprawdzany jedynie przy logowaniu i wysyłaniu żądania. W przypadku awarii węzła aplikacja będzie przełączała się na kolejny węzeł z listy, aż do skutku. & 
+Ze względu na naszą koncepcję aplikacji klienckiej ta funkcjonalność nie jest potrzebna. Z punktu widzenia użytkownika stan serwera interesuje go tylko przy wysyłaniu żądania. System heartbeatów dodaje duży narzut i komplikuje samego klienta nie dając w zamian znacznego wzrostu szybkości działania. W sytuacji awarii i tak musi nastąpić przełączenie na inny węzeł. Różnica polega jedynie na tym, że w przypadku systemu hearbeatów następuje to w momencie upływu określonego czasu bez odpowiedzi serwera, a w przeciwnym - jedynie wtedy kiedy serwer jest potrzebny, tzn. przy logowaniu bądź wysłaniu żądania.\\
+\hline
+
+\label{z:ZO10} ZO10 &  \textbf{Brak interaktywności (aplikacja kliencka)}
+
+Aplikacja kliencka będzie ograniczona jedynie do wywoływania określonych funkcji, według określonego z góry scenariusza. & 
+W związku z ograniczonym czasem i głównym celem projektu interaktywna aplikacja kliencka nie jest koniecznością. Funkcjonalność systemu można poprawnie przetestować inicjując konkretne scenariusze (między innymi symulacje awarii czy błędów systemu). Decyzja ta została zatwierdzona przez Prowadzącego.\\
+\hline
+
+\end{tabularx}
 
 \section[Potencjalne problematyczne scenariusze]{Potencjalne problematyczne scenariusze}
 
