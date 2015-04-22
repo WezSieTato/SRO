@@ -141,13 +141,13 @@ Natychmiastowa synchronizacja danych i pełna redundancja pozwala uniknąć wiel
 \hline
 \textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
 \hline
-\label{z:sz1} SZ1 & Wysyłanie ,,heartbeatów'' &  Zewnętrzne warstwy  & - \\
+\label{z:sz1} SZ1 & Wysyłanie ,,heartbeatów'' &  Węzły zewnętrznej warstwy będą sprawdzały swoją dostępność za pomocą tzw. ,,uderzeń serce'' \textit{(ang. heartbeat)} wysyłanych w danych odstępach czasu (każdy z serwerów musi mieć ustalony ten sam interwał). Dzięki temu będą miały wiedzę na temat aktywności pozostałych serwerów. Brak ,,heartbeata'' od danego serwera po upływie zadanego czasu będzie równoważny z jego brakiem dostępności. & Takie rozwiązanie pozwala na bieżąco monitorować stan poszczególnych węzłów warstwy zewnętrznej. \\
 \hline
-\label{z:sz2} SZ2 & Okresowa synchronizacja &  - & - \\
+\label{z:sz2} SZ2 & Okresowa synchronizacja & Synchronizacja z warstwą wewnętrzną następuje okresowo, w danych odstępach czasu, sterowanych za pomocą pliku konfiguracyjnego. Jest ona wykonywana na rządanie węzłów warstwy zewnętrznej. Synchronizacja polega na pobraniu jedynie zmienionych rekordów bazy, a nie wszystkich. Ostatnia funkcjonalność zostanie rozwiązana za pomocą, tzw. ,,znaczników czasu'' \textit{(ang. timestamp)}. & Synchronizacja o konkretnych porach pozwala na odpowiednie rozporządzanie pracą systemu. W przypadku rzadkiej modyfikacji danych przez warstwę wewnętrzną serwera synchronizacja może być wykonywana, np. raz na dzień. Z drugiej strony można ustawić synchronizację co 1 sekundę, co spowoduje wrażenie ciągłej synchronizacji (oczywiście nie biorąc pod uwagę potencjalnych opóźnień). Takie rozwiązanie pozwala administratorowi na odpowiednią optymalizację działania systemu. Dzięki aktualizacji jedynie konkretnych danych, a nie bazy w całości jest to stosunkowo szybkie. \\
 \hline
-\label{z:sz3} SZ3 & Redundacja danych &  - & To założenie służy spełnieniu warunków zadania. \\
+\label{z:sz3} SZ3 & Redundacja danych & W zależności od zmiennej ustawionej w pliku konfiguracyjnym warstwa przetwarzająca może posiadać pełną redundancję bądź nie. Przyjmuje się, że minimalna liczba serwerów posiadających w pełni aktualne dane to 3. & To założenie służy spełnieniu warunków zadania. Możliwość modyfikacji poziomu redundancji pozwala dopasować system do ilości węzłów w warstwie zewnętrznej serwera i do danego zapotrzebowania.\\
 \hline
-\label{z:sz4} SZ4 & Udostępnianie usług &  - & To założenie służy spełnieniu warunków zadania. \\
+\label{z:sz4} SZ4 & Udostępnianie usług & Warstwa zewnętrzna obsługuje żądania klientów realizując usługę zwracania ilości studentów zapisanych na dany przedmiot. Serwer nasłuchuje czekając na żądania, a następnie (w ramach możliwości) je spełnia. & To założenie służy spełnieniu warunków zadania. \\
 \hline
 \label{z:sz5} SZ5 & Obliczanie danych statystycznych &  Serwery zewnętrzne, zwane też przetwarzającymi, otrzymują dane od warstwy wewnętrznej, jednak zapisują z nich jedynie dane niewrażliwe używając ich do wyliczania ilości studentów zapisanych na dany przedmiot. Do tej operacji pełne informacje o studentach nie są potrzebne. & 
 To założenie służy spełnieniu warunków zadania. \\
