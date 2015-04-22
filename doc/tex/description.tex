@@ -38,7 +38,7 @@ uwierzytelniania węzłów w SSH).
 
 \section[Opis rozwiązania]{Opis rozwiazania}
 
-\par{Nasze rowiązanie to rozproszony system do rejestracji studentów uczelnii wyższych na przemioty. Warstwą wewnątrzną przechowujące dane wrażliwe, w tym przypadku będą węzły rejestrujące studentów ideowo umieszczone w dziekanatach instytutów i obsługiwane przez osoby tam pracujące. Warstwa pośrednia przechowuje informacje o studentach, jednak bez informacji wrażliwej, wie tylko, że istnieje student zapisany na przedmioty RSO, SOI, ANA1 i RS,  nie wie więc, że  student ten nazywa się Jak Kowalski. Owe dane są przetwarzane na żadanie aplikacji klienckiej, dostępnej dla studentów, którzy chcą dowiedzieć się, ile osób zapisanych jest na dany przedmiot.}
+\par{Nasze rowiązanie to rozproszony system do rejestracji studentów uczelnii wyższych na przemioty. Warstwą wewnątrzną przechowujące dane wrażliwe, w tym przypadku będą węzły rejestrujące studentów ideowo umieszczone w dziekanatach instytutów i obsługiwane przez osoby tam pracujące. Warstwa pośrednia przechowuje informacje o studentach, jednak bez informacji wrażliwej, posiada jedynie dane o istnieniu studenta zapisanego na przedmioty RSO, SOI, ANA1 i SR,  bez imienia, nazwiska i daty urodzenia. Owe informacje są przetwarzane na żądanie aplikacji klienckiej, dostępnej dla studentów, którzy chcą dowiedzieć się, ile osób zapisanych jest na dany przedmiot.}
 
 \section[Wstępny projekt architektury]{Wstępny projekt architektury}
 
@@ -48,7 +48,7 @@ uwierzytelniania węzłów w SSH).
 \begin{center}
 \includegraphics[width=0.9\linewidth]{img/dane_net.png} 
 \caption{Diagram ilustrujący komunikację pomiędzy poszczególnymi warstwami}
-\label{img:docker_tut1}
+\label{img:dane_net}
 \end{center}
 \end{figure}
 
@@ -70,7 +70,9 @@ uwierzytelniania węzłów w SSH).
 
 \subsection*[Warstwa zewnętrzna serwera]{Warstwa zewnętrzna serwera (warstwa przetwarzająca)}
 
-\par{Warstwa przeznaczona do komunikacji z aplikacją kliencką. Na żadanie klienta przetwarza wcześniej otrzymane od warstwy wewnętrznej dane i wynik przetwarzania zwraca klientowi. Moduł ten synchronizuje dane, co zadany przez plik konfiguracyjny czas, tak aby administrator sam był wstanie dostosować interwał do aktualnych potrzeb. }
+\par{Warstwa przeznaczona do komunikacji z aplikacją kliencką. Na żadanie klienta przetwarza wcześniej otrzymane od warstwy wewnętrznej dane i wynik przetwarzania zwraca klientowi. Moduł ten synchronizuje dane okresowo (częstość jest ustalana w pliku konfiguracyjnym), tak aby administrator sam był wstanie dostosować interwał do aktualnych potrzeb. }
+
+\par{Dane o studentach przechowywane są w poniższej postaci:}
 
 \begin{itemize}
 \item ID studenta
@@ -79,7 +81,7 @@ uwierzytelniania węzłów w SSH).
 
 \subsection*[Aplikacja kliencka]{Aplikacja kliencka}
 
-\par{Warstwa przeznaczona dla klienta to z założenia lekka i  intuicyjna aplikacja konsolowa. Moduł ten bezpośrednio łączyć będzie się tylko z modułem zewnętrznym serwera. Użytkownik, za pomocą tej aplikacji będzie mógł dowiedzieć się ile osób w danym momencie jest zapisany na wybranie przez niego przedmiot.}
+\par{Warstwa przeznaczona dla klienta to z założenia lekka i intuicyjna aplikacja konsolowa. Moduł ten bezpośrednio łączyć będzie się tylko z modułem zewnętrznym serwera. Użytkownik, za pomocą tej aplikacji będzie mógł dowiedzieć się ile osób w danym momencie jest zapisany na wybranie przez niego przedmiot. Aplikacja będzie działała synchronicznie, tzn. po wysłaniu żądania będzie się zawieszała w oczekiwaniu na odpowiedź.}
 
 \section[Opis szczegółowy]{Opis szczegółowy}
 
@@ -162,13 +164,25 @@ Baza MySQL jest popularnym systemem relacyjnych baz danych z dobrą dokumentacj�
 \hline
 \textbf{ID} & \textbf{Założenie} & \textbf{Szczegóły} & \textbf{Powody decyzji} \\
 \hline
-\label{z:k1} K1 & Brak logowania i autoryzacji użytkownika &  - & - \\
+\label{z:k1} K1 & Brak funkcji logowania użytkownika &  
+Klient łączy się z systemem identyfikując się jedynie swoim unikatowym ID, które wpisane jest pliku konfiguracyjnym. & 
+Decyzja została zatwierdzona przez Prowadzącego. Wynika ona z braku konieczności stworzenia tej funkcjonalności (w związku z minimalnym wpływem na główny cel projektu) oraz na ograniczony czas i mniejszą ilość osób w grupie projektowej niż przewidywana. } \\
 \hline
-\label{z:k2} K2 & Brak interfejsu graficznego &  - & - \\
+\label{z:k2} K2 & Brak interfejsu graficznego &  Decyzja została zatwierdzona przez Prowadzącego. Wynika ona z braku konieczności stworzenia tej funkcjonalności (w związku z minimalnym wpływem na główny cel projektu) oraz na ograniczony czas i mniejszą ilość osób w grupie projektowej niż przewidywana.  & - \\
 \hline
-\label{z:k3} K3 & Usługa wyliczania danych statystycznych &  - & - \\
+\label{z:k3} K3 & Dostęp do usługi pobrania danych statystycznych & 
+Aplikacja kliencka po połączeniu z serwerem zewnętrznym może pobrać informacje na temat ilości studentów zapisanych na dany przedmiot. Użytkownik otrzymuje jedynie nazwę przedmiotu i liczbę zapisanych studentó, bez dostępu do danych wrażliwych. Może być wysyłane jedno żądanie na raz od danego użytkownika. Nie ma funkcji agregacji wielu żądań w jedno. & 
+Jest to dobry przykład funkcjonalności, która zabezpiecza nam dane wrażliwe przed zwyczajnym użytkownikiem, udostępniając jedynie informacje, które mogą być publiczne. Agregacja bądź wysyłanie wielu żądań na raz nie jest konieczne do sprawdzenia poprawnego działania systemu i nie zmienia w żaden sposób wizji funkcjonowania systemu.\\
 \hline
-\label{z:k4} K4 & Lista serwerów &  - & - \\
+\label{z:k4} K4 & Komunikacja synchroniczna & Aplikacja kliencka będzie się komunikowała z serwerem w sposób synchroniczny. & Ze względu na ograniczoną funkcjonalność aplikacji klienckiej, sprowadzoną jedynie do wysyłania żądań i uzyskiwania odpowiedzi, ten sposób komunikacji wydaje się najbardziej trafny. \\
+\hline
+\label{z:k5} K5 & Brak funkcji ,,heartbeatu'' & 
+Aplikacja kliencka nie będzie na bierząco sprawdzała stanu węzła do którego jest podłączona. Status serwera będzie przez nią sprawdzany jedynie przy logowaniu i wysyłaniu żądania. W przypadku awarii węzła aplikacja będzie przełączała się na kolejny węzeł z listy, aż do skutku. & 
+Ze względu na naszą koncepcję aplikacji klieckiej ta funkcjonalność nie jest potrzebna. Z punktu widzenia użytkownika stan serwera interesuje go tylko przy wysyłaniu żądania. System heartbeatów dodaje duży narzut i komplikuje samego klienta nie dając w zamian znacznego wzrostu szybkości działania. W sytuacji awarii i tak musi nastąpić przełączenie na inny węzeł. Różnica polega jedynie na tym, że w przypadku systemu hearbeatów następuje to w momencie upływu określonego czasu bez odpowiedzi serwera, a w przeciwnym - jedynie wtedy kiedy serwer jest potrzebny, tzn. przy logowaniu bądź wysłąniu żądania.\\
+\hline
+\label{z:k6} K6 & 
+Brak interaktywności & Aplikacja kliencka będzie ograniczona jedynie do wywoływania określonych funkcji, według określonego z góry scenariusza. & 
+W związku z ograniczonym czasem i głównym celem projektu interaktywna aplikacja kliencka nie jest koniecznością. Funkcjonalność systemu można poprawnie przetestować inicjując konkretne scenariusze (między innymi symulacje awarii czy błędów systemu). Decyzja ta została zatwierdzona przez Prowadzącego.\\
 \hline
 \end{tabular} 
 
@@ -179,5 +193,14 @@ Baza MySQL jest popularnym systemem relacyjnych baz danych z dobrą dokumentacj�
 \subsection[Wymagania niefunkcjonalne]{Wymagania niefunkcjonalne}
 
 \section[Potencjalne problemy]{Potencjalne problemy}
+
+\subsection*[Awaria węzła warstwy wewnętrznej]{Awaria jednego z węzłów warstwy wewnętrznej}
+
+\subsection*[Awaria węzła warstwy zewnętrznej]{Awaria jednego z węzłów warstwy zewnętrznej}
+
+\subsection*[Kwestia równomiernego podziału klientów między serwery oraz serwerów zewnętrznych między wewnętrzne]{Kwestia równomiernego podziału klientów między serwery oraz serwerów zewnętrznych między wewnętrzne}
+
+\subsection*[Kwestia rozmieszczenia warstw serwera w obrębie jednego komputera bądź wielu odrębnych]{Kwestia rozmieszczenia warstw serwera w obrębie jednego komputera bądź wielu odrębnych}
+
 
 \section[Organizacja środowiska programistycznego]{Organizacja środowiska programistycznego}
