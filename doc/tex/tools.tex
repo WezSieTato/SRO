@@ -40,13 +40,6 @@ W ramach zapoznania się z platformą Docker wykonaliśmy następujące czynnoś
 
 \item Na systemie Max OS X skorzystaliśmy z programu Boot2Docker, tworzącego maszynę wirtualną z minimalistyczną dystrybucją Linux konieczną do uruchomienia aplikacji Docker.
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.8\linewidth]{img/docker_tut1.jpg} 
-\caption{Skorzystanie z programu Boot2Docker}
-\label{img:docker_tut1}
-\end{center}
-\end{figure}
 
 \item Pobraliśmy obraz Systemu operacyjnego Ubuntu, na którym zainstalowaliśmy programy nginx oraz vim. 
 
@@ -54,11 +47,34 @@ W ramach zapoznania się z platformą Docker wykonaliśmy następujące czynnoś
 
 \item Zweryfikowaliśmy zmianę w przeglądarce internetowej. 
 
-\item Zapisaliśmy zmiany w kontenerze oraz wgraliśmy zmieniony obraz do centralnego repozytorium. 
+\item Zapisaliśmy zmiany w kontenerze oraz wgraliśmy zmieniony obraz do centralnego repozytorium (Rysunek \ref{img:docker_tut1}). 
 
-\item Pobraliśmy obraz na innym komputerze i po uruchomieniu zweryfikowaliśmy zmiany wprowadzone do podstawowej dystrybucji Ubuntu. 
+\begin{figure}[h!tb]
+\centering
+\fbox{\includegraphics[width=0.8\linewidth]{img/docker_tut1.png}}
+\caption{Repozytorium Docker}
+\label{img:docker_tut1}
+\end{figure}
 
-\item W pobranym obrazie zainstalowane były programy nginx oraz vim. Domyślny plik programu nginx był również zmodyfikowany. 
+
+
+\item Pobraliśmy obraz na innym komputerze i po uruchomieniu zweryfikowaliśmy zmiany wprowadzone do podstawowej dystrybucji Ubuntu (Rysunek \ref{img:docker_tut2}). 
+
+\begin{figure}[h!tb]
+\centering
+\fbox{\includegraphics[width=0.8\linewidth]{img/docker_tut2.png}}
+\caption{Pobranie obrazu i weryfikacja zmian}
+\label{img:docker_tut2}
+\end{figure}
+
+\item W pobranym obrazie zainstalowane były programy nginx oraz vim. Domyślny plik programu nginx był również zmodyfikowany (Rysunek \ref{img:docker_tut3}).
+
+\begin{figure}[h!tb]
+\centering
+\fbox{\includegraphics[width=0.8\linewidth]{img/docker_tut3.png}}
+\caption{Działa!}
+\label{img:docker_tut3}
+\end{figure}
 
 \end{itemize}
 
