@@ -32,23 +32,6 @@
 
 \subsection[Przeprowadzone testy]{Przeprowadzone testy}
 
-W ramach zapoznania się z platformą Docker wykonaliśmy następujące czynności: 
-\begin{itemize}
-
-\item Zweryfikowaliśmy możliwość uruchomienia oprogramowania na systemach operacyjnych Ubuntu oraz Mac OS X. 
-
-
-\item Na systemie Max OS X skorzystaliśmy z programu Boot2Docker, tworzącego maszynę wirtualną z minimalistyczną dystrybucją Linux konieczną do uruchomienia aplikacji Docker.
-
-
-\item Pobraliśmy obraz Systemu operacyjnego Ubuntu, na którym zainstalowaliśmy programy nginx oraz vim. 
-
-\item Przy pomocy programu vim, zmodyfikowaliśmy treść domyślnego pliku index.html, który dostępny jest na porcie 80 po uruchomieniu programu nginx. 
-
-\item Zweryfikowaliśmy zmianę w przeglądarce internetowej. 
-
-\item Zapisaliśmy zmiany w kontenerze oraz wgraliśmy zmieniony obraz do centralnego repozytorium (Rysunek \ref{img:docker_tut1}). 
-
 \begin{figure}[h!tb]
 \centering
 \fbox{\includegraphics[width=0.8\linewidth]{img/docker_tut1.png}}
@@ -56,9 +39,15 @@ W ramach zapoznania się z platformą Docker wykonaliśmy następujące czynnoś
 \label{img:docker_tut1}
 \end{figure}
 
+\par{W ramach zapoznania się z platformą Docker wykonaliśmy następujące czynności:}
+
+\begin{itemize}
+
+\item Zweryfikowaliśmy możliwość uruchomienia oprogramowania na systemach operacyjnych Ubuntu oraz Mac OS X. 
 
 
-\item Pobraliśmy obraz na innym komputerze i po uruchomieniu zweryfikowaliśmy zmiany wprowadzone do podstawowej dystrybucji Ubuntu (Rysunek \ref{img:docker_tut2}). 
+
+\item Na systemie Max OS X skorzystaliśmy z programu Boot2Docker, tworzącego maszynę wirtualną z minimalistyczną dystrybucją Linux konieczną do uruchomienia aplikacji Docker.
 
 \begin{figure}[h!tb]
 \centering
@@ -67,7 +56,8 @@ W ramach zapoznania się z platformą Docker wykonaliśmy następujące czynnoś
 \label{img:docker_tut2}
 \end{figure}
 
-\item W pobranym obrazie zainstalowane były programy nginx oraz vim. Domyślny plik programu nginx był również zmodyfikowany (Rysunek \ref{img:docker_tut3}).
+\item Pobraliśmy obraz Systemu operacyjnego Ubuntu, na którym zainstalowaliśmy programy nginx oraz vim. 
+
 
 \begin{figure}[h!tb]
 \centering
@@ -75,6 +65,19 @@ W ramach zapoznania się z platformą Docker wykonaliśmy następujące czynnoś
 \caption{Działa!}
 \label{img:docker_tut3}
 \end{figure}
+
+\item Przy pomocy programu vim, zmodyfikowaliśmy treść domyślnego pliku index.html, który dostępny jest na porcie 80 po uruchomieniu programu nginx. 
+
+\item Zweryfikowaliśmy zmianę w przeglądarce internetowej. 
+
+\item Zapisaliśmy zmiany w kontenerze oraz wgraliśmy zmieniony obraz do centralnego repozytorium (Rysunek \ref{img:docker_tut1}). 
+
+
+
+\item Pobraliśmy obraz na innym komputerze i po uruchomieniu zweryfikowaliśmy zmiany wprowadzone do podstawowej dystrybucji Ubuntu (Rysunek \ref{img:docker_tut2}). 
+
+\item W pobranym obrazie zainstalowane były programy nginx oraz vim. Domyślny plik programu nginx był również zmodyfikowany (Rysunek \ref{img:docker_tut3}).
+
 
 \end{itemize}
 
