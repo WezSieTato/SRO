@@ -13,6 +13,7 @@
         <module>Core</module>
         <module>Server</module>
         <module>Middleware</module>
+        <module>Program</module>
     </modules>
 
     <properties>
@@ -74,6 +75,7 @@
             <artifactId>jackson-datatype-hibernate4</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
     </dependencies>
+
+
 </project>

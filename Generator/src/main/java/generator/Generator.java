@@ -1,4 +1,6 @@
-package rso.generator;
+package generator;
+
+
 
 
 import rso.model.Person;
@@ -15,8 +17,8 @@ import java.util.*;
 public class Generator {
 
 
-    private final String firstNamesSource = System.getProperty("user.dir") + "/imiona.csv";
-    private final String lastNamesSource = System.getProperty("user.dir") + "/nazwiska.txt";
+    private final String firstNamesSource = System.getProperty("user.dir") + "/etc/imiona.csv";
+    private final String lastNamesSource = System.getProperty("user.dir") + "/etc/nazwiska.txt";
     private final String[] src = { "RSO", "ANA1", "PROZ", "SOI", "PROI", "PRI", "ANA2", "LTM"};
     private final ArrayList<String> classes = new ArrayList<String>(Arrays.asList(src));
 
