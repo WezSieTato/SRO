@@ -331,8 +331,26 @@ W związku z ograniczonym czasem i głównym celem projektu interaktywna aplikac
 
 \begin{itemize}
 \item Podłączenie nowego serwera warstwy wewnętrznej
+\begin{itemize}
+\item Brak innych aktywnych serwerów wewnętrznych
+\item Jest aktywny przynajmniej jeden serwer wewnętrzny
+\end{itemize}
 \item Podłączenie nowego serwera warstwy zewnętrznej
+\begin{itemize}
+\item Brak aktywnego serwera wewnętrznego oraz brak innych aktywnych serwerów zewnętrznych
+\item Brak aktywnego serwera wewnętrznego oraz aktywny przynajmniej jeden serwer zewnętrzny
+\item Aktywny przynajmniej jeden serwer wewnętrzny oraz brak innych aktywnych serwerów zewnętrznych
+\item Aktywny przynajmniej jeden serwer wewnętrzny oraz aktywny przynajmniej jeden serwer zewnętrzny
+\end{itemize}
 \item Awaria węzłów warstwy wewnętrznej serwera
+\begin{itemize}
+\item Nie posiada tokena, brak zadań w toku, brak oczekujących zadań
+\item Nie posiada tokena, brak zadań w toku, oczekujące zadanie od klienta
+\item Nie posiada tokena, zadanie w toku
+\item Posiada token, brak zadań w toku, brak oczekujących zadań
+\item Posiada token, zadanie w toku, brak zadań w toku, oczekujące zadanie od klienta
+\item Posiada token, zadanie w toku
+\end{itemize}
 \item Awaria węzłów warstwy zewnętrznej serwera
 \item Kwestia równomiernego podziału klientów między serwery oraz serwerów zewnętrznych między wewnętrzne
 \item Kwestia rozmieszczenia warstw serwera w obrębie jednego komputera bądź wielu odrębnych
