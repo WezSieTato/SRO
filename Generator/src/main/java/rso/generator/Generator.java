@@ -1,9 +1,9 @@
-package generator;
+package rso.generator;
 
 
 
 
-import rso.model.Person;
+import rso.core.model.Person;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

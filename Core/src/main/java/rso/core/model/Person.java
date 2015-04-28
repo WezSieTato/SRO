@@ -1,4 +1,4 @@
-package rso.model;
+package rso.core.model;
 
 import java.util.Collection;
 import java.util.Date;

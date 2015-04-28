@@ -1,6 +1,6 @@
 package rso;
 
-import generator.Generator;
+import rso.generator.Generator;
 
 /**
  * Created by kometa on 27.04.2015.
