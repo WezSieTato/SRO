@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Date;
 
 /**
- * Created by kometa on 27.04.2015.
+ * Created by kometa on 27.04.2015. via iOS
  */
 public class Person {
 
