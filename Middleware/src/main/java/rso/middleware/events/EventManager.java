@@ -3,6 +3,8 @@ package rso.middleware.events;
 import javax.swing.event.EventListenerList;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ThreadFactory;
 
 /**
  * Created by modz on 2015-04-29.
@@ -37,7 +39,8 @@ public class EventManager {
 
     }
 
-    private static final String core_event_name = "event";
+
+    private static final int QUEUE_SIZE = 100;
 
     private static Thread dispatcherThread;
 
@@ -62,11 +65,13 @@ public class EventManager {
     private static boolean endThis;
 
     static {
+        guard = new Object();
         eventNumber = 0;
         listenerNumber = 1L;
         registeringClasses = new HashMap<String, Class<?>>();
         registeredListeners = new HashMap<Long, ListenerDescriptor>();
         listeners = new HashMap<String, Map<String, List<EventListener>>>();
+        eventQueue = new LinkedBlockingQueue<RSOEvent>(QUEUE_SIZE);
         dispatcherThread = null;
 
         initial();
@@ -206,8 +211,10 @@ public class EventManager {
     protected static Object dispatch(final RSOEvent evnt) {
         final RSOEvent evntR = evnt;
         final List<EventListener> targetReceivers = new ArrayList<EventListener>();
+
         synchronized (guard) {
             Map<String, List<EventListener>> allListenersOfEvent = listeners.get(evnt.getEvent());
+
             if (allListenersOfEvent != null) {
                 List<EventListener> allListenersWithMatchingSender = allListenersOfEvent.get(evnt.getSender());
                 if (allListenersWithMatchingSender != null) {
@@ -219,6 +226,12 @@ public class EventManager {
                 }
             }
         }
+
+
+        for(EventListener el: targetReceivers){
+            el.event(evnt);
+        }
+
 
         return null;
 
@@ -258,7 +271,7 @@ public class EventManager {
                 }
             }
         };
-        dispatcherThread = new Thread(dispatcher, "StoreIntel Dispatcher");
+        dispatcherThread = new Thread(dispatcher, "RSO Dispatcher");
         dispatcherThread.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
 
             public void uncaughtException(Thread thread, Throwable ex) {

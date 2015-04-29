@@ -16,6 +16,7 @@ public class RSOEvent {
     private String event;
 
     private Object object;
+    private int listenersCount;
 
     public RSOEvent(String sender, String event, Object object) {
         id = id++;
@@ -75,4 +76,15 @@ public class RSOEvent {
         result = prime * result + (sender == null ? 0 : sender.hashCode());
         return result;
     }
+
+
+    public void setListenersCount(int listenersCount) {
+        this.listenersCount = listenersCount;
+    }
+
+    public int getListenersCount() {
+        return listenersCount;
+    }
+
+
 }

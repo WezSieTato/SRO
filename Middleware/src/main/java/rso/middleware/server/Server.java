@@ -18,7 +18,7 @@ public class Server {
 
     private int id;
     private int clientId = 1;
-    private final static Logger LOGGER = Logger.getLogger(Server.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private ServerSocket welcomeSocket;
     private ArrayList<ClientThread> clients;
 

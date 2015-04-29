@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  */
 public class ClientThread implements Runnable {
     private int id;
-    private final static Logger LOGGER = Logger.getLogger(ClientThread.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private Socket socket;
 
     ClientThread(int clientId, Socket socket){
