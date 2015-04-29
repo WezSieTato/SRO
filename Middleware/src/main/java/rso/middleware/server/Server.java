@@ -1,4 +1,4 @@
-package rso.middleware.core.server;
+package rso.middleware.server;
 
 
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import rso.middleware.core.events.EventManager;
+import rso.middleware.events.EventManager;
 import rso.middleware.utils.Config;
 
 /**

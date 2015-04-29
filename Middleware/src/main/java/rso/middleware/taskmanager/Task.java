@@ -1,4 +1,4 @@
-package rso.middleware.core.taskmanager;
+package rso.middleware.taskmanager;
 
 /**
  * Created by modz on 2015-04-29.

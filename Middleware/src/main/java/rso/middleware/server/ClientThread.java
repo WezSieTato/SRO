@@ -1,7 +1,7 @@
-package rso.middleware.core.server;
+package rso.middleware.server;
 
-import rso.middleware.core.events.EventManager;
-import rso.middleware.core.events.RSOEvent;
+import rso.middleware.events.EventManager;
+import rso.middleware.events.RSOEvent;
 
 import java.io.IOException;
 import java.net.Socket;
