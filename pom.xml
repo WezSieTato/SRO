@@ -109,7 +109,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>rso.Program</mainClass>
+                            <mainClass>rso.Main</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Class-Path>.conf/</Class-Path>
