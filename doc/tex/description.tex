@@ -36,9 +36,9 @@ uwierzytelniania węzłów w SSH).
 
 \end{itemize}
 
-\section[Wstępny opis rozwiązania]{Wstępny opis rozwiazania}
+\section[Wstępny opis rozwiązania]{Wstępny opis rozwiązania}
 
-\par{Nasze rowiązanie to rozproszony system do rejestracji na przedmioty studentów uczelni wyższej. Warstwą wewnątrzną przechowujące dane wrażliwe, w tym przypadku będą węzły rejestrujące studentów, ideowo umieszczone w dziekanatach instytutów i obsługiwane przez osoby tam pracujące. Warstwa pośrednia przechowuje informacje o studentach, jednak bez informacji wrażliwej. Posiada jedynie dane o istnieniu studenta zapisanego na przedmioty RSO, SOI, ANA1 i SR,  bez imienia, nazwiska i daty urodzenia. Owe informacje są przetwarzane na żądanie aplikacji klienckiej, dostępnej dla studentów, którzy chcą dowiedzieć się, ile osób zapisanych jest na dany przedmiot.}
+\par{Nasze rozwiązanie to rozproszony system do rejestracji na przedmioty studentów uczelni wyższej. Warstwą wewnętrzną przechowujące dane wrażliwe, w tym przypadku będą węzły rejestrujące studentów, ideowo umieszczone w dziekanatach instytutów i obsługiwane przez osoby tam pracujące. Warstwa pośrednia przechowuje informacje o studentach, jednak bez informacji wrażliwej. Posiada jedynie dane o istnieniu studenta zapisanego na przedmioty RSO, SOI, ANA1 i SR,  bez imienia, nazwiska i daty urodzenia. Owe informacje są przetwarzane na żądanie aplikacji klienckiej, dostępnej dla studentów, którzy chcą dowiedzieć się, ile osób zapisanych jest na dany przedmiot.}
 
 \section[Wstępny projekt architektury]{Wstępny projekt architektury}
 
@@ -70,7 +70,7 @@ uwierzytelniania węzłów w SSH).
 
 \subsection*[Warstwa zewnętrzna serwera]{Warstwa zewnętrzna serwera (warstwa przetwarzająca)}
 
-\par{Warstwa przeznaczona do komunikacji z aplikacją kliencką. Na żadanie klienta przetwarza wcześniej otrzymane od warstwy wewnętrznej dane i wynik przetwarzania zwraca klientowi. Moduł ten synchronizuje dane okresowo (częstość jest ustalana w pliku konfiguracyjnym), tak aby administrator sam był wstanie dostosować interwał do aktualnych potrzeb). }
+\par{Warstwa przeznaczona do komunikacji z aplikacją kliencką. Na żądanie klienta przetwarza wcześniej otrzymane od warstwy wewnętrznej dane i wynik przetwarzania zwraca klientowi. Moduł ten synchronizuje dane okresowo (częstość jest ustalana w pliku konfiguracyjnym), tak aby administrator sam był wstanie dostosować interwał do aktualnych potrzeb). }
 
 \par{Dane o studentach przechowywane są w poniższej postaci:}
 
@@ -117,9 +117,9 @@ Ze względu na to, że w sieci warstwy wewnętrznej serwera istnieje jeden token
  Synchronizacja z warstwą wewnętrzną następuje okresowo, w danych odstępach czasu, sterowanych za pomocą pliku konfiguracyjnego. Jest ona wykonywana na rządanie węzłów warstwy zewnętrznej. Synchronizacja polega na pobraniu jedynie zmienionych rekordów bazy, a nie wszystkich. Ostatnia funkcjonalność zostanie rozwiązana za pomocą, tzw. ,,znaczników czasu'' \textit{(ang. timestamp)}. & Synchronizacja o konkretnych porach pozwala na odpowiednie rozporządzanie pracą systemu. W przypadku rzadkiej modyfikacji danych przez warstwę wewnętrzną serwera synchronizacja może być wykonywana, np. raz na dzień. Z drugiej strony można ustawić synchronizację co 1 sekundę, co spowoduje wrażenie ciągłej synchronizacji (oczywiście nie biorąc pod uwagę potencjalnych opóźnień). Takie rozwiązanie pozwala administratorowi na odpowiednią optymalizację działania systemu. Dzięki aktualizacji jedynie konkretnych danych, a nie bazy w całości jest to stosunkowo szybkie. \\
 \hline
 
-\label{z:WF4} WF4 & \textbf{Redundancja danych (warstwa zewnętrzna serwera)}
+\label{z:WF4} WF4 & \textbf{Redundancja danych (warstwa wewnętrzna serwera)}
 
-W zależności od zmiennej ustawionej w pliku konfiguracyjnym warstwa przetwarzająca może posiadać pełną redundancję bądź nie. Przyjmuje się, że minimalna liczba serwerów posiadających w pełni aktualne dane to 3. & To założenie służy spełnieniu warunków zadania. Możliwość modyfikacji poziomu redundancji pozwala dopasować system do ilości węzłów w warstwie zewnętrznej serwera i do danego zapotrzebowania.\\
+W zależności od zmiennej ustawionej w pliku konfiguracyjnym warstwa wewnętrzna może posiadać pełną redundancję bądź nie. Przyjmuje się, że minimalna liczba serwerów posiadających w pełni aktualne dane to 3. & To założenie służy spełnieniu warunków zadania. Możliwość modyfikacji poziomu redundancji pozwala dopasować system do ilości węzłów w warstwie wewnętrznej serwera i do danego zapotrzebowania.\\
 \hline
 
 \label{z:WF5} WF5 & \textbf{Udostępnianie usług }
@@ -274,9 +274,9 @@ Taka architektura warstwy wewnętrznej pozwala na bieżące sprawdzanie stanu ko
 \hline
 \textbf{ID} & \textbf{Wymagania}  & \textbf{Powody decyzji} \\
 \hline
-\label{z:ZO4} ZO4 &  \textbf{Pełna redundacja danych (warstwa wewnętrzna serwera)}
+\label{z:ZO4} ZO4 &  \textbf{Pełna redundacja danych (warstwa zewnętrzna serwera)}
 
-Każdy z węzłów wewnętrznych ma pełną i aktualną bazę studentów. Dane są synchronizowane na bieżąco. & 
+Każdy z węzłów zewnętrznych ma pełne i aktualne dane. Są one synchronizowane na bieżąco. & 
 Natychmiastowa synchronizacja danych i pełna redundancja pozwala uniknąć wielu problemów w trakcie działania serwera, między innymi: dodatkowej synchronizacji po awarii jednego z węzłów, która jest dość problematyczna i skomplikowana. Rozwiązanie to zostało zatwierdzone przez Prowadzącego.\\
 \hline
 
@@ -326,6 +326,112 @@ W związku z ograniczonym czasem i głównym celem projektu interaktywna aplikac
 
 \end{tabularx}
 
+\section[Struktura systemu]{Struktura systemu}
+
+\subsection{Struktura tokena}
+\begin{lstlisting}
+enum TokenType {
+    NONE = 0;
+    UPDATE = 1;
+    CHECK = 2;
+    ENTRY = 3;
+}
+
+message Person {
+	required int32 ID = 1;
+	required string name = 2;
+	required string surname = 3;
+	optional int32 birthDate = 4;
+	required int64 timestamp = 5;
+}
+
+message PersonSubject{
+    required int32 IDPerson = 1;
+    required int32 IDSubject = 2;
+    required int64 timestamp = 3;
+}
+
+message Subject{
+	required int32 ID = 1;
+	required string name = 2;
+	required int64 timestamp = 3;
+}
+
+message Token{
+    required TokenType tokenType = 1;
+	optional int32 serverId = 2;
+	repeated int32 nodeIds = 3;
+	optional int64 timespamp = 4;
+}
+
+\end{lstlisting}
+
+\subsection[Struktura wiadomości]{Struktura wiadomości}
+\begin{lstlisting}
+enum TokenType {
+    NONE = 0;
+    UPDATE = 1;
+    CHECK = 2;
+    ENTRY = 3;
+}
+
+message Person {
+	required int32 ID = 1;
+	required string name = 2;
+	required string surname = 3;
+	optional int32 birthDate = 4;
+	required int64 timestamp = 5;
+}
+
+message PersonSubject{
+    required int32 IDPerson = 1;
+    required int32 IDSubject = 2;
+    required int64 timestamp = 3;
+}
+
+message Subject{
+	required int32 ID = 1;
+	required string name = 2;
+	required int64 timestamp = 3;
+}
+
+message Token{
+    required TokenType tokenType = 1;
+	optional int32 serverId = 2;
+	repeated int32 nodeIds = 3;
+	optional int64 timespamp = 4;
+}
+
+\end{lstlisting}
+
+\subsection[Komunikacja i adresacja]{Komunikacja i adresacja}
+
+\par{Poszczególne części systemu będą się ze sobą komunikowały na z góry określonych portach. Wysokie numery portów zostały wybrane ze względu na mniejsze prawdopodobieństwo trafienia na port używany przez inną, powszechnie używaną, aplikację.}
+
+
+\textbf{Warstwa węwnętrzna (w obrębie warstwy)} \\
+\textit{Odbiór danych od węzła poprzedzającego} - nasłuchiwanie na porcie 6969 \\
+\textit{Wysyłanie danych do następnego węzła} - <adres węzła w sieci>:6970 \\
+
+\textbf{Warstwa zewnętrzna (w obrębie warstwy)} \\
+\textit{Odbiór danych od innych węzłów} - nasłuchiwanie na porcie 7069 \\
+\textit{Wysyłanie danych do pozostałych węzłów} - <adres węzła w sieci>:7070 \\
+
+\textbf{Komunikacja między warstwą zewnętrzną a wewnętrzną} \\
+\textit{Odbiór danych w w. wewn. od w. zewn.} - nasłuchiwanie na porcie 6971 \\
+\textit{Wysyłanie danych w w. wewn. od w. zewn.} - <adres węzła w sieci>:7071 \\
+\textit{Odbiór danych w w. zewn. od w. wewn.} - nasłuchiwanie na porcie 7071 \\
+\textit{Wysyłanie danych w w. zewn. od w. wewn.} - <adres węzła w sieci>:6971 \\
+
+\textbf{Komunikacja między warstwą zewnętrzną a klientem} \\
+\textit{Odbiór danych w w. zewn. od klienta} - nasłuchiwanie na porcie 7072 \\
+\textit{Wysyłanie danych w w. zewn. do klienta} - <adres węzła w sieci>:7171 \\
+\textit{Odbiór danych w kliencie od w. zewn.} - nasłuchiwanie na porcie 7171 \\
+\textit{Wysyłanie danych w kliencie do w. zewn.} - <adres węzła w sieci>:7072 \\
+
+
+\subsection[Struktura pliku konfiguracyjnego]{Struktura pliku konfiguracyjnego}
+
 
 \section[Potencjalne problematyczne scenariusze]{Potencjalne problematyczne scenariusze}
 
@@ -367,3 +473,4 @@ W związku z ograniczonym czasem i głównym celem projektu interaktywna aplikac
 \subsection[IntelliJ IDE]{IntelliJ IDE}
 
 \par{Jest to środowisko programistyczne dla Javy. Owe środowisko wyposażono w bardzo bogatą paletę narzędzi pozwalających na komfortowe tworzenie oraz edycję kodu. Mnogość narzędzi oraz znajomość środowiska przez zespół ostatecznie zaważyła na decyzji o wykorzystaniu IntelliJ.}
+

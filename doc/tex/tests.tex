@@ -1,0 +1,46 @@
+\chapter{Testy}
+
+\section{Plan testów}
+
+
+\subsection*[Test protokołu]{Test protokołu}
+\begin{enumerate}
+\item Sprawdzenie poprawności przesyłanej ramki danych z węzła wewnętrznego do zewnętrznego oraz z zewnętrznego do wewnętrznego.
+\item Sprawdzenie poprawności przesyłanej ramki danych z węzła zewnętrznego do klienta oraz od klienta do węzła zewnętrznego.
+\end{enumerate}
+	
+\textit{Testy obejmują sprawdzenie poprawności serializacji oraz deserializacji danych przesyłanych między elementami systemu. Sprawdzone również zostanie połączenie między tymi elementami.}
+
+\subsection*[Test bazy danych]{Test bazy danych}
+\begin{enumerate}
+\item Sprawdzenie połączenia z bazą danych.
+\item Sprawdzenie poprawności działania algorytmu aktualizacji danych systemu. \\
+\textit{Test obejmuje sprawdzenie algortymu wykorzystującego Token Ring do aktualizacji danych. Weryfikacji zostanie podany również konfigurowalny czas posiadania tokena przez węzeł.}
+\item Sprawdzenie redundancji danych.
+
+\end{enumerate}
+
+\subsection*[Test przetwarzania danych]{Test przetwarzania danych}
+Sprawdzenie czy węzeł zewnętrzny poprawnie przetwarza dane wrażliwe na dane gotowe do wysłania klientowi. Wysyłane dane powinny zawierać numer identyfikacyjny oraz listę przedmiotów.
+
+\subsection*[Test algorytmu Heartbeatów]{Test algorytmu Heartbeatów}
+Sprawdzenie czy węzły zewnętrzne poprawnie komunikują się między sobą oraz czy poprawnie interpretowane są braki komunikacji.
+
+\subsection*[Testy połączeniowe węzłów]{Testy połączeniowe węzłów}
+\begin{enumerate}
+\item Test podłączenia oraz odłączenia węzła wewnętrznego
+\begin{enumerate}
+\item Podłączenie nowego węzła przy braku aktywnych innych węzłów wewnętrznych
+\item Podłączenie nowego węzła gdy przynajmniej jeden węzeł wewnętrzny jest aktywny 
+\end{enumerate}
+
+\item Test podłączenia oraz odłączenia węzła zewnętrznego
+\begin{enumerate}
+\item Podłączenie nowego węzła przy braku aktywnych innych węzłów zewnętrznych
+\item Podłączenie nowego węzła gdy przynajmniej jeden jest węzeł zewnętrzny aktywny
+\item Podłączenie z węzłem wewnętrznym
+
+\end{enumerate}
+\end{enumerate}
+
+Scenariusze testowe mają za zadanie sprawdzenie zachowania systemu podczas próby podłączenia nowego węzła w zależności od ilości elementów w danej warstwie oraz zachowanie systemu w zależności od ilości jego elementów.
