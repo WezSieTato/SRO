@@ -1,5 +1,9 @@
 package rso;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import rso.program.configuration.RootConfig;
 import rso.generator.Generator;
 
 /**
@@ -10,8 +14,6 @@ public class Program {
 
     public static void  main(String[] Args){
 
-        Generator generator = new Generator();
-        generator.generate();
         System.out.println("Hello world");
     }
 }
