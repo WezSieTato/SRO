@@ -1,0 +1,72 @@
+option java_outer_classname = "Message";
+package rso;
+option java_package = "rso.core.model";
+
+enum TokenType {
+    NONE = 0;
+    UPDATE = 1;
+    CHECK = 2;
+    ENTRY = 3;
+}
+
+message Person {
+required int32 ID = 1;
+required string name = 2;
+required string surname = 3;
+optional int32 birthDate = 4;
+required int64 timestamp = 5;
+}
+
+message PersonSubject{
+    required int32 IDPerson = 1;
+    required int32 IDSubject = 2;
+    required int64 timestamp = 3;
+}
+
+message Subject{
+required int32 ID = 1;
+required string name = 2;
+required int64 timestamp = 3;
+}
+
+message Token{
+    required TokenType tokenType = 1;
+optional int32 serverId = 2;
+repeated int32 nodeIds = 3;
+optional int64 timespamp = 4;
+}
+
+message EntityState{
+    repeated Person students = 1;
+    repeated PersonSubject personSubjects = 2;
+    repeated Subject subjects = 3;
+}
+ message MiddlewareRequest{
+required int32 nodeId= 4;
+    required int64 timestamp = 1;
+}
+
+
+
+message MiddlewareResponse{
+    required EntityState changes = 1;
+}
+
+enum MiddlewareMessageType{
+    Request = 0;
+    Response = 1;
+    Redirect = 2;
+    Heartbeat = 3;
+}
+
+message MiddlewareMessage{
+required int32 nodeId= 2;
+    optional int32 subjectId = 3;
+    optional int32 registeredStudents = 4;    
+}
+
+message MiddlewareHeartbeat{
+    required int32 serverId = 1;
+    optional int32 connectedClients = 2;
+    required MiddlewareMessageType messageType = 3;
+}
