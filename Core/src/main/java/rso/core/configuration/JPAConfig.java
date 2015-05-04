@@ -1,4 +1,4 @@
-package rso.middleware;
+package rso.core.configuration;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "rso")
-@PropertySource(value = {"classpath:application.properties"})
+@PropertySource(value = {"file:application.properties"})
 public class JPAConfig {
 
     @Autowired
@@ -42,7 +42,7 @@ public class JPAConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        entityManagerFactoryBean.setPackagesToScan("pl.com.demart.pn");
+        entityManagerFactoryBean.setPackagesToScan("rso");
         entityManagerFactoryBean.setJpaProperties(hibProperties());
 
         return entityManagerFactoryBean;
@@ -50,7 +50,7 @@ public class JPAConfig {
 
     private Properties hibProperties() {
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", "org.hibernate.dialect.SQLServerDialect");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.format_sql", "true");
 
