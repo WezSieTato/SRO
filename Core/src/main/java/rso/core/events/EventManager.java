@@ -1,10 +1,8 @@
-package rso.middleware.events;
+package rso.core.events;
 
 import javax.swing.event.EventListenerList;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.ThreadFactory;
 
 /**
  * Created by modz on 2015-04-29.

@@ -1,4 +1,4 @@
-package rso.middleware.events;
+package rso.core.events;
 
 import java.util.Date;
 
