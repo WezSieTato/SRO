@@ -40,7 +40,7 @@ uwierzytelniania węzłów w SSH).
 
 \par{Nasze rozwiązanie to rozproszony system do rejestracji na przedmioty studentów uczelni wyższej. Warstwą wewnętrzną przechowujące dane wrażliwe, w tym przypadku będą węzły rejestrujące studentów, ideowo umieszczone w dziekanatach instytutów i obsługiwane przez osoby tam pracujące. Warstwa pośrednia przechowuje informacje o studentach, jednak bez informacji wrażliwej. Posiada jedynie dane o istnieniu studenta zapisanego na przedmioty RSO, SOI, ANA1 i SR,  bez imienia, nazwiska i daty urodzenia. Owe informacje są przetwarzane na żądanie aplikacji klienckiej, dostępnej dla studentów, którzy chcą dowiedzieć się, ile osób zapisanych jest na dany przedmiot.}
 
-\section[Wstępny projekt architektury]{Wstępny projekt architektury}
+\section[Projekt architektury]{Projekt architektury}
 
 \par{Wewnętrzna warstwa serwera wytwarza i przechowuje informacje na temat studentów uczelni wyższej - stworzone na podstawie danych wprowadzonych przez pracowników dziekanatu. Następnie owa warstwa przesyła informacje do warstwy zewnętrznej serwera (warstwy przetwarzającej) świadczącej usługi udostępniania informacji przetworzonej rozwiązaniom klienckim. Każda z warstw komunikować się będzie z użyciem protokołu TCP/IP przesyłając wiadomości zserializowane za pomocą Google Protocols Buffer.}
 
@@ -52,7 +52,7 @@ uwierzytelniania węzłów w SSH).
 \end{center}
 \end{figure}
 
-\subsection*[Warstwa wewnętrzna serwera]{Warstwa wewnętrzna serwera}
+\subsection*[Warstwa wewnętrzna serwera][Warstwa wewnętrzna serwera]{Warstwa wewnętrzna serwera}
 
 \par{Warstwa stworzona w technologii token ring. Węzły połączone są w pierścień i przesyłają sobie kolejno token zawierający informacje o potencjalnych zmianach. Tylko węzeł posiadający token może wykonywać operację aktualizacji danych. Każda zmiana musi być zatwierdzona przez pozostałe węzły. Zapewnia to synchronizację danych oraz bieżące sprawdzenie działania pozostałych węzłów.}
 
@@ -410,24 +410,27 @@ message Token{
 
 
 \textbf{Warstwa węwnętrzna (w obrębie warstwy)} \\
-\textit{Odbiór danych od węzła poprzedzającego} - nasłuchiwanie na porcie 6969 \\
-\textit{Wysyłanie danych do następnego węzła} - <adres węzła w sieci>:6970 \\
+\textit{Wysyłanie i odbieranie danych} - na porcie 6969 \\
 
 \textbf{Warstwa zewnętrzna (w obrębie warstwy)} \\
-\textit{Odbiór danych od innych węzłów} - nasłuchiwanie na porcie 7069 \\
-\textit{Wysyłanie danych do pozostałych węzłów} - <adres węzła w sieci>:7070 \\
+\textit{Wysyłanie i odbieranie danych} - na porcie 6970 \\
+
 
 \textbf{Komunikacja między warstwą zewnętrzną a wewnętrzną} \\
-\textit{Odbiór danych w w. wewn. od w. zewn.} - nasłuchiwanie na porcie 6971 \\
-\textit{Wysyłanie danych w w. wewn. od w. zewn.} - <adres węzła w sieci>:7071 \\
-\textit{Odbiór danych w w. zewn. od w. wewn.} - nasłuchiwanie na porcie 7071 \\
-\textit{Wysyłanie danych w w. zewn. od w. wewn.} - <adres węzła w sieci>:6971 \\
+\textit{Wysyłanie i odbieranie danych} - na porcie 6971 \\
+
 
 \textbf{Komunikacja między warstwą zewnętrzną a klientem} \\
-\textit{Odbiór danych w w. zewn. od klienta} - nasłuchiwanie na porcie 7072 \\
-\textit{Wysyłanie danych w w. zewn. do klienta} - <adres węzła w sieci>:7171 \\
-\textit{Odbiór danych w kliencie od w. zewn.} - nasłuchiwanie na porcie 7171 \\
-\textit{Wysyłanie danych w kliencie do w. zewn.} - <adres węzła w sieci>:7072 \\
+\textit{Wysyłanie i odbieranie danych} - na porcie 6972 \\
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.9\linewidth]{img/komunikacja_schemat.jpg} 
+\caption{Schemat komunikacji systemu}
+\label{img:dane_net}
+\end{center}
+\end{figure}
+
 
 
 \subsection[Struktura pliku konfiguracyjnego]{Struktura pliku konfiguracyjnego}
