@@ -36,9 +36,9 @@ uwierzytelniania węzłów w SSH).
 
 \end{itemize}
 
-\section[Wstępny opis rozwiązania]{Wstępny opis rozwiązania}
+\section[Ogólny opis rozwiązania]{Ogólny opis rozwiązania}
 
-\par{Nasze rozwiązanie to rozproszony system do rejestracji na przedmioty studentów uczelni wyższej. Warstwą wewnętrzną przechowujące dane wrażliwe, w tym przypadku będą węzły rejestrujące studentów, ideowo umieszczone w dziekanatach instytutów i obsługiwane przez osoby tam pracujące. Warstwa pośrednia przechowuje informacje o studentach, jednak bez informacji wrażliwej. Posiada jedynie dane o istnieniu studenta zapisanego na przedmioty RSO, SOI, ANA1 i SR,  bez imienia, nazwiska i daty urodzenia. Owe informacje są przetwarzane na żądanie aplikacji klienckiej, dostępnej dla studentów, którzy chcą dowiedzieć się, ile osób zapisanych jest na dany przedmiot.}
+\par{Nasze rozwiązanie to rozproszony system do rejestracji na przedmioty studentów uczelni wyższej. Warstwą wewnętrzną przechowujące dane wrażliwe, w tym przypadku będą węzły rejestrujące studentów, ideowo umieszczone w dziekanatach instytutów i obsługiwane przez osoby tam pracujące. Warstwa pośrednia przechowuje informacje o studentach, jednak bez informacji wrażliwej. Posiada jedynie dane o istnieniu studenta zapisanego na przedmioty, bez imienia, nazwiska i daty urodzenia. Owe informacje są przetwarzane na żądanie aplikacji klienckiej, dostępnej dla studentów, którzy chcą dowiedzieć się, ile osób zapisanych jest na dany przedmiot.}
 
 \section[Projekt architektury]{Projekt architektury}
 
@@ -56,6 +56,13 @@ uwierzytelniania węzłów w SSH).
 
 \par{Warstwa stworzona w technologii token ring. Węzły połączone są w pierścień i przesyłają sobie kolejno token zawierający informacje o potencjalnych zmianach. Tylko węzeł posiadający token może wykonywać operację aktualizacji danych. Każda zmiana musi być zatwierdzona przez pozostałe węzły. Zapewnia to synchronizację danych oraz bieżące sprawdzenie działania pozostałych węzłów.}
 
+\begin{figure}[h!tb]
+\begin{center}
+\includegraphics{img/parowa.jpg} 
+\caption{MARCINIE CIEBIE TU POTRZEBA!!!}
+\end{center}
+\end{figure}
+
 \par{Dane wrażliwe przechowywane są w postaci rekordów zawierających:}
 
 \begin{itemize}
@@ -67,10 +74,7 @@ uwierzytelniania węzłów w SSH).
 \end{itemize}
 
 \subsubsection*[Opis szczegółowy]{Opis szczegółowy}
-\begin{figure}[h!tb]
-\includegraphics{img/parowa.jpg} 
-\caption{MARCINIE CIEBIE TU POTRZEBA!!!}
-\end{figure}
+
 
 \par{W momencie podłączania węzeł wysyła TODO: WINCYJ WSZYSTKIEGO!!}
 
