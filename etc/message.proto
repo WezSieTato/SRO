@@ -71,7 +71,7 @@ message MiddlewareHeartbeat{
     required MiddlewareMessageType messageType = 3;
 }
 
-message Message{
+message RSOMessage{
     optional Token token = 1;
     optional MiddlewareMessage middlewareMessage = 2;
     optional MiddlewareRequest middlewareRequest = 3;
