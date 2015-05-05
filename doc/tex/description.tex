@@ -44,7 +44,7 @@ uwierzytelniania węzłów w SSH).
 
 \par{Wewnętrzna warstwa serwera wytwarza i przechowuje informacje na temat studentów uczelni wyższej - stworzone na podstawie danych wprowadzonych przez pracowników dziekanatu. Następnie owa warstwa przesyła informacje do warstwy zewnętrznej serwera (warstwy przetwarzającej) świadczącej usługi udostępniania informacji przetworzonej rozwiązaniom klienckim. Każda z warstw komunikować się będzie z użyciem protokołu TCP/IP przesyłając wiadomości zserializowane za pomocą Google Protocols Buffer.}
 
-\begin{figure}[h]
+\begin{figure}[h!tb]
 \begin{center}
 \includegraphics[width=0.9\linewidth]{img/dane_net.png} 
 \caption{Diagram ilustrujący komunikację pomiędzy poszczególnymi warstwami}
@@ -52,7 +52,7 @@ uwierzytelniania węzłów w SSH).
 \end{center}
 \end{figure}
 
-\subsection*[Warstwa wewnętrzna serwera][Warstwa wewnętrzna serwera]{Warstwa wewnętrzna serwera}
+\subsection[Warstwa wewnętrzna serwera][Warstwa wewnętrzna serwera]{Warstwa wewnętrzna serwera}
 
 \par{Warstwa stworzona w technologii token ring. Węzły połączone są w pierścień i przesyłają sobie kolejno token zawierający informacje o potencjalnych zmianach. Tylko węzeł posiadający token może wykonywać operację aktualizacji danych. Każda zmiana musi być zatwierdzona przez pozostałe węzły. Zapewnia to synchronizację danych oraz bieżące sprawdzenie działania pozostałych węzłów.}
 
@@ -66,11 +66,22 @@ uwierzytelniania węzłów w SSH).
 \item listę przedmiotów na jakie jest zapisany
 \end{itemize}
 
-\par{}
+\subsubsection*[Opis szczegółowy]{Opis szczegółowy}
+\begin{figure}[h!tb]
+\includegraphics{img/parowa.jpg} 
+\caption{MARCINIE CIEBIE TU POTRZEBA!!!}
+\end{figure}
 
-\subsection*[Warstwa zewnętrzna serwera]{Warstwa zewnętrzna serwera (warstwa przetwarzająca)}
+\par{W momencie podłączania węzeł wysyła TODO: WINCYJ WSZYSTKIEGO!!}
 
-\par{Warstwa przeznaczona do komunikacji z aplikacją kliencką. Na żądanie klienta przetwarza wcześniej otrzymane od warstwy wewnętrznej dane i wynik przetwarzania zwraca klientowi. Moduł ten synchronizuje dane okresowo (częstość jest ustalana w pliku konfiguracyjnym), tak aby administrator sam był wstanie dostosować interwał do aktualnych potrzeb). }
+\par{Węzły wysyłają sobie kolejno token po okręgu, tzn. kiedy węzeł dostaje token wprowadza odpowiednią aktualizację (nie zawsze!) oraz przesyła go dalej). Na raz może istnieć jeden token. Jeśli jest oznaczony jako ,,wolny'' dany węzeł może użyć go (wcześniej ,,blokując'') do wprowadzenia nowych danych, nowego węzła do sieci bądź odpytania o aktualność danych. Następnie czeka na powrót tokena z odpowiedzią i po jej uzyskaniu ,,odblokowuje'' go i podaje dalej. Dzięki temu, że nie może go użyć od razu po poprzednim zadaniu, eliminujemy problem zagłodzenia innych węzłów. Ponadto poprzez ruch tokena po pierścieniu możemy w łatwy sposób ,,ustalać'' dane decyzje z innymi węzłami oraz sprawdzać ich aktywność.}
+
+\par{W przypadku ,,zagubienia'' tokena (np. w przypadku awarii jednego z węzłów) token WINCYJ!!!!!!}
+
+
+\subsection[Warstwa zewnętrzna serwera]{Warstwa zewnętrzna serwera (warstwa przetwarzająca)}
+
+\par{Warstwa przeznaczona do komunikacji z aplikacją kliencką. Na żądanie klienta przetwarza wcześniej otrzymane od warstwy wewnętrznej dane i wynik przetwarzania zwraca klientowi. Moduł ten synchronizuje dane okresowo (częstość jest ustalana w pliku konfiguracyjnym), tak aby administrator sam był wstanie dostosować interwał do aktualnych potrzeb).}
 
 \par{Dane o studentach przechowywane są w poniższej postaci:}
 
@@ -79,11 +90,35 @@ uwierzytelniania węzłów w SSH).
 \item listę przedmiotów na jakie jest zapisany
 \end{itemize}
 
-\subsection*[Aplikacja kliencka]{Aplikacja kliencka}
+\subsubsection*[Opis szczegółowy]{Opis szczegółowy}
+\par{Serwer zewnętrzny w momencie logowania wysyła Heartbeata do wszystkich serwerów z listy ustalonej w pliku konfiguracyjnym. Węzły, które mu odpowiedzą serwer uznaje za aktywne w danej chwili. Dzięki temu zyskuje obraz aktywnych węzłów w warstwie. Od tej pory co ustalony interwał wysyła wiadomość do każdego z tych serwerów. Jeśli otrzyma TestRequesta od węzła uznawanego do tej pory za nieaktywny, dodaje go do listy aktywnych oraz zaczyna wysyłać mu Heartbeaty. W momencie, gdy czas oczekiwania na Heartbeat przekracza ustalony interwał wysyłany jest TestRequest wymuszający odpowiedź Heartbeatem. Gdy i to zawiedzie węzeł uznany jest za nieaktywny.}
+
+\par{W określonych w pliku konfiguracyjnym interwałach czasu serwer zewnętrzny pobiera dane od serwera wewnętrznego, zapisując je w swojej bazie w bezpiecznej formie (bez danych wrażliwych). Jeśli dany węzeł wewnętrzny nie odpowie - próbuje z kolejnym, itd.}
+
+\par{W Heartbeatach przesyłana jest informacja o ilości podłączonych w danej chwili klientów.}
+
+\par{Każdy węzeł utrzymuje dane na temat podłączonych do niego klientów oraz klientów podłączonych do pozostałych aktywnych węzłów. Dzięki temu można zapewnić równomierne obciążenie między węzłami serwera. Jeśli dany serwer dostanie wiadomość o chęci zalogowania się nowego klienta sprawdza czy inny serwer nie ma mniej klientów od niego (o więcej niż 2). Jeśli tak - przełącza klienta na inny serwer. Algorytm ten został szerzej opisany w opisie szczegółowym aplikacji klienckiej.}
+
+\par{Nie jest potrzebne stałe sprawdzanie aktywności serwerów z warstwy wewnętrznej, ze względu na możliwe długie interwały czasowe między synchronizacją (np. jeden dzień). W przypadku częstszych synchronizacji (np. co minutę) sprawdzanie aktywności wewnętrznego węzła będzie i tak sprawdzane na bieżąco. W trakcie synchronizacji nie jest pobierana cała baza, a jedynie zmiany od ostatniej zgodności. Dokładnie cały algorytm został opisany w rozdziale ,,Sposób synchronizacji danych między warstwą zewnętrzną a wewnętrzną''.}
+
+\par{W momencie otrzymania wiadomości od klienta z danym żądaniem wykonywane są wymagane obliczenia i wysyłana odpowiedź.}
+
+
+\subsection[Aplikacja kliencka]{Aplikacja kliencka}
 
 \par{Warstwa przeznaczona dla klienta to z założenia lekka i intuicyjna aplikacja konsolowa. Moduł ten bezpośrednio łączyć będzie się tylko z modułem zewnętrznym serwera. Użytkownik, za pomocą tej aplikacji będzie mógł dowiedzieć się ile osób w danym momencie jest zapisany na wybranie przez niego przedmiot. Aplikacja będzie działała synchronicznie, tzn. po wysłaniu żądania będzie się zawieszała w oczekiwaniu na odpowiedź.}
 
-\section[Opis szczegółowy]{Opis szczegółowy}
+\subsubsection*[Opis szczegółowy]{Opis szczegółowy}
+\par{Każda aplikacja kliencka w momencie uruchomienia stara się połączyć do jednego z serwerów zewnętrznych. Lista serwerów jest z góry ustalona i znajduje się pliku konfiguracyjnym. Klient próbuje zestawić połączenie najpierw z pierwszym serwerem z listy, czekając 10 sekund na odpowiedź. W razie jej braku próbuje tego z kolejnym serwerem, itd. Jeśli klientowi uda się połączyć serwerem, jednak ten ,,stwierdzi'', że obsługuje zbyt dużą ilość klientów w stosunku do pozostałych węzłów, wtedy wysyła on wiadomość zwrotną z informacją, do którego serwera klient ma się podłączyć. Następuje, więc ponowna próba połączenia, tym razem z polecanym węzłem. Cała operacja jest ,,ukryta'' przed użytkownikiem aplikacji klienckiej, tzn. nie wie on, do którego serwera się podłącza.}
+
+\par{Od momentu zestawienia połączenia klient może wysyłać żądania do serwera. Po wysłaniu żądania zawiesza się w oczekiwaniu na odpowiedź. Po jej otrzymaniu może wysłać kolejne żądanie. Ponadto co ustalony interwał klient wysyła Hearbeat do serwera dając znać, że ciągle jest podłączony. Analogicznie serwer informuje klienta, że działa poprawnie.}
+
+\par{W razie awarii bądź braku odpowiedzi od serwera wysyłany jest TestRequest wymuszający wysłanie Heartbeata. Jeśli mimo to serwer nie odpowiada następuje próba zestawienia połączenia z kolejnym serwerem z listy.}
+
+
+\subsection[Sposób synchronizacji danych między warstwą zewnętrzną a wewnętrzną]{Sposób synchronizacji danych między warstwą zewnętrzną a wewnętrzną)}
+
+\section[Wymagania i założenia]{Wymagania i założenia}
 
 \subsection[Wymagania funkcjonalne]{Wymagania funkcjonalne}
 
@@ -280,10 +315,10 @@ Każdy z węzłów zewnętrznych ma pełne i aktualne dane. Są one synchronizow
 Natychmiastowa synchronizacja danych i pełna redundancja pozwala uniknąć wielu problemów w trakcie działania serwera, między innymi: dodatkowej synchronizacji po awarii jednego z węzłów, która jest dość problematyczna i skomplikowana. Rozwiązanie to zostało zatwierdzone przez Prowadzącego.\\
 \hline
 
-\label{z:ZO5} ZO5 &  \textbf{Wysyłanie ,,heartbeatów'' (warstwa zewnętrzna serwera)}
+\label{z:ZO5} ZO5 &  \textbf{Wysyłanie ,,heartbeatów'' (warstwa zewnętrzna serwera/aplikacja kliencka)}
 
-Węzły zewnętrznej warstwy będą sprawdzały swoją dostępność za pomocą tzw. ,,uderzeń serce'' \textit{(ang. heartbeat)} wysyłanych w danych odstępach czasu (każdy z serwerów musi mieć ustalony ten sam interwał). Dzięki temu będą miały wiedzę na temat aktywności pozostałych serwerów. Brak ,,heartbeata'' od danego serwera po upływie zadanego czasu będzie równoważny z jego brakiem dostępności. & 
-Takie rozwiązanie pozwala na bieżąco monitorować stan poszczególnych węzłów warstwy zewnętrznej. \\
+Węzły zewnętrznej warstwy będą sprawdzały swoją dostępność za pomocą tzw. ,,uderzeń serca'' \textit{(ang. heartbeat)} wysyłanych w danych odstępach czasu (każdy z serwerów musi mieć ustalony ten sam interwał). Dzięki temu będą miały wiedzę na temat aktywności pozostałych serwerów. Brak ,,heartbeata'' od danego serwera po upływie zadanego czasu będzie równoważny z jego brakiem dostępności. To samo tyczy się połączenia klient - serwer zewnętrzny. & 
+Takie rozwiązanie pozwala na bieżąco monitorować stan poszczególnych węzłów warstwy zewnętrznej oraz ilość podłączonych klientów. \\
 \hline
 
 \label{z:ZO6} ZO6 &  \textbf{Brak funkcji logowania użytkownika}
@@ -404,6 +439,8 @@ message Token{
 
 \end{lstlisting}
 
+\subsection[Zastosowanie struktur tokena i wiadomości]{Zastosowanie struktur tokena i wiadomości}
+
 \subsection[Komunikacja i adresacja]{Komunikacja i adresacja}
 
 \par{Poszczególne części systemu będą się ze sobą komunikowały na z góry określonych portach. Wysokie numery portów zostały wybrane ze względu na mniejsze prawdopodobieństwo trafienia na port używany przez inną, powszechnie używaną, aplikację.}
@@ -430,7 +467,6 @@ message Token{
 \label{img:dane_net}
 \end{center}
 \end{figure}
-
 
 
 \subsection[Struktura pliku konfiguracyjnego]{Struktura pliku konfiguracyjnego}

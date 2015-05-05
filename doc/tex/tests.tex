@@ -3,7 +3,7 @@
 \section{Plan testów}
 
 
-\subsection*[Test protokołu]{Test protokołu}
+\subsection[Test protokołu]{Test protokołu}
 \begin{enumerate}
 \item Sprawdzenie poprawności przesyłanej ramki danych z węzła wewnętrznego do zewnętrznego oraz z zewnętrznego do wewnętrznego.
 \item Sprawdzenie poprawności przesyłanej ramki danych z węzła zewnętrznego do klienta oraz od klienta do węzła zewnętrznego.
@@ -11,22 +11,22 @@
 	
 \textit{Testy obejmują sprawdzenie poprawności serializacji oraz deserializacji danych przesyłanych między elementami systemu. Sprawdzone również zostanie połączenie między tymi elementami.}
 
-\subsection*[Test bazy danych]{Test bazy danych}
+\subsection[Test bazy danych]{Test bazy danych}
 \begin{enumerate}
 \item Sprawdzenie połączenia z bazą danych.
 \item Sprawdzenie poprawności działania algorytmu aktualizacji danych systemu. \\
-\textit{Test obejmuje sprawdzenie algortymu wykorzystującego Token Ring do aktualizacji danych. Weryfikacji zostanie podany również konfigurowalny czas posiadania tokena przez węzeł.}
+\textit{Test obejmuje sprawdzenie algorytmu wykorzystującego Token Ring do aktualizacji danych. Weryfikacji zostanie podany również konfigurowalny czas posiadania tokena przez węzeł.}
 \item Sprawdzenie redundancji danych.
 
 \end{enumerate}
 
-\subsection*[Test przetwarzania danych]{Test przetwarzania danych}
+\subsection[Test przetwarzania danych]{Test przetwarzania danych}
 Sprawdzenie czy węzeł zewnętrzny poprawnie przetwarza dane wrażliwe na dane gotowe do wysłania klientowi. Wysyłane dane powinny zawierać numer identyfikacyjny oraz listę przedmiotów.
 
-\subsection*[Test algorytmu Heartbeatów]{Test algorytmu Heartbeatów}
+\subsection[Test algorytmu Heartbeatów]{Test algorytmu Heartbeatów}
 Sprawdzenie czy węzły zewnętrzne poprawnie komunikują się między sobą oraz czy poprawnie interpretowane są braki komunikacji.
 
-\subsection*[Testy połączeniowe węzłów]{Testy połączeniowe węzłów}
+\subsection[Testy połączeniowe węzłów]{Testy połączeniowe węzłów}
 \begin{enumerate}
 \item Test podłączenia oraz odłączenia węzła wewnętrznego
 \begin{enumerate}
