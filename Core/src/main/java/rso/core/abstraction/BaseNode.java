@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 public abstract class BaseNode implements Node {
 
     @Value("${rso.addresses}")
-    private String[] addresses;
+    protected String[] addresses;
 
     @Value("${rso.port.internal}")
     private int portInternal;
