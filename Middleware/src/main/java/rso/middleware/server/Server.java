@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import rso.middleware.events.EventManager;
+import rso.core.events.EventManager;
 import rso.middleware.utils.Config;
 
 /**
