@@ -11,14 +11,23 @@
 	
 \textit{Testy obejmują sprawdzenie poprawności serializacji oraz deserializacji danych przesyłanych między elementami systemu. Sprawdzone również zostanie połączenie między tymi elementami.}
 
+\subsubsection*[Przebieg testów]{Przebieg testów}
+\begin{enumerate}
+\item zbudowanie wiadomości z danymi z serwera wewnętrznego/zewnętrznego do serwera zewnętrznego/wewnętrznego RSOMessage.
+\item wysłanie tablicy bajtów do serwera zewnętrznego 
+\item sprawdzenie poprawności przesłanych danych
+\end{enumerate}
+
+
 \subsection[Test bazy danych]{Test bazy danych}
 \begin{enumerate}
 \item Sprawdzenie połączenia z bazą danych.
 \item Sprawdzenie poprawności działania algorytmu aktualizacji danych systemu. \\
 \textit{Test obejmuje sprawdzenie algorytmu wykorzystującego Token Ring do aktualizacji danych. Weryfikacji zostanie podany również konfigurowalny czas posiadania tokena przez węzeł.}
 \item Sprawdzenie redundancji danych.
-
 \end{enumerate}
+
+
 
 \subsection[Test przetwarzania danych]{Test przetwarzania danych}
 Sprawdzenie czy węzeł zewnętrzny poprawnie przetwarza dane wrażliwe na dane gotowe do wysłania klientowi. Wysyłane dane powinny zawierać numer identyfikacyjny oraz listę przedmiotów.
@@ -26,12 +35,32 @@ Sprawdzenie czy węzeł zewnętrzny poprawnie przetwarza dane wrażliwe na dane 
 \subsection[Test algorytmu Heartbeatów]{Test algorytmu Heartbeatów}
 Sprawdzenie czy węzły zewnętrzne poprawnie komunikują się między sobą oraz czy poprawnie interpretowane są braki komunikacji.
 
+\subsubsection*[Przebieg testów]{Przebieg testów}
+Sprawdzenie działania algorytmu dla interwału czasowego równego: 5, 30 oraz 60 sekund:
+\begin{enumerate}
+\item dodanie trzech węzłów zewnętrznych
+\item wysłanie wiadomości Heartbeat
+\item oczekiwanie całego interwału na Heartbeat zwrotny
+\item (Przypadek 1) Heartbeat przyszedł, zerowanie timera
+\item (Przypadek 2) Heartbeat nie przyszedł, wysłanie TestRequesta
+\item (Przypadek 2.1) Heartbeat przyszedł, zerowanie timera
+\item (Przypadek 2.2) Heartbeat nie przyszedł, uznanie węzła za nieaktywny
+\end{enumerate}
+
 \subsection[Testy połączeniowe węzłów]{Testy połączeniowe węzłów}
 \begin{enumerate}
 \item Test podłączenia oraz odłączenia węzła wewnętrznego
 \begin{enumerate}
 \item Podłączenie nowego węzła przy braku aktywnych innych węzłów wewnętrznych
+	\begin{enumerate}
+	\item włączenie nowego węzła
+	\item sprawdzenie czy węzły zewnętrzne komunikują się z nowym węzłem
+	\end{enumerate}
 \item Podłączenie nowego węzła gdy przynajmniej jeden węzeł wewnętrzny jest aktywny 
+	\begin{enumerate}
+	\item włączenie nowego węzła
+	\item sprawdzenie czy działa przekazanie tokena w warstwie wewnętrznej
+	\end{enumerate}
 \end{enumerate}
 
 \item Test podłączenia oraz odłączenia węzła zewnętrznego
