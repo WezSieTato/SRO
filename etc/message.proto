@@ -70,3 +70,11 @@ message MiddlewareHeartbeat{
     optional int32 connectedClients = 2;
     required MiddlewareMessageType messageType = 3;
 }
+
+message Message{
+    optional Token token = 1;
+    optional MiddlewareMessage middlewareMessage = 2;
+    optional MiddlewareRequest middlewareRequest = 3;
+    optional MiddlewareResponse middlewareResponse = 4;
+    optional MiddlewareHeartbeat middlewareHeartbeat = 5;
+}
