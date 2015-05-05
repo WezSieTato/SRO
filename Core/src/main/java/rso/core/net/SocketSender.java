@@ -18,7 +18,7 @@ public class SocketSender{
     private PrintWriter output;
     private Socket socket;
 
-    SocketSender(Socket socket) throws IOException {
+    public SocketSender(Socket socket) throws IOException {
         this.socket = socket;
 
         init();

@@ -33,7 +33,7 @@ public class SocketReciver {
         return socket;
     }
 
-    SocketReciver( Socket socket){
+    public SocketReciver( Socket socket){
         this.socket = socket;
 
         init();
