@@ -19,7 +19,7 @@ public class SocketReciver {
     private Socket socket;
     private boolean end = false;
     private String messageString = "";
-    byte[] messageByte = new byte[1000];
+    byte[] messageByte = new byte[30000];
 
     public byte[] getMessageByte() {
         return messageByte;
@@ -60,26 +60,26 @@ public class SocketReciver {
 
             try {
 
-                messageByte[0] = reader.readByte();
-                messageByte[1] = reader.readByte();
-                ByteBuffer byteBuffer = ByteBuffer.wrap(messageByte, 0, 2);
+//                messageByte[0] = reader.readByte();
+//                messageByte[1] = reader.readByte();
+//                ByteBuffer byteBuffer = ByteBuffer.wrap(messageByte, 0, 2);
+//
+//                int bytesToRead = byteBuffer.getShort();
+//                LOGGER.log(Level.INFO, "About to read " + bytesToRead + " bytes");
+//
+//
+//                while (!end) {
+//                    bytesRead = reader.read(messageByte);
+//                    messageString += new String(messageByte, 0, bytesRead);
+//                    if (messageString.length() == bytesToRead) {
+//                        end = true;
+//                    }
+//                }
 
-                int bytesToRead = byteBuffer.getShort();
-                LOGGER.log(Level.INFO, "About to read " + bytesToRead + " bytes");
+//                LOGGER.log(Level.INFO, "MESSAGE: " + messageString);
 
-
-                while (!end) {
-                    bytesRead = reader.read(messageByte);
-                    messageString += new String(messageByte, 0, bytesRead);
-                    if (messageString.length() == bytesToRead) {
-                        end = true;
-                    }
-                }
-
-                LOGGER.log(Level.INFO, "MESSAGE: " + messageString);
-
-                Message.RSOMessage msg = Message.RSOMessage.parseFrom(messageByte);
-
+                Message.RSOMessage msg = Message.RSOMessage.parseFrom(socket.getInputStream());
+                LOGGER.log(Level.INFO, "MESSAGE: RECIVED");
                 return new TaskMessage(msg, socket);
 
 

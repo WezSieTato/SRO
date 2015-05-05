@@ -40,18 +40,14 @@ public class SocketSender{
 
     public void send(Message.RSOMessage message){
         if(output != null){
-            int lenght = message.toByteArray().length;
-            byte[] one = message.toByteArray();
-            byte[] two = Integer.toString(lenght).getBytes();
-            byte[] combined = new byte[one.length + two.length];
 
-            for (int i = 0; i < combined.length; ++i)
-            {
-                combined[i] = i < one.length ? one[i] : two[i - one.length];
+            try {
+                message.writeTo(socket.getOutputStream());
+                socket.getOutputStream().flush();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
-            output.print(combined);
-            output.flush();
         }
         else{
             LOGGER.log(Level.WARNING, "PrintWriter is NULL!!!!");
