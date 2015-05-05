@@ -12,7 +12,7 @@ public class TaskMessage {
     private Message.RSOMessage message;
     private Socket socket;
 
-    public GeneratedMessage getMessage() {
+    public Message.RSOMessage getMessage() {
         return message;
     }
 
