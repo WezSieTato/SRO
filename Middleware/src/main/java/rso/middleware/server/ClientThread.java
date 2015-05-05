@@ -5,6 +5,7 @@ import rso.core.events.RSOEvent;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,7 +26,7 @@ public class ClientThread implements Runnable {
     }
 
     private void init() {
-        EventManager.addListener(Server.disconnectWithoutRedirectEvent, ClientThread.class, new EventManager.EventListener() {
+        EventManager.addListener(Server.disconnectWithoutRedirectEvent, Server.class, new EventManager.EventListener() {
             public void event(RSOEvent event) {
                 try {
                     socket.close();
@@ -38,8 +39,6 @@ public class ClientThread implements Runnable {
 
 
     public void run() {
-
-
         cleanup();
         LOGGER.log(Level.INFO, "Client thread ended. ID = " + id);
     }
