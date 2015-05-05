@@ -10,7 +10,9 @@ public abstract class BaseNode implements Node {
     @Value("${rso.addresses}")
     private String[] addresses;
 
-    @Value("${rso.port}")
-    private int port;
+    @Value("${rso.port.internal}")
+    private int portInternal;
 
+    @Value("${rso.port.external}")
+    private int portExternal;
 }
