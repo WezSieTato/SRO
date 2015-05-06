@@ -17,17 +17,6 @@ public class Group extends Identified {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "uuid")
-    private String uuid;
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
     public String getName() {
         return name;
     }
