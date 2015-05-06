@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by kometa on 27.04.2015. via iOS
@@ -31,7 +32,6 @@ public class Person extends Identified {
     private String lastName;
     @Column(name = "birth_date", nullable = true)
     private Date dateOfBirth;
-    private String uuid;
 
     public Date getDateOfBirth() {
         return dateOfBirth;
@@ -65,15 +65,6 @@ public class Person extends Identified {
         this.personGroups = personGroups;
     }
 
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-
     public void setupGroups(List<Group> groups) {
 
 
@@ -84,8 +75,11 @@ public class Person extends Identified {
 
             personGroup.setPerson(this);
             personGroup.setGroup(groups.get(i));
+            personGroup.setUuid(UUID.randomUUID().toString());
             personGroupList.add(personGroup);
         }
         this.setPersonGroups(personGroupList);
     }
+
+
 }

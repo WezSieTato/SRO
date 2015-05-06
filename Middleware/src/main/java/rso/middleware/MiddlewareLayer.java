@@ -7,6 +7,7 @@ import rso.core.taskmanager.TaskManager;
 import rso.middleware.server.BackendThread;
 import rso.middleware.server.ClientThread;
 import rso.middleware.server.MiddlewareThread;
+import rso.middleware.server.Server;
 import rso.middleware.utils.MyLogManager;
 
 import java.io.IOException;
@@ -22,8 +23,7 @@ public class MiddlewareLayer extends BaseNode{
 
     private MiddlewareThread middlewareThread;
     private BackendThread backendThread;
-    private ClientThread clientThread;
-
+    private Server clientServer;
     public static final TaskManager taskManager = new TaskManager();
     static {
         Thread t = new Thread(taskManager);
@@ -46,6 +46,7 @@ public class MiddlewareLayer extends BaseNode{
             e.printStackTrace();
         }
         backendThread = new BackendThread();
+
 
         Thread t1 = new Thread(middlewareThread);
         Thread t2 = new Thread(backendThread);
