@@ -25,24 +25,11 @@ public class HeartbeatTask extends Task {
     @Override
     public boolean processMessage(TaskMessage taskMessage) {
 
-        try {
 
                 LOGGER.log(Level.INFO, "Otrzyma?em takiego heartbeata: " + taskMessage.getMessage().toString());
 
                 EventManager.event(HeartbeatTask.class, newMiddleServer, taskMessage.getMessage().getMiddlewareHeartbeat());
 
-                SocketSender sender = new SocketSender(taskMessage.getSocket());
-
-                Message.MiddlewareHeartbeat.Builder hrt = Message.RSOMessage.newBuilder().getMiddlewareHeartbeatBuilder();
-                hrt.setConnectedClients(69).setServerId(32131).setMessageType(Message.MiddlewareMessageType.Heartbeat);
-
-                Message.RSOMessage.Builder snd = Message.RSOMessage.newBuilder().setMiddlewareHeartbeat(hrt.build());
-                sender.send(snd.build());
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         return true;
     }
 }

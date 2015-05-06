@@ -1,6 +1,7 @@
 package rso.middleware;
 
 import org.springframework.stereotype.Component;
+import rso.client.ClientProgram;
 import rso.core.abstraction.BaseNode;
 import rso.core.abstraction.Node;
 import rso.core.taskmanager.TaskManager;
@@ -46,13 +47,21 @@ public class MiddlewareLayer extends BaseNode{
             e.printStackTrace();
         }
         backendThread = new BackendThread();
+        clientServer = new Server(1);
 
 
         Thread t1 = new Thread(middlewareThread);
         Thread t2 = new Thread(backendThread);
+        Thread t3 = new Thread(clientServer);
 
         t1.start();
         t2.start();
+        t3.start();
+
+//        ClientProgram cp = new ClientProgram();
+//
+//        Thread gwn = new Thread(cp);
+//        gwn.start();
 
 
 
@@ -61,7 +70,7 @@ public class MiddlewareLayer extends BaseNode{
 
     public void run() {
         MyLogManager.setLoggingLevel(Level.ALL);
-        MyLogManager.setConsoleLog();
+//        MyLogManager.setConsoleLog();
 
         init();
     }

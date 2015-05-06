@@ -14,7 +14,7 @@ import rso.middleware.utils.Config;
 /**
  * Created by modz on 2015-04-29.
  */
-public class Server {
+public class Server implements Runnable{
 
     private int id;
     private int clientId = 1;
@@ -25,7 +25,7 @@ public class Server {
 
     public static String disconnectWithoutRedirectEvent = EventManager.registerEvent(Server.class, "disconnecting clients");
 
-    Server(int id){
+    public Server(int id){
         this.id = id;
 
 
@@ -45,23 +45,6 @@ public class Server {
     }
 
 
-    public void start(){
-        LOGGER.log(Level.INFO, "Server started. ID = " + id);
-        while(true){
-            try {
-                Socket connectionSocket = welcomeSocket.accept();
-
-                ClientThread ct = new ClientThread(clientId, connectionSocket);
-                Thread t = new Thread(ct);
-                t.start();
-                clients.add(ct);
-                clientId++;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
 
     private void cleanup(){
         EventManager.event(Server.class, disconnectWithoutRedirectEvent, "server shutdown");
@@ -87,5 +70,22 @@ public class Server {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void run() {
+        LOGGER.log(Level.INFO, "Server started. ID = " + id);
+        while(true){
+            try {
+                Socket connectionSocket = welcomeSocket.accept();
+
+                ClientThread ct = new ClientThread(clientId, connectionSocket);
+                Thread t = new Thread(ct);
+                t.start();
+                clients.add(ct);
+                clientId++;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

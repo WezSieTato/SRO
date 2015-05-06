@@ -1,5 +1,7 @@
 package rso.middleware.server;
 
+import rso.core.events.EventManager;
+import rso.core.model.Message;
 import rso.core.taskmanager.Task;
 import rso.core.taskmanager.TaskMessage;
 import rso.middleware.MiddlewareLayer;
@@ -13,6 +15,8 @@ import java.util.logging.Logger;
 public class BackendReciveTask extends Task {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+    public static String newData = EventManager.registerEvent(BackendReciveTask.class, "new data");
+
     public BackendReciveTask() {
         setPriority(2);
         addFilterForConnectionDirection(ConnectionDirection.InnerToMiddleware);
@@ -21,8 +25,15 @@ public class BackendReciveTask extends Task {
     @Override
     public boolean processMessage(TaskMessage taskMessage) {
 
+            EventManager.event(BackendReciveTask.class, newData, taskMessage.getMessage().getMiddlewareResponse());
+        for(Message.Subject s : taskMessage.getMessage().getMiddlewareResponse().getChanges().getSubjectsList()){
 
-            LOGGER.log(Level.INFO, "Dostalem message RECIVE o taki: " + taskMessage.getMessage().getMiddlewareResponse().getChanges().getStudents(0).getSurname());
+                LOGGER.log(Level.INFO, "Odebrana wiadomosc " + s.getName());
+
+            }
+
+
+
 
             return true;
 

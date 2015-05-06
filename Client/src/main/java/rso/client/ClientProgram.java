@@ -14,7 +14,7 @@ import java.net.Socket;
  * Created by modzelej on 2015-05-06.
  */
 @Component("client")
-public class ClientProgram extends BaseNode {
+public class ClientProgram extends BaseNode implements Runnable{
 
     private Socket socket;
     private SocketReciver reciver;
@@ -22,7 +22,7 @@ public class ClientProgram extends BaseNode {
 
     public void run() {
         try {
-            socket = new Socket("192.168.0.39", 6972);
+            socket = new Socket("localhost", 6972);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,7 +37,7 @@ public class ClientProgram extends BaseNode {
 
 
             Message.MiddlewareMessage.Builder builder1 = Message.MiddlewareMessage.newBuilder();
-            builder1.setSubjectId(69);
+            builder1.setSubjectId(69).setNodeId(1);
             Message.RSOMessage.Builder builder2 = Message.RSOMessage.newBuilder();
             builder2.setMiddlewareMessage(builder1.build());
 

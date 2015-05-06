@@ -40,7 +40,7 @@ public class SocketReciver {
             try {
 
                 Message.RSOMessage msg = Message.RSOMessage.parseDelimitedFrom(socket.getInputStream());
-                LOGGER.log(Level.INFO, "MESSAGE: RECIVED");
+                LOGGER.log(Level.INFO, "MESSAGE: RECEIVED");
                 return new TaskMessage(msg, socket);
 
 
