@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import rso.core.model.Person;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,4 +20,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
     @EntityGraph(value = "Person.classes", type = EntityGraph.EntityGraphType.LOAD)
     List<Person> findByUuidIsNull();
+
+    @EntityGraph(value = "Person.classes", type = EntityGraph.EntityGraphType.LOAD)
+    List<Person> findByTimestampGreaterThan(Date date);
 }

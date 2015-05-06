@@ -9,17 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Middleware</artifactId>
+    <artifactId>Client</artifactId>
 
     <dependencies>
+
         <dependency>
             <groupId>rso</groupId>
             <artifactId>core</artifactId>
             <version>1.0-SNAPSHOT</version>
-
         </dependency>
 
-
     </dependencies>
+
 
 </project>

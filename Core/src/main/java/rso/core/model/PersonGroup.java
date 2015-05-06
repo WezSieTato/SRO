@@ -1,9 +1,6 @@
 package rso.core.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -12,6 +9,11 @@ import java.util.Date;
 @Entity
 @Table(name = "student_class")
 @IdClass(PersonGroupPK.class)
+@NamedEntityGraph(name = "PersonGroup.details",
+        attributeNodes = {@NamedAttributeNode(value = "person"), @NamedAttributeNode(value = "group")}
+
+)
+
 public class PersonGroup {
 
     @Id
@@ -20,7 +22,9 @@ public class PersonGroup {
     @Id
     Group group;
 
-    Date timestamp = new Date();
+    private String uuid;
+
+    private Date timestamp = new Date();
 
     public PersonGroup() {
     }
@@ -39,5 +43,21 @@ public class PersonGroup {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 }

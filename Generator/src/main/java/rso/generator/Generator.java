@@ -49,9 +49,9 @@ public class Generator {
 
             Collections.shuffle(classes);
             newPerson.setupGroups(classes.subList(0, rand.nextInt(classes.size())));
-
+            newPerson.setUuid(UUID.randomUUID().toString());
             newPerson.setDateOfBirth(this.generateDateOfBirth());
-
+            newPerson.setTimestamp(new Date());
             generatedPersons.add(newPerson);
         }
 

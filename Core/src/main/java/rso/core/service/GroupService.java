@@ -7,6 +7,8 @@ import rso.core.repository.GroupRepository;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by kometa on 05.05.2015.
@@ -22,6 +24,11 @@ public class GroupService {
     public Collection<Group> findAll() {
 
         return groupRepository.findAll();
+    }
+
+    public List<Group> findNewerThan(Date time) {
+
+        return groupRepository.findByTimestampGreaterThan(time);
     }
 
 }
