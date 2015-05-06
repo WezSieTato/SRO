@@ -5,15 +5,13 @@ import rso.core.events.EventManager;
 import rso.core.events.RSOEvent;
 import rso.core.model.Message;
 import rso.core.net.SocketReciver;
-import rso.core.net.SocketSender;
 import rso.core.taskmanager.TaskManager;
 import rso.core.taskmanager.TaskMessage;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,13 +22,8 @@ public class MiddlewareThread extends BaseNode implements Runnable {
 
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private ServerSocket socket;
-    private ArrayList<Socket> connectedSockets;
+    private LinkedBlockingQueue<Socket> connectedSockets;
     private boolean finish = false;
-    private int port;
-
-    public void setPort(int port) {
-        this.port = port;
-    }
 
     public static String endReciving = EventManager.registerEvent(MiddlewareThread.class, "end reciving");
 
@@ -86,7 +79,7 @@ public class MiddlewareThread extends BaseNode implements Runnable {
                 finish = true;
             }
         });
-        connectedSockets = new ArrayList<Socket>();
+        connectedSockets = new LinkedBlockingQueue<Socket>();
 //        for(String s: addresses){
 //            try {
 //                Socket tmp = new Socket(InetAddress.getByName(s), 6970);
@@ -113,11 +106,13 @@ public class MiddlewareThread extends BaseNode implements Runnable {
                 try {
                     Socket midSoc = socket.accept();
                     LOGGER.log(Level.INFO, "new mid socket connected!");
-                    connectedSockets.add(midSoc);
+                    connectedSockets.put(midSoc);
                     MiddlewareReciver mrr = new MiddlewareReciver(midSoc);
                     Thread tt = new Thread(mrr);
                     tt.start();
                 } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
