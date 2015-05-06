@@ -40,6 +40,8 @@ uwierzytelniania węzłów w SSH).
 
 \par{Nasze rozwiązanie to rozproszony system do rejestracji na przedmioty studentów uczelni wyższej. Warstwą wewnętrzną przechowujące dane wrażliwe, w tym przypadku będą węzły rejestrujące studentów, ideowo umieszczone w dziekanatach instytutów i obsługiwane przez osoby tam pracujące. Warstwa pośrednia przechowuje informacje o studentach, jednak bez informacji wrażliwej. Posiada jedynie dane o istnieniu studenta zapisanego na przedmioty, bez imienia, nazwiska i daty urodzenia. Owe informacje są przetwarzane na żądanie aplikacji klienckiej, dostępnej dla studentów, którzy chcą dowiedzieć się, ile osób zapisanych jest na dany przedmiot.}
 
+\par{W związku z ochroną danych wrażliwych zapoznaliśmy się z Ustawą o ochronie danych osobowych dnia 29 sierpnia 1997 r.}
+
 \section[Projekt architektury]{Projekt architektury}
 
 \par{Wewnętrzna warstwa serwera wytwarza i przechowuje informacje na temat studentów uczelni wyższej - stworzone na podstawie danych wprowadzonych przez pracowników dziekanatu. Następnie owa warstwa przesyła informacje do warstwy zewnętrznej serwera (warstwy przetwarzającej) świadczącej usługi udostępniania informacji przetworzonej rozwiązaniom klienckim. Każda z warstw komunikować się będzie z użyciem protokołu TCP/IP przesyłając wiadomości zserializowane za pomocą Google Protocols Buffer.}
@@ -56,13 +58,6 @@ uwierzytelniania węzłów w SSH).
 
 \par{Warstwa stworzona w technologii token ring. Węzły połączone są w pierścień i przesyłają sobie kolejno token zawierający informacje o potencjalnych zmianach. Tylko węzeł posiadający token może wykonywać operację aktualizacji danych. Każda zmiana musi być zatwierdzona przez pozostałe węzły. Zapewnia to synchronizację danych oraz bieżące sprawdzenie działania pozostałych węzłów.}
 
-\begin{figure}[h!tb]
-\begin{center}
-\includegraphics{img/parowa.jpg} 
-\caption{MARCINIE CIEBIE TU POTRZEBA!!!}
-\end{center}
-\end{figure}
-
 \par{Dane wrażliwe przechowywane są w postaci rekordów zawierających:}
 
 \begin{itemize}
@@ -76,11 +71,29 @@ uwierzytelniania węzłów w SSH).
 \subsubsection*[Opis szczegółowy]{Opis szczegółowy}
 
 
-\par{W momencie podłączania węzeł wysyła TODO: WINCYJ WSZYSTKIEGO!!}
+\par{W momencie podłączania węzeł wewnętrzny wysyła wiadomość z chęcią zalogowania się do sieci do jednego z innych węzłów z listy znajdującej się w pliku konfiguracyjnym. Robi tak aż do skutku, tzn. dopóki nie dostanie wiadomości od któregokolwiek innych węzłów z informacją o włączeniu się do sieci. Jeśli jednak mimo wszystkich prób nie dostanie wiadomości - uznaje, że jest pierwszym węzłem w sieci. Jest to rozwiązanie czasochłonne, niemniej będzie ono miało miejsce bardzo rzadko, ze względu na ogólnie przyjętą zasadę, że warstwa wewnętrzna działa nieprzerwanie i wymaga kilku węzłów do poprawnego działania.}
 
-\par{Węzły wysyłają sobie kolejno token po okręgu, tzn. kiedy węzeł dostaje token wprowadza odpowiednią aktualizację (nie zawsze!) oraz przesyła go dalej). Na raz może istnieć jeden token. Jeśli jest oznaczony jako ,,wolny'' dany węzeł może użyć go (wcześniej ,,blokując'') do wprowadzenia nowych danych, nowego węzła do sieci bądź odpytania o aktualność danych. Następnie czeka na powrót tokena z odpowiedzią i po jej uzyskaniu ,,odblokowuje'' go i podaje dalej. Dzięki temu, że nie może go użyć od razu po poprzednim zadaniu, eliminujemy problem zagłodzenia innych węzłów. Ponadto poprzez ruch tokena po pierścieniu możemy w łatwy sposób ,,ustalać'' dane decyzje z innymi węzłami oraz sprawdzać ich aktywność.}
+\par{Węzły w tej warstwie wysyłają sobie kolejno token po okręgu, tzn. kiedy węzeł dostaje token wprowadza odpowiednią aktualizację (nie zawsze!) oraz przesyła go dalej). Token zawiera w sobie informację o stanie, w którym znajduje się sieć, a także obraz jej topologii (następujące po sobie węzły). Dzięki temu można zapewnić stały stan sieci dla wszystkich węzłów. Z każdą kolejną operacją (zatwierdzoną przez wszystkie węzły) stan sieci zwiększa się o jeden. Zasady są następujące:
+\begin{itemize}
+\item Jeśli stan jest większy od posiadanego przez węzeł, następuje zapis nowego stan i przesłanie do następnego węzła.
+\item Jeśli stan jest równy posiadanemu i nie jest on ustawiony przez ten węzeł, to może on wykonać swoją operację (zwiększając stan o 1).
+\item Jeśli stan jest równy posiadanemu i jest on ustawiony przez ten węzeł, oznacza to, że ostatnia operacja wygenerowana przez ten węzeł została zaakceptowana przez sieć.
+\item Jeśli stan jest mniejszy od posiadanego, token jest ignorowany.
+\end{itemize}
 
-\par{W przypadku ,,zagubienia'' tokena (np. w przypadku awarii jednego z węzłów) token WINCYJ!!!!!!}
+\par{Jeśli token jest oznaczony jako ,,wolny'' (przypadek 2 z powyższej listy) dany węzeł może użyć go do wprowadzenia nowych danych, nowego węzła do sieci bądź odpytania o aktualność danych. Następnie węzeł czeka na powrót tokena z odpowiedzią i po jej uzyskaniu podaje go dalej. Dzięki temu, że węzeł nie może użyć tokena od razu po poprzednim zadaniu, które wygenerował, eliminujemy problem zagłodzenia innych węzłów. Ponadto poprzez ruch tokena po pierścieniu możemy w łatwy sposób ,,ustalać'' dane decyzje z innymi węzłami oraz sprawdzać ich aktywność.}
+
+\par{W przypadku zerwania połączenia z następnikiem wykonywane są kolejne operacje:}
+\begin{itemize}
+\item Usuwanie następnika z topologii sieci w stanie, który aktualnie węzeł posiada.
+\item Zwiększenie stanu o 2.
+\item Połączenie się ze swoim nowym następnikiem.
+\item Przesłanie stanu do następnika (generacja tokena).
+\end{itemize}
+
+\par{W sytuacji awarii węzeł automatycznie generuje token, a poprzedni staje się nieaktualny i wkrótce zostanie usunięty z sieci. Cecha generowania tokena powoduje, że zostanie on zawsze odtworzony w sieci niezależnie od tego czy awarii ulegnie węzeł, który go posiadał czy dowolny inny.}
+
+\par{Należy pamiętać, że w trakcie zapisywania stanu trzeba sprawdzić, czy nie zmienił się nasz następnik w topologii sieci. Jest to szczególnie istotne w przypadku jednoczesnej awarii wielu węzłów, gdy wiele węzłów wygeneruje nowe tokeny. Jeden z nich zdominuje sieć, a drugi będzie zmuszony do ponownego sprawdzenia braku połączenia ze swoim dawnym następnikiem i ponownego wymuszenia zmiany topologii sieci. Takie rozwiązania zwiększa czas przywracania sieci do działania przy awarii wielu węzłów jednocześnie, niemniej zapewnia spójność jej stanu i istnienie w stanie ustalonym tylko jednego ważnego tokena.}
 
 
 \subsection[Warstwa zewnętrzna serwera]{Warstwa zewnętrzna serwera (warstwa przetwarzająca)}
@@ -121,6 +134,8 @@ uwierzytelniania węzłów w SSH).
 
 
 \subsection[Sposób synchronizacji danych między warstwami]{Sposób synchronizacji danych między warstwami}
+
+\textit{\textbf{TODO}}
 
 \section[Wymagania i założenia]{Wymagania i założenia}
 
@@ -401,6 +416,7 @@ message Token{
 	optional int32 serverId = 2;
 	repeated int32 nodeIds = 3;
 	optional int64 timespamp = 4;
+	required int64 state = 5;
 }
 
 
@@ -485,6 +501,40 @@ message Message{
 
 
 \subsection[Struktura pliku konfiguracyjnego]{Struktura pliku konfiguracyjnego}
+\begin{lstlisting}
+# RSO - konfiguracja
+
+# Typ wezla.
+# Mozliwe wartosci: server, middleware, client
+
+rso.type = middleware
+
+# Lista adresow IP wezlow
+# Wartosci oddzielone przecinkami
+
+rso.addresses = 127.0.0.1, 8.8.8.8, 192.168.1.1
+
+# Port na ktorym dziala serwer wewnetrzny/zewnetrzny
+# Wewnetrzny: 6969; Zewnetrzny :6970
+
+rso.port.external = 6969
+
+# Port na ktorym dziala serwer wewnetrzny/zewnetrzny: 6971;
+
+rso.port.internal = 6969
+
+# Port na ktorym laczy sie klient: 6972
+
+rso.port.client = 6972
+
+# Baza (nie dotyczy klienta)
+
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/baza
+jdbc.username=user
+jdbc.password=haslo
+init-db=false
+\end{lstlisting}
 
 
 \section[Potencjalne problematyczne scenariusze]{Potencjalne problematyczne scenariusze}
@@ -515,6 +565,9 @@ message Message{
 \item Kwestia równomiernego podziału klientów między serwery oraz serwerów zewnętrznych między wewnętrzne
 \item Kwestia rozmieszczenia warstw serwera w obrębie jednego komputera bądź wielu odrębnych
 \end{itemize}
+
+\section[Ograniczenia i możliwe problemy]{Ograniczenia i możliwe problemy}
+\textit{\textbf{TODO}}
 
 \section[Organizacja środowiska programistycznego]{Organizacja środowiska programistycznego}
 
