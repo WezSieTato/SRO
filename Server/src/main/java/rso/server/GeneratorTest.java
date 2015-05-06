@@ -17,7 +17,7 @@ public class GeneratorTest implements Runnable {
         while (true){
             try {
                 Thread.sleep(5000);
-                generator.generate(5);
+                generator.generate(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

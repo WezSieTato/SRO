@@ -1,7 +1,10 @@
 package rso.middleware.server;
 
+import rso.core.abstraction.BaseContext;
 import rso.core.events.EventManager;
 import rso.core.model.Message;
+import rso.core.model.Person;
+import rso.core.service.PersonService;
 import rso.core.taskmanager.Task;
 import rso.core.taskmanager.TaskMessage;
 import rso.middleware.MiddlewareLayer;
@@ -29,6 +32,8 @@ public class BackendReciveTask extends Task {
         for(Message.Subject s : taskMessage.getMessage().getMiddlewareResponse().getChanges().getSubjectsList()){
 
                 LOGGER.log(Level.INFO, "Odebrana wiadomosc " + s.getName());
+            PersonService personService = BaseContext.getInstance().getApplicationContext().getBean(PersonService.class);
+
 
             }
 
