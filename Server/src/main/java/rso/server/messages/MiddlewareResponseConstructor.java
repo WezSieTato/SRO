@@ -2,6 +2,8 @@ package rso.server.messages;
 
 import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import rso.core.abstraction.BaseContext;
 import rso.core.model.Group;
 import rso.core.model.Message;
 import rso.core.model.Person;
@@ -20,16 +22,21 @@ public class MiddlewareResponseConstructor {
 
     private Message.EntityState.Builder builder;
 
-    @Autowired
+
     PersonService personService;
 
-    @Autowired
+
     GroupService groupService;
 
-    @Autowired
+
     PersonGroupService personGroupService;
 
     public Message.RSOMessage construct(long timestamp){
+
+        personService = BaseContext.getInstance().getApplicationContext().getBean(PersonService.class);
+        groupService = BaseContext.getInstance().getApplicationContext().getBean(GroupService.class);
+        personGroupService = BaseContext.getInstance().getApplicationContext().getBean(PersonGroupService.class);
+
         builder = Message.EntityState.newBuilder();
         Date date = new Date(timestamp);
         List<Person> personList = personService.findNewerThan(date);
