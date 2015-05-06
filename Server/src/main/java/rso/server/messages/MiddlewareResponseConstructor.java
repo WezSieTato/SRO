@@ -10,12 +10,13 @@ import rso.core.service.GroupService;
 import rso.core.service.PersonGroupService;
 import rso.core.service.PersonService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by marcin on 06/05/15.
  */
-public class MiddlewareMessagesConstructor {
+public class MiddlewareResponseConstructor {
 
     private Message.EntityState.Builder builder;
 
@@ -30,20 +31,22 @@ public class MiddlewareMessagesConstructor {
 
     public Message.RSOMessage construct(long timestamp){
         builder = Message.EntityState.newBuilder();
-        List<Person> personList = personService.findAll();
+        Date date = new Date(timestamp);
+        List<Person> personList = personService.findNewerThan(date);
 
         for (Person person : personList){
-            addStudent(person.getUuid(), 0);
+            addStudent(person.getUuid(), person.getTimestamp().getTime());
         }
 
-        java.util.Collection<Group> groupList = groupService.findAll();
+        java.util.Collection<Group> groupList = groupService.findNewerThan(date);
         for(Group group : groupList){
-            addGroup(group.getUuid(), group.getName(), 0);
+            addGroup(group.getUuid(), group.getName(), group.getTimestamp().getTime());
         }
 
-//        for(PersonGroup personGroup : personGroupService.){
-//
-//        }
+        for(PersonGroup personGroup : personGroupService.findNewerThan(date)){
+            addAssociations(personGroup.getUuid(), personGroup.getPerson().getUuid(),
+                    personGroup.getGroup().getUuid(), personGroup.getTimestamp().getTime());
+        }
 
         Message.MiddlewareResponse.Builder resp = Message.MiddlewareResponse.newBuilder().setChanges(builder);
 
@@ -64,7 +67,7 @@ public class MiddlewareMessagesConstructor {
 
     private void addAssociations(String uuid, String uuidPerson, String uuidGroup, long timestamp){
         Message.PersonSubject.Builder pgBuilder = Message.PersonSubject.newBuilder();
-
+        pgBuilder.setUuid(uuid).setUUIDPerson(uuidPerson).setUUIDSubject(uuidGroup).setTimestamp(timestamp);
         builder.addPersonSubjects(pgBuilder);
     }
 }
