@@ -1,6 +1,7 @@
 package rso.core.taskmanager;
 
 import com.google.protobuf.GeneratedMessage;
+import rso.core.events.EventManager;
 import rso.core.model.Message;
 
 import java.lang.ref.WeakReference;
@@ -13,6 +14,9 @@ public abstract class Task {
     private int priority = 4;
     private WeakReference< TaskManager> taskManager = null;
 
+    public static String messageToSend = EventManager.registerEvent(Task.class, "Message to send");
+
+
     public enum ConnectionDirection{
         InnerToInner,
         MiddlewareToMiddleware,
@@ -23,6 +27,10 @@ public abstract class Task {
 
     private ConnectionDirection connectionDirection;
     private boolean connectionDirectionFilter = false;
+
+    protected void send(Message.RSOMessage message){
+        EventManager.event(Task.class, messageToSend, message);
+    }
 
     /**
      * Przetwarza wiadomosc
@@ -57,7 +65,7 @@ public abstract class Task {
                     break;
 
                 case InnerToMiddleware:
-                    if(!message.hasMiddlewareRequest())
+                    if(!message.hasMiddlewareResponse())
                         return false;
                     break;
 

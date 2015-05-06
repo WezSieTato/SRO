@@ -26,7 +26,6 @@ public class HeartbeatTask extends Task {
     public boolean processMessage(TaskMessage taskMessage) {
 
         try {
-            if(taskMessage.getMessage().hasMiddlewareHeartbeat()){
 
                 LOGGER.log(Level.INFO, "Otrzyma?em takiego heartbeata: " + taskMessage.getMessage().toString());
 
@@ -39,11 +38,11 @@ public class HeartbeatTask extends Task {
 
                 Message.RSOMessage.Builder snd = Message.RSOMessage.newBuilder().setMiddlewareHeartbeat(hrt.build());
                 sender.send(snd.build());
-            }
+
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 }

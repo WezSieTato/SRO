@@ -10,7 +10,7 @@ enum TokenType {
 }
 
 message Person {
-required int32 ID = 1;
+    required string uuid = 1;
 required string name = 2;
 required string surname = 3;
 optional int32 birthDate = 4;
@@ -24,7 +24,7 @@ message PersonSubject{
 }
 
 message Subject{
-required int32 ID = 1;
+    required string uuid = 1;
 required string name = 2;
 required int64 timestamp = 3;
 }
