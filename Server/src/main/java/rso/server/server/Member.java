@@ -1,5 +1,6 @@
-package rso.server;
+package rso.server.server;
 
+import rso.core.model.Message;
 import rso.core.net.SocketReciver;
 import rso.core.net.SocketSender;
 
@@ -21,6 +22,10 @@ public class Member {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void send(Message.RSOMessage message){
+        socketSender.send(message);
     }
 
 }

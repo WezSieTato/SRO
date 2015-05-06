@@ -6,6 +6,9 @@ import rso.core.events.EventManager;
 import rso.core.events.RSOEvent;
 import rso.core.taskmanager.TaskManager;
 import rso.core.taskmanager.TaskMessage;
+import rso.server.server.ServerThread;
+import rso.server.task.MiddlewareRequestTask;
+import sun.awt.windows.ThemeReader;
 
 /**
  * Created by kometa on 04.05.2015.
@@ -14,11 +17,14 @@ import rso.core.taskmanager.TaskMessage;
 public class Server extends BaseNode {
 
     private TaskManager taskManager;
+    private  ServerThread serverThread;
+    private  ServerThread serverMiddlewareThread;
+
 
     public Server() {
         taskManager = new TaskManager();
 
-        EventManager.addListener(Receiver.messageReceived, Receiver.class, new EventManager.EventListener() {
+        EventManager.addListener(ServerThread.messageReceived, ServerThread.class, new EventManager.EventListener() {
             public void event(RSOEvent event) {
                 TaskMessage taskMessage = (TaskMessage)event.getObject();
                 taskManager.putTaskMessage(taskMessage);
@@ -26,9 +32,21 @@ public class Server extends BaseNode {
             }
         });
 
+        taskManager.addTask(new MiddlewareRequestTask());
+
     }
 
     public void run() {
         System.out.println("Server");
+        serverThread = new ServerThread(6969);
+        serverMiddlewareThread = new ServerThread(6971);
+
+        Thread t1 = new Thread(serverThread);
+        t1.start();
+        Thread t2 = new Thread(serverMiddlewareThread);
+        t2.start();
+        Thread t3 = new Thread(taskManager);
+        t3.start();
+
     }
 }
