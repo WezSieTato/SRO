@@ -40,7 +40,19 @@ uwierzytelniania węzłów w SSH).
 
 \par{Nasze rozwiązanie to rozproszony system do rejestracji na przedmioty studentów uczelni wyższej. Warstwą wewnętrzną przechowujące dane wrażliwe, w tym przypadku będą węzły rejestrujące studentów, ideowo umieszczone w dziekanatach instytutów i obsługiwane przez osoby tam pracujące. Warstwa pośrednia przechowuje informacje o studentach, jednak bez informacji wrażliwej. Posiada jedynie dane o istnieniu studenta zapisanego na przedmioty, bez imienia, nazwiska i daty urodzenia. Owe informacje są przetwarzane na żądanie aplikacji klienckiej, dostępnej dla studentów, którzy chcą dowiedzieć się, ile osób zapisanych jest na dany przedmiot.}
 
-\par{W związku z ochroną danych wrażliwych zapoznaliśmy się z Ustawą o ochronie danych osobowych dnia 29 sierpnia 1997 r.}
+\subsection[Dane wrażliwe a kwestie prawne]{Dane wrażliwe a kwestie prawne}
+
+\par{W związku z ochroną danych wrażliwych zapoznaliśmy się z Ustawą o ochronie danych osobowych dnia 29 sierpnia 1997 r. Pomimo, że generowane przez nas w ramach projektu losowe dane, nie zawierają faktycznych wrażliwych informacji, przystosowaliśmy nasz system do obowiązującego w Polsce prawa, pod uwagę biorąc przede wszystkim poniższe kwestie prawne z Ustawy o ochronie danych osobowych:}
+\begin{itemize}
+\item Art. 2 \textit{,,Ustawę stosuje się do przetwarzania danych osobowych (...) w systemach informatycznych, także w przypadku przetwarzania danych poza zbiorem danych.''}
+\item Art. 3 \textit{,,Ustawę stosuje się do organów państwowych, organów samorządu terytorialnego oraz do państwowych i komunalnych jednostek organizacyjnych.''}
+\item Art. 6 \textit{,,W rozumieniu ustawy za dane osobowe uważa się wszelkie informacje dotyczące zidentyfikowanej lub możliwej do zidentyfikowania osoby fizycznej.''}
+\item Art. 6 \textit{,,Informacji nie uważa się za umożliwiającą określenie tożsamości osoby, jeżeli wymagałoby to nadmiernych kosztów, czasu lub działań.''}
+\item Informacje o Generalnym Inspektorze w Art. 14 i Art. 16.
+\item Informacje na temat ochrony danych w Art. 26 oraz Art. 26a.
+\item Informacje o uprawnieniach administratora w Art. 31.
+\item Informacje o zabezpieczeniu danych osobowych z rozdziału 5.
+\end{itemize}
 
 \section[Projekt architektury]{Projekt architektury}
 
