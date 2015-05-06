@@ -1,11 +1,13 @@
 package rso.server;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import rso.core.abstraction.BaseNode;
 import rso.core.events.EventManager;
 import rso.core.events.RSOEvent;
 import rso.core.taskmanager.TaskManager;
 import rso.core.taskmanager.TaskMessage;
+import rso.generator.Generator;
 import rso.server.server.ServerThread;
 import rso.server.task.MiddlewareRequestTask;
 import sun.awt.windows.ThemeReader;
@@ -20,6 +22,8 @@ public class Server extends BaseNode {
     private  ServerThread serverThread;
     private  ServerThread serverMiddlewareThread;
 
+    @Autowired
+    private GeneratorTest generatorTest;
 
     public Server() {
         taskManager = new TaskManager();
@@ -43,10 +47,15 @@ public class Server extends BaseNode {
 
         Thread t1 = new Thread(serverThread);
         t1.start();
+
         Thread t2 = new Thread(serverMiddlewareThread);
         t2.start();
+
         Thread t3 = new Thread(taskManager);
         t3.start();
+
+        Thread t4 = new Thread(generatorTest);
+        t4.start();
 
     }
 }
