@@ -65,5 +65,8 @@ public class PersonService {
         personRepository.save(person);
     }
 
+    public List<Person> findNewerThan(Date time) {
 
+        return personRepository.findByTimestampGreaterThan(time);
+    }
 }
