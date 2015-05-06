@@ -20,6 +20,8 @@ public class PersonGroup {
     @Id
     Group group;
 
+    private String uuid;
+
     private Date timestamp;
 
     public PersonGroup() {
@@ -39,5 +41,21 @@ public class PersonGroup {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 }

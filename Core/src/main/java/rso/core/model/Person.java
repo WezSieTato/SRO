@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by kometa on 27.04.2015. via iOS
@@ -74,6 +75,7 @@ public class Person extends Identified {
 
             personGroup.setPerson(this);
             personGroup.setGroup(groups.get(i));
+            personGroup.setUuid(UUID.randomUUID().toString());
             personGroupList.add(personGroup);
         }
         this.setPersonGroups(personGroupList);
