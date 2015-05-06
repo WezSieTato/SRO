@@ -24,4 +24,7 @@ public interface GroupRepository extends JpaRepository<Group, Long> {
 
     List<Group> findByTimestampGreaterThan(Date date);
 
+
+    @Query(value = "Select * from class pg order by pg.timestamp desc limit 0, 1", nativeQuery = true)
+    Group findNewestRecord();
 }

@@ -31,4 +31,8 @@ public class GroupService {
         return groupRepository.findByTimestampGreaterThan(time);
     }
 
+    public Group findByUuid(String uuid) {
+        return groupRepository.findByUuid(uuid);
+    }
+
 }

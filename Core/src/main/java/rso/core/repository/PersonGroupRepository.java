@@ -2,6 +2,7 @@ package rso.core.repository;
 
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import rso.core.model.PersonGroup;
 import rso.core.model.PersonGroupPK;
 
@@ -15,4 +16,7 @@ public interface PersonGroupRepository extends JpaRepository<PersonGroup, Person
 
     @EntityGraph(value = "PersonGroup.details", type = EntityGraph.EntityGraphType.LOAD)
     List<PersonGroup> findByTimestampGreaterThan(Date date);
+
+    @Query(value = "Select * from student_class pg order by pg.timestamp desc limit 0, 1", nativeQuery = true)
+    PersonGroup findNewestRecord();
 }
