@@ -37,7 +37,7 @@ public class Server {
         clients = new ArrayList<ClientThread>(Config.MAX_CLIENTS);
 
         try {
-            welcomeSocket = new ServerSocket(6789);
+            welcomeSocket = new ServerSocket(6972);
         } catch (IOException e) {
             e.printStackTrace();
         }
