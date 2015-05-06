@@ -3,14 +3,15 @@ package rso.middleware.server;
 import rso.core.abstraction.BaseNode;
 import rso.core.events.EventManager;
 import rso.core.events.RSOEvent;
+import rso.core.model.Message;
 import rso.core.net.SocketReciver;
-import rso.core.net.SocketSender;
+import rso.core.taskmanager.TaskManager;
 import rso.core.taskmanager.TaskMessage;
 
 import java.io.IOException;
-import java.net.InetAddress;
+import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,8 +21,8 @@ import java.util.logging.Logger;
 public class MiddlewareThread extends BaseNode implements Runnable {
 
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    private Socket socket;
-    private ArrayList<Socket> connectedSockets;
+    private ServerSocket socket;
+    private LinkedBlockingQueue<Socket> connectedSockets;
     private boolean finish = false;
 
     public static String endReciving = EventManager.registerEvent(MiddlewareThread.class, "end reciving");
@@ -30,27 +31,44 @@ public class MiddlewareThread extends BaseNode implements Runnable {
     private class MiddlewareReciver implements Runnable{
         private SocketReciver reciver;
         private boolean end = false;
+        private TaskManager taskManager;
 
         public MiddlewareReciver(Socket socket) {
 
             reciver = new SocketReciver(socket);
+            taskManager = new TaskManager();
             EventManager.addListener(MiddlewareThread.endReciving, MiddlewareThread.class, new EventManager.EventListener() {
                 public void event(RSOEvent event) {
                     end = true;
                 }
             });
+
+            EventManager.addListener(HeartbeatTask.newMiddleServer, HeartbeatTask.class, new EventManager.EventListener() {
+                public void event(RSOEvent event) {
+                    Message.MiddlewareHeartbeat mh = (Message.MiddlewareHeartbeat) event.getObject();
+                    LOGGER.log(Level.INFO, "tutaj by sie dodal nowy ziomek ale nie ma tablicy ID na IP");
+                }
+            });
+
+            taskManager.addTask(new HeartbeatTask());
+            Thread t = new Thread(taskManager);
+            t.start();
+
         }
 
         public void run() {
             while(!end){
                TaskMessage message = reciver.read();
+
+                taskManager.putTaskMessage(message);
+
                 LOGGER.log(Level.INFO, message.toString());
             }
         }
     }
 
-    public MiddlewareThread(){
-
+    public MiddlewareThread(ServerSocket socket){
+        this.socket = socket;
 
         init();
     }
@@ -61,29 +79,44 @@ public class MiddlewareThread extends BaseNode implements Runnable {
                 finish = true;
             }
         });
-        connectedSockets = new ArrayList<Socket>();
-        for(String s: addresses){
-            try {
-                Socket tmp = new Socket(InetAddress.getByName(s), 6970);
-                if(tmp != null){
-                    connectedSockets.add(tmp);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        connectedSockets = new LinkedBlockingQueue<Socket>();
+//        for(String s: addresses){
+//            try {
+//                Socket tmp = new Socket(InetAddress.getByName(s), 6970);
+//                if(tmp != null){
+//                    connectedSockets.add(tmp);
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
 
     }
 
 
     public void run() {
-        for(Socket s: connectedSockets){
+        LOGGER.log(Level.INFO, "start Middlware Thread");
+        for (Socket s : connectedSockets) {
             MiddlewareReciver mr = new MiddlewareReciver(s);
-            mr.run();
+            Thread t = new Thread(mr);
+            t.start();
         }
-        while (!finish){
 
+            while (!finish) {
+                try {
+                    Socket midSoc = socket.accept();
+                    LOGGER.log(Level.INFO, "new mid socket connected!");
+                    connectedSockets.put(midSoc);
+                    MiddlewareReciver mrr = new MiddlewareReciver(midSoc);
+                    Thread tt = new Thread(mrr);
+                    tt.start();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-        }
+            }
+
     }
 }

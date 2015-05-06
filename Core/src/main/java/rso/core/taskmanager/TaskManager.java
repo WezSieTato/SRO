@@ -23,9 +23,12 @@ public class TaskManager implements  Runnable{
             removeTasksToDelete();
 
             for (Task task : taskList) {
-                if(task.canProcessMessage(taskMessage))
-                    if(!task.processMessage(taskMessage))
-                        break;
+                if (taskMessage != null) {
+                    if (task.canProcessMessage(taskMessage))
+                        if (!task.processMessage(taskMessage))
+                            break;
+                }
+
             }
         }
     }
