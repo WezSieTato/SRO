@@ -2705,9 +2705,9 @@ public final class Message {
    * Protobuf type {@code rso.Subject}
    */
   public static final class Subject extends
-      com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:rso.Subject)
-      SubjectOrBuilder {
+          com.google.protobuf.GeneratedMessage implements
+          // @@protoc_insertion_point(message_implements:rso.Subject)
+          SubjectOrBuilder {
     public static final int UUID_FIELD_NUMBER = 1;
     public static final int NAME_FIELD_NUMBER = 2;
     public static final int TIMESTAMP_FIELD_NUMBER = 3;
@@ -3765,7 +3765,7 @@ public final class Message {
         int dataSize = 0;
         for (int i = 0; i < nodeIds_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(nodeIds_.get(i));
+                  .computeInt32SizeNoTag(nodeIds_.get(i));
         }
         size += dataSize;
         size += 1 * getNodeIdsList().size();
@@ -3781,7 +3781,7 @@ public final class Message {
 
     @java.lang.Override
     protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
+            throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
@@ -4514,7 +4514,7 @@ public final class Message {
       size = 0;
       for (int i = 0; i < students_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, students_.get(i));
+                .computeMessageSize(1, students_.get(i));
       }
       for (int i = 0; i < personSubjects_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -4531,7 +4531,7 @@ public final class Message {
 
     @java.lang.Override
     protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
+            throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
@@ -5551,7 +5551,7 @@ public final class Message {
           getSubjectsFieldBuilder() {
         if (subjectsBuilder_ == null) {
           subjectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              rso.core.model.Message.Subject, rso.core.model.Message.Subject.Builder, rso.core.model.Message.SubjectOrBuilder>(
+                  rso.core.model.Message.Subject, rso.core.model.Message.Subject.Builder, rso.core.model.Message.SubjectOrBuilder>(
                   subjects_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
@@ -5624,7 +5624,7 @@ public final class Message {
               break;
             default: {
               if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+                      extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -5820,7 +5820,7 @@ public final class Message {
       size = 0;
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, timestamp_);
+                .computeInt64Size(1, timestamp_);
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
@@ -6317,7 +6317,7 @@ public final class Message {
 
     @java.lang.Override
     protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
+            throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
@@ -6581,7 +6581,7 @@ public final class Message {
           getChangesFieldBuilder() {
         if (changesBuilder_ == null) {
           changesBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              rso.core.model.Message.EntityState, rso.core.model.Message.EntityState.Builder, rso.core.model.Message.EntityStateOrBuilder>(
+                  rso.core.model.Message.EntityState, rso.core.model.Message.EntityState.Builder, rso.core.model.Message.EntityStateOrBuilder>(
                   getChanges(),
                   getParentForChildren(),
                   isClean());
@@ -6875,11 +6875,11 @@ public final class Message {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, nodeId_);
+                .computeInt32Size(2, nodeId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, subjectId_);
+                .computeInt32Size(3, subjectId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -6892,7 +6892,7 @@ public final class Message {
 
     @java.lang.Override
     protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
+            throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
@@ -7449,11 +7449,11 @@ public final class Message {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, serverId_);
+                .computeInt32Size(1, serverId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, connectedClients_);
+                .computeInt32Size(2, connectedClients_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -8175,15 +8175,15 @@ public final class Message {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, middlewareMessage_);
+                .computeMessageSize(2, middlewareMessage_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, middlewareRequest_);
+                .computeMessageSize(3, middlewareRequest_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, middlewareResponse_);
+                .computeMessageSize(4, middlewareResponse_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
