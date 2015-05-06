@@ -65,7 +65,7 @@ public abstract class Task {
                     break;
 
                 case InnerToMiddleware:
-                    if(!message.hasMiddlewareRequest())
+                    if(!message.hasMiddlewareResponse())
                         return false;
                     break;
 

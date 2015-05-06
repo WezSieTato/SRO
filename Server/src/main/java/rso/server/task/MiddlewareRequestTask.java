@@ -33,7 +33,7 @@ public class MiddlewareRequestTask extends Task{
 
             Message.MiddlewareResponse.Builder mhb = Message.RSOMessage.newBuilder().getMiddlewareResponseBuilder();
             Message.EntityState.Builder es = Message.RSOMessage.newBuilder().getMiddlewareResponseBuilder().getChangesBuilder();
-            es.addStudents(Message.Person.newBuilder().setID(2).setName("Jaroslaw").setSurname("Kometa").setTimestamp(89087654345l).build());
+            es.addStudents(Message.Person.newBuilder().setUuid("2").setName("Jaroslaw").setSurname("Kometa").setTimestamp(89087654345l).build());
                     mhb.setChanges(es.build());
 
             Message.RSOMessage.Builder snd = Message.RSOMessage.newBuilder().setMiddlewareResponse(mhb.build());

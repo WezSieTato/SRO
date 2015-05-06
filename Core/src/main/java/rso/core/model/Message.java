@@ -5,181 +5,180 @@ package rso.core.model;
 
 public final class Message {
   private static final com.google.protobuf.Descriptors.Descriptor
-          internal_static_rso_Person_descriptor;
+    internal_static_rso_Person_descriptor;
   private static final com.google.protobuf.Descriptors.Descriptor
-          internal_static_rso_PersonSubject_descriptor;
+    internal_static_rso_PersonSubject_descriptor;
   private static final com.google.protobuf.Descriptors.Descriptor
-          internal_static_rso_Subject_descriptor;
+    internal_static_rso_Subject_descriptor;
   private static final com.google.protobuf.Descriptors.Descriptor
-          internal_static_rso_Token_descriptor;
+    internal_static_rso_Token_descriptor;
   private static final com.google.protobuf.Descriptors.Descriptor
-          internal_static_rso_EntityState_descriptor;
+    internal_static_rso_EntityState_descriptor;
   private static final com.google.protobuf.Descriptors.Descriptor
-          internal_static_rso_MiddlewareRequest_descriptor;
+    internal_static_rso_MiddlewareRequest_descriptor;
   private static final com.google.protobuf.Descriptors.Descriptor
-          internal_static_rso_MiddlewareResponse_descriptor;
+    internal_static_rso_MiddlewareResponse_descriptor;
   private static final com.google.protobuf.Descriptors.Descriptor
-          internal_static_rso_MiddlewareMessage_descriptor;
+    internal_static_rso_MiddlewareMessage_descriptor;
   private static final com.google.protobuf.Descriptors.Descriptor
-          internal_static_rso_MiddlewareHeartbeat_descriptor;
-    private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_rso_RSOMessage_descriptor;
+    internal_static_rso_MiddlewareHeartbeat_descriptor;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_rso_RSOMessage_descriptor;
   private static
-  com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internal_static_rso_Person_fieldAccessorTable;
-  private static
-  com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internal_static_rso_PersonSubject_fieldAccessorTable;
-  private static
-  com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internal_static_rso_Subject_fieldAccessorTable;
-  private static
-  com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internal_static_rso_Token_fieldAccessorTable;
-  private static
-  com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internal_static_rso_EntityState_fieldAccessorTable;
-  private static
-  com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internal_static_rso_MiddlewareRequest_fieldAccessorTable;
-  private static
-  com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internal_static_rso_MiddlewareResponse_fieldAccessorTable;
-  private static
-  com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internal_static_rso_MiddlewareMessage_fieldAccessorTable;
-  private static
-  com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internal_static_rso_MiddlewareHeartbeat_fieldAccessorTable;
-    private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internal_static_rso_RSOMessage_fieldAccessorTable;
+      internal_static_rso_Person_fieldAccessorTable;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_rso_PersonSubject_fieldAccessorTable;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_rso_Subject_fieldAccessorTable;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_rso_Token_fieldAccessorTable;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_rso_EntityState_fieldAccessorTable;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_rso_MiddlewareRequest_fieldAccessorTable;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_rso_MiddlewareResponse_fieldAccessorTable;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_rso_MiddlewareMessage_fieldAccessorTable;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_rso_MiddlewareHeartbeat_fieldAccessorTable;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_rso_RSOMessage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.FileDescriptor
-          descriptor;
+      descriptor;
 
   static {
     java.lang.String[] descriptorData = {
-            "\n\rmessage.proto\022\003rso\"Y\n\006Person\022\n\n\002ID\030\001 \002" +
-                    "(\005\022\014\n\004name\030\002 \002(\t\022\017\n\007surname\030\003 \002(\t\022\021\n\tbir" +
-                    "thDate\030\004 \001(\005\022\021\n\ttimestamp\030\005 \002(\003\"G\n\rPerso" +
-                    "nSubject\022\020\n\010IDPerson\030\001 \002(\005\022\021\n\tIDSubject\030" +
-                    "\002 \002(\005\022\021\n\ttimestamp\030\003 \002(\003\"6\n\007Subject\022\n\n\002I" +
-                    "D\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\021\n\ttimestamp\030\003 \002(\003" +
-                    "\"`\n\005Token\022!\n\ttokenType\030\001 \002(\0162\016.rso.Token" +
-                    "Type\022\020\n\010serverId\030\002 \001(\005\022\017\n\007nodeIds\030\003 \003(\005\022" +
-                    "\021\n\ttimespamp\030\004 \001(\003\"x\n\013EntityState\022\035\n\010stu" +
-                    "dents\030\001 \003(\0132\013.rso.Person\022*\n\016personSubjec",
-            "ts\030\002 \003(\0132\022.rso.PersonSubject\022\036\n\010subjects" +
-                    "\030\003 \003(\0132\014.rso.Subject\"6\n\021MiddlewareReques" +
-                    "t\022\016\n\006nodeId\030\004 \002(\005\022\021\n\ttimestamp\030\001 \002(\003\"7\n\022" +
-                    "MiddlewareResponse\022!\n\007changes\030\001 \002(\0132\020.rs" +
-                    "o.EntityState\"R\n\021MiddlewareMessage\022\016\n\006no" +
-                    "deId\030\002 \002(\005\022\021\n\tsubjectId\030\003 \001(\005\022\032\n\022registe" +
-                    "redStudents\030\004 \001(\005\"r\n\023MiddlewareHeartbeat" +
-                    "\022\020\n\010serverId\030\001 \002(\005\022\030\n\020connectedClients\030\002" +
-                    " \001(\005\022/\n\013messageType\030\003 \002(\0162\032.rso.Middlewa" +
-                    "reMessageType\"\371\001\n\nRSOMessage\022\031\n\005token\030\001 ",
-            "\001(\0132\n.rso.Token\0221\n\021middlewareMessage\030\002 \001" +
-                    "(\0132\026.rso.MiddlewareMessage\0221\n\021middleware" +
-                    "Request\030\003 \001(\0132\026.rso.MiddlewareRequest\0223\n" +
-                    "\022middlewareResponse\030\004 \001(\0132\027.rso.Middlewa" +
-                    "reResponse\0225\n\023middlewareHeartbeat\030\005 \001(\0132" +
-                    "\030.rso.MiddlewareHeartbeat*7\n\tTokenType\022\010" +
-                    "\n\004NONE\020\000\022\n\n\006UPDATE\020\001\022\t\n\005CHECK\020\002\022\t\n\005ENTRY" +
-                    "\020\003*O\n\025MiddlewareMessageType\022\013\n\007Request\020\000" +
-                    "\022\014\n\010Response\020\001\022\014\n\010Redirect\020\002\022\r\n\tHeartbea" +
-                    "t\020\003B\031\n\016rso.core.modelB\007Message"
+      "\n\rmessage.proto\022\003rso\"[\n\006Person\022\014\n\004uuid\030\001" +
+      " \002(\t\022\014\n\004name\030\002 \002(\t\022\017\n\007surname\030\003 \002(\t\022\021\n\tb" +
+      "irthDate\030\004 \001(\005\022\021\n\ttimestamp\030\005 \002(\003\"G\n\rPer" +
+      "sonSubject\022\020\n\010IDPerson\030\001 \002(\005\022\021\n\tIDSubjec" +
+      "t\030\002 \002(\005\022\021\n\ttimestamp\030\003 \002(\003\"8\n\007Subject\022\014\n" +
+      "\004uuid\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\021\n\ttimestamp\030\003" +
+      " \002(\003\"`\n\005Token\022!\n\ttokenType\030\001 \002(\0162\016.rso.T" +
+      "okenType\022\020\n\010serverId\030\002 \001(\005\022\017\n\007nodeIds\030\003 " +
+      "\003(\005\022\021\n\ttimespamp\030\004 \001(\003\"x\n\013EntityState\022\035\n" +
+      "\010students\030\001 \003(\0132\013.rso.Person\022*\n\016personSu",
+      "bjects\030\002 \003(\0132\022.rso.PersonSubject\022\036\n\010subj" +
+      "ects\030\003 \003(\0132\014.rso.Subject\"6\n\021MiddlewareRe" +
+      "quest\022\016\n\006nodeId\030\004 \002(\005\022\021\n\ttimestamp\030\001 \002(\003" +
+      "\"7\n\022MiddlewareResponse\022!\n\007changes\030\001 \002(\0132" +
+      "\020.rso.EntityState\"R\n\021MiddlewareMessage\022\016" +
+      "\n\006nodeId\030\002 \002(\005\022\021\n\tsubjectId\030\003 \001(\005\022\032\n\022reg" +
+      "isteredStudents\030\004 \001(\005\"r\n\023MiddlewareHeart" +
+      "beat\022\020\n\010serverId\030\001 \002(\005\022\030\n\020connectedClien" +
+      "ts\030\002 \001(\005\022/\n\013messageType\030\003 \002(\0162\032.rso.Midd" +
+      "lewareMessageType\"\371\001\n\nRSOMessage\022\031\n\005toke",
+      "n\030\001 \001(\0132\n.rso.Token\0221\n\021middlewareMessage" +
+      "\030\002 \001(\0132\026.rso.MiddlewareMessage\0221\n\021middle" +
+      "wareRequest\030\003 \001(\0132\026.rso.MiddlewareReques" +
+      "t\0223\n\022middlewareResponse\030\004 \001(\0132\027.rso.Midd" +
+      "lewareResponse\0225\n\023middlewareHeartbeat\030\005 " +
+      "\001(\0132\030.rso.MiddlewareHeartbeat*7\n\tTokenTy" +
+      "pe\022\010\n\004NONE\020\000\022\n\n\006UPDATE\020\001\022\t\n\005CHECK\020\002\022\t\n\005E" +
+      "NTRY\020\003*O\n\025MiddlewareMessageType\022\013\n\007Reque" +
+      "st\020\000\022\014\n\010Response\020\001\022\014\n\010Redirect\020\002\022\r\n\tHear" +
+      "tbeat\020\003B\031\n\016rso.core.modelB\007Message"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-            new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-                public com.google.protobuf.ExtensionRegistry assignDescriptors(
-                        com.google.protobuf.Descriptors.FileDescriptor root) {
-                    descriptor = root;
-                    return null;
-                }
-            };
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
     com.google.protobuf.Descriptors.FileDescriptor
-            .internalBuildGeneratedFileFrom(descriptorData,
-                    new com.google.protobuf.Descriptors.FileDescriptor[]{
-                    }, assigner);
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+        }, assigner);
     internal_static_rso_Person_descriptor =
-            getDescriptor().getMessageTypes().get(0);
+      getDescriptor().getMessageTypes().get(0);
     internal_static_rso_Person_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-            internal_static_rso_Person_descriptor,
-            new java.lang.String[]{"ID", "Name", "Surname", "BirthDate", "Timestamp",});
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_rso_Person_descriptor,
+        new java.lang.String[] { "Uuid", "Name", "Surname", "BirthDate", "Timestamp", });
     internal_static_rso_PersonSubject_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_rso_PersonSubject_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-            internal_static_rso_PersonSubject_descriptor,
-            new java.lang.String[]{"IDPerson", "IDSubject", "Timestamp",});
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_rso_PersonSubject_descriptor,
+        new java.lang.String[] { "IDPerson", "IDSubject", "Timestamp", });
     internal_static_rso_Subject_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_rso_Subject_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-            internal_static_rso_Subject_descriptor,
-            new java.lang.String[]{"ID", "Name", "Timestamp",});
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_rso_Subject_descriptor,
+        new java.lang.String[] { "Uuid", "Name", "Timestamp", });
     internal_static_rso_Token_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_rso_Token_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-            internal_static_rso_Token_descriptor,
-            new java.lang.String[]{"TokenType", "ServerId", "NodeIds", "Timespamp",});
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_rso_Token_descriptor,
+        new java.lang.String[] { "TokenType", "ServerId", "NodeIds", "Timespamp", });
     internal_static_rso_EntityState_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_rso_EntityState_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-            internal_static_rso_EntityState_descriptor,
-            new java.lang.String[]{"Students", "PersonSubjects", "Subjects",});
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_rso_EntityState_descriptor,
+        new java.lang.String[] { "Students", "PersonSubjects", "Subjects", });
     internal_static_rso_MiddlewareRequest_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_rso_MiddlewareRequest_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-            internal_static_rso_MiddlewareRequest_descriptor,
-            new java.lang.String[]{"NodeId", "Timestamp",});
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_rso_MiddlewareRequest_descriptor,
+        new java.lang.String[] { "NodeId", "Timestamp", });
     internal_static_rso_MiddlewareResponse_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_rso_MiddlewareResponse_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-            internal_static_rso_MiddlewareResponse_descriptor,
-            new java.lang.String[]{"Changes",});
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_rso_MiddlewareResponse_descriptor,
+        new java.lang.String[] { "Changes", });
     internal_static_rso_MiddlewareMessage_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_rso_MiddlewareMessage_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-            internal_static_rso_MiddlewareMessage_descriptor,
-            new java.lang.String[]{"NodeId", "SubjectId", "RegisteredStudents",});
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_rso_MiddlewareMessage_descriptor,
+        new java.lang.String[] { "NodeId", "SubjectId", "RegisteredStudents", });
     internal_static_rso_MiddlewareHeartbeat_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_rso_MiddlewareHeartbeat_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-            internal_static_rso_MiddlewareHeartbeat_descriptor,
-            new java.lang.String[]{"ServerId", "ConnectedClients", "MessageType",});
-      internal_static_rso_RSOMessage_descriptor =
-              getDescriptor().getMessageTypes().get(9);
-      internal_static_rso_RSOMessage_fieldAccessorTable = new
-              com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_rso_RSOMessage_descriptor,
-              new java.lang.String[]{"Token", "MiddlewareMessage", "MiddlewareRequest", "MiddlewareResponse", "MiddlewareHeartbeat",});
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_rso_MiddlewareHeartbeat_descriptor,
+        new java.lang.String[] { "ServerId", "ConnectedClients", "MessageType", });
+    internal_static_rso_RSOMessage_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_rso_RSOMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_rso_RSOMessage_descriptor,
+        new java.lang.String[] { "Token", "MiddlewareMessage", "MiddlewareRequest", "MiddlewareResponse", "MiddlewareHeartbeat", });
   }
 
-    private Message() {
-    }
+  private Message() {}
 
   public static void registerAllExtensions(
-          com.google.protobuf.ExtensionRegistry registry) {
+      com.google.protobuf.ExtensionRegistry registry) {
   }
 
   public static com.google.protobuf.Descriptors.FileDescriptor
-  getDescriptor() {
+      getDescriptor() {
     return descriptor;
   }
   /**
    * Protobuf enum {@code rso.TokenType}
    */
   public enum TokenType
-          implements com.google.protobuf.ProtocolMessageEnum {
+      implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>NONE = 0;</code>
      */
@@ -195,7 +194,8 @@ public final class Message {
     /**
      * <code>ENTRY = 3;</code>
      */
-    ENTRY(3, 3),;
+    ENTRY(3, 3),
+    ;
 
     /**
      * <code>NONE = 0;</code>
@@ -215,12 +215,12 @@ public final class Message {
     public static final int ENTRY_VALUE = 3;
     private static final TokenType[] VALUES = values();
     private static com.google.protobuf.Internal.EnumLiteMap<TokenType>
-            internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<TokenType>() {
-                public TokenType findValueByNumber(int number) {
-                    return TokenType.valueOf(number);
-                }
-            };
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<TokenType>() {
+            public TokenType findValueByNumber(int number) {
+              return TokenType.valueOf(number);
+            }
+          };
     private final int index;
     private final int value;
 
@@ -231,49 +231,42 @@ public final class Message {
 
     public static TokenType valueOf(int value) {
       switch (value) {
-          case 0:
-              return NONE;
-          case 1:
-              return UPDATE;
-          case 2:
-              return CHECK;
-          case 3:
-              return ENTRY;
-          default:
-              return null;
+        case 0: return NONE;
+        case 1: return UPDATE;
+        case 2: return CHECK;
+        case 3: return ENTRY;
+        default: return null;
       }
     }
 
     public static com.google.protobuf.Internal.EnumLiteMap<TokenType>
-    internalGetValueMap() {
+        internalGetValueMap() {
       return internalValueMap;
     }
 
     public static final com.google.protobuf.Descriptors.EnumDescriptor
-    getDescriptor() {
+        getDescriptor() {
       return rso.core.model.Message.getDescriptor().getEnumTypes().get(0);
     }
 
     public static TokenType valueOf(
-            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
-                "EnumValueDescriptor is not for this type.");
+          "EnumValueDescriptor is not for this type.");
       }
       return VALUES[desc.getIndex()];
     }
 
-      public final int getNumber() {
-          return value;
-      }
+    public final int getNumber() { return value; }
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
-    getValueDescriptor() {
+        getValueDescriptor() {
       return getDescriptor().getValues().get(index);
     }
 
     public final com.google.protobuf.Descriptors.EnumDescriptor
-    getDescriptorForType() {
+        getDescriptorForType() {
       return getDescriptor();
     }
 
@@ -283,7 +276,7 @@ public final class Message {
    * Protobuf enum {@code rso.MiddlewareMessageType}
    */
   public enum MiddlewareMessageType
-          implements com.google.protobuf.ProtocolMessageEnum {
+      implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>Request = 0;</code>
      */
@@ -299,7 +292,8 @@ public final class Message {
     /**
      * <code>Heartbeat = 3;</code>
      */
-    Heartbeat(3, 3),;
+    Heartbeat(3, 3),
+    ;
 
     /**
      * <code>Request = 0;</code>
@@ -319,12 +313,12 @@ public final class Message {
     public static final int Heartbeat_VALUE = 3;
     private static final MiddlewareMessageType[] VALUES = values();
     private static com.google.protobuf.Internal.EnumLiteMap<MiddlewareMessageType>
-            internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<MiddlewareMessageType>() {
-                public MiddlewareMessageType findValueByNumber(int number) {
-                    return MiddlewareMessageType.valueOf(number);
-                }
-            };
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<MiddlewareMessageType>() {
+            public MiddlewareMessageType findValueByNumber(int number) {
+              return MiddlewareMessageType.valueOf(number);
+            }
+          };
     private final int index;
     private final int value;
 
@@ -335,66 +329,64 @@ public final class Message {
 
     public static MiddlewareMessageType valueOf(int value) {
       switch (value) {
-          case 0:
-              return Request;
-          case 1:
-              return Response;
-          case 2:
-              return Redirect;
-          case 3:
-              return Heartbeat;
-          default:
-              return null;
+        case 0: return Request;
+        case 1: return Response;
+        case 2: return Redirect;
+        case 3: return Heartbeat;
+        default: return null;
       }
     }
 
     public static com.google.protobuf.Internal.EnumLiteMap<MiddlewareMessageType>
-    internalGetValueMap() {
+        internalGetValueMap() {
       return internalValueMap;
     }
 
     public static final com.google.protobuf.Descriptors.EnumDescriptor
-    getDescriptor() {
+        getDescriptor() {
       return rso.core.model.Message.getDescriptor().getEnumTypes().get(1);
     }
 
     public static MiddlewareMessageType valueOf(
-            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
-                "EnumValueDescriptor is not for this type.");
+          "EnumValueDescriptor is not for this type.");
       }
       return VALUES[desc.getIndex()];
     }
 
-      public final int getNumber() {
-          return value;
-      }
+    public final int getNumber() { return value; }
 
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
-    getValueDescriptor() {
+        getValueDescriptor() {
       return getDescriptor().getValues().get(index);
     }
 
     public final com.google.protobuf.Descriptors.EnumDescriptor
-    getDescriptorForType() {
+        getDescriptorForType() {
       return getDescriptor();
     }
 
     // @@protoc_insertion_point(enum_scope:rso.MiddlewareMessageType)
   }
   public interface PersonOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:rso.Person)
-          com.google.protobuf.MessageOrBuilder {
+      // @@protoc_insertion_point(interface_extends:rso.Person)
+      com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 ID = 1;</code>
+     * <code>required string uuid = 1;</code>
      */
-    boolean hasID();
+    boolean hasUuid();
     /**
-     * <code>required int32 ID = 1;</code>
+     * <code>required string uuid = 1;</code>
      */
-    int getID();
+    java.lang.String getUuid();
+    /**
+     * <code>required string uuid = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getUuidBytes();
 
     /**
      * <code>required string name = 2;</code>
@@ -408,7 +400,7 @@ public final class Message {
      * <code>required string name = 2;</code>
      */
     com.google.protobuf.ByteString
-    getNameBytes();
+        getNameBytes();
 
     /**
      * <code>required string surname = 3;</code>
@@ -422,7 +414,7 @@ public final class Message {
      * <code>required string surname = 3;</code>
      */
     com.google.protobuf.ByteString
-    getSurnameBytes();
+        getSurnameBytes();
 
     /**
      * <code>optional int32 birthDate = 4;</code>
@@ -443,8 +435,8 @@ public final class Message {
     long getTimestamp();
   }
   public interface PersonSubjectOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:rso.PersonSubject)
-          com.google.protobuf.MessageOrBuilder {
+      // @@protoc_insertion_point(interface_extends:rso.PersonSubject)
+      com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>required int32 IDPerson = 1;</code>
@@ -474,17 +466,22 @@ public final class Message {
     long getTimestamp();
   }
   public interface SubjectOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:rso.Subject)
-          com.google.protobuf.MessageOrBuilder {
+      // @@protoc_insertion_point(interface_extends:rso.Subject)
+      com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 ID = 1;</code>
+     * <code>required string uuid = 1;</code>
      */
-    boolean hasID();
+    boolean hasUuid();
     /**
-     * <code>required int32 ID = 1;</code>
+     * <code>required string uuid = 1;</code>
      */
-    int getID();
+    java.lang.String getUuid();
+    /**
+     * <code>required string uuid = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getUuidBytes();
 
     /**
      * <code>required string name = 2;</code>
@@ -498,7 +495,7 @@ public final class Message {
      * <code>required string name = 2;</code>
      */
     com.google.protobuf.ByteString
-    getNameBytes();
+        getNameBytes();
 
     /**
      * <code>required int64 timestamp = 3;</code>
@@ -510,8 +507,8 @@ public final class Message {
     long getTimestamp();
   }
   public interface TokenOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:rso.Token)
-          com.google.protobuf.MessageOrBuilder {
+      // @@protoc_insertion_point(interface_extends:rso.Token)
+      com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>required .rso.TokenType tokenType = 1;</code>
@@ -554,14 +551,14 @@ public final class Message {
     long getTimespamp();
   }
   public interface EntityStateOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:rso.EntityState)
-          com.google.protobuf.MessageOrBuilder {
+      // @@protoc_insertion_point(interface_extends:rso.EntityState)
+      com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>repeated .rso.Person students = 1;</code>
      */
     java.util.List<rso.core.model.Message.Person>
-    getStudentsList();
+        getStudentsList();
     /**
      * <code>repeated .rso.Person students = 1;</code>
      */
@@ -574,18 +571,18 @@ public final class Message {
      * <code>repeated .rso.Person students = 1;</code>
      */
     java.util.List<? extends rso.core.model.Message.PersonOrBuilder>
-    getStudentsOrBuilderList();
+        getStudentsOrBuilderList();
     /**
      * <code>repeated .rso.Person students = 1;</code>
      */
     rso.core.model.Message.PersonOrBuilder getStudentsOrBuilder(
-            int index);
+        int index);
 
     /**
      * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
      */
     java.util.List<rso.core.model.Message.PersonSubject>
-    getPersonSubjectsList();
+        getPersonSubjectsList();
     /**
      * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
      */
@@ -598,18 +595,18 @@ public final class Message {
      * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
      */
     java.util.List<? extends rso.core.model.Message.PersonSubjectOrBuilder>
-    getPersonSubjectsOrBuilderList();
+        getPersonSubjectsOrBuilderList();
     /**
      * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
      */
     rso.core.model.Message.PersonSubjectOrBuilder getPersonSubjectsOrBuilder(
-            int index);
+        int index);
 
     /**
      * <code>repeated .rso.Subject subjects = 3;</code>
      */
     java.util.List<rso.core.model.Message.Subject>
-    getSubjectsList();
+        getSubjectsList();
     /**
      * <code>repeated .rso.Subject subjects = 3;</code>
      */
@@ -622,16 +619,16 @@ public final class Message {
      * <code>repeated .rso.Subject subjects = 3;</code>
      */
     java.util.List<? extends rso.core.model.Message.SubjectOrBuilder>
-    getSubjectsOrBuilderList();
+        getSubjectsOrBuilderList();
     /**
      * <code>repeated .rso.Subject subjects = 3;</code>
      */
     rso.core.model.Message.SubjectOrBuilder getSubjectsOrBuilder(
-            int index);
+        int index);
   }
   public interface MiddlewareRequestOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:rso.MiddlewareRequest)
-          com.google.protobuf.MessageOrBuilder {
+      // @@protoc_insertion_point(interface_extends:rso.MiddlewareRequest)
+      com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>required int32 nodeId = 4;</code>
@@ -652,8 +649,8 @@ public final class Message {
     long getTimestamp();
   }
   public interface MiddlewareResponseOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:rso.MiddlewareResponse)
-          com.google.protobuf.MessageOrBuilder {
+      // @@protoc_insertion_point(interface_extends:rso.MiddlewareResponse)
+      com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>required .rso.EntityState changes = 1;</code>
@@ -669,8 +666,8 @@ public final class Message {
     rso.core.model.Message.EntityStateOrBuilder getChangesOrBuilder();
   }
   public interface MiddlewareMessageOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:rso.MiddlewareMessage)
-          com.google.protobuf.MessageOrBuilder {
+      // @@protoc_insertion_point(interface_extends:rso.MiddlewareMessage)
+      com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>required int32 nodeId = 2;</code>
@@ -700,8 +697,8 @@ public final class Message {
     int getRegisteredStudents();
   }
   public interface MiddlewareHeartbeatOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:rso.MiddlewareHeartbeat)
-          com.google.protobuf.MessageOrBuilder {
+      // @@protoc_insertion_point(interface_extends:rso.MiddlewareHeartbeat)
+      com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>required int32 serverId = 1;</code>
@@ -730,107 +727,96 @@ public final class Message {
      */
     rso.core.model.Message.MiddlewareMessageType getMessageType();
   }
-
-    public interface RSOMessageOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:rso.RSOMessage)
-            com.google.protobuf.MessageOrBuilder {
-
-        /**
-         * <code>optional .rso.Token token = 1;</code>
-         */
-        boolean hasToken();
-
-        /**
-         * <code>optional .rso.Token token = 1;</code>
-         */
-        rso.core.model.Message.Token getToken();
-
-        /**
-         * <code>optional .rso.Token token = 1;</code>
-         */
-        rso.core.model.Message.TokenOrBuilder getTokenOrBuilder();
-
-        /**
-         * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-         */
-        boolean hasMiddlewareMessage();
-
-        /**
-         * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-         */
-        rso.core.model.Message.MiddlewareMessage getMiddlewareMessage();
-
-        /**
-         * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-         */
-        rso.core.model.Message.MiddlewareMessageOrBuilder getMiddlewareMessageOrBuilder();
-
-        /**
-         * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-         */
-        boolean hasMiddlewareRequest();
-
-        /**
-         * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-         */
-        rso.core.model.Message.MiddlewareRequest getMiddlewareRequest();
-
-        /**
-         * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-         */
-        rso.core.model.Message.MiddlewareRequestOrBuilder getMiddlewareRequestOrBuilder();
-
-        /**
-         * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-         */
-        boolean hasMiddlewareResponse();
-
-        /**
-         * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-         */
-        rso.core.model.Message.MiddlewareResponse getMiddlewareResponse();
-
-        /**
-         * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-         */
-        rso.core.model.Message.MiddlewareResponseOrBuilder getMiddlewareResponseOrBuilder();
-
-        /**
-         * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-         */
-        boolean hasMiddlewareHeartbeat();
-
-        /**
-         * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-         */
-        rso.core.model.Message.MiddlewareHeartbeat getMiddlewareHeartbeat();
-
-        /**
-         * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-         */
-        rso.core.model.Message.MiddlewareHeartbeatOrBuilder getMiddlewareHeartbeatOrBuilder();
-    }
+  public interface RSOMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:rso.RSOMessage)
+      com.google.protobuf.MessageOrBuilder {
 
     /**
-     * Protobuf type {@code rso.Person}
+     * <code>optional .rso.Token token = 1;</code>
      */
-    public static final class Person extends
-            com.google.protobuf.GeneratedMessage implements
+    boolean hasToken();
+    /**
+     * <code>optional .rso.Token token = 1;</code>
+     */
+    rso.core.model.Message.Token getToken();
+    /**
+     * <code>optional .rso.Token token = 1;</code>
+     */
+    rso.core.model.Message.TokenOrBuilder getTokenOrBuilder();
+
+    /**
+     * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+     */
+    boolean hasMiddlewareMessage();
+    /**
+     * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+     */
+    rso.core.model.Message.MiddlewareMessage getMiddlewareMessage();
+    /**
+     * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+     */
+    rso.core.model.Message.MiddlewareMessageOrBuilder getMiddlewareMessageOrBuilder();
+
+    /**
+     * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+     */
+    boolean hasMiddlewareRequest();
+    /**
+     * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+     */
+    rso.core.model.Message.MiddlewareRequest getMiddlewareRequest();
+    /**
+     * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+     */
+    rso.core.model.Message.MiddlewareRequestOrBuilder getMiddlewareRequestOrBuilder();
+
+    /**
+     * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+     */
+    boolean hasMiddlewareResponse();
+    /**
+     * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+     */
+    rso.core.model.Message.MiddlewareResponse getMiddlewareResponse();
+    /**
+     * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+     */
+    rso.core.model.Message.MiddlewareResponseOrBuilder getMiddlewareResponseOrBuilder();
+
+    /**
+     * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+     */
+    boolean hasMiddlewareHeartbeat();
+    /**
+     * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+     */
+    rso.core.model.Message.MiddlewareHeartbeat getMiddlewareHeartbeat();
+    /**
+     * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+     */
+    rso.core.model.Message.MiddlewareHeartbeatOrBuilder getMiddlewareHeartbeatOrBuilder();
+  }
+
+  /**
+   * Protobuf type {@code rso.Person}
+   */
+  public static final class Person extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:rso.Person)
       PersonOrBuilder {
-    public static final int ID_FIELD_NUMBER = 1;
+    public static final int UUID_FIELD_NUMBER = 1;
     public static final int NAME_FIELD_NUMBER = 2;
     public static final int SURNAME_FIELD_NUMBER = 3;
     public static final int BIRTHDATE_FIELD_NUMBER = 4;
     public static final int TIMESTAMP_FIELD_NUMBER = 5;
     private static final Person defaultInstance;
-        private static final long serialVersionUID = 0L;
-        public static com.google.protobuf.Parser<Person> PARSER =
-                new com.google.protobuf.AbstractParser<Person>() {
-                    public Person parsePartialFrom(
-                            com.google.protobuf.CodedInputStream input,
-                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                            throws com.google.protobuf.InvalidProtocolBufferException {
+    private static final long serialVersionUID = 0L;
+    public static com.google.protobuf.Parser<Person> PARSER =
+        new com.google.protobuf.AbstractParser<Person>() {
+      public Person parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return new Person(input, extensionRegistry);
       }
     };
@@ -842,29 +828,27 @@ public final class Message {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     private int bitField0_;
-    private int iD_;
+    private java.lang.Object uuid_;
     private java.lang.Object name_;
     private java.lang.Object surname_;
     private int birthDate_;
     private long timestamp_;
     private byte memoizedIsInitialized = -1;
     private int memoizedSerializedSize = -1;
+
     // Use Person.newBuilder() to construct.
     private Person(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-        this.unknownFields = builder.getUnknownFields();
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private Person(boolean noInit) {
-        this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-
-        private Person(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    private Person(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private Person(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            initFields();
-            int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
@@ -872,18 +856,19 @@ public final class Message {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-                done = true;
-                break;
-              default: {
+              done = true;
+              break;
+            default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
-            case 8: {
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              iD_ = input.readInt32();
+              uuid_ = bs;
               break;
             }
             case 18: {
@@ -913,7 +898,7 @@ public final class Message {
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
+        throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
@@ -922,7 +907,7 @@ public final class Message {
     }
 
     public static Person getDefaultInstance() {
-        return defaultInstance;
+      return defaultInstance;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -930,66 +915,66 @@ public final class Message {
       return rso.core.model.Message.internal_static_rso_Person_descriptor;
     }
 
-        public static rso.core.model.Message.Person parseFrom(
+    public static rso.core.model.Message.Person parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
+      return PARSER.parseFrom(data);
+    }
 
-        public static rso.core.model.Message.Person parseFrom(
-                com.google.protobuf.ByteString data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    public static rso.core.model.Message.Person parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
-        }
+    }
 
-        public static rso.core.model.Message.Person parseFrom(byte[] data)
+    public static rso.core.model.Message.Person parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
+      return PARSER.parseFrom(data);
+    }
 
-        public static rso.core.model.Message.Person parseFrom(
-                byte[] data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    public static rso.core.model.Message.Person parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
-        }
+    }
 
     public static rso.core.model.Message.Person parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-        return PARSER.parseFrom(input);
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.Person parseFrom(
-                java.io.InputStream input,
+    public static rso.core.model.Message.Person parseFrom(
+        java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
-        }
+    }
 
-        public static rso.core.model.Message.Person parseDelimitedFrom(java.io.InputStream input)
+    public static rso.core.model.Message.Person parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input);
-        }
+      return PARSER.parseDelimitedFrom(input);
+    }
 
-        public static rso.core.model.Message.Person parseDelimitedFrom(
-                java.io.InputStream input,
+    public static rso.core.model.Message.Person parseDelimitedFrom(
+        java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
-        }
+    }
 
-        public static rso.core.model.Message.Person parseFrom(
+    public static rso.core.model.Message.Person parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-            return PARSER.parseFrom(input);
-        }
+      return PARSER.parseFrom(input);
+    }
 
-        public static rso.core.model.Message.Person parseFrom(
-                com.google.protobuf.CodedInputStream input,
+    public static rso.core.model.Message.Person parseFrom(
+        com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public static Builder newBuilder() { return Builder.create(); }
@@ -999,19 +984,19 @@ public final class Message {
     }
 
     public Person getDefaultInstanceForType() {
-        return defaultInstance;
+      return defaultInstance;
     }
 
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
-        return this.unknownFields;
+      return this.unknownFields;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-    internalGetFieldAccessorTable() {
-        return rso.core.model.Message.internal_static_rso_Person_fieldAccessorTable
-                .ensureFieldAccessorsInitialized(
+        internalGetFieldAccessorTable() {
+      return rso.core.model.Message.internal_static_rso_Person_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
               rso.core.model.Message.Person.class, rso.core.model.Message.Person.Builder.class);
     }
 
@@ -1021,17 +1006,45 @@ public final class Message {
     }
 
     /**
-     * <code>required int32 ID = 1;</code>
+     * <code>required string uuid = 1;</code>
      */
-    public boolean hasID() {
+    public boolean hasUuid() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
 
     /**
-     * <code>required int32 ID = 1;</code>
+     * <code>required string uuid = 1;</code>
      */
-    public int getID() {
-      return iD_;
+    public java.lang.String getUuid() {
+      java.lang.Object ref = uuid_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          uuid_ = s;
+        }
+        return s;
+      }
+    }
+
+    /**
+     * <code>required string uuid = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUuidBytes() {
+      java.lang.Object ref = uuid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        uuid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     /**
@@ -1047,7 +1060,7 @@ public final class Message {
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
@@ -1059,14 +1072,14 @@ public final class Message {
       }
     }
 
-        /**
+    /**
      * <code>required string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b =
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         name_ = b;
@@ -1089,7 +1102,7 @@ public final class Message {
     public java.lang.String getSurname() {
       java.lang.Object ref = surname_;
       if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
@@ -1101,14 +1114,14 @@ public final class Message {
       }
     }
 
-        /**
-         * <code>required string surname = 3;</code>
+    /**
+     * <code>required string surname = 3;</code>
      */
     public com.google.protobuf.ByteString
         getSurnameBytes() {
-        java.lang.Object ref = surname_;
-        if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b =
+      java.lang.Object ref = surname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         surname_ = b;
@@ -1147,7 +1160,7 @@ public final class Message {
     }
 
     private void initFields() {
-      iD_ = 0;
+      uuid_ = "";
       name_ = "";
       surname_ = "";
       birthDate_ = 0;
@@ -1159,7 +1172,7 @@ public final class Message {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasID()) {
+      if (!hasUuid()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1175,15 +1188,15 @@ public final class Message {
         memoizedIsInitialized = 0;
         return false;
       }
-        memoizedIsInitialized = 1;
-        return true;
+      memoizedIsInitialized = 1;
+      return true;
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, iD_);
+        output.writeBytes(1, getUuidBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getNameBytes());
@@ -1204,74 +1217,72 @@ public final class Message {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
 
-        size = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, iD_);
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          .computeBytesSize(1, getUuidBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getNameBytes());
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(3, getSurnameBytes());
-        }
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, birthDate_);
-        }
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(5, timestamp_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
-        return size;
+      return size;
     }
 
     @java.lang.Override
     protected java.lang.Object writeReplace()
-            throws java.io.ObjectStreamException {
-        return super.writeReplace();
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
-        public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() { return newBuilder(); }
 
-        public Builder toBuilder() {
-            return newBuilder(this);
-        }
+    public Builder toBuilder() { return newBuilder(this); }
 
-        @java.lang.Override
+    @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
-        }
+    }
 
-        /**
-         * Protobuf type {@code rso.Person}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+    /**
+     * Protobuf type {@code rso.Person}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:rso.Person)
         rso.core.model.Message.PersonOrBuilder {
       private int bitField0_;
-            private int iD_;
-            private java.lang.Object name_ = "";
+      private java.lang.Object uuid_ = "";
+      private java.lang.Object name_ = "";
       private java.lang.Object surname_ = "";
       private int birthDate_ ;
       private long timestamp_ ;
 
       // Construct using rso.core.model.Message.Person.newBuilder()
       private Builder() {
-          maybeForceBuilderInitialization();
+        maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
-          maybeForceBuilderInitialization();
+        maybeForceBuilderInitialization();
       }
 
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1280,13 +1291,13 @@ public final class Message {
       }
 
       private static Builder create() {
-          return new Builder();
+        return new Builder();
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-          return rso.core.model.Message.internal_static_rso_Person_fieldAccessorTable
-                  .ensureFieldAccessorsInitialized(
+          internalGetFieldAccessorTable() {
+        return rso.core.model.Message.internal_static_rso_Person_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
                 rso.core.model.Message.Person.class, rso.core.model.Message.Person.Builder.class);
       }
 
@@ -1297,7 +1308,7 @@ public final class Message {
 
       public Builder clear() {
         super.clear();
-        iD_ = 0;
+        uuid_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -1311,7 +1322,7 @@ public final class Message {
       }
 
       public Builder clone() {
-          return create().mergeFrom(buildPartial());
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -1338,7 +1349,7 @@ public final class Message {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.iD_ = iD_;
+        result.uuid_ = uuid_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -1360,7 +1371,7 @@ public final class Message {
         return result;
       }
 
-            public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof rso.core.model.Message.Person) {
           return mergeFrom((rso.core.model.Message.Person)other);
         } else {
@@ -1371,8 +1382,10 @@ public final class Message {
 
       public Builder mergeFrom(rso.core.model.Message.Person other) {
         if (other == rso.core.model.Message.Person.getDefaultInstance()) return this;
-        if (other.hasID()) {
-          setID(other.getID());
+        if (other.hasUuid()) {
+          bitField0_ |= 0x00000001;
+          uuid_ = other.uuid_;
+          onChanged();
         }
         if (other.hasName()) {
           bitField0_ |= 0x00000002;
@@ -1395,23 +1408,23 @@ public final class Message {
       }
 
       public final boolean isInitialized() {
-        if (!hasID()) {
+        if (!hasUuid()) {
 
           return false;
         }
-          if (!hasName()) {
+        if (!hasName()) {
 
           return false;
         }
-          if (!hasSurname()) {
+        if (!hasSurname()) {
 
-              return false;
-          }
+          return false;
+        }
           return hasTimestamp();
       }
 
-            public Builder mergeFrom(
-                    com.google.protobuf.CodedInputStream input,
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         rso.core.model.Message.Person parsedMessage = null;
@@ -1429,35 +1442,81 @@ public final class Message {
       }
 
       /**
-       * <code>required int32 ID = 1;</code>
+       * <code>required string uuid = 1;</code>
        */
-      public boolean hasID() {
+      public boolean hasUuid() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
 
       /**
-       * <code>required int32 ID = 1;</code>
+       * <code>required string uuid = 1;</code>
        */
-      public int getID() {
-        return iD_;
+      public java.lang.String getUuid() {
+        java.lang.Object ref = uuid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            uuid_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
 
       /**
-       * <code>required int32 ID = 1;</code>
+       * <code>required string uuid = 1;</code>
        */
-      public Builder setID(int value) {
-        bitField0_ |= 0x00000001;
-        iD_ = value;
+      public Builder setUuid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        uuid_ = value;
         onChanged();
         return this;
       }
 
       /**
-       * <code>required int32 ID = 1;</code>
+       * <code>required string uuid = 1;</code>
        */
-      public Builder clearID() {
+      public com.google.protobuf.ByteString
+          getUuidBytes() {
+        java.lang.Object ref = uuid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          uuid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      /**
+       * <code>required string uuid = 1;</code>
+       */
+      public Builder setUuidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        uuid_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>required string uuid = 1;</code>
+       */
+      public Builder clearUuid() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        iD_ = 0;
+        uuid_ = getDefaultInstance().getUuid();
         onChanged();
         return this;
       }
@@ -1473,8 +1532,8 @@ public final class Message {
        * <code>required string name = 2;</code>
        */
       public java.lang.String getName() {
-          java.lang.Object ref = name_;
-          if (!(ref instanceof java.lang.String)) {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
@@ -1484,14 +1543,14 @@ public final class Message {
           return s;
         } else {
           return (java.lang.String) ref;
-          }
+        }
       }
 
-            /**
+      /**
        * <code>required string name = 2;</code>
-             */
-            public Builder setName(
-                    java.lang.String value) {
+       */
+      public Builder setName(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1499,30 +1558,30 @@ public final class Message {
         name_ = value;
         onChanged();
         return this;
-            }
+      }
 
-            /**
+      /**
        * <code>required string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
-          java.lang.Object ref = name_;
-          if (ref instanceof String) {
-              com.google.protobuf.ByteString b =
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           name_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
-          }
+        }
       }
 
-            /**
-             * <code>required string name = 2;</code>
-             */
-            public Builder setNameBytes(
-                    com.google.protobuf.ByteString value) {
+      /**
+       * <code>required string name = 2;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1553,8 +1612,8 @@ public final class Message {
        * <code>required string surname = 3;</code>
        */
       public java.lang.String getSurname() {
-          java.lang.Object ref = surname_;
-          if (!(ref instanceof java.lang.String)) {
+        java.lang.Object ref = surname_;
+        if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
@@ -1564,14 +1623,14 @@ public final class Message {
           return s;
         } else {
           return (java.lang.String) ref;
-          }
+        }
       }
 
-            /**
+      /**
        * <code>required string surname = 3;</code>
-             */
-            public Builder setSurname(
-                    java.lang.String value) {
+       */
+      public Builder setSurname(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1579,30 +1638,30 @@ public final class Message {
         surname_ = value;
         onChanged();
         return this;
-            }
+      }
 
-            /**
-             * <code>required string surname = 3;</code>
+      /**
+       * <code>required string surname = 3;</code>
        */
       public com.google.protobuf.ByteString
           getSurnameBytes() {
-          java.lang.Object ref = surname_;
-          if (ref instanceof String) {
-              com.google.protobuf.ByteString b =
+        java.lang.Object ref = surname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           surname_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
-          }
+        }
       }
 
-            /**
-             * <code>required string surname = 3;</code>
-             */
-            public Builder setSurnameBytes(
-                    com.google.protobuf.ByteString value) {
+      /**
+       * <code>required string surname = 3;</code>
+       */
+      public Builder setSurnameBytes(
+          com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1691,26 +1750,26 @@ public final class Message {
     }
 
     // @@protoc_insertion_point(class_scope:rso.Person)
-    }
+  }
 
-    /**
-     * Protobuf type {@code rso.PersonSubject}
-     */
-    public static final class PersonSubject extends
-            com.google.protobuf.GeneratedMessage implements
+  /**
+   * Protobuf type {@code rso.PersonSubject}
+   */
+  public static final class PersonSubject extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:rso.PersonSubject)
       PersonSubjectOrBuilder {
     public static final int IDPERSON_FIELD_NUMBER = 1;
     public static final int IDSUBJECT_FIELD_NUMBER = 2;
     public static final int TIMESTAMP_FIELD_NUMBER = 3;
     private static final PersonSubject defaultInstance;
-        private static final long serialVersionUID = 0L;
-        public static com.google.protobuf.Parser<PersonSubject> PARSER =
-                new com.google.protobuf.AbstractParser<PersonSubject>() {
-                    public PersonSubject parsePartialFrom(
-                            com.google.protobuf.CodedInputStream input,
-                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
+    private static final long serialVersionUID = 0L;
+    public static com.google.protobuf.Parser<PersonSubject> PARSER =
+        new com.google.protobuf.AbstractParser<PersonSubject>() {
+      public PersonSubject parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return new PersonSubject(input, extensionRegistry);
       }
     };
@@ -1729,19 +1788,16 @@ public final class Message {
     private int memoizedSerializedSize = -1;
     // Use PersonSubject.newBuilder() to construct.
     private PersonSubject(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-        this.unknownFields = builder.getUnknownFields();
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    private PersonSubject(boolean noInit) {
-        this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-
-        private PersonSubject(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    private PersonSubject(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private PersonSubject(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            initFields();
-            int mutable_bitField0_ = 0;
+      initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1750,9 +1806,9 @@ public final class Message {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-                done = true;
-                break;
-              default: {
+              done = true;
+              break;
+            default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 done = true;
@@ -1796,65 +1852,65 @@ public final class Message {
       return rso.core.model.Message.internal_static_rso_PersonSubject_descriptor;
     }
 
-        public static rso.core.model.Message.PersonSubject parseFrom(
+    public static rso.core.model.Message.PersonSubject parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
+      return PARSER.parseFrom(data);
+    }
 
-        public static rso.core.model.Message.PersonSubject parseFrom(
-                com.google.protobuf.ByteString data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    public static rso.core.model.Message.PersonSubject parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
-        }
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
 
-        public static rso.core.model.Message.PersonSubject parseFrom(byte[] data)
+    public static rso.core.model.Message.PersonSubject parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
+      return PARSER.parseFrom(data);
+    }
 
-        public static rso.core.model.Message.PersonSubject parseFrom(
-                byte[] data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    public static rso.core.model.Message.PersonSubject parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.PersonSubject parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-        return PARSER.parseFrom(input);
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.PersonSubject parseFrom(
-                java.io.InputStream input,
+    public static rso.core.model.Message.PersonSubject parseFrom(
+        java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
-        }
+    }
 
-        public static rso.core.model.Message.PersonSubject parseDelimitedFrom(java.io.InputStream input)
+    public static rso.core.model.Message.PersonSubject parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input);
-        }
+      return PARSER.parseDelimitedFrom(input);
+    }
 
-        public static rso.core.model.Message.PersonSubject parseDelimitedFrom(
-                java.io.InputStream input,
+    public static rso.core.model.Message.PersonSubject parseDelimitedFrom(
+        java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input, extensionRegistry);
-        }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
 
-        public static rso.core.model.Message.PersonSubject parseFrom(
+    public static rso.core.model.Message.PersonSubject parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-            return PARSER.parseFrom(input);
-        }
+      return PARSER.parseFrom(input);
+    }
 
-        public static rso.core.model.Message.PersonSubject parseFrom(
-                com.google.protobuf.CodedInputStream input,
+    public static rso.core.model.Message.PersonSubject parseFrom(
+        com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
+        throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
@@ -1865,19 +1921,19 @@ public final class Message {
     }
 
     public PersonSubject getDefaultInstanceForType() {
-        return defaultInstance;
+      return defaultInstance;
     }
 
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-        return this.unknownFields;
+        getUnknownFields() {
+      return this.unknownFields;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-    internalGetFieldAccessorTable() {
-        return rso.core.model.Message.internal_static_rso_PersonSubject_fieldAccessorTable
-                .ensureFieldAccessorsInitialized(
+        internalGetFieldAccessorTable() {
+      return rso.core.model.Message.internal_static_rso_PersonSubject_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
               rso.core.model.Message.PersonSubject.class, rso.core.model.Message.PersonSubject.Builder.class);
     }
 
@@ -1951,8 +2007,8 @@ public final class Message {
         memoizedIsInitialized = 0;
         return false;
       }
-        memoizedIsInitialized = 1;
-        return true;
+      memoizedIsInitialized = 1;
+      return true;
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
@@ -1974,63 +2030,60 @@ public final class Message {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
 
-        size = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, iDPerson_);
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, iDSubject_);
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(3, timestamp_);
       }
       size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
-        return size;
+      memoizedSerializedSize = size;
+      return size;
     }
 
     @java.lang.Override
     protected java.lang.Object writeReplace()
-            throws java.io.ObjectStreamException {
-        return super.writeReplace();
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
-    public Builder newBuilderForType() { return newBuilder();
-    }
+    public Builder newBuilderForType() { return newBuilder(); }
 
-        public Builder toBuilder() {
-            return newBuilder(this);
-        }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
-        return builder;
+      return builder;
     }
 
-        /**
-         * Protobuf type {@code rso.PersonSubject}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+    /**
+     * Protobuf type {@code rso.PersonSubject}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:rso.PersonSubject)
-                rso.core.model.Message.PersonSubjectOrBuilder {
+        rso.core.model.Message.PersonSubjectOrBuilder {
       private int bitField0_;
       private int iDPerson_ ;
       private int iDSubject_ ;
       private long timestamp_ ;
       // Construct using rso.core.model.Message.PersonSubject.newBuilder()
       private Builder() {
-          maybeForceBuilderInitialization();
+        maybeForceBuilderInitialization();
       }
       private Builder(
           com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
+        super(parent);
+        maybeForceBuilderInitialization();
       }
 
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -2039,13 +2092,13 @@ public final class Message {
       }
 
       private static Builder create() {
-          return new Builder();
+        return new Builder();
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-          return rso.core.model.Message.internal_static_rso_PersonSubject_fieldAccessorTable
-                  .ensureFieldAccessorsInitialized(
+          internalGetFieldAccessorTable() {
+        return rso.core.model.Message.internal_static_rso_PersonSubject_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
                 rso.core.model.Message.PersonSubject.class, rso.core.model.Message.PersonSubject.Builder.class);
       }
 
@@ -2065,8 +2118,8 @@ public final class Message {
         return this;
       }
 
-            public Builder clone() {
-                return create().mergeFrom(buildPartial());
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -2107,7 +2160,7 @@ public final class Message {
         return result;
       }
 
-            public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof rso.core.model.Message.PersonSubject) {
           return mergeFrom((rso.core.model.Message.PersonSubject)other);
         } else {
@@ -2132,19 +2185,19 @@ public final class Message {
       }
 
       public final boolean isInitialized() {
-          if (!hasIDPerson()) {
+        if (!hasIDPerson()) {
 
           return false;
-          }
-          if (!hasIDSubject()) {
+        }
+        if (!hasIDSubject()) {
 
-              return false;
-          }
+          return false;
+        }
           return hasTimestamp();
       }
 
-            public Builder mergeFrom(
-                    com.google.protobuf.CodedInputStream input,
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         rso.core.model.Message.PersonSubject parsedMessage = null;
@@ -2264,25 +2317,25 @@ public final class Message {
     }
 
     // @@protoc_insertion_point(class_scope:rso.PersonSubject)
-    }
+  }
 
-    /**
-     * Protobuf type {@code rso.Subject}
-     */
-    public static final class Subject extends
-    com.google.protobuf.GeneratedMessage implements
+  /**
+   * Protobuf type {@code rso.Subject}
+   */
+  public static final class Subject extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:rso.Subject)
       SubjectOrBuilder {
-    public static final int ID_FIELD_NUMBER = 1;
+    public static final int UUID_FIELD_NUMBER = 1;
     public static final int NAME_FIELD_NUMBER = 2;
     public static final int TIMESTAMP_FIELD_NUMBER = 3;
     private static final Subject defaultInstance;
-        private static final long serialVersionUID = 0L;
-        public static com.google.protobuf.Parser<Subject> PARSER =
-                new com.google.protobuf.AbstractParser<Subject>() {
-                    public Subject parsePartialFrom(
-                            com.google.protobuf.CodedInputStream input,
-                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    private static final long serialVersionUID = 0L;
+    public static com.google.protobuf.Parser<Subject> PARSER =
+        new com.google.protobuf.AbstractParser<Subject>() {
+      public Subject parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return new Subject(input, extensionRegistry);
       }
@@ -2295,27 +2348,23 @@ public final class Message {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     private int bitField0_;
-    private int iD_;
+    private java.lang.Object uuid_;
     private java.lang.Object name_;
     private long timestamp_;
     private byte memoizedIsInitialized = -1;
     private int memoizedSerializedSize = -1;
     // Use Subject.newBuilder() to construct.
     private Subject(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-        this.unknownFields = builder.getUnknownFields();
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-
-        private Subject(boolean noInit) {
-            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-        }
-
-        private Subject(
-                com.google.protobuf.CodedInputStream input,
+    private Subject(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private Subject(
+        com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            initFields();
-            int mutable_bitField0_ = 0;
+      initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2323,9 +2372,9 @@ public final class Message {
         while (!done) {
           int tag = input.readTag();
           switch (tag) {
-              case 0:
-                  done = true;
-                  break;
+            case 0:
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
@@ -2333,9 +2382,10 @@ public final class Message {
               }
               break;
             }
-            case 8: {
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
-              iD_ = input.readInt32();
+              uuid_ = bs;
               break;
             }
             case 18: {
@@ -2352,7 +2402,7 @@ public final class Message {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
@@ -2368,40 +2418,40 @@ public final class Message {
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-        return rso.core.model.Message.internal_static_rso_Subject_descriptor;
+      return rso.core.model.Message.internal_static_rso_Subject_descriptor;
     }
 
-        public static rso.core.model.Message.Subject parseFrom(
+    public static rso.core.model.Message.Subject parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
+      return PARSER.parseFrom(data);
+    }
 
-        public static rso.core.model.Message.Subject parseFrom(
-                com.google.protobuf.ByteString data,
+    public static rso.core.model.Message.Subject parseFrom(
+        com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.Subject parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+      return PARSER.parseFrom(data);
     }
 
-        public static rso.core.model.Message.Subject parseFrom(
-                byte[] data,
+    public static rso.core.model.Message.Subject parseFrom(
+        byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.Subject parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.Subject parseFrom(
+    public static rso.core.model.Message.Subject parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2410,26 +2460,26 @@ public final class Message {
 
     public static rso.core.model.Message.Subject parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
+      return PARSER.parseDelimitedFrom(input);
     }
 
-        public static rso.core.model.Message.Subject parseDelimitedFrom(
+    public static rso.core.model.Message.Subject parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input, extensionRegistry);
-        }
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
 
-        public static rso.core.model.Message.Subject parseFrom(
+    public static rso.core.model.Message.Subject parseFrom(
         com.google.protobuf.CodedInputStream input)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input);
-        }
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
 
-        public static rso.core.model.Message.Subject parseFrom(
-                com.google.protobuf.CodedInputStream input,
+    public static rso.core.model.Message.Subject parseFrom(
+        com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
+        throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
@@ -2445,13 +2495,13 @@ public final class Message {
 
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-        return this.unknownFields;
+        getUnknownFields() {
+      return this.unknownFields;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-    internalGetFieldAccessorTable() {
-        return rso.core.model.Message.internal_static_rso_Subject_fieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return rso.core.model.Message.internal_static_rso_Subject_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               rso.core.model.Message.Subject.class, rso.core.model.Message.Subject.Builder.class);
     }
@@ -2462,17 +2512,45 @@ public final class Message {
     }
 
     /**
-     * <code>required int32 ID = 1;</code>
+     * <code>required string uuid = 1;</code>
      */
-    public boolean hasID() {
+    public boolean hasUuid() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
 
     /**
-     * <code>required int32 ID = 1;</code>
+     * <code>required string uuid = 1;</code>
      */
-    public int getID() {
-      return iD_;
+    public java.lang.String getUuid() {
+      java.lang.Object ref = uuid_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          uuid_ = s;
+        }
+        return s;
+      }
+    }
+
+    /**
+     * <code>required string uuid = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUuidBytes() {
+      java.lang.Object ref = uuid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        uuid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     /**
@@ -2487,7 +2565,7 @@ public final class Message {
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
-        if (ref instanceof java.lang.String) {
+      if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs =
@@ -2496,7 +2574,7 @@ public final class Message {
         if (bs.isValidUtf8()) {
           name_ = s;
         }
-            return s;
+        return s;
       }
     }
 
@@ -2504,9 +2582,9 @@ public final class Message {
      * <code>required string name = 2;</code>
      */
     public com.google.protobuf.ByteString
-    getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof java.lang.String) {
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
@@ -2532,7 +2610,7 @@ public final class Message {
     }
 
     private void initFields() {
-      iD_ = 0;
+      uuid_ = "";
       name_ = "";
       timestamp_ = 0L;
     }
@@ -2542,7 +2620,7 @@ public final class Message {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasID()) {
+      if (!hasUuid()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2554,15 +2632,15 @@ public final class Message {
         memoizedIsInitialized = 0;
         return false;
       }
-        memoizedIsInitialized = 1;
-        return true;
+      memoizedIsInitialized = 1;
+      return true;
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, iD_);
+        output.writeBytes(1, getUuidBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getNameBytes());
@@ -2577,52 +2655,50 @@ public final class Message {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
 
-        size = 0;
+      size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-                .computeInt32Size(1, iD_);
+          .computeBytesSize(1, getUuidBytes());
       }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getNameBytes());
-        }
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(3, timestamp_);
       }
       size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
+      memoizedSerializedSize = size;
       return size;
     }
 
     @java.lang.Override
     protected java.lang.Object writeReplace()
-            throws java.io.ObjectStreamException {
-        return super.writeReplace();
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
-    public Builder newBuilderForType() { return newBuilder();
-    }
+    public Builder newBuilderForType() { return newBuilder(); }
 
-        public Builder toBuilder() {
-            return newBuilder(this); }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
-        return builder;
+      return builder;
     }
 
-        /**
-         * Protobuf type {@code rso.Subject}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:rso.Subject)
-                rso.core.model.Message.SubjectOrBuilder {
+    /**
+     * Protobuf type {@code rso.Subject}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:rso.Subject)
+        rso.core.model.Message.SubjectOrBuilder {
       private int bitField0_;
-      private int iD_ ;
+      private java.lang.Object uuid_ = "";
       private java.lang.Object name_ = "";
       private long timestamp_ ;
       // Construct using rso.core.model.Message.Subject.newBuilder()
@@ -2631,7 +2707,7 @@ public final class Message {
       }
       private Builder(
           com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          super(parent);
+        super(parent);
         maybeForceBuilderInitialization();
       }
 
@@ -2640,13 +2716,13 @@ public final class Message {
         return rso.core.model.Message.internal_static_rso_Subject_descriptor;
       }
 
-            private static Builder create() {
+      private static Builder create() {
         return new Builder();
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-          return rso.core.model.Message.internal_static_rso_Subject_fieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rso.core.model.Message.internal_static_rso_Subject_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 rso.core.model.Message.Subject.class, rso.core.model.Message.Subject.Builder.class);
       }
@@ -2658,7 +2734,7 @@ public final class Message {
 
       public Builder clear() {
         super.clear();
-        iD_ = 0;
+        uuid_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -2667,7 +2743,7 @@ public final class Message {
         return this;
       }
 
-            public Builder clone() {
+      public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
 
@@ -2695,7 +2771,7 @@ public final class Message {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.iD_ = iD_;
+        result.uuid_ = uuid_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -2706,10 +2782,10 @@ public final class Message {
         result.timestamp_ = timestamp_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
-          return result;
+        return result;
       }
 
-            public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof rso.core.model.Message.Subject) {
           return mergeFrom((rso.core.model.Message.Subject)other);
         } else {
@@ -2720,8 +2796,10 @@ public final class Message {
 
       public Builder mergeFrom(rso.core.model.Message.Subject other) {
         if (other == rso.core.model.Message.Subject.getDefaultInstance()) return this;
-        if (other.hasID()) {
-          setID(other.getID());
+        if (other.hasUuid()) {
+          bitField0_ |= 0x00000001;
+          uuid_ = other.uuid_;
+          onChanged();
         }
         if (other.hasName()) {
           bitField0_ |= 0x00000002;
@@ -2736,19 +2814,19 @@ public final class Message {
       }
 
       public final boolean isInitialized() {
-        if (!hasID()) {
+        if (!hasUuid()) {
 
           return false;
         }
-          if (!hasName()) {
+        if (!hasName()) {
 
-              return false;
-          }
+          return false;
+        }
           return hasTimestamp();
       }
 
-            public Builder mergeFrom(
-                    com.google.protobuf.CodedInputStream input,
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         rso.core.model.Message.Subject parsedMessage = null;
@@ -2766,35 +2844,81 @@ public final class Message {
       }
 
       /**
-       * <code>required int32 ID = 1;</code>
+       * <code>required string uuid = 1;</code>
        */
-      public boolean hasID() {
+      public boolean hasUuid() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
 
       /**
-       * <code>required int32 ID = 1;</code>
+       * <code>required string uuid = 1;</code>
        */
-      public int getID() {
-        return iD_;
+      public java.lang.String getUuid() {
+        java.lang.Object ref = uuid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            uuid_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
 
       /**
-       * <code>required int32 ID = 1;</code>
+       * <code>required string uuid = 1;</code>
        */
-      public Builder setID(int value) {
-        bitField0_ |= 0x00000001;
-        iD_ = value;
+      public Builder setUuid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        uuid_ = value;
         onChanged();
         return this;
       }
 
       /**
-       * <code>required int32 ID = 1;</code>
+       * <code>required string uuid = 1;</code>
        */
-      public Builder clearID() {
+      public com.google.protobuf.ByteString
+          getUuidBytes() {
+        java.lang.Object ref = uuid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          uuid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      /**
+       * <code>required string uuid = 1;</code>
+       */
+      public Builder setUuidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        uuid_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>required string uuid = 1;</code>
+       */
+      public Builder clearUuid() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        iD_ = 0;
+        uuid_ = getDefaultInstance().getUuid();
         onChanged();
         return this;
       }
@@ -2810,7 +2934,7 @@ public final class Message {
        * <code>required string name = 2;</code>
        */
       public java.lang.String getName() {
-          java.lang.Object ref = name_;
+        java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
@@ -2820,7 +2944,7 @@ public final class Message {
           }
           return s;
         } else {
-            return (java.lang.String) ref;
+          return (java.lang.String) ref;
         }
       }
 
@@ -2834,17 +2958,17 @@ public final class Message {
   }
   bitField0_ |= 0x00000002;
         name_ = value;
-          onChanged();
-          return this;
+        onChanged();
+        return this;
       }
 
       /**
        * <code>required string name = 2;</code>
        */
       public com.google.protobuf.ByteString
-      getNameBytes() {
-          java.lang.Object ref = name_;
-          if (ref instanceof String) {
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
           com.google.protobuf.ByteString b =
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
@@ -2852,7 +2976,7 @@ public final class Message {
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
-          }
+        }
       }
 
       /**
@@ -2911,15 +3035,15 @@ public final class Message {
       }
 
       // @@protoc_insertion_point(builder_scope:rso.Subject)
-        }
-
-        // @@protoc_insertion_point(class_scope:rso.Subject)
     }
 
-    /**
-     * Protobuf type {@code rso.Token}
-     */
-    public static final class Token extends
+    // @@protoc_insertion_point(class_scope:rso.Subject)
+  }
+
+  /**
+   * Protobuf type {@code rso.Token}
+   */
+  public static final class Token extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:rso.Token)
       TokenOrBuilder {
@@ -2927,13 +3051,13 @@ public final class Message {
     public static final int SERVERID_FIELD_NUMBER = 2;
     public static final int NODEIDS_FIELD_NUMBER = 3;
     public static final int TIMESPAMP_FIELD_NUMBER = 4;
-        private static final Token defaultInstance;
-        private static final long serialVersionUID = 0L;
-        public static com.google.protobuf.Parser<Token> PARSER =
-                new com.google.protobuf.AbstractParser<Token>() {
-                    public Token parsePartialFrom(
-                            com.google.protobuf.CodedInputStream input,
-                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    private static final Token defaultInstance;
+    private static final long serialVersionUID = 0L;
+    public static com.google.protobuf.Parser<Token> PARSER =
+        new com.google.protobuf.AbstractParser<Token>() {
+      public Token parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return new Token(input, extensionRegistry);
       }
@@ -2954,19 +3078,16 @@ public final class Message {
     private int memoizedSerializedSize = -1;
     // Use Token.newBuilder() to construct.
     private Token(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-        this.unknownFields = builder.getUnknownFields();
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
 
-        private Token(boolean noInit) {
-            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-        }
-
-        private Token(
-                com.google.protobuf.CodedInputStream input,
+    private Token(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private Token(
+        com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            initFields();
+      initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -2975,9 +3096,9 @@ public final class Message {
         while (!done) {
           int tag = input.readTag();
           switch (tag) {
-              case 0:
-                  done = true;
-                  break;
+            case 0:
+              done = true;
+              break;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
@@ -3030,7 +3151,7 @@ public final class Message {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
@@ -3041,76 +3162,76 @@ public final class Message {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
-        }
+    }
 
-        public static Token getDefaultInstance() {
+    public static Token getDefaultInstance() {
       return defaultInstance;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
-    getDescriptor() {
-        return rso.core.model.Message.internal_static_rso_Token_descriptor;
+        getDescriptor() {
+      return rso.core.model.Message.internal_static_rso_Token_descriptor;
     }
 
-        public static rso.core.model.Message.Token parseFrom(
+    public static rso.core.model.Message.Token parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
+      return PARSER.parseFrom(data);
+    }
 
-        public static rso.core.model.Message.Token parseFrom(
-                com.google.protobuf.ByteString data,
+    public static rso.core.model.Message.Token parseFrom(
+        com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.Token parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+      return PARSER.parseFrom(data);
     }
 
-        public static rso.core.model.Message.Token parseFrom(
+    public static rso.core.model.Message.Token parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.Token parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.Token parseFrom(
+    public static rso.core.model.Message.Token parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public static rso.core.model.Message.Token parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
     }
 
-        public static rso.core.model.Message.Token parseDelimitedFrom(
+    public static rso.core.model.Message.Token parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
 
     public static rso.core.model.Message.Token parseFrom(
         com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.Token parseFrom(
+    public static rso.core.model.Message.Token parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
+        throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
@@ -3120,19 +3241,19 @@ public final class Message {
       return newBuilder().mergeFrom(prototype);
     }
 
-        public Token getDefaultInstanceForType() {
+    public Token getDefaultInstanceForType() {
       return defaultInstance;
     }
 
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+        getUnknownFields() {
       return this.unknownFields;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-    internalGetFieldAccessorTable() {
-        return rso.core.model.Message.internal_static_rso_Token_fieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return rso.core.model.Message.internal_static_rso_Token_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               rso.core.model.Message.Token.class, rso.core.model.Message.Token.Builder.class);
     }
@@ -3167,7 +3288,7 @@ public final class Message {
      * <code>optional int32 serverId = 2;</code>
      */
     public int getServerId() {
-        return serverId_;
+      return serverId_;
     }
 
     /**
@@ -3220,9 +3341,9 @@ public final class Message {
 
       if (!hasTokenType()) {
         memoizedIsInitialized = 0;
-          return false;
+        return false;
       }
-        memoizedIsInitialized = 1;
+      memoizedIsInitialized = 1;
       return true;
     }
 
@@ -3246,10 +3367,10 @@ public final class Message {
 
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
-        if (size != -1) return size;
+      if (size != -1) return size;
 
-        size = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, tokenType_.getNumber());
       }
@@ -3257,49 +3378,46 @@ public final class Message {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, serverId_);
       }
-        {
-            int dataSize = 0;
-            for (int i = 0; i < nodeIds_.size(); i++) {
+      {
+        int dataSize = 0;
+        for (int i = 0; i < nodeIds_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
             .computeInt32SizeNoTag(nodeIds_.get(i));
         }
         size += dataSize;
-            size += 1 * getNodeIdsList().size();
-        }
+        size += 1 * getNodeIdsList().size();
+      }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(4, timespamp_);
       }
       size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
+      memoizedSerializedSize = size;
       return size;
     }
 
-        @java.lang.Override
-        protected java.lang.Object writeReplace()
-                throws java.io.ObjectStreamException {
-            return super.writeReplace();
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
-    public Builder newBuilderForType() {
-        return newBuilder();
-    }
+    public Builder newBuilderForType() { return newBuilder(); }
 
-        public Builder toBuilder() {
-            return newBuilder(this); }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
-        return builder;
+      return builder;
     }
 
-        /**
-         * Protobuf type {@code rso.Token}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+    /**
+     * Protobuf type {@code rso.Token}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:rso.Token)
         rso.core.model.Message.TokenOrBuilder {
       private int bitField0_;
@@ -3307,15 +3425,14 @@ public final class Message {
       private int serverId_ ;
       private java.util.List<java.lang.Integer> nodeIds_ = java.util.Collections.emptyList();
       private long timespamp_ ;
-
-            // Construct using rso.core.model.Message.Token.newBuilder()
-            private Builder() {
+      // Construct using rso.core.model.Message.Token.newBuilder()
+      private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          super(parent);
+        super(parent);
         maybeForceBuilderInitialization();
       }
 
@@ -3324,13 +3441,13 @@ public final class Message {
         return rso.core.model.Message.internal_static_rso_Token_descriptor;
       }
 
-            private static Builder create() {
+      private static Builder create() {
         return new Builder();
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-          return rso.core.model.Message.internal_static_rso_Token_fieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rso.core.model.Message.internal_static_rso_Token_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 rso.core.model.Message.Token.class, rso.core.model.Message.Token.Builder.class);
       }
@@ -3353,7 +3470,7 @@ public final class Message {
         return this;
       }
 
-            public Builder clone() {
+      public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
 
@@ -3397,10 +3514,10 @@ public final class Message {
         result.timespamp_ = timespamp_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
-          return result;
+        return result;
       }
 
-            public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof rso.core.model.Message.Token) {
           return mergeFrom((rso.core.model.Message.Token)other);
         } else {
@@ -3431,14 +3548,14 @@ public final class Message {
           setTimespamp(other.getTimespamp());
         }
         this.mergeUnknownFields(other.getUnknownFields());
-          return this;
+        return this;
       }
 
-            public final boolean isInitialized() {
-                return hasTokenType();
-            }
+      public final boolean isInitialized() {
+          return hasTokenType();
+      }
 
-            public Builder mergeFrom(
+      public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -3528,9 +3645,9 @@ public final class Message {
       }
 
       private void ensureNodeIdsIsMutable() {
-          if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
           nodeIds_ = new java.util.ArrayList<java.lang.Integer>(nodeIds_);
-              bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -3553,7 +3670,7 @@ public final class Message {
        * <code>repeated int32 nodeIds = 3;</code>
        */
       public int getNodeIds(int index) {
-          return nodeIds_.get(index);
+        return nodeIds_.get(index);
       }
 
       /**
@@ -3573,15 +3690,15 @@ public final class Message {
       public Builder addNodeIds(int value) {
         ensureNodeIdsIsMutable();
         nodeIds_.add(value);
-          onChanged();
-          return this;
+        onChanged();
+        return this;
       }
 
-            /**
-             * <code>repeated int32 nodeIds = 3;</code>
-             */
+      /**
+       * <code>repeated int32 nodeIds = 3;</code>
+       */
       public Builder addAllNodeIds(
-              java.lang.Iterable<? extends java.lang.Integer> values) {
+          java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureNodeIdsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, nodeIds_);
@@ -3631,28 +3748,28 @@ public final class Message {
       }
 
       // @@protoc_insertion_point(builder_scope:rso.Token)
-        }
-
-        // @@protoc_insertion_point(class_scope:rso.Token)
     }
 
-    /**
-     * Protobuf type {@code rso.EntityState}
-     */
-    public static final class EntityState extends
+    // @@protoc_insertion_point(class_scope:rso.Token)
+  }
+
+  /**
+   * Protobuf type {@code rso.EntityState}
+   */
+  public static final class EntityState extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:rso.EntityState)
       EntityStateOrBuilder {
     public static final int STUDENTS_FIELD_NUMBER = 1;
     public static final int PERSONSUBJECTS_FIELD_NUMBER = 2;
     public static final int SUBJECTS_FIELD_NUMBER = 3;
-        private static final EntityState defaultInstance;
-        private static final long serialVersionUID = 0L;
-        public static com.google.protobuf.Parser<EntityState> PARSER =
-                new com.google.protobuf.AbstractParser<EntityState>() {
-                    public EntityState parsePartialFrom(
-                            com.google.protobuf.CodedInputStream input,
-                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    private static final EntityState defaultInstance;
+    private static final long serialVersionUID = 0L;
+    public static com.google.protobuf.Parser<EntityState> PARSER =
+        new com.google.protobuf.AbstractParser<EntityState>() {
+      public EntityState parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return new EntityState(input, extensionRegistry);
       }
@@ -3671,19 +3788,15 @@ public final class Message {
     private int memoizedSerializedSize = -1;
     // Use EntityState.newBuilder() to construct.
     private EntityState(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-        this.unknownFields = builder.getUnknownFields();
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-
-        private EntityState(boolean noInit) {
-            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-        }
-
-        private EntityState(
-                com.google.protobuf.CodedInputStream input,
+    private EntityState(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private EntityState(
+        com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            initFields();
+      initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -3691,9 +3804,9 @@ public final class Message {
         boolean done = false;
         while (!done) {
           int tag = input.readTag();
-            switch (tag) {
-                case 0:
-                    done = true;
+          switch (tag) {
+            case 0:
+              done = true;
               break;
             default: {
               if (!parseUnknownField(input, unknownFields,
@@ -3729,7 +3842,7 @@ public final class Message {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
@@ -3746,73 +3859,73 @@ public final class Message {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
-        }
+    }
 
-        public static EntityState getDefaultInstance() {
+    public static EntityState getDefaultInstance() {
       return defaultInstance;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
-    getDescriptor() {
-        return rso.core.model.Message.internal_static_rso_EntityState_descriptor;
+        getDescriptor() {
+      return rso.core.model.Message.internal_static_rso_EntityState_descriptor;
     }
 
-        public static rso.core.model.Message.EntityState parseFrom(
+    public static rso.core.model.Message.EntityState parseFrom(
         com.google.protobuf.ByteString data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
-        }
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
 
-        public static rso.core.model.Message.EntityState parseFrom(
-                com.google.protobuf.ByteString data,
+    public static rso.core.model.Message.EntityState parseFrom(
+        com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.EntityState parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
     }
 
-        public static rso.core.model.Message.EntityState parseFrom(
+    public static rso.core.model.Message.EntityState parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.EntityState parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.EntityState parseFrom(
+    public static rso.core.model.Message.EntityState parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public static rso.core.model.Message.EntityState parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
     }
 
-        public static rso.core.model.Message.EntityState parseDelimitedFrom(
+    public static rso.core.model.Message.EntityState parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
 
     public static rso.core.model.Message.EntityState parseFrom(
         com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.EntityState parseFrom(
+    public static rso.core.model.Message.EntityState parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3825,19 +3938,19 @@ public final class Message {
       return newBuilder().mergeFrom(prototype);
     }
 
-        public EntityState getDefaultInstanceForType() {
+    public EntityState getDefaultInstanceForType() {
       return defaultInstance;
     }
 
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+        getUnknownFields() {
       return this.unknownFields;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-    internalGetFieldAccessorTable() {
-        return rso.core.model.Message.internal_static_rso_EntityState_fieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return rso.core.model.Message.internal_static_rso_EntityState_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               rso.core.model.Message.EntityState.class, rso.core.model.Message.EntityState.Builder.class);
     }
@@ -3851,11 +3964,11 @@ public final class Message {
      * <code>repeated .rso.Person students = 1;</code>
      */
     public java.util.List<rso.core.model.Message.Person> getStudentsList() {
-        return students_;
+      return students_;
     }
 
-        /**
-         * <code>repeated .rso.Person students = 1;</code>
+    /**
+     * <code>repeated .rso.Person students = 1;</code>
      */
     public java.util.List<? extends rso.core.model.Message.PersonOrBuilder>
         getStudentsOrBuilderList() {
@@ -3891,8 +4004,8 @@ public final class Message {
       return personSubjects_;
     }
 
-        /**
-         * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+    /**
+     * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
      */
     public java.util.List<? extends rso.core.model.Message.PersonSubjectOrBuilder>
         getPersonSubjectsOrBuilderList() {
@@ -3913,8 +4026,8 @@ public final class Message {
       return personSubjects_.get(index);
     }
 
-        /**
-         * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+    /**
+     * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
      */
     public rso.core.model.Message.PersonSubjectOrBuilder getPersonSubjectsOrBuilder(
         int index) {
@@ -3928,8 +4041,8 @@ public final class Message {
       return subjects_;
     }
 
-        /**
-         * <code>repeated .rso.Subject subjects = 3;</code>
+    /**
+     * <code>repeated .rso.Subject subjects = 3;</code>
      */
     public java.util.List<? extends rso.core.model.Message.SubjectOrBuilder>
         getSubjectsOrBuilderList() {
@@ -3984,10 +4097,10 @@ public final class Message {
       for (int i = 0; i < getSubjectsCount(); i++) {
         if (!getSubjects(i).isInitialized()) {
           memoizedIsInitialized = 0;
-            return false;
+          return false;
         }
       }
-        memoizedIsInitialized = 1;
+      memoizedIsInitialized = 1;
       return true;
     }
 
@@ -4008,67 +4121,65 @@ public final class Message {
 
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
-        if (size != -1) return size;
+      if (size != -1) return size;
 
-        size = 0;
+      size = 0;
       for (int i = 0; i < students_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-                .computeMessageSize(1, students_.get(i));
+          .computeMessageSize(1, students_.get(i));
       }
       for (int i = 0; i < personSubjects_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-                .computeMessageSize(2, personSubjects_.get(i));
+          .computeMessageSize(2, personSubjects_.get(i));
       }
       for (int i = 0; i < subjects_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, subjects_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
+      memoizedSerializedSize = size;
       return size;
     }
 
-        @java.lang.Override
-        protected java.lang.Object writeReplace()
-                throws java.io.ObjectStreamException {
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public Builder newBuilderForType() {
-        return newBuilder();
-    }
+    public Builder newBuilderForType() { return newBuilder(); }
 
-        public Builder toBuilder() { return newBuilder(this); }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
-        return builder;
+      return builder;
     }
 
-        /**
-         * Protobuf type {@code rso.EntityState}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+    /**
+     * Protobuf type {@code rso.EntityState}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:rso.EntityState)
-                rso.core.model.Message.EntityStateOrBuilder {
+        rso.core.model.Message.EntityStateOrBuilder {
       private int bitField0_;
-            private java.util.List<rso.core.model.Message.Person> students_ =
-                    java.util.Collections.emptyList();
-            private com.google.protobuf.RepeatedFieldBuilder<
+      private java.util.List<rso.core.model.Message.Person> students_ =
+        java.util.Collections.emptyList();
+      private com.google.protobuf.RepeatedFieldBuilder<
           rso.core.model.Message.Person, rso.core.model.Message.Person.Builder, rso.core.model.Message.PersonOrBuilder> studentsBuilder_;
-            private java.util.List<rso.core.model.Message.PersonSubject> personSubjects_ =
-                    java.util.Collections.emptyList();
-            private com.google.protobuf.RepeatedFieldBuilder<
+      private java.util.List<rso.core.model.Message.PersonSubject> personSubjects_ =
+        java.util.Collections.emptyList();
+      private com.google.protobuf.RepeatedFieldBuilder<
           rso.core.model.Message.PersonSubject, rso.core.model.Message.PersonSubject.Builder, rso.core.model.Message.PersonSubjectOrBuilder> personSubjectsBuilder_;
-            private java.util.List<rso.core.model.Message.Subject> subjects_ =
-                    java.util.Collections.emptyList();
-            private com.google.protobuf.RepeatedFieldBuilder<
+      private java.util.List<rso.core.model.Message.Subject> subjects_ =
+        java.util.Collections.emptyList();
+      private com.google.protobuf.RepeatedFieldBuilder<
           rso.core.model.Message.Subject, rso.core.model.Message.Subject.Builder, rso.core.model.Message.SubjectOrBuilder> subjectsBuilder_;
 
-            // Construct using rso.core.model.Message.EntityState.newBuilder()
+      // Construct using rso.core.model.Message.EntityState.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4084,13 +4195,13 @@ public final class Message {
         return rso.core.model.Message.internal_static_rso_EntityState_descriptor;
       }
 
-            private static Builder create() {
+      private static Builder create() {
         return new Builder();
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-          return rso.core.model.Message.internal_static_rso_EntityState_fieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rso.core.model.Message.internal_static_rso_EntityState_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 rso.core.model.Message.EntityState.class, rso.core.model.Message.EntityState.Builder.class);
       }
@@ -4123,10 +4234,10 @@ public final class Message {
         } else {
           subjectsBuilder_.clear();
         }
-          return this;
+        return this;
       }
 
-            public Builder clone() {
+      public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
 
@@ -4177,11 +4288,11 @@ public final class Message {
         } else {
           result.subjects_ = subjectsBuilder_.build();
         }
-          onBuilt();
-          return result;
+        onBuilt();
+        return result;
       }
 
-            public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof rso.core.model.Message.EntityState) {
           return mergeFrom((rso.core.model.Message.EntityState)other);
         } else {
@@ -4207,9 +4318,9 @@ public final class Message {
           if (!other.students_.isEmpty()) {
             if (studentsBuilder_.isEmpty()) {
               studentsBuilder_.dispose();
-                studentsBuilder_ = null;
-                students_ = other.students_;
-                bitField0_ = (bitField0_ & ~0x00000001);
+              studentsBuilder_ = null;
+              students_ = other.students_;
+              bitField0_ = (bitField0_ & ~0x00000001);
               studentsBuilder_ =
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getStudentsFieldBuilder() : null;
@@ -4233,9 +4344,9 @@ public final class Message {
           if (!other.personSubjects_.isEmpty()) {
             if (personSubjectsBuilder_.isEmpty()) {
               personSubjectsBuilder_.dispose();
-                personSubjectsBuilder_ = null;
-                personSubjects_ = other.personSubjects_;
-                bitField0_ = (bitField0_ & ~0x00000002);
+              personSubjectsBuilder_ = null;
+              personSubjects_ = other.personSubjects_;
+              bitField0_ = (bitField0_ & ~0x00000002);
               personSubjectsBuilder_ =
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getPersonSubjectsFieldBuilder() : null;
@@ -4259,9 +4370,9 @@ public final class Message {
           if (!other.subjects_.isEmpty()) {
             if (subjectsBuilder_.isEmpty()) {
               subjectsBuilder_.dispose();
-                subjectsBuilder_ = null;
-                subjects_ = other.subjects_;
-                bitField0_ = (bitField0_ & ~0x00000004);
+              subjectsBuilder_ = null;
+              subjects_ = other.subjects_;
+              bitField0_ = (bitField0_ & ~0x00000004);
               subjectsBuilder_ =
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getSubjectsFieldBuilder() : null;
@@ -4288,15 +4399,15 @@ public final class Message {
           }
         }
         for (int i = 0; i < getSubjectsCount(); i++) {
-            if (!getSubjects(i).isInitialized()) {
+          if (!getSubjects(i).isInitialized()) {
 
-                return false;
-            }
+            return false;
+          }
         }
-          return true;
+        return true;
       }
 
-            public Builder mergeFrom(
+      public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -4315,7 +4426,7 @@ public final class Message {
       }
 
       private void ensureStudentsIsMutable() {
-          if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
           students_ = new java.util.ArrayList<rso.core.model.Message.Person>(students_);
           bitField0_ |= 0x00000001;
          }
@@ -4350,7 +4461,7 @@ public final class Message {
         if (studentsBuilder_ == null) {
           return students_.get(index);
         } else {
-            return studentsBuilder_.getMessage(index);
+          return studentsBuilder_.getMessage(index);
         }
       }
 
@@ -4369,10 +4480,10 @@ public final class Message {
         } else {
           studentsBuilder_.setMessage(index, value);
         }
-          return this;
+        return this;
       }
 
-            /**
+      /**
        * <code>repeated .rso.Person students = 1;</code>
        */
       public Builder setStudents(
@@ -4401,7 +4512,7 @@ public final class Message {
         } else {
           studentsBuilder_.addMessage(value);
         }
-          return this;
+        return this;
       }
 
       /**
@@ -4419,7 +4530,7 @@ public final class Message {
         } else {
           studentsBuilder_.addMessage(index, value);
         }
-          return this;
+        return this;
       }
 
       /**
@@ -4434,10 +4545,10 @@ public final class Message {
         } else {
           studentsBuilder_.addMessage(builderForValue.build());
         }
-          return this;
+        return this;
       }
 
-            /**
+      /**
        * <code>repeated .rso.Person students = 1;</code>
        */
       public Builder addStudents(
@@ -4449,11 +4560,11 @@ public final class Message {
         } else {
           studentsBuilder_.addMessage(index, builderForValue.build());
         }
-          return this;
+        return this;
       }
 
-            /**
-             * <code>repeated .rso.Person students = 1;</code>
+      /**
+       * <code>repeated .rso.Person students = 1;</code>
        */
       public Builder addAllStudents(
           java.lang.Iterable<? extends rso.core.model.Message.Person> values) {
@@ -4493,7 +4604,7 @@ public final class Message {
         } else {
           studentsBuilder_.remove(index);
         }
-          return this;
+        return this;
       }
 
       /**
@@ -4515,8 +4626,8 @@ public final class Message {
         }
       }
 
-            /**
-             * <code>repeated .rso.Person students = 1;</code>
+      /**
+       * <code>repeated .rso.Person students = 1;</code>
        */
       public java.util.List<? extends rso.core.model.Message.PersonOrBuilder>
            getStudentsOrBuilderList() {
@@ -4544,19 +4655,19 @@ public final class Message {
             index, rso.core.model.Message.Person.getDefaultInstance());
       }
 
-            /**
-             * <code>repeated .rso.Person students = 1;</code>
-             */
+      /**
+       * <code>repeated .rso.Person students = 1;</code>
+       */
       public java.util.List<rso.core.model.Message.Person.Builder>
-      getStudentsBuilderList() {
-          return getStudentsFieldBuilder().getBuilderList();
+           getStudentsBuilderList() {
+        return getStudentsFieldBuilder().getBuilderList();
       }
 
-            private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilder<
           rso.core.model.Message.Person, rso.core.model.Message.Person.Builder, rso.core.model.Message.PersonOrBuilder>
-            getStudentsFieldBuilder() {
-                if (studentsBuilder_ == null) {
-                    studentsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getStudentsFieldBuilder() {
+        if (studentsBuilder_ == null) {
+          studentsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               rso.core.model.Message.Person, rso.core.model.Message.Person.Builder, rso.core.model.Message.PersonOrBuilder>(
                   students_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
@@ -4607,8 +4718,8 @@ public final class Message {
         }
       }
 
-            /**
-             * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+      /**
+       * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
        */
       public Builder setPersonSubjects(
           int index, rso.core.model.Message.PersonSubject value) {
@@ -4622,11 +4733,11 @@ public final class Message {
         } else {
           personSubjectsBuilder_.setMessage(index, value);
         }
-          return this;
+        return this;
       }
 
-            /**
-             * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+      /**
+       * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
        */
       public Builder setPersonSubjects(
           int index, rso.core.model.Message.PersonSubject.Builder builderForValue) {
@@ -4654,11 +4765,11 @@ public final class Message {
         } else {
           personSubjectsBuilder_.addMessage(value);
         }
-          return this;
+        return this;
       }
 
-            /**
-             * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+      /**
+       * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
        */
       public Builder addPersonSubjects(
           int index, rso.core.model.Message.PersonSubject value) {
@@ -4672,11 +4783,11 @@ public final class Message {
         } else {
           personSubjectsBuilder_.addMessage(index, value);
         }
-          return this;
+        return this;
       }
 
-            /**
-             * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+      /**
+       * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
        */
       public Builder addPersonSubjects(
           rso.core.model.Message.PersonSubject.Builder builderForValue) {
@@ -4687,11 +4798,11 @@ public final class Message {
         } else {
           personSubjectsBuilder_.addMessage(builderForValue.build());
         }
-          return this;
+        return this;
       }
 
-            /**
-             * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+      /**
+       * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
        */
       public Builder addPersonSubjects(
           int index, rso.core.model.Message.PersonSubject.Builder builderForValue) {
@@ -4702,15 +4813,15 @@ public final class Message {
         } else {
           personSubjectsBuilder_.addMessage(index, builderForValue.build());
         }
-          return this;
+        return this;
       }
 
-            /**
-             * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+      /**
+       * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
        */
       public Builder addAllPersonSubjects(
           java.lang.Iterable<? extends rso.core.model.Message.PersonSubject> values) {
-          if (personSubjectsBuilder_ == null) {
+        if (personSubjectsBuilder_ == null) {
           ensurePersonSubjectsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
               values, personSubjects_);
@@ -4749,27 +4860,27 @@ public final class Message {
         return this;
       }
 
-            /**
-             * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+      /**
+       * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
        */
       public rso.core.model.Message.PersonSubject.Builder getPersonSubjectsBuilder(
           int index) {
         return getPersonSubjectsFieldBuilder().getBuilder(index);
       }
 
-            /**
-             * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
-             */
-            public rso.core.model.Message.PersonSubjectOrBuilder getPersonSubjectsOrBuilder(
+      /**
+       * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+       */
+      public rso.core.model.Message.PersonSubjectOrBuilder getPersonSubjectsOrBuilder(
           int index) {
         if (personSubjectsBuilder_ == null) {
           return personSubjects_.get(index);  } else {
           return personSubjectsBuilder_.getMessageOrBuilder(index);
         }
-            }
+      }
 
-            /**
-             * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+      /**
+       * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
        */
       public java.util.List<? extends rso.core.model.Message.PersonSubjectOrBuilder>
            getPersonSubjectsOrBuilderList() {
@@ -4788,28 +4899,28 @@ public final class Message {
             rso.core.model.Message.PersonSubject.getDefaultInstance());
       }
 
-            /**
-             * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
-             */
-            public rso.core.model.Message.PersonSubject.Builder addPersonSubjectsBuilder(
+      /**
+       * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+       */
+      public rso.core.model.Message.PersonSubject.Builder addPersonSubjectsBuilder(
           int index) {
         return getPersonSubjectsFieldBuilder().addBuilder(
             index, rso.core.model.Message.PersonSubject.getDefaultInstance());
-            }
-
-            /**
-             * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
-       */
-      public java.util.List<rso.core.model.Message.PersonSubject.Builder>
-      getPersonSubjectsBuilderList() {
-          return getPersonSubjectsFieldBuilder().getBuilderList();
       }
 
-            private com.google.protobuf.RepeatedFieldBuilder<
-                    rso.core.model.Message.PersonSubject, rso.core.model.Message.PersonSubject.Builder, rso.core.model.Message.PersonSubjectOrBuilder>
-            getPersonSubjectsFieldBuilder() {
-                if (personSubjectsBuilder_ == null) {
-                    personSubjectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+      /**
+       * <code>repeated .rso.PersonSubject personSubjects = 2;</code>
+       */
+      public java.util.List<rso.core.model.Message.PersonSubject.Builder>
+           getPersonSubjectsBuilderList() {
+        return getPersonSubjectsFieldBuilder().getBuilderList();
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          rso.core.model.Message.PersonSubject, rso.core.model.Message.PersonSubject.Builder, rso.core.model.Message.PersonSubjectOrBuilder>
+          getPersonSubjectsFieldBuilder() {
+        if (personSubjectsBuilder_ == null) {
+          personSubjectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               rso.core.model.Message.PersonSubject, rso.core.model.Message.PersonSubject.Builder, rso.core.model.Message.PersonSubjectOrBuilder>(
                   personSubjects_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
@@ -4821,7 +4932,7 @@ public final class Message {
       }
 
       private void ensureSubjectsIsMutable() {
-          if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
           subjects_ = new java.util.ArrayList<rso.core.model.Message.Subject>(subjects_);
           bitField0_ |= 0x00000004;
          }
@@ -4854,7 +4965,7 @@ public final class Message {
         if (subjectsBuilder_ == null) {
           return subjects_.get(index);
         } else {
-            return subjectsBuilder_.getMessage(index);
+          return subjectsBuilder_.getMessage(index);
         }
       }
       /**
@@ -4872,11 +4983,10 @@ public final class Message {
         } else {
           subjectsBuilder_.setMessage(index, value);
         }
-          return this;
+        return this;
       }
-
-            /**
-             * <code>repeated .rso.Subject subjects = 3;</code>
+      /**
+       * <code>repeated .rso.Subject subjects = 3;</code>
        */
       public Builder setSubjects(
           int index, rso.core.model.Message.Subject.Builder builderForValue) {
@@ -4903,7 +5013,7 @@ public final class Message {
         } else {
           subjectsBuilder_.addMessage(value);
         }
-          return this;
+        return this;
       }
       /**
        * <code>repeated .rso.Subject subjects = 3;</code>
@@ -4920,7 +5030,7 @@ public final class Message {
         } else {
           subjectsBuilder_.addMessage(index, value);
         }
-          return this;
+        return this;
       }
       /**
        * <code>repeated .rso.Subject subjects = 3;</code>
@@ -4934,11 +5044,10 @@ public final class Message {
         } else {
           subjectsBuilder_.addMessage(builderForValue.build());
         }
-          return this;
+        return this;
       }
-
-            /**
-             * <code>repeated .rso.Subject subjects = 3;</code>
+      /**
+       * <code>repeated .rso.Subject subjects = 3;</code>
        */
       public Builder addSubjects(
           int index, rso.core.model.Message.Subject.Builder builderForValue) {
@@ -4949,11 +5058,10 @@ public final class Message {
         } else {
           subjectsBuilder_.addMessage(index, builderForValue.build());
         }
-          return this;
+        return this;
       }
-
-            /**
-             * <code>repeated .rso.Subject subjects = 3;</code>
+      /**
+       * <code>repeated .rso.Subject subjects = 3;</code>
        */
       public Builder addAllSubjects(
           java.lang.Iterable<? extends rso.core.model.Message.Subject> values) {
@@ -4991,7 +5099,7 @@ public final class Message {
         } else {
           subjectsBuilder_.remove(index);
         }
-          return this;
+        return this;
       }
       /**
        * <code>repeated .rso.Subject subjects = 3;</code>
@@ -5010,9 +5118,8 @@ public final class Message {
           return subjectsBuilder_.getMessageOrBuilder(index);
         }
       }
-
-            /**
-             * <code>repeated .rso.Subject subjects = 3;</code>
+      /**
+       * <code>repeated .rso.Subject subjects = 3;</code>
        */
       public java.util.List<? extends rso.core.model.Message.SubjectOrBuilder>
            getSubjectsOrBuilderList() {
@@ -5037,20 +5144,18 @@ public final class Message {
         return getSubjectsFieldBuilder().addBuilder(
             index, rso.core.model.Message.Subject.getDefaultInstance());
       }
-
-            /**
-             * <code>repeated .rso.Subject subjects = 3;</code>
-             */
+      /**
+       * <code>repeated .rso.Subject subjects = 3;</code>
+       */
       public java.util.List<rso.core.model.Message.Subject.Builder>
-      getSubjectsBuilderList() {
-          return getSubjectsFieldBuilder().getBuilderList();
+           getSubjectsBuilderList() {
+        return getSubjectsFieldBuilder().getBuilderList();
       }
-
-            private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilder<
           rso.core.model.Message.Subject, rso.core.model.Message.Subject.Builder, rso.core.model.Message.SubjectOrBuilder>
-            getSubjectsFieldBuilder() {
-                if (subjectsBuilder_ == null) {
-                    subjectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getSubjectsFieldBuilder() {
+        if (subjectsBuilder_ == null) {
+          subjectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               rso.core.model.Message.Subject, rso.core.model.Message.Subject.Builder, rso.core.model.Message.SubjectOrBuilder>(
                   subjects_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
@@ -5064,25 +5169,25 @@ public final class Message {
       // @@protoc_insertion_point(builder_scope:rso.EntityState)
     }
 
-        // @@protoc_insertion_point(class_scope:rso.EntityState)
-    }
+    // @@protoc_insertion_point(class_scope:rso.EntityState)
+  }
 
-    /**
-     * Protobuf type {@code rso.MiddlewareRequest}
-     */
-    public static final class MiddlewareRequest extends
+  /**
+   * Protobuf type {@code rso.MiddlewareRequest}
+   */
+  public static final class MiddlewareRequest extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:rso.MiddlewareRequest)
       MiddlewareRequestOrBuilder {
     public static final int NODEID_FIELD_NUMBER = 4;
     public static final int TIMESTAMP_FIELD_NUMBER = 1;
-        private static final MiddlewareRequest defaultInstance;
-        private static final long serialVersionUID = 0L;
-        public static com.google.protobuf.Parser<MiddlewareRequest> PARSER =
-                new com.google.protobuf.AbstractParser<MiddlewareRequest>() {
-                    public MiddlewareRequest parsePartialFrom(
-                            com.google.protobuf.CodedInputStream input,
-                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    private static final MiddlewareRequest defaultInstance;
+    private static final long serialVersionUID = 0L;
+    public static com.google.protobuf.Parser<MiddlewareRequest> PARSER =
+        new com.google.protobuf.AbstractParser<MiddlewareRequest>() {
+      public MiddlewareRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return new MiddlewareRequest(input, extensionRegistry);
       }
@@ -5102,18 +5207,14 @@ public final class Message {
 
     // Use MiddlewareRequest.newBuilder() to construct.
     private MiddlewareRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-        this.unknownFields = builder.getUnknownFields();
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-
-        private MiddlewareRequest(boolean noInit) {
-            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-        }
-
-        private MiddlewareRequest(
-                com.google.protobuf.CodedInputStream input,
+    private MiddlewareRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private MiddlewareRequest(
+        com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
+        throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
@@ -5122,9 +5223,9 @@ public final class Message {
         boolean done = false;
         while (!done) {
           int tag = input.readTag();
-            switch (tag) {
-                case 0:
-                    done = true;
+          switch (tag) {
+            case 0:
+              done = true;
               break;
             default: {
               if (!parseUnknownField(input, unknownFields,
@@ -5146,7 +5247,7 @@ public final class Message {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
@@ -5154,73 +5255,73 @@ public final class Message {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
-        }
+    }
 
-        public static MiddlewareRequest getDefaultInstance() {
+    public static MiddlewareRequest getDefaultInstance() {
       return defaultInstance;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
-    getDescriptor() {
-        return rso.core.model.Message.internal_static_rso_MiddlewareRequest_descriptor;
+        getDescriptor() {
+      return rso.core.model.Message.internal_static_rso_MiddlewareRequest_descriptor;
     }
 
     public static rso.core.model.Message.MiddlewareRequest parseFrom(
         com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
     }
 
-        public static rso.core.model.Message.MiddlewareRequest parseFrom(
+    public static rso.core.model.Message.MiddlewareRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareRequest parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
     }
 
-        public static rso.core.model.Message.MiddlewareRequest parseFrom(
+    public static rso.core.model.Message.MiddlewareRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareRequest parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.MiddlewareRequest parseFrom(
+    public static rso.core.model.Message.MiddlewareRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareRequest parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
     }
 
-        public static rso.core.model.Message.MiddlewareRequest parseDelimitedFrom(
+    public static rso.core.model.Message.MiddlewareRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.MiddlewareRequest parseFrom(
+    public static rso.core.model.Message.MiddlewareRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5233,7 +5334,7 @@ public final class Message {
       return newBuilder().mergeFrom(prototype);
     }
 
-        public MiddlewareRequest getDefaultInstanceForType() {
+    public MiddlewareRequest getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -5244,8 +5345,8 @@ public final class Message {
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-    internalGetFieldAccessorTable() {
-        return rso.core.model.Message.internal_static_rso_MiddlewareRequest_fieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return rso.core.model.Message.internal_static_rso_MiddlewareRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               rso.core.model.Message.MiddlewareRequest.class, rso.core.model.Message.MiddlewareRequest.Builder.class);
     }
@@ -5299,7 +5400,7 @@ public final class Message {
       }
       if (!hasTimestamp()) {
         memoizedIsInitialized = 0;
-          return false;
+        return false;
       }
       memoizedIsInitialized = 1;
       return true;
@@ -5319,53 +5420,51 @@ public final class Message {
 
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
-        if (size != -1) return size;
+      if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-                .computeInt64Size(1, timestamp_);
+          .computeInt64Size(1, timestamp_);
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, nodeId_);
       }
-        size += getUnknownFields().getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
-        return size;
+      return size;
     }
 
-        @java.lang.Override
-        protected java.lang.Object writeReplace()
-                throws java.io.ObjectStreamException {
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
 
-    public Builder newBuilderForType() {
-        return newBuilder();
-    }
+    public Builder newBuilderForType() { return newBuilder(); }
 
-        public Builder toBuilder() { return newBuilder(this); }
+    public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
+      Builder builder = new Builder(parent);
+      return builder;
     }
 
-        /**
-         * Protobuf type {@code rso.MiddlewareRequest}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:rso.MiddlewareRequest)
+    /**
+     * Protobuf type {@code rso.MiddlewareRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:rso.MiddlewareRequest)
         rso.core.model.Message.MiddlewareRequestOrBuilder {
       private int bitField0_;
       private int nodeId_ ;
-      private long timestamp_;
+      private long timestamp_ ;
 
-            // Construct using rso.core.model.Message.MiddlewareRequest.newBuilder()
+      // Construct using rso.core.model.Message.MiddlewareRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5380,13 +5479,13 @@ public final class Message {
         return rso.core.model.Message.internal_static_rso_MiddlewareRequest_descriptor;
       }
 
-            private static Builder create() {
+      private static Builder create() {
         return new Builder();
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-          return rso.core.model.Message.internal_static_rso_MiddlewareRequest_fieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rso.core.model.Message.internal_static_rso_MiddlewareRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 rso.core.model.Message.MiddlewareRequest.class, rso.core.model.Message.MiddlewareRequest.Builder.class);
       }
@@ -5402,7 +5501,7 @@ public final class Message {
         bitField0_ = (bitField0_ & ~0x00000001);
         timestamp_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
-          return this;
+        return this;
       }
 
       public Builder clone() {
@@ -5439,11 +5538,11 @@ public final class Message {
         }
         result.timestamp_ = timestamp_;
         result.bitField0_ = to_bitField0_;
-          onBuilt();
-          return result;
+        onBuilt();
+        return result;
       }
 
-            public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof rso.core.model.Message.MiddlewareRequest) {
           return mergeFrom((rso.core.model.Message.MiddlewareRequest)other);
         } else {
@@ -5460,19 +5559,19 @@ public final class Message {
         if (other.hasTimestamp()) {
           setTimestamp(other.getTimestamp());
         }
-          this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
-            public final boolean isInitialized() {
-                if (!hasNodeId()) {
+      public final boolean isInitialized() {
+        if (!hasNodeId()) {
 
-                    return false;
-                }
-                return hasTimestamp();
-            }
+          return false;
+        }
+          return hasTimestamp();
+      }
 
-            public Builder mergeFrom(
+      public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -5556,26 +5655,26 @@ public final class Message {
       }
 
       // @@protoc_insertion_point(builder_scope:rso.MiddlewareRequest)
-        }
-
-        // @@protoc_insertion_point(class_scope:rso.MiddlewareRequest)
     }
 
-    /**
-     * Protobuf type {@code rso.MiddlewareResponse}
-     */
-    public static final class MiddlewareResponse extends
+    // @@protoc_insertion_point(class_scope:rso.MiddlewareRequest)
+  }
+
+  /**
+   * Protobuf type {@code rso.MiddlewareResponse}
+   */
+  public static final class MiddlewareResponse extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:rso.MiddlewareResponse)
       MiddlewareResponseOrBuilder {
     public static final int CHANGES_FIELD_NUMBER = 1;
-        private static final MiddlewareResponse defaultInstance;
-        private static final long serialVersionUID = 0L;
-        public static com.google.protobuf.Parser<MiddlewareResponse> PARSER =
-                new com.google.protobuf.AbstractParser<MiddlewareResponse>() {
-                    public MiddlewareResponse parsePartialFrom(
-                            com.google.protobuf.CodedInputStream input,
-                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    private static final MiddlewareResponse defaultInstance;
+    private static final long serialVersionUID = 0L;
+    public static com.google.protobuf.Parser<MiddlewareResponse> PARSER =
+        new com.google.protobuf.AbstractParser<MiddlewareResponse>() {
+      public MiddlewareResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return new MiddlewareResponse(input, extensionRegistry);
       }
@@ -5594,18 +5693,16 @@ public final class Message {
 
     // Use MiddlewareResponse.newBuilder() to construct.
     private MiddlewareResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
+      super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
 
-        private MiddlewareResponse(boolean noInit) {
-            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-        }
+    private MiddlewareResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-        private MiddlewareResponse(
+    private MiddlewareResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
+        throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
@@ -5614,8 +5711,8 @@ public final class Message {
         boolean done = false;
         while (!done) {
           int tag = input.readTag();
-            switch (tag) {
-                case 0:
+          switch (tag) {
+            case 0:
               done = true;
               break;
             default: {
@@ -5641,7 +5738,7 @@ public final class Message {
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
+        throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
@@ -5649,73 +5746,73 @@ public final class Message {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
-        }
+    }
 
     public static MiddlewareResponse getDefaultInstance() {
       return defaultInstance;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
-    getDescriptor() {
-        return rso.core.model.Message.internal_static_rso_MiddlewareResponse_descriptor;
+        getDescriptor() {
+      return rso.core.model.Message.internal_static_rso_MiddlewareResponse_descriptor;
     }
 
     public static rso.core.model.Message.MiddlewareResponse parseFrom(
         com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
     }
 
-        public static rso.core.model.Message.MiddlewareResponse parseFrom(
+    public static rso.core.model.Message.MiddlewareResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareResponse parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
     }
 
-        public static rso.core.model.Message.MiddlewareResponse parseFrom(
+    public static rso.core.model.Message.MiddlewareResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareResponse parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.MiddlewareResponse parseFrom(
+    public static rso.core.model.Message.MiddlewareResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareResponse parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
     }
 
-        public static rso.core.model.Message.MiddlewareResponse parseDelimitedFrom(
+    public static rso.core.model.Message.MiddlewareResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.MiddlewareResponse parseFrom(
+    public static rso.core.model.Message.MiddlewareResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5728,7 +5825,7 @@ public final class Message {
       return newBuilder().mergeFrom(prototype);
     }
 
-        public MiddlewareResponse getDefaultInstanceForType() {
+    public MiddlewareResponse getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -5739,8 +5836,8 @@ public final class Message {
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-    internalGetFieldAccessorTable() {
-        return rso.core.model.Message.internal_static_rso_MiddlewareResponse_fieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return rso.core.model.Message.internal_static_rso_MiddlewareResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               rso.core.model.Message.MiddlewareResponse.class, rso.core.model.Message.MiddlewareResponse.Builder.class);
     }
@@ -5785,8 +5882,8 @@ public final class Message {
         return false;
       }
       if (!getChanges().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
+        memoizedIsInitialized = 0;
+        return false;
       }
       memoizedIsInitialized = 1;
       return true;
@@ -5802,51 +5899,49 @@ public final class Message {
     }
 
     public int getSerializedSize() {
-        int size = memoizedSerializedSize;
-        if (size != -1) return size;
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, changes_);
       }
-        size += getUnknownFields().getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
-        return size;
+      return size;
     }
 
-        @java.lang.Override
-        protected java.lang.Object writeReplace()
-                throws java.io.ObjectStreamException {
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
       return super.writeReplace();
-        }
+    }
 
-        public Builder newBuilderForType() {
-            return newBuilder();
-        }
+    public Builder newBuilderForType() { return newBuilder(); }
 
     public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
+      Builder builder = new Builder(parent);
+      return builder;
     }
 
-        /**
-         * Protobuf type {@code rso.MiddlewareResponse}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+    /**
+     * Protobuf type {@code rso.MiddlewareResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:rso.MiddlewareResponse)
         rso.core.model.Message.MiddlewareResponseOrBuilder {
-            private int bitField0_;
-            private rso.core.model.Message.EntityState changes_ = rso.core.model.Message.EntityState.getDefaultInstance();
-            private com.google.protobuf.SingleFieldBuilder<
+      private int bitField0_;
+      private rso.core.model.Message.EntityState changes_ = rso.core.model.Message.EntityState.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
           rso.core.model.Message.EntityState, rso.core.model.Message.EntityState.Builder, rso.core.model.Message.EntityStateOrBuilder> changesBuilder_;
 
-            // Construct using rso.core.model.Message.MiddlewareResponse.newBuilder()
+      // Construct using rso.core.model.Message.MiddlewareResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5866,8 +5961,8 @@ public final class Message {
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-          return rso.core.model.Message.internal_static_rso_MiddlewareResponse_fieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rso.core.model.Message.internal_static_rso_MiddlewareResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 rso.core.model.Message.MiddlewareResponse.class, rso.core.model.Message.MiddlewareResponse.Builder.class);
       }
@@ -5886,7 +5981,7 @@ public final class Message {
           changesBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
-          return this;
+        return this;
       }
 
       public Builder clone() {
@@ -5923,11 +6018,11 @@ public final class Message {
           result.changes_ = changesBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
-          onBuilt();
-          return result;
+        onBuilt();
+        return result;
       }
 
-            public Builder mergeFrom(com.google.protobuf.Message other) {
+      public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof rso.core.model.Message.MiddlewareResponse) {
           return mergeFrom((rso.core.model.Message.MiddlewareResponse)other);
         } else {
@@ -5941,17 +6036,17 @@ public final class Message {
         if (other.hasChanges()) {
           mergeChanges(other.getChanges());
         }
-          this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
-            public final boolean isInitialized() {
-                if (!hasChanges()) {
+      public final boolean isInitialized() {
+        if (!hasChanges()) {
 
-                    return false;
-                }
-                return getChanges().isInitialized();
-            }
+          return false;
+        }
+          return getChanges().isInitialized();
+      }
 
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
@@ -5984,23 +6079,8 @@ public final class Message {
         if (changesBuilder_ == null) {
           return changes_;
         } else {
-            return changesBuilder_.getMessage();
+          return changesBuilder_.getMessage();
         }
-      }
-
-      /**
-       * <code>required .rso.EntityState changes = 1;</code>
-       */
-      public Builder setChanges(
-          rso.core.model.Message.EntityState.Builder builderForValue) {
-        if (changesBuilder_ == null) {
-          changes_ = builderForValue.build();
-          onChanged();
-        } else {
-          changesBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
-        return this;
       }
 
       /**
@@ -6023,10 +6103,25 @@ public final class Message {
       /**
        * <code>required .rso.EntityState changes = 1;</code>
        */
+      public Builder setChanges(
+          rso.core.model.Message.EntityState.Builder builderForValue) {
+        if (changesBuilder_ == null) {
+          changes_ = builderForValue.build();
+          onChanged();
+        } else {
+          changesBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+
+      /**
+       * <code>required .rso.EntityState changes = 1;</code>
+       */
       public Builder mergeChanges(rso.core.model.Message.EntityState value) {
-          if (changesBuilder_ == null) {
-              if (((bitField0_ & 0x00000001) == 0x00000001) &&
-                      changes_ != rso.core.model.Message.EntityState.getDefaultInstance()) {
+        if (changesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              changes_ != rso.core.model.Message.EntityState.getDefaultInstance()) {
             changes_ =
               rso.core.model.Message.EntityState.newBuilder(changes_).mergeFrom(value).buildPartial();
           } else {
@@ -6067,17 +6162,16 @@ public final class Message {
         if (changesBuilder_ != null) {
           return changesBuilder_.getMessageOrBuilder();
         } else {
-            return changes_;
+          return changes_;
         }
       }
-
-            /**
-             * <code>required .rso.EntityState changes = 1;</code>
-             */
-            private com.google.protobuf.SingleFieldBuilder<
+      /**
+       * <code>required .rso.EntityState changes = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
           rso.core.model.Message.EntityState, rso.core.model.Message.EntityState.Builder, rso.core.model.Message.EntityStateOrBuilder>
-            getChangesFieldBuilder() {
-                if (changesBuilder_ == null) {
+          getChangesFieldBuilder() {
+        if (changesBuilder_ == null) {
           changesBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               rso.core.model.Message.EntityState, rso.core.model.Message.EntityState.Builder, rso.core.model.Message.EntityStateOrBuilder>(
                   getChanges(),
@@ -6089,27 +6183,27 @@ public final class Message {
       }
 
       // @@protoc_insertion_point(builder_scope:rso.MiddlewareResponse)
-        }
-
-        // @@protoc_insertion_point(class_scope:rso.MiddlewareResponse)
     }
 
-    /**
-     * Protobuf type {@code rso.MiddlewareMessage}
-     */
-    public static final class MiddlewareMessage extends
+    // @@protoc_insertion_point(class_scope:rso.MiddlewareResponse)
+  }
+
+  /**
+   * Protobuf type {@code rso.MiddlewareMessage}
+   */
+  public static final class MiddlewareMessage extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:rso.MiddlewareMessage)
       MiddlewareMessageOrBuilder {
     public static final int NODEID_FIELD_NUMBER = 2;
     public static final int SUBJECTID_FIELD_NUMBER = 3;
     public static final int REGISTEREDSTUDENTS_FIELD_NUMBER = 4;
-        private static final MiddlewareMessage defaultInstance;
-        private static final long serialVersionUID = 0L;
-        public static com.google.protobuf.Parser<MiddlewareMessage> PARSER =
-                new com.google.protobuf.AbstractParser<MiddlewareMessage>() {
-                    public MiddlewareMessage parsePartialFrom(
-                            com.google.protobuf.CodedInputStream input,
+    private static final MiddlewareMessage defaultInstance;
+    private static final long serialVersionUID = 0L;
+    public static com.google.protobuf.Parser<MiddlewareMessage> PARSER =
+        new com.google.protobuf.AbstractParser<MiddlewareMessage>() {
+      public MiddlewareMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return new MiddlewareMessage(input, extensionRegistry);
@@ -6131,16 +6225,13 @@ public final class Message {
     // Use MiddlewareMessage.newBuilder() to construct.
     private MiddlewareMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-        this.unknownFields = builder.getUnknownFields();
+      this.unknownFields = builder.getUnknownFields();
     }
-
-        private MiddlewareMessage(boolean noInit) {
-            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-        }
+    private MiddlewareMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
     private MiddlewareMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+        throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
@@ -6148,8 +6239,8 @@ public final class Message {
       try {
         boolean done = false;
         while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
+          int tag = input.readTag();
+          switch (tag) {
             case 0:
               done = true;
               break;
@@ -6184,7 +6275,7 @@ public final class Message {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
+        makeExtensionsImmutable();
       }
     }
 
@@ -6193,68 +6284,68 @@ public final class Message {
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
-    getDescriptor() {
-        return rso.core.model.Message.internal_static_rso_MiddlewareMessage_descriptor;
+        getDescriptor() {
+      return rso.core.model.Message.internal_static_rso_MiddlewareMessage_descriptor;
     }
 
     public static rso.core.model.Message.MiddlewareMessage parseFrom(
-            com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
     }
 
-        public static rso.core.model.Message.MiddlewareMessage parseFrom(
+    public static rso.core.model.Message.MiddlewareMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareMessage parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
     }
 
-        public static rso.core.model.Message.MiddlewareMessage parseFrom(
+    public static rso.core.model.Message.MiddlewareMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareMessage parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
     public static rso.core.model.Message.MiddlewareMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
+        throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareMessage parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
     }
 
-        public static rso.core.model.Message.MiddlewareMessage parseDelimitedFrom(
+    public static rso.core.model.Message.MiddlewareMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareMessage parseFrom(
-            com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.MiddlewareMessage parseFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    public static rso.core.model.Message.MiddlewareMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
@@ -6269,15 +6360,15 @@ public final class Message {
       return defaultInstance;
     }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
-        }
+    }
 
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return rso.core.model.Message.internal_static_rso_MiddlewareMessage_fieldAccessorTable
+      return rso.core.model.Message.internal_static_rso_MiddlewareMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               rso.core.model.Message.MiddlewareMessage.class, rso.core.model.Message.MiddlewareMessage.Builder.class);
     }
@@ -6340,8 +6431,8 @@ public final class Message {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-        if (!hasNodeId()) {
-            memoizedIsInitialized = 0;
+      if (!hasNodeId()) {
+        memoizedIsInitialized = 0;
         return false;
       }
       memoizedIsInitialized = 1;
@@ -6364,62 +6455,61 @@ public final class Message {
     }
 
     public int getSerializedSize() {
-        int size = memoizedSerializedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
+        size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, nodeId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          size += com.google.protobuf.CodedOutputStream
+        size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, subjectId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, registeredStudents_);
       }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
-        return size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
     }
 
-        @java.lang.Override
-        protected java.lang.Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
-        }
+    }
 
-        public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() { return newBuilder(); }
 
     public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
+      Builder builder = new Builder(parent);
+      return builder;
     }
 
-        /**
-         * Protobuf type {@code rso.MiddlewareMessage}
-         */
-        public static final class Builder extends
+    /**
+     * Protobuf type {@code rso.MiddlewareMessage}
+     */
+    public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:rso.MiddlewareMessage)
+        // @@protoc_insertion_point(builder_implements:rso.MiddlewareMessage)
         rso.core.model.Message.MiddlewareMessageOrBuilder {
       private int bitField0_;
       private int nodeId_ ;
-      private int subjectId_;
-            private int registeredStudents_;
-
-            // Construct using rso.core.model.Message.MiddlewareMessage.newBuilder()
+      private int subjectId_ ;
+      private int registeredStudents_ ;
+      // Construct using rso.core.model.Message.MiddlewareMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
       private Builder(
-              com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -6433,9 +6523,9 @@ public final class Message {
         return new Builder();
       }
 
-            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-                return rso.core.model.Message.internal_static_rso_MiddlewareMessage_fieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rso.core.model.Message.internal_static_rso_MiddlewareMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 rso.core.model.Message.MiddlewareMessage.class, rso.core.model.Message.MiddlewareMessage.Builder.class);
       }
@@ -6452,7 +6542,7 @@ public final class Message {
         subjectId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
         registeredStudents_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -6493,9 +6583,9 @@ public final class Message {
           to_bitField0_ |= 0x00000004;
         }
         result.registeredStudents_ = registeredStudents_;
-          result.bitField0_ = to_bitField0_;
-          onBuilt();
-          return result;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -6516,14 +6606,14 @@ public final class Message {
           setSubjectId(other.getSubjectId());
         }
         if (other.hasRegisteredStudents()) {
-            setRegisteredStudents(other.getRegisteredStudents());
+          setRegisteredStudents(other.getRegisteredStudents());
         }
-          this.mergeUnknownFields(other.getUnknownFields());
-          return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
       }
 
-            public final boolean isInitialized() {
-                return hasNodeId();
+      public final boolean isInitialized() {
+          return hasNodeId();
       }
 
       public Builder mergeFrom(
@@ -6644,14 +6734,14 @@ public final class Message {
       }
 
       // @@protoc_insertion_point(builder_scope:rso.MiddlewareMessage)
-        }
-
-        // @@protoc_insertion_point(class_scope:rso.MiddlewareMessage)
     }
 
-    /**
-     * Protobuf type {@code rso.MiddlewareHeartbeat}
-     */
+    // @@protoc_insertion_point(class_scope:rso.MiddlewareMessage)
+  }
+
+  /**
+   * Protobuf type {@code rso.MiddlewareHeartbeat}
+   */
   public static final class MiddlewareHeartbeat extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:rso.MiddlewareHeartbeat)
@@ -6659,12 +6749,12 @@ public final class Message {
     public static final int SERVERID_FIELD_NUMBER = 1;
     public static final int CONNECTEDCLIENTS_FIELD_NUMBER = 2;
     public static final int MESSAGETYPE_FIELD_NUMBER = 3;
-        private static final MiddlewareHeartbeat defaultInstance;
-        private static final long serialVersionUID = 0L;
-        public static com.google.protobuf.Parser<MiddlewareHeartbeat> PARSER =
-                new com.google.protobuf.AbstractParser<MiddlewareHeartbeat>() {
-                    public MiddlewareHeartbeat parsePartialFrom(
-                            com.google.protobuf.CodedInputStream input,
+    private static final MiddlewareHeartbeat defaultInstance;
+    private static final long serialVersionUID = 0L;
+    public static com.google.protobuf.Parser<MiddlewareHeartbeat> PARSER =
+        new com.google.protobuf.AbstractParser<MiddlewareHeartbeat>() {
+      public MiddlewareHeartbeat parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return new MiddlewareHeartbeat(input, extensionRegistry);
@@ -6683,28 +6773,25 @@ public final class Message {
     private rso.core.model.Message.MiddlewareMessageType messageType_;
     private byte memoizedIsInitialized = -1;
     private int memoizedSerializedSize = -1;
-
-        // Use MiddlewareHeartbeat.newBuilder() to construct.
-        private MiddlewareHeartbeat(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    // Use MiddlewareHeartbeat.newBuilder() to construct.
+    private MiddlewareHeartbeat(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
-            this.unknownFields = builder.getUnknownFields();
-        }
-
-        private MiddlewareHeartbeat(boolean noInit) {
-            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private MiddlewareHeartbeat(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
     private MiddlewareHeartbeat(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
+        throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
-          while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
             case 0:
               done = true;
               break;
@@ -6737,7 +6824,7 @@ public final class Message {
               break;
             }
           }
-          }
+        }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
@@ -6745,7 +6832,7 @@ public final class Message {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
+        makeExtensionsImmutable();
       }
     }
 
@@ -6754,68 +6841,68 @@ public final class Message {
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
-    getDescriptor() {
-        return rso.core.model.Message.internal_static_rso_MiddlewareHeartbeat_descriptor;
+        getDescriptor() {
+      return rso.core.model.Message.internal_static_rso_MiddlewareHeartbeat_descriptor;
     }
 
     public static rso.core.model.Message.MiddlewareHeartbeat parseFrom(
-            com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
     }
 
-        public static rso.core.model.Message.MiddlewareHeartbeat parseFrom(
+    public static rso.core.model.Message.MiddlewareHeartbeat parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareHeartbeat parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
     }
 
-        public static rso.core.model.Message.MiddlewareHeartbeat parseFrom(
+    public static rso.core.model.Message.MiddlewareHeartbeat parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareHeartbeat parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
     public static rso.core.model.Message.MiddlewareHeartbeat parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
+        throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareHeartbeat parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
     }
 
     public static rso.core.model.Message.MiddlewareHeartbeat parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
 
     public static rso.core.model.Message.MiddlewareHeartbeat parseFrom(
-            com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
     }
 
-        public static rso.core.model.Message.MiddlewareHeartbeat parseFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    public static rso.core.model.Message.MiddlewareHeartbeat parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
@@ -6823,22 +6910,22 @@ public final class Message {
     public static Builder newBuilder() { return Builder.create(); }
 
     public static Builder newBuilder(rso.core.model.Message.MiddlewareHeartbeat prototype) {
-        return newBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
 
     public MiddlewareHeartbeat getDefaultInstanceForType() {
       return defaultInstance;
     }
 
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
-        }
+    }
 
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return rso.core.model.Message.internal_static_rso_MiddlewareHeartbeat_fieldAccessorTable
+      return rso.core.model.Message.internal_static_rso_MiddlewareHeartbeat_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               rso.core.model.Message.MiddlewareHeartbeat.class, rso.core.model.Message.MiddlewareHeartbeat.Builder.class);
     }
@@ -6905,8 +6992,8 @@ public final class Message {
         memoizedIsInitialized = 0;
         return false;
       }
-        if (!hasMessageType()) {
-            memoizedIsInitialized = 0;
+      if (!hasMessageType()) {
+        memoizedIsInitialized = 0;
         return false;
       }
       memoizedIsInitialized = 1;
@@ -6929,48 +7016,48 @@ public final class Message {
     }
 
     public int getSerializedSize() {
-        int size = memoizedSerializedSize;
+      int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
+        size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, serverId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          size += com.google.protobuf.CodedOutputStream
+        size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, connectedClients_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, messageType_.getNumber());
       }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
-        return size;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
     }
 
-        @java.lang.Override
-        protected java.lang.Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
-            return super.writeReplace();
-        }
+      return super.writeReplace();
+    }
 
-        public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() { return newBuilder(); }
 
     public Builder toBuilder() { return newBuilder(this); }
 
     @java.lang.Override
     protected Builder newBuilderForType(
         com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
+      Builder builder = new Builder(parent);
+      return builder;
     }
 
-        /**
-         * Protobuf type {@code rso.MiddlewareHeartbeat}
-         */
-        public static final class Builder extends
+    /**
+     * Protobuf type {@code rso.MiddlewareHeartbeat}
+     */
+    public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:rso.MiddlewareHeartbeat)
         rso.core.model.Message.MiddlewareHeartbeatOrBuilder {
@@ -6978,14 +7065,12 @@ public final class Message {
       private int serverId_ ;
       private int connectedClients_ ;
       private rso.core.model.Message.MiddlewareMessageType messageType_ = rso.core.model.Message.MiddlewareMessageType.Request;
-
-            // Construct using rso.core.model.Message.MiddlewareHeartbeat.newBuilder()
+      // Construct using rso.core.model.Message.MiddlewareHeartbeat.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-            private Builder(
-                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -6999,9 +7084,9 @@ public final class Message {
         return new Builder();
       }
 
-            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-                return rso.core.model.Message.internal_static_rso_MiddlewareHeartbeat_fieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rso.core.model.Message.internal_static_rso_MiddlewareHeartbeat_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 rso.core.model.Message.MiddlewareHeartbeat.class, rso.core.model.Message.MiddlewareHeartbeat.Builder.class);
       }
@@ -7018,7 +7103,7 @@ public final class Message {
         connectedClients_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
         messageType_ = rso.core.model.Message.MiddlewareMessageType.Request;
-          bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -7059,9 +7144,9 @@ public final class Message {
           to_bitField0_ |= 0x00000004;
         }
         result.messageType_ = messageType_;
-          result.bitField0_ = to_bitField0_;
-          onBuilt();
-          return result;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -7085,15 +7170,15 @@ public final class Message {
           setMessageType(other.getMessageType());
         }
         this.mergeUnknownFields(other.getUnknownFields());
-          return this;
+        return this;
       }
 
-            public final boolean isInitialized() {
-                if (!hasServerId()) {
+      public final boolean isInitialized() {
+        if (!hasServerId()) {
 
-                    return false;
-                }
-                return hasMessageType();
+          return false;
+        }
+          return hasMessageType();
       }
 
       public Builder mergeFrom(
@@ -7212,1339 +7297,1324 @@ public final class Message {
       public Builder clearMessageType() {
         bitField0_ = (bitField0_ & ~0x00000004);
         messageType_ = rso.core.model.Message.MiddlewareMessageType.Request;
-          onChanged();
-          return this;
+        onChanged();
+        return this;
       }
 
-            // @@protoc_insertion_point(builder_scope:rso.MiddlewareHeartbeat)
-        }
+      // @@protoc_insertion_point(builder_scope:rso.MiddlewareHeartbeat)
+    }
 
-        // @@protoc_insertion_point(class_scope:rso.MiddlewareHeartbeat)
+    // @@protoc_insertion_point(class_scope:rso.MiddlewareHeartbeat)
+  }
+
+  /**
+   * Protobuf type {@code rso.RSOMessage}
+   */
+  public static final class RSOMessage extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:rso.RSOMessage)
+      RSOMessageOrBuilder {
+    public static final int TOKEN_FIELD_NUMBER = 1;
+    public static final int MIDDLEWAREMESSAGE_FIELD_NUMBER = 2;
+    public static final int MIDDLEWAREREQUEST_FIELD_NUMBER = 3;
+    public static final int MIDDLEWARERESPONSE_FIELD_NUMBER = 4;
+    public static final int MIDDLEWAREHEARTBEAT_FIELD_NUMBER = 5;
+    private static final RSOMessage defaultInstance;
+    private static final long serialVersionUID = 0L;
+    public static com.google.protobuf.Parser<RSOMessage> PARSER =
+        new com.google.protobuf.AbstractParser<RSOMessage>() {
+      public RSOMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RSOMessage(input, extensionRegistry);
+      }
+    };
+
+    static {
+      defaultInstance = new RSOMessage(true);
+      defaultInstance.initFields();
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    private int bitField0_;
+    private rso.core.model.Message.Token token_;
+    private rso.core.model.Message.MiddlewareMessage middlewareMessage_;
+    private rso.core.model.Message.MiddlewareRequest middlewareRequest_;
+    private rso.core.model.Message.MiddlewareResponse middlewareResponse_;
+    private rso.core.model.Message.MiddlewareHeartbeat middlewareHeartbeat_;
+    private byte memoizedIsInitialized = -1;
+    private int memoizedSerializedSize = -1;
+
+    // Use RSOMessage.newBuilder() to construct.
+    private RSOMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RSOMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private RSOMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              rso.core.model.Message.Token.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = token_.toBuilder();
+              }
+              token_ = input.readMessage(rso.core.model.Message.Token.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(token_);
+                token_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              rso.core.model.Message.MiddlewareMessage.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = middlewareMessage_.toBuilder();
+              }
+              middlewareMessage_ = input.readMessage(rso.core.model.Message.MiddlewareMessage.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(middlewareMessage_);
+                middlewareMessage_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              rso.core.model.Message.MiddlewareRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = middlewareRequest_.toBuilder();
+              }
+              middlewareRequest_ = input.readMessage(rso.core.model.Message.MiddlewareRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(middlewareRequest_);
+                middlewareRequest_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              rso.core.model.Message.MiddlewareResponse.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = middlewareResponse_.toBuilder();
+              }
+              middlewareResponse_ = input.readMessage(rso.core.model.Message.MiddlewareResponse.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(middlewareResponse_);
+                middlewareResponse_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
+            case 42: {
+              rso.core.model.Message.MiddlewareHeartbeat.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                subBuilder = middlewareHeartbeat_.toBuilder();
+              }
+              middlewareHeartbeat_ = input.readMessage(rso.core.model.Message.MiddlewareHeartbeat.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(middlewareHeartbeat_);
+                middlewareHeartbeat_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+
+    public static RSOMessage getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return rso.core.model.Message.internal_static_rso_RSOMessage_descriptor;
+    }
+
+    public static rso.core.model.Message.RSOMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static rso.core.model.Message.RSOMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static rso.core.model.Message.RSOMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static rso.core.model.Message.RSOMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static rso.core.model.Message.RSOMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+
+    public static rso.core.model.Message.RSOMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static rso.core.model.Message.RSOMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+
+    public static rso.core.model.Message.RSOMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+
+    public static rso.core.model.Message.RSOMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+
+    public static rso.core.model.Message.RSOMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+
+    public static Builder newBuilder(rso.core.model.Message.RSOMessage prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+
+    public RSOMessage getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return rso.core.model.Message.internal_static_rso_RSOMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              rso.core.model.Message.RSOMessage.class, rso.core.model.Message.RSOMessage.Builder.class);
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RSOMessage> getParserForType() {
+      return PARSER;
+    }
+
+    /**
+     * <code>optional .rso.Token token = 1;</code>
+     */
+    public boolean hasToken() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+
+    /**
+     * <code>optional .rso.Token token = 1;</code>
+     */
+    public rso.core.model.Message.Token getToken() {
+      return token_;
+    }
+
+    /**
+     * <code>optional .rso.Token token = 1;</code>
+     */
+    public rso.core.model.Message.TokenOrBuilder getTokenOrBuilder() {
+      return token_;
+    }
+
+    /**
+     * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+     */
+    public boolean hasMiddlewareMessage() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+
+    /**
+     * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+     */
+    public rso.core.model.Message.MiddlewareMessage getMiddlewareMessage() {
+      return middlewareMessage_;
+    }
+
+    /**
+     * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+     */
+    public rso.core.model.Message.MiddlewareMessageOrBuilder getMiddlewareMessageOrBuilder() {
+      return middlewareMessage_;
+    }
+
+    /**
+     * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+     */
+    public boolean hasMiddlewareRequest() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+
+    /**
+     * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+     */
+    public rso.core.model.Message.MiddlewareRequest getMiddlewareRequest() {
+      return middlewareRequest_;
+    }
+
+    /**
+     * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+     */
+    public rso.core.model.Message.MiddlewareRequestOrBuilder getMiddlewareRequestOrBuilder() {
+      return middlewareRequest_;
+    }
+
+    /**
+     * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+     */
+    public boolean hasMiddlewareResponse() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+
+    /**
+     * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+     */
+    public rso.core.model.Message.MiddlewareResponse getMiddlewareResponse() {
+      return middlewareResponse_;
+    }
+
+    /**
+     * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+     */
+    public rso.core.model.Message.MiddlewareResponseOrBuilder getMiddlewareResponseOrBuilder() {
+      return middlewareResponse_;
+    }
+
+    /**
+     * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+     */
+    public boolean hasMiddlewareHeartbeat() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+
+    /**
+     * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+     */
+    public rso.core.model.Message.MiddlewareHeartbeat getMiddlewareHeartbeat() {
+      return middlewareHeartbeat_;
+    }
+
+    /**
+     * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+     */
+    public rso.core.model.Message.MiddlewareHeartbeatOrBuilder getMiddlewareHeartbeatOrBuilder() {
+      return middlewareHeartbeat_;
+    }
+
+    private void initFields() {
+      token_ = rso.core.model.Message.Token.getDefaultInstance();
+      middlewareMessage_ = rso.core.model.Message.MiddlewareMessage.getDefaultInstance();
+      middlewareRequest_ = rso.core.model.Message.MiddlewareRequest.getDefaultInstance();
+      middlewareResponse_ = rso.core.model.Message.MiddlewareResponse.getDefaultInstance();
+      middlewareHeartbeat_ = rso.core.model.Message.MiddlewareHeartbeat.getDefaultInstance();
+    }
+
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasToken()) {
+        if (!getToken().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasMiddlewareMessage()) {
+        if (!getMiddlewareMessage().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasMiddlewareRequest()) {
+        if (!getMiddlewareRequest().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasMiddlewareResponse()) {
+        if (!getMiddlewareResponse().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasMiddlewareHeartbeat()) {
+        if (!getMiddlewareHeartbeat().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, token_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, middlewareMessage_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, middlewareRequest_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, middlewareResponse_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeMessage(5, middlewareHeartbeat_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, token_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, middlewareMessage_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, middlewareRequest_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, middlewareResponse_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, middlewareHeartbeat_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
     }
 
     /**
      * Protobuf type {@code rso.RSOMessage}
      */
-    public static final class RSOMessage extends
-            com.google.protobuf.GeneratedMessage implements
-            // @@protoc_insertion_point(message_implements:rso.RSOMessage)
-            RSOMessageOrBuilder {
-        public static final int TOKEN_FIELD_NUMBER = 1;
-        public static final int MIDDLEWAREMESSAGE_FIELD_NUMBER = 2;
-        public static final int MIDDLEWAREREQUEST_FIELD_NUMBER = 3;
-        public static final int MIDDLEWARERESPONSE_FIELD_NUMBER = 4;
-        public static final int MIDDLEWAREHEARTBEAT_FIELD_NUMBER = 5;
-        private static final RSOMessage defaultInstance;
-        private static final long serialVersionUID = 0L;
-        public static com.google.protobuf.Parser<RSOMessage> PARSER =
-                new com.google.protobuf.AbstractParser<RSOMessage>() {
-                    public RSOMessage parsePartialFrom(
-                            com.google.protobuf.CodedInputStream input,
-                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                            throws com.google.protobuf.InvalidProtocolBufferException {
-                        return new RSOMessage(input, extensionRegistry);
-                    }
-                };
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:rso.RSOMessage)
+        rso.core.model.Message.RSOMessageOrBuilder {
+      private int bitField0_;
+      private rso.core.model.Message.Token token_ = rso.core.model.Message.Token.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          rso.core.model.Message.Token, rso.core.model.Message.Token.Builder, rso.core.model.Message.TokenOrBuilder> tokenBuilder_;
+      private rso.core.model.Message.MiddlewareMessage middlewareMessage_ = rso.core.model.Message.MiddlewareMessage.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          rso.core.model.Message.MiddlewareMessage, rso.core.model.Message.MiddlewareMessage.Builder, rso.core.model.Message.MiddlewareMessageOrBuilder> middlewareMessageBuilder_;
+      private rso.core.model.Message.MiddlewareRequest middlewareRequest_ = rso.core.model.Message.MiddlewareRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          rso.core.model.Message.MiddlewareRequest, rso.core.model.Message.MiddlewareRequest.Builder, rso.core.model.Message.MiddlewareRequestOrBuilder> middlewareRequestBuilder_;
+      private rso.core.model.Message.MiddlewareResponse middlewareResponse_ = rso.core.model.Message.MiddlewareResponse.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          rso.core.model.Message.MiddlewareResponse, rso.core.model.Message.MiddlewareResponse.Builder, rso.core.model.Message.MiddlewareResponseOrBuilder> middlewareResponseBuilder_;
+      private rso.core.model.Message.MiddlewareHeartbeat middlewareHeartbeat_ = rso.core.model.Message.MiddlewareHeartbeat.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          rso.core.model.Message.MiddlewareHeartbeat, rso.core.model.Message.MiddlewareHeartbeat.Builder, rso.core.model.Message.MiddlewareHeartbeatOrBuilder> middlewareHeartbeatBuilder_;
 
-        static {
-            defaultInstance = new RSOMessage(true);
-            defaultInstance.initFields();
+      // Construct using rso.core.model.Message.RSOMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return rso.core.model.Message.internal_static_rso_RSOMessage_descriptor;
+      }
+
+      private static Builder create() {
+        return new Builder();
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rso.core.model.Message.internal_static_rso_RSOMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                rso.core.model.Message.RSOMessage.class, rso.core.model.Message.RSOMessage.Builder.class);
+      }
+
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTokenFieldBuilder();
+          getMiddlewareMessageFieldBuilder();
+          getMiddlewareRequestFieldBuilder();
+          getMiddlewareResponseFieldBuilder();
+          getMiddlewareHeartbeatFieldBuilder();
         }
+      }
 
-        private final com.google.protobuf.UnknownFieldSet unknownFields;
-        private int bitField0_;
-        private rso.core.model.Message.Token token_;
-        private rso.core.model.Message.MiddlewareMessage middlewareMessage_;
-        private rso.core.model.Message.MiddlewareRequest middlewareRequest_;
-        private rso.core.model.Message.MiddlewareResponse middlewareResponse_;
-        private rso.core.model.Message.MiddlewareHeartbeat middlewareHeartbeat_;
-        private byte memoizedIsInitialized = -1;
-        private int memoizedSerializedSize = -1;
-
-        // Use RSOMessage.newBuilder() to construct.
-        private RSOMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-            super(builder);
-            this.unknownFields = builder.getUnknownFields();
+      public Builder clear() {
+        super.clear();
+        if (tokenBuilder_ == null) {
+          token_ = rso.core.model.Message.Token.getDefaultInstance();
+        } else {
+          tokenBuilder_.clear();
         }
-
-        private RSOMessage(boolean noInit) {
-            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (middlewareMessageBuilder_ == null) {
+          middlewareMessage_ = rso.core.model.Message.MiddlewareMessage.getDefaultInstance();
+        } else {
+          middlewareMessageBuilder_.clear();
         }
-
-        private RSOMessage(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            initFields();
-            int mutable_bitField0_ = 0;
-            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                    com.google.protobuf.UnknownFieldSet.newBuilder();
-            try {
-                boolean done = false;
-                while (!done) {
-                    int tag = input.readTag();
-                    switch (tag) {
-                        case 0:
-                            done = true;
-                            break;
-                        default: {
-                            if (!parseUnknownField(input, unknownFields,
-                                    extensionRegistry, tag)) {
-                                done = true;
-                            }
-                            break;
-                        }
-                        case 10: {
-                            rso.core.model.Message.Token.Builder subBuilder = null;
-                            if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                                subBuilder = token_.toBuilder();
-                            }
-                            token_ = input.readMessage(rso.core.model.Message.Token.PARSER, extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(token_);
-                                token_ = subBuilder.buildPartial();
-                            }
-                            bitField0_ |= 0x00000001;
-                            break;
-                        }
-                        case 18: {
-                            rso.core.model.Message.MiddlewareMessage.Builder subBuilder = null;
-                            if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                                subBuilder = middlewareMessage_.toBuilder();
-                            }
-                            middlewareMessage_ = input.readMessage(rso.core.model.Message.MiddlewareMessage.PARSER, extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(middlewareMessage_);
-                                middlewareMessage_ = subBuilder.buildPartial();
-                            }
-                            bitField0_ |= 0x00000002;
-                            break;
-                        }
-                        case 26: {
-                            rso.core.model.Message.MiddlewareRequest.Builder subBuilder = null;
-                            if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                                subBuilder = middlewareRequest_.toBuilder();
-                            }
-                            middlewareRequest_ = input.readMessage(rso.core.model.Message.MiddlewareRequest.PARSER, extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(middlewareRequest_);
-                                middlewareRequest_ = subBuilder.buildPartial();
-                            }
-                            bitField0_ |= 0x00000004;
-                            break;
-                        }
-                        case 34: {
-                            rso.core.model.Message.MiddlewareResponse.Builder subBuilder = null;
-                            if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                                subBuilder = middlewareResponse_.toBuilder();
-                            }
-                            middlewareResponse_ = input.readMessage(rso.core.model.Message.MiddlewareResponse.PARSER, extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(middlewareResponse_);
-                                middlewareResponse_ = subBuilder.buildPartial();
-                            }
-                            bitField0_ |= 0x00000008;
-                            break;
-                        }
-                        case 42: {
-                            rso.core.model.Message.MiddlewareHeartbeat.Builder subBuilder = null;
-                            if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                                subBuilder = middlewareHeartbeat_.toBuilder();
-                            }
-                            middlewareHeartbeat_ = input.readMessage(rso.core.model.Message.MiddlewareHeartbeat.PARSER, extensionRegistry);
-                            if (subBuilder != null) {
-                                subBuilder.mergeFrom(middlewareHeartbeat_);
-                                middlewareHeartbeat_ = subBuilder.buildPartial();
-                            }
-                            bitField0_ |= 0x00000010;
-                            break;
-                        }
-                    }
-                }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                throw e.setUnfinishedMessage(this);
-            } catch (java.io.IOException e) {
-                throw new com.google.protobuf.InvalidProtocolBufferException(
-                        e.getMessage()).setUnfinishedMessage(this);
-            } finally {
-                this.unknownFields = unknownFields.build();
-                makeExtensionsImmutable();
-            }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (middlewareRequestBuilder_ == null) {
+          middlewareRequest_ = rso.core.model.Message.MiddlewareRequest.getDefaultInstance();
+        } else {
+          middlewareRequestBuilder_.clear();
         }
-
-        public static RSOMessage getDefaultInstance() {
-            return defaultInstance;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        if (middlewareResponseBuilder_ == null) {
+          middlewareResponse_ = rso.core.model.Message.MiddlewareResponse.getDefaultInstance();
+        } else {
+          middlewareResponseBuilder_.clear();
         }
-
-        public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-            return rso.core.model.Message.internal_static_rso_RSOMessage_descriptor;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        if (middlewareHeartbeatBuilder_ == null) {
+          middlewareHeartbeat_ = rso.core.model.Message.MiddlewareHeartbeat.getDefaultInstance();
+        } else {
+          middlewareHeartbeatBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
 
-        public static rso.core.model.Message.RSOMessage parseFrom(
-                com.google.protobuf.ByteString data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return rso.core.model.Message.internal_static_rso_RSOMessage_descriptor;
+      }
+
+      public rso.core.model.Message.RSOMessage getDefaultInstanceForType() {
+        return rso.core.model.Message.RSOMessage.getDefaultInstance();
+      }
+
+      public rso.core.model.Message.RSOMessage build() {
+        rso.core.model.Message.RSOMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
         }
+        return result;
+      }
 
-        public static rso.core.model.Message.RSOMessage parseFrom(
-                com.google.protobuf.ByteString data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+      public rso.core.model.Message.RSOMessage buildPartial() {
+        rso.core.model.Message.RSOMessage result = new rso.core.model.Message.RSOMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-
-        public static rso.core.model.Message.RSOMessage parseFrom(byte[] data)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data);
+        if (tokenBuilder_ == null) {
+          result.token_ = token_;
+        } else {
+          result.token_ = tokenBuilder_.build();
         }
-
-        public static rso.core.model.Message.RSOMessage parseFrom(
-                byte[] data,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-            return PARSER.parseFrom(data, extensionRegistry);
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
         }
-
-        public static rso.core.model.Message.RSOMessage parseFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input);
+        if (middlewareMessageBuilder_ == null) {
+          result.middlewareMessage_ = middlewareMessage_;
+        } else {
+          result.middlewareMessage_ = middlewareMessageBuilder_.build();
         }
-
-        public static rso.core.model.Message.RSOMessage parseFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
         }
-
-        public static rso.core.model.Message.RSOMessage parseDelimitedFrom(java.io.InputStream input)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input);
+        if (middlewareRequestBuilder_ == null) {
+          result.middlewareRequest_ = middlewareRequest_;
+        } else {
+          result.middlewareRequest_ = middlewareRequestBuilder_.build();
         }
-
-        public static rso.core.model.Message.RSOMessage parseDelimitedFrom(
-                java.io.InputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
         }
-
-        public static rso.core.model.Message.RSOMessage parseFrom(
-                com.google.protobuf.CodedInputStream input)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input);
+        if (middlewareResponseBuilder_ == null) {
+          result.middlewareResponse_ = middlewareResponse_;
+        } else {
+          result.middlewareResponse_ = middlewareResponseBuilder_.build();
         }
-
-        public static rso.core.model.Message.RSOMessage parseFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws java.io.IOException {
-            return PARSER.parseFrom(input, extensionRegistry);
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
         }
-
-        public static Builder newBuilder() {
-            return Builder.create();
+        if (middlewareHeartbeatBuilder_ == null) {
+          result.middlewareHeartbeat_ = middlewareHeartbeat_;
+        } else {
+          result.middlewareHeartbeat_ = middlewareHeartbeatBuilder_.build();
         }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
 
-        public static Builder newBuilder(rso.core.model.Message.RSOMessage prototype) {
-            return newBuilder().mergeFrom(prototype);
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof rso.core.model.Message.RSOMessage) {
+          return mergeFrom((rso.core.model.Message.RSOMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
         }
+      }
 
-        public RSOMessage getDefaultInstanceForType() {
-            return defaultInstance;
+      public Builder mergeFrom(rso.core.model.Message.RSOMessage other) {
+        if (other == rso.core.model.Message.RSOMessage.getDefaultInstance()) return this;
+        if (other.hasToken()) {
+          mergeToken(other.getToken());
         }
-
-        @java.lang.Override
-        public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-            return this.unknownFields;
+        if (other.hasMiddlewareMessage()) {
+          mergeMiddlewareMessage(other.getMiddlewareMessage());
         }
-
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-            return rso.core.model.Message.internal_static_rso_RSOMessage_fieldAccessorTable
-                    .ensureFieldAccessorsInitialized(
-                            rso.core.model.Message.RSOMessage.class, rso.core.model.Message.RSOMessage.Builder.class);
+        if (other.hasMiddlewareRequest()) {
+          mergeMiddlewareRequest(other.getMiddlewareRequest());
         }
-
-        @java.lang.Override
-        public com.google.protobuf.Parser<RSOMessage> getParserForType() {
-            return PARSER;
+        if (other.hasMiddlewareResponse()) {
+          mergeMiddlewareResponse(other.getMiddlewareResponse());
         }
-
-        /**
-         * <code>optional .rso.Token token = 1;</code>
-         */
-        public boolean hasToken() {
-            return ((bitField0_ & 0x00000001) == 0x00000001);
+        if (other.hasMiddlewareHeartbeat()) {
+          mergeMiddlewareHeartbeat(other.getMiddlewareHeartbeat());
         }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
 
-        /**
-         * <code>optional .rso.Token token = 1;</code>
-         */
-        public rso.core.model.Message.Token getToken() {
-            return token_;
+      public final boolean isInitialized() {
+        if (hasToken()) {
+          if (!getToken().isInitialized()) {
+
+            return false;
+          }
         }
+        if (hasMiddlewareMessage()) {
+          if (!getMiddlewareMessage().isInitialized()) {
 
-        /**
-         * <code>optional .rso.Token token = 1;</code>
-         */
-        public rso.core.model.Message.TokenOrBuilder getTokenOrBuilder() {
-            return token_;
+            return false;
+          }
         }
+        if (hasMiddlewareRequest()) {
+          if (!getMiddlewareRequest().isInitialized()) {
 
-        /**
-         * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-         */
-        public boolean hasMiddlewareMessage() {
-            return ((bitField0_ & 0x00000002) == 0x00000002);
+            return false;
+          }
         }
+        if (hasMiddlewareResponse()) {
+          if (!getMiddlewareResponse().isInitialized()) {
 
-        /**
-         * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-         */
-        public rso.core.model.Message.MiddlewareMessage getMiddlewareMessage() {
-            return middlewareMessage_;
+            return false;
+          }
         }
+        if (hasMiddlewareHeartbeat()) {
+          if (!getMiddlewareHeartbeat().isInitialized()) {
 
-        /**
-         * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-         */
-        public rso.core.model.Message.MiddlewareMessageOrBuilder getMiddlewareMessageOrBuilder() {
-            return middlewareMessage_;
+            return false;
+          }
         }
+        return true;
+      }
 
-        /**
-         * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-         */
-        public boolean hasMiddlewareRequest() {
-            return ((bitField0_ & 0x00000004) == 0x00000004);
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        rso.core.model.Message.RSOMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (rso.core.model.Message.RSOMessage) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
         }
+        return this;
+      }
 
-        /**
-         * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-         */
-        public rso.core.model.Message.MiddlewareRequest getMiddlewareRequest() {
-            return middlewareRequest_;
+      /**
+       * <code>optional .rso.Token token = 1;</code>
+       */
+      public boolean hasToken() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+
+      /**
+       * <code>optional .rso.Token token = 1;</code>
+       */
+      public rso.core.model.Message.Token getToken() {
+        if (tokenBuilder_ == null) {
+          return token_;
+        } else {
+          return tokenBuilder_.getMessage();
         }
+      }
 
-        /**
-         * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-         */
-        public rso.core.model.Message.MiddlewareRequestOrBuilder getMiddlewareRequestOrBuilder() {
-            return middlewareRequest_;
+      /**
+       * <code>optional .rso.Token token = 1;</code>
+       */
+      public Builder setToken(rso.core.model.Message.Token value) {
+        if (tokenBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          token_ = value;
+          onChanged();
+        } else {
+          tokenBuilder_.setMessage(value);
         }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
 
-        /**
-         * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-         */
-        public boolean hasMiddlewareResponse() {
-            return ((bitField0_ & 0x00000008) == 0x00000008);
+      /**
+       * <code>optional .rso.Token token = 1;</code>
+       */
+      public Builder setToken(
+          rso.core.model.Message.Token.Builder builderForValue) {
+        if (tokenBuilder_ == null) {
+          token_ = builderForValue.build();
+          onChanged();
+        } else {
+          tokenBuilder_.setMessage(builderForValue.build());
         }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
 
-        /**
-         * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-         */
-        public rso.core.model.Message.MiddlewareResponse getMiddlewareResponse() {
-            return middlewareResponse_;
+      /**
+       * <code>optional .rso.Token token = 1;</code>
+       */
+      public Builder mergeToken(rso.core.model.Message.Token value) {
+        if (tokenBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              token_ != rso.core.model.Message.Token.getDefaultInstance()) {
+            token_ =
+              rso.core.model.Message.Token.newBuilder(token_).mergeFrom(value).buildPartial();
+          } else {
+            token_ = value;
+          }
+          onChanged();
+        } else {
+          tokenBuilder_.mergeFrom(value);
         }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
 
-        /**
-         * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-         */
-        public rso.core.model.Message.MiddlewareResponseOrBuilder getMiddlewareResponseOrBuilder() {
-            return middlewareResponse_;
+      /**
+       * <code>optional .rso.Token token = 1;</code>
+       */
+      public Builder clearToken() {
+        if (tokenBuilder_ == null) {
+          token_ = rso.core.model.Message.Token.getDefaultInstance();
+          onChanged();
+        } else {
+          tokenBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
 
-        /**
-         * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-         */
-        public boolean hasMiddlewareHeartbeat() {
-            return ((bitField0_ & 0x00000010) == 0x00000010);
+      /**
+       * <code>optional .rso.Token token = 1;</code>
+       */
+      public rso.core.model.Message.Token.Builder getTokenBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getTokenFieldBuilder().getBuilder();
+      }
+
+      /**
+       * <code>optional .rso.Token token = 1;</code>
+       */
+      public rso.core.model.Message.TokenOrBuilder getTokenOrBuilder() {
+        if (tokenBuilder_ != null) {
+          return tokenBuilder_.getMessageOrBuilder();
+        } else {
+          return token_;
         }
+      }
 
-        /**
-         * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-         */
-        public rso.core.model.Message.MiddlewareHeartbeat getMiddlewareHeartbeat() {
-            return middlewareHeartbeat_;
+      /**
+       * <code>optional .rso.Token token = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          rso.core.model.Message.Token, rso.core.model.Message.Token.Builder, rso.core.model.Message.TokenOrBuilder>
+          getTokenFieldBuilder() {
+        if (tokenBuilder_ == null) {
+          tokenBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              rso.core.model.Message.Token, rso.core.model.Message.Token.Builder, rso.core.model.Message.TokenOrBuilder>(
+                  getToken(),
+                  getParentForChildren(),
+                  isClean());
+          token_ = null;
         }
+        return tokenBuilder_;
+      }
 
-        /**
-         * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-         */
-        public rso.core.model.Message.MiddlewareHeartbeatOrBuilder getMiddlewareHeartbeatOrBuilder() {
-            return middlewareHeartbeat_;
+      /**
+       * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+       */
+      public boolean hasMiddlewareMessage() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+       */
+      public rso.core.model.Message.MiddlewareMessage getMiddlewareMessage() {
+        if (middlewareMessageBuilder_ == null) {
+          return middlewareMessage_;
+        } else {
+          return middlewareMessageBuilder_.getMessage();
         }
+      }
 
-        private void initFields() {
-            token_ = rso.core.model.Message.Token.getDefaultInstance();
-            middlewareMessage_ = rso.core.model.Message.MiddlewareMessage.getDefaultInstance();
-            middlewareRequest_ = rso.core.model.Message.MiddlewareRequest.getDefaultInstance();
-            middlewareResponse_ = rso.core.model.Message.MiddlewareResponse.getDefaultInstance();
-            middlewareHeartbeat_ = rso.core.model.Message.MiddlewareHeartbeat.getDefaultInstance();
+      /**
+       * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+       */
+      public Builder setMiddlewareMessage(rso.core.model.Message.MiddlewareMessage value) {
+        if (middlewareMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          middlewareMessage_ = value;
+          onChanged();
+        } else {
+          middlewareMessageBuilder_.setMessage(value);
         }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
 
-        public final boolean isInitialized() {
-            byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return true;
-            if (isInitialized == 0) return false;
-
-            if (hasToken()) {
-                if (!getToken().isInitialized()) {
-                    memoizedIsInitialized = 0;
-                    return false;
-                }
-            }
-            if (hasMiddlewareMessage()) {
-                if (!getMiddlewareMessage().isInitialized()) {
-                    memoizedIsInitialized = 0;
-                    return false;
-                }
-            }
-            if (hasMiddlewareRequest()) {
-                if (!getMiddlewareRequest().isInitialized()) {
-                    memoizedIsInitialized = 0;
-                    return false;
-                }
-            }
-            if (hasMiddlewareResponse()) {
-                if (!getMiddlewareResponse().isInitialized()) {
-                    memoizedIsInitialized = 0;
-                    return false;
-                }
-            }
-            if (hasMiddlewareHeartbeat()) {
-                if (!getMiddlewareHeartbeat().isInitialized()) {
-                    memoizedIsInitialized = 0;
-                    return false;
-                }
-            }
-            memoizedIsInitialized = 1;
-            return true;
+      /**
+       * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+       */
+      public Builder setMiddlewareMessage(
+          rso.core.model.Message.MiddlewareMessage.Builder builderForValue) {
+        if (middlewareMessageBuilder_ == null) {
+          middlewareMessage_ = builderForValue.build();
+          onChanged();
+        } else {
+          middlewareMessageBuilder_.setMessage(builderForValue.build());
         }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
 
-        public void writeTo(com.google.protobuf.CodedOutputStream output)
-                throws java.io.IOException {
-            getSerializedSize();
-            if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                output.writeMessage(1, token_);
-            }
-            if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                output.writeMessage(2, middlewareMessage_);
-            }
-            if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                output.writeMessage(3, middlewareRequest_);
-            }
-            if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                output.writeMessage(4, middlewareResponse_);
-            }
-            if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                output.writeMessage(5, middlewareHeartbeat_);
-            }
-            getUnknownFields().writeTo(output);
+      /**
+       * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+       */
+      public Builder mergeMiddlewareMessage(rso.core.model.Message.MiddlewareMessage value) {
+        if (middlewareMessageBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              middlewareMessage_ != rso.core.model.Message.MiddlewareMessage.getDefaultInstance()) {
+            middlewareMessage_ =
+              rso.core.model.Message.MiddlewareMessage.newBuilder(middlewareMessage_).mergeFrom(value).buildPartial();
+          } else {
+            middlewareMessage_ = value;
+          }
+          onChanged();
+        } else {
+          middlewareMessageBuilder_.mergeFrom(value);
         }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
 
-        public int getSerializedSize() {
-            int size = memoizedSerializedSize;
-            if (size != -1) return size;
-
-            size = 0;
-            if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(1, token_);
-            }
-            if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(2, middlewareMessage_);
-            }
-            if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(3, middlewareRequest_);
-            }
-            if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(4, middlewareResponse_);
-            }
-            if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(5, middlewareHeartbeat_);
-            }
-            size += getUnknownFields().getSerializedSize();
-            memoizedSerializedSize = size;
-            return size;
+      /**
+       * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+       */
+      public Builder clearMiddlewareMessage() {
+        if (middlewareMessageBuilder_ == null) {
+          middlewareMessage_ = rso.core.model.Message.MiddlewareMessage.getDefaultInstance();
+          onChanged();
+        } else {
+          middlewareMessageBuilder_.clear();
         }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
 
-        @java.lang.Override
-        protected java.lang.Object writeReplace()
-                throws java.io.ObjectStreamException {
-            return super.writeReplace();
+      /**
+       * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+       */
+      public rso.core.model.Message.MiddlewareMessage.Builder getMiddlewareMessageBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getMiddlewareMessageFieldBuilder().getBuilder();
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+       */
+      public rso.core.model.Message.MiddlewareMessageOrBuilder getMiddlewareMessageOrBuilder() {
+        if (middlewareMessageBuilder_ != null) {
+          return middlewareMessageBuilder_.getMessageOrBuilder();
+        } else {
+          return middlewareMessage_;
         }
+      }
 
-        public Builder newBuilderForType() {
-            return newBuilder();
+      /**
+       * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          rso.core.model.Message.MiddlewareMessage, rso.core.model.Message.MiddlewareMessage.Builder, rso.core.model.Message.MiddlewareMessageOrBuilder>
+          getMiddlewareMessageFieldBuilder() {
+        if (middlewareMessageBuilder_ == null) {
+          middlewareMessageBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              rso.core.model.Message.MiddlewareMessage, rso.core.model.Message.MiddlewareMessage.Builder, rso.core.model.Message.MiddlewareMessageOrBuilder>(
+                  getMiddlewareMessage(),
+                  getParentForChildren(),
+                  isClean());
+          middlewareMessage_ = null;
         }
+        return middlewareMessageBuilder_;
+      }
 
-        public Builder toBuilder() {
-            return newBuilder(this);
+      /**
+       * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+       */
+      public boolean hasMiddlewareRequest() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+       */
+      public rso.core.model.Message.MiddlewareRequest getMiddlewareRequest() {
+        if (middlewareRequestBuilder_ == null) {
+          return middlewareRequest_;
+        } else {
+          return middlewareRequestBuilder_.getMessage();
         }
+      }
 
-        @java.lang.Override
-        protected Builder newBuilderForType(
-                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-            Builder builder = new Builder(parent);
-            return builder;
+      /**
+       * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+       */
+      public Builder setMiddlewareRequest(rso.core.model.Message.MiddlewareRequest value) {
+        if (middlewareRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          middlewareRequest_ = value;
+          onChanged();
+        } else {
+          middlewareRequestBuilder_.setMessage(value);
         }
-
-        /**
-         * Protobuf type {@code rso.RSOMessage}
-         */
-        public static final class Builder extends
-                com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:rso.RSOMessage)
-                rso.core.model.Message.RSOMessageOrBuilder {
-            private int bitField0_;
-            private rso.core.model.Message.Token token_ = rso.core.model.Message.Token.getDefaultInstance();
-            private com.google.protobuf.SingleFieldBuilder<
-                    rso.core.model.Message.Token, rso.core.model.Message.Token.Builder, rso.core.model.Message.TokenOrBuilder> tokenBuilder_;
-            private rso.core.model.Message.MiddlewareMessage middlewareMessage_ = rso.core.model.Message.MiddlewareMessage.getDefaultInstance();
-            private com.google.protobuf.SingleFieldBuilder<
-                    rso.core.model.Message.MiddlewareMessage, rso.core.model.Message.MiddlewareMessage.Builder, rso.core.model.Message.MiddlewareMessageOrBuilder> middlewareMessageBuilder_;
-            private rso.core.model.Message.MiddlewareRequest middlewareRequest_ = rso.core.model.Message.MiddlewareRequest.getDefaultInstance();
-            private com.google.protobuf.SingleFieldBuilder<
-                    rso.core.model.Message.MiddlewareRequest, rso.core.model.Message.MiddlewareRequest.Builder, rso.core.model.Message.MiddlewareRequestOrBuilder> middlewareRequestBuilder_;
-            private rso.core.model.Message.MiddlewareResponse middlewareResponse_ = rso.core.model.Message.MiddlewareResponse.getDefaultInstance();
-            private com.google.protobuf.SingleFieldBuilder<
-                    rso.core.model.Message.MiddlewareResponse, rso.core.model.Message.MiddlewareResponse.Builder, rso.core.model.Message.MiddlewareResponseOrBuilder> middlewareResponseBuilder_;
-            private rso.core.model.Message.MiddlewareHeartbeat middlewareHeartbeat_ = rso.core.model.Message.MiddlewareHeartbeat.getDefaultInstance();
-            private com.google.protobuf.SingleFieldBuilder<
-                    rso.core.model.Message.MiddlewareHeartbeat, rso.core.model.Message.MiddlewareHeartbeat.Builder, rso.core.model.Message.MiddlewareHeartbeatOrBuilder> middlewareHeartbeatBuilder_;
-
-            // Construct using rso.core.model.Message.RSOMessage.newBuilder()
-            private Builder() {
-                maybeForceBuilderInitialization();
-            }
-
-            private Builder(
-                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-                super(parent);
-                maybeForceBuilderInitialization();
-            }
-
-            public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-                return rso.core.model.Message.internal_static_rso_RSOMessage_descriptor;
-            }
-
-            private static Builder create() {
-                return new Builder();
-            }
-
-            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-                return rso.core.model.Message.internal_static_rso_RSOMessage_fieldAccessorTable
-                        .ensureFieldAccessorsInitialized(
-                                rso.core.model.Message.RSOMessage.class, rso.core.model.Message.RSOMessage.Builder.class);
-            }
-
-            private void maybeForceBuilderInitialization() {
-                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-                    getTokenFieldBuilder();
-                    getMiddlewareMessageFieldBuilder();
-                    getMiddlewareRequestFieldBuilder();
-                    getMiddlewareResponseFieldBuilder();
-                    getMiddlewareHeartbeatFieldBuilder();
-                }
-            }
-
-            public Builder clear() {
-                super.clear();
-                if (tokenBuilder_ == null) {
-                    token_ = rso.core.model.Message.Token.getDefaultInstance();
-                } else {
-                    tokenBuilder_.clear();
-                }
-                bitField0_ = (bitField0_ & ~0x00000001);
-                if (middlewareMessageBuilder_ == null) {
-                    middlewareMessage_ = rso.core.model.Message.MiddlewareMessage.getDefaultInstance();
-                } else {
-                    middlewareMessageBuilder_.clear();
-                }
-                bitField0_ = (bitField0_ & ~0x00000002);
-                if (middlewareRequestBuilder_ == null) {
-                    middlewareRequest_ = rso.core.model.Message.MiddlewareRequest.getDefaultInstance();
-                } else {
-                    middlewareRequestBuilder_.clear();
-                }
-                bitField0_ = (bitField0_ & ~0x00000004);
-                if (middlewareResponseBuilder_ == null) {
-                    middlewareResponse_ = rso.core.model.Message.MiddlewareResponse.getDefaultInstance();
-                } else {
-                    middlewareResponseBuilder_.clear();
-                }
-                bitField0_ = (bitField0_ & ~0x00000008);
-                if (middlewareHeartbeatBuilder_ == null) {
-                    middlewareHeartbeat_ = rso.core.model.Message.MiddlewareHeartbeat.getDefaultInstance();
-                } else {
-                    middlewareHeartbeatBuilder_.clear();
-                }
-                bitField0_ = (bitField0_ & ~0x00000010);
-                return this;
-            }
-
-            public Builder clone() {
-                return create().mergeFrom(buildPartial());
-            }
-
-            public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-                return rso.core.model.Message.internal_static_rso_RSOMessage_descriptor;
-            }
-
-            public rso.core.model.Message.RSOMessage getDefaultInstanceForType() {
-                return rso.core.model.Message.RSOMessage.getDefaultInstance();
-            }
-
-            public rso.core.model.Message.RSOMessage build() {
-                rso.core.model.Message.RSOMessage result = buildPartial();
-                if (!result.isInitialized()) {
-                    throw newUninitializedMessageException(result);
-                }
-                return result;
-            }
-
-            public rso.core.model.Message.RSOMessage buildPartial() {
-                rso.core.model.Message.RSOMessage result = new rso.core.model.Message.RSOMessage(this);
-                int from_bitField0_ = bitField0_;
-                int to_bitField0_ = 0;
-                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-                    to_bitField0_ |= 0x00000001;
-                }
-                if (tokenBuilder_ == null) {
-                    result.token_ = token_;
-                } else {
-                    result.token_ = tokenBuilder_.build();
-                }
-                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-                    to_bitField0_ |= 0x00000002;
-                }
-                if (middlewareMessageBuilder_ == null) {
-                    result.middlewareMessage_ = middlewareMessage_;
-                } else {
-                    result.middlewareMessage_ = middlewareMessageBuilder_.build();
-                }
-                if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-                    to_bitField0_ |= 0x00000004;
-                }
-                if (middlewareRequestBuilder_ == null) {
-                    result.middlewareRequest_ = middlewareRequest_;
-                } else {
-                    result.middlewareRequest_ = middlewareRequestBuilder_.build();
-                }
-                if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-                    to_bitField0_ |= 0x00000008;
-                }
-                if (middlewareResponseBuilder_ == null) {
-                    result.middlewareResponse_ = middlewareResponse_;
-                } else {
-                    result.middlewareResponse_ = middlewareResponseBuilder_.build();
-                }
-                if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-                    to_bitField0_ |= 0x00000010;
-                }
-                if (middlewareHeartbeatBuilder_ == null) {
-                    result.middlewareHeartbeat_ = middlewareHeartbeat_;
-                } else {
-                    result.middlewareHeartbeat_ = middlewareHeartbeatBuilder_.build();
-                }
-                result.bitField0_ = to_bitField0_;
-                onBuilt();
-                return result;
-            }
-
-            public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof rso.core.model.Message.RSOMessage) {
-                    return mergeFrom((rso.core.model.Message.RSOMessage) other);
-                } else {
-                    super.mergeFrom(other);
-                    return this;
-                }
-            }
-
-            public Builder mergeFrom(rso.core.model.Message.RSOMessage other) {
-                if (other == rso.core.model.Message.RSOMessage.getDefaultInstance()) return this;
-                if (other.hasToken()) {
-                    mergeToken(other.getToken());
-                }
-                if (other.hasMiddlewareMessage()) {
-                    mergeMiddlewareMessage(other.getMiddlewareMessage());
-                }
-                if (other.hasMiddlewareRequest()) {
-                    mergeMiddlewareRequest(other.getMiddlewareRequest());
-                }
-                if (other.hasMiddlewareResponse()) {
-                    mergeMiddlewareResponse(other.getMiddlewareResponse());
-                }
-                if (other.hasMiddlewareHeartbeat()) {
-                    mergeMiddlewareHeartbeat(other.getMiddlewareHeartbeat());
-                }
-                this.mergeUnknownFields(other.getUnknownFields());
-                return this;
-            }
-
-            public final boolean isInitialized() {
-                if (hasToken()) {
-                    if (!getToken().isInitialized()) {
-
-                        return false;
-                    }
-                }
-                if (hasMiddlewareMessage()) {
-                    if (!getMiddlewareMessage().isInitialized()) {
-
-                        return false;
-                    }
-                }
-                if (hasMiddlewareRequest()) {
-                    if (!getMiddlewareRequest().isInitialized()) {
-
-                        return false;
-                    }
-                }
-                if (hasMiddlewareResponse()) {
-                    if (!getMiddlewareResponse().isInitialized()) {
-
-                        return false;
-                    }
-                }
-                if (hasMiddlewareHeartbeat()) {
-                    if (!getMiddlewareHeartbeat().isInitialized()) {
-
-                        return false;
-                    }
-                }
-                return true;
-            }
-
-            public Builder mergeFrom(
-                    com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws java.io.IOException {
-                rso.core.model.Message.RSOMessage parsedMessage = null;
-                try {
-                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (rso.core.model.Message.RSOMessage) e.getUnfinishedMessage();
-                    throw e;
-                } finally {
-                    if (parsedMessage != null) {
-                        mergeFrom(parsedMessage);
-                    }
-                }
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.Token token = 1;</code>
-             */
-            public boolean hasToken() {
-                return ((bitField0_ & 0x00000001) == 0x00000001);
-            }
-
-            /**
-             * <code>optional .rso.Token token = 1;</code>
-             */
-            public rso.core.model.Message.Token getToken() {
-                if (tokenBuilder_ == null) {
-                    return token_;
-                } else {
-                    return tokenBuilder_.getMessage();
-                }
-            }
-
-            /**
-             * <code>optional .rso.Token token = 1;</code>
-             */
-            public Builder setToken(
-                    rso.core.model.Message.Token.Builder builderForValue) {
-                if (tokenBuilder_ == null) {
-                    token_ = builderForValue.build();
-                    onChanged();
-                } else {
-                    tokenBuilder_.setMessage(builderForValue.build());
-                }
-                bitField0_ |= 0x00000001;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.Token token = 1;</code>
-             */
-            public Builder setToken(rso.core.model.Message.Token value) {
-                if (tokenBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    token_ = value;
-                    onChanged();
-                } else {
-                    tokenBuilder_.setMessage(value);
-                }
-                bitField0_ |= 0x00000001;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.Token token = 1;</code>
-             */
-            public Builder mergeToken(rso.core.model.Message.Token value) {
-                if (tokenBuilder_ == null) {
-                    if (((bitField0_ & 0x00000001) == 0x00000001) &&
-                            token_ != rso.core.model.Message.Token.getDefaultInstance()) {
-                        token_ =
-                                rso.core.model.Message.Token.newBuilder(token_).mergeFrom(value).buildPartial();
-                    } else {
-                        token_ = value;
-                    }
-                    onChanged();
-                } else {
-                    tokenBuilder_.mergeFrom(value);
-                }
-                bitField0_ |= 0x00000001;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.Token token = 1;</code>
-             */
-            public Builder clearToken() {
-                if (tokenBuilder_ == null) {
-                    token_ = rso.core.model.Message.Token.getDefaultInstance();
-                    onChanged();
-                } else {
-                    tokenBuilder_.clear();
-                }
-                bitField0_ = (bitField0_ & ~0x00000001);
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.Token token = 1;</code>
-             */
-            public rso.core.model.Message.Token.Builder getTokenBuilder() {
-                bitField0_ |= 0x00000001;
-                onChanged();
-                return getTokenFieldBuilder().getBuilder();
-            }
-
-            /**
-             * <code>optional .rso.Token token = 1;</code>
-             */
-            public rso.core.model.Message.TokenOrBuilder getTokenOrBuilder() {
-                if (tokenBuilder_ != null) {
-                    return tokenBuilder_.getMessageOrBuilder();
-                } else {
-                    return token_;
-                }
-            }
-
-            /**
-             * <code>optional .rso.Token token = 1;</code>
-             */
-            private com.google.protobuf.SingleFieldBuilder<
-                    rso.core.model.Message.Token, rso.core.model.Message.Token.Builder, rso.core.model.Message.TokenOrBuilder>
-            getTokenFieldBuilder() {
-                if (tokenBuilder_ == null) {
-                    tokenBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                            rso.core.model.Message.Token, rso.core.model.Message.Token.Builder, rso.core.model.Message.TokenOrBuilder>(
-                            getToken(),
-                            getParentForChildren(),
-                            isClean());
-                    token_ = null;
-                }
-                return tokenBuilder_;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-             */
-            public boolean hasMiddlewareMessage() {
-                return ((bitField0_ & 0x00000002) == 0x00000002);
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-             */
-            public rso.core.model.Message.MiddlewareMessage getMiddlewareMessage() {
-                if (middlewareMessageBuilder_ == null) {
-                    return middlewareMessage_;
-                } else {
-                    return middlewareMessageBuilder_.getMessage();
-                }
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-             */
-            public Builder setMiddlewareMessage(
-                    rso.core.model.Message.MiddlewareMessage.Builder builderForValue) {
-                if (middlewareMessageBuilder_ == null) {
-                    middlewareMessage_ = builderForValue.build();
-                    onChanged();
-                } else {
-                    middlewareMessageBuilder_.setMessage(builderForValue.build());
-                }
-                bitField0_ |= 0x00000002;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-             */
-            public Builder setMiddlewareMessage(rso.core.model.Message.MiddlewareMessage value) {
-                if (middlewareMessageBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    middlewareMessage_ = value;
-                    onChanged();
-                } else {
-                    middlewareMessageBuilder_.setMessage(value);
-                }
-                bitField0_ |= 0x00000002;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-             */
-            public Builder mergeMiddlewareMessage(rso.core.model.Message.MiddlewareMessage value) {
-                if (middlewareMessageBuilder_ == null) {
-                    if (((bitField0_ & 0x00000002) == 0x00000002) &&
-                            middlewareMessage_ != rso.core.model.Message.MiddlewareMessage.getDefaultInstance()) {
-                        middlewareMessage_ =
-                                rso.core.model.Message.MiddlewareMessage.newBuilder(middlewareMessage_).mergeFrom(value).buildPartial();
-                    } else {
-                        middlewareMessage_ = value;
-                    }
-                    onChanged();
-                } else {
-                    middlewareMessageBuilder_.mergeFrom(value);
-                }
-                bitField0_ |= 0x00000002;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-             */
-            public Builder clearMiddlewareMessage() {
-                if (middlewareMessageBuilder_ == null) {
-                    middlewareMessage_ = rso.core.model.Message.MiddlewareMessage.getDefaultInstance();
-                    onChanged();
-                } else {
-                    middlewareMessageBuilder_.clear();
-                }
-                bitField0_ = (bitField0_ & ~0x00000002);
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-             */
-            public rso.core.model.Message.MiddlewareMessage.Builder getMiddlewareMessageBuilder() {
-                bitField0_ |= 0x00000002;
-                onChanged();
-                return getMiddlewareMessageFieldBuilder().getBuilder();
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-             */
-            public rso.core.model.Message.MiddlewareMessageOrBuilder getMiddlewareMessageOrBuilder() {
-                if (middlewareMessageBuilder_ != null) {
-                    return middlewareMessageBuilder_.getMessageOrBuilder();
-                } else {
-                    return middlewareMessage_;
-                }
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareMessage middlewareMessage = 2;</code>
-             */
-            private com.google.protobuf.SingleFieldBuilder<
-                    rso.core.model.Message.MiddlewareMessage, rso.core.model.Message.MiddlewareMessage.Builder, rso.core.model.Message.MiddlewareMessageOrBuilder>
-            getMiddlewareMessageFieldBuilder() {
-                if (middlewareMessageBuilder_ == null) {
-                    middlewareMessageBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                            rso.core.model.Message.MiddlewareMessage, rso.core.model.Message.MiddlewareMessage.Builder, rso.core.model.Message.MiddlewareMessageOrBuilder>(
-                            getMiddlewareMessage(),
-                            getParentForChildren(),
-                            isClean());
-                    middlewareMessage_ = null;
-                }
-                return middlewareMessageBuilder_;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-             */
-            public boolean hasMiddlewareRequest() {
-                return ((bitField0_ & 0x00000004) == 0x00000004);
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-             */
-            public rso.core.model.Message.MiddlewareRequest getMiddlewareRequest() {
-                if (middlewareRequestBuilder_ == null) {
-                    return middlewareRequest_;
-                } else {
-                    return middlewareRequestBuilder_.getMessage();
-                }
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-             */
-            public Builder setMiddlewareRequest(
-                    rso.core.model.Message.MiddlewareRequest.Builder builderForValue) {
-                if (middlewareRequestBuilder_ == null) {
-                    middlewareRequest_ = builderForValue.build();
-                    onChanged();
-                } else {
-                    middlewareRequestBuilder_.setMessage(builderForValue.build());
-                }
-                bitField0_ |= 0x00000004;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-             */
-            public Builder setMiddlewareRequest(rso.core.model.Message.MiddlewareRequest value) {
-                if (middlewareRequestBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    middlewareRequest_ = value;
-                    onChanged();
-                } else {
-                    middlewareRequestBuilder_.setMessage(value);
-                }
-                bitField0_ |= 0x00000004;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-             */
-            public Builder mergeMiddlewareRequest(rso.core.model.Message.MiddlewareRequest value) {
-                if (middlewareRequestBuilder_ == null) {
-                    if (((bitField0_ & 0x00000004) == 0x00000004) &&
-                            middlewareRequest_ != rso.core.model.Message.MiddlewareRequest.getDefaultInstance()) {
-                        middlewareRequest_ =
-                                rso.core.model.Message.MiddlewareRequest.newBuilder(middlewareRequest_).mergeFrom(value).buildPartial();
-                    } else {
-                        middlewareRequest_ = value;
-                    }
-                    onChanged();
-                } else {
-                    middlewareRequestBuilder_.mergeFrom(value);
-                }
-                bitField0_ |= 0x00000004;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-             */
-            public Builder clearMiddlewareRequest() {
-                if (middlewareRequestBuilder_ == null) {
-                    middlewareRequest_ = rso.core.model.Message.MiddlewareRequest.getDefaultInstance();
-                    onChanged();
-                } else {
-                    middlewareRequestBuilder_.clear();
-                }
-                bitField0_ = (bitField0_ & ~0x00000004);
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-             */
-            public rso.core.model.Message.MiddlewareRequest.Builder getMiddlewareRequestBuilder() {
-                bitField0_ |= 0x00000004;
-                onChanged();
-                return getMiddlewareRequestFieldBuilder().getBuilder();
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-             */
-            public rso.core.model.Message.MiddlewareRequestOrBuilder getMiddlewareRequestOrBuilder() {
-                if (middlewareRequestBuilder_ != null) {
-                    return middlewareRequestBuilder_.getMessageOrBuilder();
-                } else {
-                    return middlewareRequest_;
-                }
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
-             */
-            private com.google.protobuf.SingleFieldBuilder<
-                    rso.core.model.Message.MiddlewareRequest, rso.core.model.Message.MiddlewareRequest.Builder, rso.core.model.Message.MiddlewareRequestOrBuilder>
-            getMiddlewareRequestFieldBuilder() {
-                if (middlewareRequestBuilder_ == null) {
-                    middlewareRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                            rso.core.model.Message.MiddlewareRequest, rso.core.model.Message.MiddlewareRequest.Builder, rso.core.model.Message.MiddlewareRequestOrBuilder>(
-                            getMiddlewareRequest(),
-                            getParentForChildren(),
-                            isClean());
-                    middlewareRequest_ = null;
-                }
-                return middlewareRequestBuilder_;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-             */
-            public boolean hasMiddlewareResponse() {
-                return ((bitField0_ & 0x00000008) == 0x00000008);
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-             */
-            public rso.core.model.Message.MiddlewareResponse getMiddlewareResponse() {
-                if (middlewareResponseBuilder_ == null) {
-                    return middlewareResponse_;
-                } else {
-                    return middlewareResponseBuilder_.getMessage();
-                }
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-             */
-            public Builder setMiddlewareResponse(
-                    rso.core.model.Message.MiddlewareResponse.Builder builderForValue) {
-                if (middlewareResponseBuilder_ == null) {
-                    middlewareResponse_ = builderForValue.build();
-                    onChanged();
-                } else {
-                    middlewareResponseBuilder_.setMessage(builderForValue.build());
-                }
-                bitField0_ |= 0x00000008;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-             */
-            public Builder setMiddlewareResponse(rso.core.model.Message.MiddlewareResponse value) {
-                if (middlewareResponseBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    middlewareResponse_ = value;
-                    onChanged();
-                } else {
-                    middlewareResponseBuilder_.setMessage(value);
-                }
-                bitField0_ |= 0x00000008;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-             */
-            public Builder mergeMiddlewareResponse(rso.core.model.Message.MiddlewareResponse value) {
-                if (middlewareResponseBuilder_ == null) {
-                    if (((bitField0_ & 0x00000008) == 0x00000008) &&
-                            middlewareResponse_ != rso.core.model.Message.MiddlewareResponse.getDefaultInstance()) {
-                        middlewareResponse_ =
-                                rso.core.model.Message.MiddlewareResponse.newBuilder(middlewareResponse_).mergeFrom(value).buildPartial();
-                    } else {
-                        middlewareResponse_ = value;
-                    }
-                    onChanged();
-                } else {
-                    middlewareResponseBuilder_.mergeFrom(value);
-                }
-                bitField0_ |= 0x00000008;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-             */
-            public Builder clearMiddlewareResponse() {
-                if (middlewareResponseBuilder_ == null) {
-                    middlewareResponse_ = rso.core.model.Message.MiddlewareResponse.getDefaultInstance();
-                    onChanged();
-                } else {
-                    middlewareResponseBuilder_.clear();
-                }
-                bitField0_ = (bitField0_ & ~0x00000008);
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-             */
-            public rso.core.model.Message.MiddlewareResponse.Builder getMiddlewareResponseBuilder() {
-                bitField0_ |= 0x00000008;
-                onChanged();
-                return getMiddlewareResponseFieldBuilder().getBuilder();
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-             */
-            public rso.core.model.Message.MiddlewareResponseOrBuilder getMiddlewareResponseOrBuilder() {
-                if (middlewareResponseBuilder_ != null) {
-                    return middlewareResponseBuilder_.getMessageOrBuilder();
-                } else {
-                    return middlewareResponse_;
-                }
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
-             */
-            private com.google.protobuf.SingleFieldBuilder<
-                    rso.core.model.Message.MiddlewareResponse, rso.core.model.Message.MiddlewareResponse.Builder, rso.core.model.Message.MiddlewareResponseOrBuilder>
-            getMiddlewareResponseFieldBuilder() {
-                if (middlewareResponseBuilder_ == null) {
-                    middlewareResponseBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                            rso.core.model.Message.MiddlewareResponse, rso.core.model.Message.MiddlewareResponse.Builder, rso.core.model.Message.MiddlewareResponseOrBuilder>(
-                            getMiddlewareResponse(),
-                            getParentForChildren(),
-                            isClean());
-                    middlewareResponse_ = null;
-                }
-                return middlewareResponseBuilder_;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-             */
-            public boolean hasMiddlewareHeartbeat() {
-                return ((bitField0_ & 0x00000010) == 0x00000010);
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-             */
-            public rso.core.model.Message.MiddlewareHeartbeat getMiddlewareHeartbeat() {
-                if (middlewareHeartbeatBuilder_ == null) {
-                    return middlewareHeartbeat_;
-                } else {
-                    return middlewareHeartbeatBuilder_.getMessage();
-                }
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-             */
-            public Builder setMiddlewareHeartbeat(
-                    rso.core.model.Message.MiddlewareHeartbeat.Builder builderForValue) {
-                if (middlewareHeartbeatBuilder_ == null) {
-                    middlewareHeartbeat_ = builderForValue.build();
-                    onChanged();
-                } else {
-                    middlewareHeartbeatBuilder_.setMessage(builderForValue.build());
-                }
-                bitField0_ |= 0x00000010;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-             */
-            public Builder setMiddlewareHeartbeat(rso.core.model.Message.MiddlewareHeartbeat value) {
-                if (middlewareHeartbeatBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    middlewareHeartbeat_ = value;
-                    onChanged();
-                } else {
-                    middlewareHeartbeatBuilder_.setMessage(value);
-                }
-                bitField0_ |= 0x00000010;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-             */
-            public Builder mergeMiddlewareHeartbeat(rso.core.model.Message.MiddlewareHeartbeat value) {
-                if (middlewareHeartbeatBuilder_ == null) {
-                    if (((bitField0_ & 0x00000010) == 0x00000010) &&
-                            middlewareHeartbeat_ != rso.core.model.Message.MiddlewareHeartbeat.getDefaultInstance()) {
-                        middlewareHeartbeat_ =
-                                rso.core.model.Message.MiddlewareHeartbeat.newBuilder(middlewareHeartbeat_).mergeFrom(value).buildPartial();
-                    } else {
-                        middlewareHeartbeat_ = value;
-                    }
-                    onChanged();
-                } else {
-                    middlewareHeartbeatBuilder_.mergeFrom(value);
-                }
-                bitField0_ |= 0x00000010;
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-             */
-            public Builder clearMiddlewareHeartbeat() {
-                if (middlewareHeartbeatBuilder_ == null) {
-                    middlewareHeartbeat_ = rso.core.model.Message.MiddlewareHeartbeat.getDefaultInstance();
-                    onChanged();
-                } else {
-                    middlewareHeartbeatBuilder_.clear();
-                }
-                bitField0_ = (bitField0_ & ~0x00000010);
-                return this;
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-             */
-            public rso.core.model.Message.MiddlewareHeartbeat.Builder getMiddlewareHeartbeatBuilder() {
-                bitField0_ |= 0x00000010;
-                onChanged();
-                return getMiddlewareHeartbeatFieldBuilder().getBuilder();
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-             */
-            public rso.core.model.Message.MiddlewareHeartbeatOrBuilder getMiddlewareHeartbeatOrBuilder() {
-                if (middlewareHeartbeatBuilder_ != null) {
-                    return middlewareHeartbeatBuilder_.getMessageOrBuilder();
-                } else {
-                    return middlewareHeartbeat_;
-                }
-            }
-
-            /**
-             * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
-             */
-            private com.google.protobuf.SingleFieldBuilder<
-                    rso.core.model.Message.MiddlewareHeartbeat, rso.core.model.Message.MiddlewareHeartbeat.Builder, rso.core.model.Message.MiddlewareHeartbeatOrBuilder>
-            getMiddlewareHeartbeatFieldBuilder() {
-                if (middlewareHeartbeatBuilder_ == null) {
-                    middlewareHeartbeatBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-                            rso.core.model.Message.MiddlewareHeartbeat, rso.core.model.Message.MiddlewareHeartbeat.Builder, rso.core.model.Message.MiddlewareHeartbeatOrBuilder>(
-                            getMiddlewareHeartbeat(),
-                            getParentForChildren(),
-                            isClean());
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+       */
+      public Builder setMiddlewareRequest(
+          rso.core.model.Message.MiddlewareRequest.Builder builderForValue) {
+        if (middlewareRequestBuilder_ == null) {
+          middlewareRequest_ = builderForValue.build();
+          onChanged();
+        } else {
+          middlewareRequestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+       */
+      public Builder mergeMiddlewareRequest(rso.core.model.Message.MiddlewareRequest value) {
+        if (middlewareRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              middlewareRequest_ != rso.core.model.Message.MiddlewareRequest.getDefaultInstance()) {
+            middlewareRequest_ =
+              rso.core.model.Message.MiddlewareRequest.newBuilder(middlewareRequest_).mergeFrom(value).buildPartial();
+          } else {
+            middlewareRequest_ = value;
+          }
+          onChanged();
+        } else {
+          middlewareRequestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+       */
+      public Builder clearMiddlewareRequest() {
+        if (middlewareRequestBuilder_ == null) {
+          middlewareRequest_ = rso.core.model.Message.MiddlewareRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          middlewareRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+       */
+      public rso.core.model.Message.MiddlewareRequest.Builder getMiddlewareRequestBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getMiddlewareRequestFieldBuilder().getBuilder();
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+       */
+      public rso.core.model.Message.MiddlewareRequestOrBuilder getMiddlewareRequestOrBuilder() {
+        if (middlewareRequestBuilder_ != null) {
+          return middlewareRequestBuilder_.getMessageOrBuilder();
+        } else {
+          return middlewareRequest_;
+        }
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareRequest middlewareRequest = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          rso.core.model.Message.MiddlewareRequest, rso.core.model.Message.MiddlewareRequest.Builder, rso.core.model.Message.MiddlewareRequestOrBuilder>
+          getMiddlewareRequestFieldBuilder() {
+        if (middlewareRequestBuilder_ == null) {
+          middlewareRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              rso.core.model.Message.MiddlewareRequest, rso.core.model.Message.MiddlewareRequest.Builder, rso.core.model.Message.MiddlewareRequestOrBuilder>(
+                  getMiddlewareRequest(),
+                  getParentForChildren(),
+                  isClean());
+          middlewareRequest_ = null;
+        }
+        return middlewareRequestBuilder_;
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+       */
+      public boolean hasMiddlewareResponse() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+       */
+      public rso.core.model.Message.MiddlewareResponse getMiddlewareResponse() {
+        if (middlewareResponseBuilder_ == null) {
+          return middlewareResponse_;
+        } else {
+          return middlewareResponseBuilder_.getMessage();
+        }
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+       */
+      public Builder setMiddlewareResponse(rso.core.model.Message.MiddlewareResponse value) {
+        if (middlewareResponseBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          middlewareResponse_ = value;
+          onChanged();
+        } else {
+          middlewareResponseBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+       */
+      public Builder setMiddlewareResponse(
+          rso.core.model.Message.MiddlewareResponse.Builder builderForValue) {
+        if (middlewareResponseBuilder_ == null) {
+          middlewareResponse_ = builderForValue.build();
+          onChanged();
+        } else {
+          middlewareResponseBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+       */
+      public Builder mergeMiddlewareResponse(rso.core.model.Message.MiddlewareResponse value) {
+        if (middlewareResponseBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              middlewareResponse_ != rso.core.model.Message.MiddlewareResponse.getDefaultInstance()) {
+            middlewareResponse_ =
+              rso.core.model.Message.MiddlewareResponse.newBuilder(middlewareResponse_).mergeFrom(value).buildPartial();
+          } else {
+            middlewareResponse_ = value;
+          }
+          onChanged();
+        } else {
+          middlewareResponseBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+       */
+      public Builder clearMiddlewareResponse() {
+        if (middlewareResponseBuilder_ == null) {
+          middlewareResponse_ = rso.core.model.Message.MiddlewareResponse.getDefaultInstance();
+          onChanged();
+        } else {
+          middlewareResponseBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+       */
+      public rso.core.model.Message.MiddlewareResponse.Builder getMiddlewareResponseBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getMiddlewareResponseFieldBuilder().getBuilder();
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+       */
+      public rso.core.model.Message.MiddlewareResponseOrBuilder getMiddlewareResponseOrBuilder() {
+        if (middlewareResponseBuilder_ != null) {
+          return middlewareResponseBuilder_.getMessageOrBuilder();
+        } else {
+          return middlewareResponse_;
+        }
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareResponse middlewareResponse = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          rso.core.model.Message.MiddlewareResponse, rso.core.model.Message.MiddlewareResponse.Builder, rso.core.model.Message.MiddlewareResponseOrBuilder>
+          getMiddlewareResponseFieldBuilder() {
+        if (middlewareResponseBuilder_ == null) {
+          middlewareResponseBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              rso.core.model.Message.MiddlewareResponse, rso.core.model.Message.MiddlewareResponse.Builder, rso.core.model.Message.MiddlewareResponseOrBuilder>(
+                  getMiddlewareResponse(),
+                  getParentForChildren(),
+                  isClean());
+          middlewareResponse_ = null;
+        }
+        return middlewareResponseBuilder_;
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+       */
+      public boolean hasMiddlewareHeartbeat() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+       */
+      public rso.core.model.Message.MiddlewareHeartbeat getMiddlewareHeartbeat() {
+        if (middlewareHeartbeatBuilder_ == null) {
+          return middlewareHeartbeat_;
+        } else {
+          return middlewareHeartbeatBuilder_.getMessage();
+        }
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+       */
+      public Builder setMiddlewareHeartbeat(rso.core.model.Message.MiddlewareHeartbeat value) {
+        if (middlewareHeartbeatBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          middlewareHeartbeat_ = value;
+          onChanged();
+        } else {
+          middlewareHeartbeatBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+       */
+      public Builder setMiddlewareHeartbeat(
+          rso.core.model.Message.MiddlewareHeartbeat.Builder builderForValue) {
+        if (middlewareHeartbeatBuilder_ == null) {
+          middlewareHeartbeat_ = builderForValue.build();
+          onChanged();
+        } else {
+          middlewareHeartbeatBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+
+      /**
+       * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+       */
+      public Builder mergeMiddlewareHeartbeat(rso.core.model.Message.MiddlewareHeartbeat value) {
+        if (middlewareHeartbeatBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              middlewareHeartbeat_ != rso.core.model.Message.MiddlewareHeartbeat.getDefaultInstance()) {
+            middlewareHeartbeat_ =
+              rso.core.model.Message.MiddlewareHeartbeat.newBuilder(middlewareHeartbeat_).mergeFrom(value).buildPartial();
+          } else {
+            middlewareHeartbeat_ = value;
+          }
+          onChanged();
+        } else {
+          middlewareHeartbeatBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+       */
+      public Builder clearMiddlewareHeartbeat() {
+        if (middlewareHeartbeatBuilder_ == null) {
+          middlewareHeartbeat_ = rso.core.model.Message.MiddlewareHeartbeat.getDefaultInstance();
+          onChanged();
+        } else {
+          middlewareHeartbeatBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      /**
+       * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+       */
+      public rso.core.model.Message.MiddlewareHeartbeat.Builder getMiddlewareHeartbeatBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getMiddlewareHeartbeatFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+       */
+      public rso.core.model.Message.MiddlewareHeartbeatOrBuilder getMiddlewareHeartbeatOrBuilder() {
+        if (middlewareHeartbeatBuilder_ != null) {
+          return middlewareHeartbeatBuilder_.getMessageOrBuilder();
+        } else {
+          return middlewareHeartbeat_;
+        }
+      }
+      /**
+       * <code>optional .rso.MiddlewareHeartbeat middlewareHeartbeat = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          rso.core.model.Message.MiddlewareHeartbeat, rso.core.model.Message.MiddlewareHeartbeat.Builder, rso.core.model.Message.MiddlewareHeartbeatOrBuilder>
+          getMiddlewareHeartbeatFieldBuilder() {
+        if (middlewareHeartbeatBuilder_ == null) {
+          middlewareHeartbeatBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              rso.core.model.Message.MiddlewareHeartbeat, rso.core.model.Message.MiddlewareHeartbeat.Builder, rso.core.model.Message.MiddlewareHeartbeatOrBuilder>(
+                  getMiddlewareHeartbeat(),
+                  getParentForChildren(),
+                  isClean());
           middlewareHeartbeat_ = null;
         }
         return middlewareHeartbeatBuilder_;
