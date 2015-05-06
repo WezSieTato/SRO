@@ -31,7 +31,6 @@ public class Person extends Identified {
     private String lastName;
     @Column(name = "birth_date", nullable = true)
     private Date dateOfBirth;
-    private String uuid;
 
     public Date getDateOfBirth() {
         return dateOfBirth;
@@ -65,15 +64,6 @@ public class Person extends Identified {
         this.personGroups = personGroups;
     }
 
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-
     public void setupGroups(List<Group> groups) {
 
 
@@ -88,4 +78,6 @@ public class Person extends Identified {
         }
         this.setPersonGroups(personGroupList);
     }
+
+
 }

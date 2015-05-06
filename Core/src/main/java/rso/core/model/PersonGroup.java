@@ -20,7 +20,7 @@ public class PersonGroup {
     @Id
     Group group;
 
-    Date timestamp = new Date();
+    private Date timestamp;
 
     public PersonGroup() {
     }

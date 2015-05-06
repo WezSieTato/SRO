@@ -51,7 +51,7 @@ public class Generator {
             newPerson.setupGroups(classes.subList(0, rand.nextInt(classes.size())));
 
             newPerson.setDateOfBirth(this.generateDateOfBirth());
-
+            newPerson.setTimestamp(new Date());
             generatedPersons.add(newPerson);
         }
 
