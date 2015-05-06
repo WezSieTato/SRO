@@ -32,13 +32,13 @@ public class MiddlewareResponseConstructor {
     public Message.RSOMessage construct(long timestamp){
         builder = Message.EntityState.newBuilder();
         Date date = new Date(timestamp);
-        List<Person> personList = personService.findAll();
+        List<Person> personList = personService.findNewerThan(date);
 
         for (Person person : personList){
             addStudent(person.getUuid(), person.getTimestamp().getTime());
         }
 
-        java.util.Collection<Group> groupList = groupService.findAll();
+        java.util.Collection<Group> groupList = groupService.findNewerThan(date);
         for(Group group : groupList){
             addGroup(group.getUuid(), group.getName(), group.getTimestamp().getTime());
         }
@@ -67,7 +67,7 @@ public class MiddlewareResponseConstructor {
 
     private void addAssociations(String uuid, String uuidPerson, String uuidGroup, long timestamp){
         Message.PersonSubject.Builder pgBuilder = Message.PersonSubject.newBuilder();
-
+        pgBuilder.setUuid(uuid).setUUIDPerson(uuidPerson).setUUIDSubject(uuidGroup).setTimestamp(timestamp);
         builder.addPersonSubjects(pgBuilder);
     }
 }
