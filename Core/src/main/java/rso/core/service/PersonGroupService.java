@@ -6,7 +6,11 @@ import rso.core.model.Group;
 import rso.core.model.Person;
 import rso.core.model.PersonGroup;
 import rso.core.repository.GroupRepository;
+import rso.core.repository.PersonGroupRepository;
 import rso.core.repository.PersonRepository;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by kometa on 06.05.2015.
@@ -21,6 +25,9 @@ public class PersonGroupService {
     @Autowired
     PersonRepository personRepository;
 
+    @Autowired
+    PersonGroupRepository personGroupRepository;
+
     public PersonGroup buildPersonGroups(String personUuid, String groupUuid) {
 
         Person person = personRepository.findByUuid(personUuid);
@@ -31,6 +38,11 @@ public class PersonGroupService {
         generated.setPerson(person);
 
         return generated;
+    }
+
+    public List<PersonGroup> findNewerThan(Date time) {
+
+        return personGroupRepository.findByTimestampGreaterThan(time);
     }
 
 }

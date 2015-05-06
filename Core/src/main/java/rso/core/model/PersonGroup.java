@@ -1,9 +1,6 @@
 package rso.core.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -12,6 +9,11 @@ import java.util.Date;
 @Entity
 @Table(name = "student_class")
 @IdClass(PersonGroupPK.class)
+@NamedEntityGraph(name = "PersonGroup.details",
+        attributeNodes = {@NamedAttributeNode(value = "person"), @NamedAttributeNode(value = "group")}
+
+)
+
 public class PersonGroup {
 
     @Id
