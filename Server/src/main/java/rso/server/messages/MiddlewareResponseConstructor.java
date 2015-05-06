@@ -10,6 +10,7 @@ import rso.core.service.GroupService;
 import rso.core.service.PersonGroupService;
 import rso.core.service.PersonService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,20 +31,22 @@ public class MiddlewareResponseConstructor {
 
     public Message.RSOMessage construct(long timestamp){
         builder = Message.EntityState.newBuilder();
+        Date date = new Date(timestamp);
         List<Person> personList = personService.findAll();
 
         for (Person person : personList){
-            addStudent(person.getUuid(), 0);
+            addStudent(person.getUuid(), person.getTimestamp().getTime());
         }
 
         java.util.Collection<Group> groupList = groupService.findAll();
         for(Group group : groupList){
-            addGroup(group.getUuid(), group.getName(), 0);
+            addGroup(group.getUuid(), group.getName(), group.getTimestamp().getTime());
         }
 
-//        for(PersonGroup personGroup : personGroupService.){
-//
-//        }
+        for(PersonGroup personGroup : personGroupService.findNewerThan(date)){
+            addAssociations(personGroup.getUuid(), personGroup.getPerson().getUuid(),
+                    personGroup.getGroup().getUuid(), personGroup.getTimestamp().getTime());
+        }
 
         Message.MiddlewareResponse.Builder resp = Message.MiddlewareResponse.newBuilder().setChanges(builder);
 
