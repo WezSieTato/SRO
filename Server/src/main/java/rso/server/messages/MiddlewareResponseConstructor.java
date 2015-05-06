@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by marcin on 06/05/15.
  */
-public class MiddlewareMessagesConstructor {
+public class MiddlewareResponseConstructor {
 
     private Message.EntityState.Builder builder;
 
