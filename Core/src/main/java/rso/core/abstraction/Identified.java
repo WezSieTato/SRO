@@ -19,7 +19,7 @@ public abstract class Identified implements Serializable {
 
     private String uuid;
 
-    private Date timestamp;
+    private Date timestamp = new Date();
 
     public int getId() {
         return id;

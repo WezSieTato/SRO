@@ -24,7 +24,7 @@ public class PersonGroup {
 
     private String uuid;
 
-    private Date timestamp;
+    private Date timestamp = new Date();
 
     public PersonGroup() {
     }
