@@ -1,9 +1,12 @@
 package rso.generator;
 
 
-
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import rso.core.model.Group;
 import rso.core.model.Person;
+import rso.core.service.GroupService;
+import rso.core.service.PersonService;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -14,19 +17,18 @@ import java.util.*;
 /**
  * Created by kometa on 27.04.2015.
  */
+@Component
 public class Generator {
-
 
     private final String firstNamesSource = System.getProperty("user.dir") + "/etc/imiona.csv";
     private final String lastNamesSource = System.getProperty("user.dir") + "/etc/nazwiska.txt";
-    private final String[] src = { "RSO", "ANA1", "PROZ", "SOI", "PROI", "PRI", "ANA2", "LTM"};
-    private final ArrayList<String> classes = new ArrayList<String>(Arrays.asList(src));
-
-    private final int NUMBER_OF_PEOPLE_TO_GENERATE = 1000000;
-
+    @Autowired
+    GroupService groupService;
+    @Autowired
+    PersonService personService;
     Collection<Person> generatedPersons;
 
-    public void generate(){
+    public void generate(int numberOfUsersToGenerate) {
 
         generatedPersons = new ArrayList<Person>();
 
@@ -37,7 +39,8 @@ public class Generator {
 
         Random rand = new Random(System.nanoTime());
 
-        for(int i = 0; i < NUMBER_OF_PEOPLE_TO_GENERATE; ++i ){
+        List<Group> classes = new ArrayList<Group>(groupService.findAll());
+        for (int i = 0; i < numberOfUsersToGenerate; ++i) {
 
             Person newPerson = new Person();
             newPerson.setFirstName(firstNames.get(rand.nextInt(firstNames.size())));
@@ -45,17 +48,14 @@ public class Generator {
 
 
             Collections.shuffle(classes);
-            newPerson.setClasses( classes.subList(0, rand.nextInt(classes.size())));
+            newPerson.setupGroups(classes.subList(0, rand.nextInt(classes.size())));
 
             newPerson.setDateOfBirth(this.generateDateOfBirth());
 
             generatedPersons.add(newPerson);
         }
 
-        for(Person p : generatedPersons){
-            System.out.println(new Formatter().format("Imie: %s, Nazwisko: %s", p.getFirstName(), p.getLastName()));
-        }
-
+        personService.save(generatedPersons);
 
     }
 
@@ -136,11 +136,11 @@ public class Generator {
 
         int year = randBetween(1985, 1995);
 
-        gc.set(gc.YEAR, year);
+        gc.set(Calendar.YEAR, year);
 
-        int dayOfYear = randBetween(1, gc.getActualMaximum(gc.DAY_OF_YEAR));
+        int dayOfYear = randBetween(1, gc.getActualMaximum(Calendar.DAY_OF_YEAR));
 
-        gc.set(gc.DAY_OF_YEAR, dayOfYear);
+        gc.set(Calendar.DAY_OF_YEAR, dayOfYear);
 
 
         return gc.getTime();

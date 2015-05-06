@@ -30,7 +30,7 @@ public class JPAConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-        dataSource.setUrl(env.getProperty("jdbc.url"));
+        dataSource.setUrl(env.getProperty("jdbc.url") + "?useUnicode=yes&amp;characterEncoding=utf8&amp;characterSetResults=utf8");
         dataSource.setUsername(env.getProperty("jdbc.username"));
         dataSource.setPassword(env.getProperty("jdbc.password"));
 
@@ -53,7 +53,6 @@ public class JPAConfig {
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.format_sql", "true");
-
         return properties;
     }
 
