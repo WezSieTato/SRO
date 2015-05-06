@@ -42,10 +42,9 @@ uwierzytelniania węzłów w SSH).
 
 \subsection[Dane wrażliwe a kwestie prawne]{Dane wrażliwe a kwestie prawne}
 
-\par{W związku z ochroną danych wrażliwych zapoznaliśmy się z Ustawą o ochronie danych osobowych dnia 29 sierpnia 1997 r. Pomimo, że generowane przez nas w ramach projektu losowe dane, nie zawierają faktycznych wrażliwych informacji, przystosowaliśmy nasz system do obowiązującego w Polsce prawa, pod uwagę biorąc przede wszystkim poniższe kwestie prawne z Ustawy o ochronie danych osobowych:}
+\par{W związku z ochroną danych wrażliwych zapoznaliśmy się z Ustawą o ochronie danych osobowych z dnia 29 sierpnia 1997 r. Pomimo, że generowane przez nas w ramach projektu losowe dane, nie zawierają faktycznych wrażliwych informacji, przystosowaliśmy nasz system do obowiązującego w Polsce prawa, pod uwagę biorąc przede wszystkim poniższe kwestie prawne z Ustawy o ochronie danych osobowych:}
 \begin{itemize}
-\item Art. 2 \textit{,,Ustawę stosuje się do przetwarzania danych osobowych (...) w systemach informatycznych, także w przypadku przetwarzania danych poza zbiorem danych.''}
-\item Art. 3 \textit{,,Ustawę stosuje się do organów państwowych, organów samorządu terytorialnego oraz do państwowych i komunalnych jednostek organizacyjnych.''}
+\item Art. 2 \textit{,,Ustawę stosuje się do przetwarzania danych osobowych (...) w systemach informatycznych, także w przypadku przetwarzania danych poza zbiorem danych.''}s
 \item Art. 6 \textit{,,W rozumieniu ustawy za dane osobowe uważa się wszelkie informacje dotyczące zidentyfikowanej lub możliwej do zidentyfikowania osoby fizycznej.''}
 \item Art. 6 \textit{,,Informacji nie uważa się za umożliwiającą określenie tożsamości osoby, jeżeli wymagałoby to nadmiernych kosztów, czasu lub działań.''}
 \item Informacje o Generalnym Inspektorze w Art. 14 i Art. 16.
@@ -83,7 +82,7 @@ uwierzytelniania węzłów w SSH).
 \subsubsection*[Opis szczegółowy]{Opis szczegółowy}
 
 
-\par{W momencie podłączania węzeł wewnętrzny wysyła wiadomość z chęcią zalogowania się do sieci do jednego z innych węzłów z listy znajdującej się w pliku konfiguracyjnym. Robi tak aż do skutku, tzn. dopóki nie dostanie wiadomości od któregokolwiek innych węzłów z informacją o włączeniu się do sieci. Jeśli jednak mimo wszystkich prób nie dostanie wiadomości - uznaje, że jest pierwszym węzłem w sieci. Jest to rozwiązanie czasochłonne, niemniej będzie ono miało miejsce bardzo rzadko, ze względu na ogólnie przyjętą zasadę, że warstwa wewnętrzna działa nieprzerwanie i wymaga kilku węzłów do poprawnego działania.}
+\par{W momencie podłączania węzeł wewnętrzny wysyła wiadomość z chęcią zalogowania się do sieci do jednego z innych węzłów z listy znajdującej się w pliku konfiguracyjnym. Robi tak aż do skutku, tzn. dopóki nie dostanie wiadomości od któregokolwiek innych węzłów z informacją o włączeniu się do sieci. Jeśli jednak mimo wszystkich prób nie dostanie wiadomości - uznaje, że jest pierwszym węzłem w sieci. Jest to rozwiązanie czasochłonne, niemniej będzie ono miało miejsce bardzo rzadko, ze względu na ogólnie przyjętą zasadę, że warstwa wewnętrzna działa nieprzerwanie i wymaga przynajmniej 3 aktywnych węzłów do poprawnego działania.}
 
 \par{Węzły w tej warstwie wysyłają sobie kolejno token po okręgu, tzn. kiedy węzeł dostaje token wprowadza odpowiednią aktualizację (nie zawsze!) oraz przesyła go dalej). Token zawiera w sobie informację o stanie, w którym znajduje się sieć, a także obraz jej topologii (następujące po sobie węzły). Dzięki temu można zapewnić stały stan sieci dla wszystkich węzłów. Z każdą kolejną operacją (zatwierdzoną przez wszystkie węzły) stan sieci zwiększa się o jeden. Zasady są następujące:
 \begin{itemize}
@@ -140,7 +139,7 @@ uwierzytelniania węzłów w SSH).
 \subsubsection*[Opis szczegółowy]{Opis szczegółowy}
 \par{Każda aplikacja kliencka w momencie uruchomienia stara się połączyć do jednego z serwerów zewnętrznych. Lista serwerów jest z góry ustalona i znajduje się pliku konfiguracyjnym. Klient próbuje zestawić połączenie najpierw z pierwszym serwerem z listy, czekając 10 sekund na odpowiedź. W razie jej braku próbuje tego z kolejnym serwerem, itd. Jeśli klientowi uda się połączyć serwerem, jednak ten ,,stwierdzi'', że obsługuje zbyt dużą ilość klientów w stosunku do pozostałych węzłów, wtedy wysyła on wiadomość zwrotną z informacją, do którego serwera klient ma się podłączyć. Następuje, więc ponowna próba połączenia, tym razem z polecanym węzłem. Cała operacja jest ,,ukryta'' przed użytkownikiem aplikacji klienckiej, tzn. nie wie on, do którego serwera się podłącza.}
 
-\par{Od momentu zestawienia połączenia klient może wysyłać żądania do serwera. Po wysłaniu żądania zawiesza się w oczekiwaniu na odpowiedź. Po jej otrzymaniu może wysłać kolejne żądanie. Ponadto co ustalony interwał klient wysyła Hearbeat do serwera dając znać, że ciągle jest podłączony. Analogicznie serwer informuje klienta, że działa poprawnie.}
+\par{Od momentu zestawienia połączenia klient może wysyłać żądania do serwera. Po wysłaniu żądania czeka na odpowiedź. Po jej otrzymaniu może wysłać kolejne żądanie. Ponadto co ustalony interwał klient wysyła Hearbeat do serwera dając znać, że ciągle jest podłączony. Analogicznie serwer informuje klienta, że działa poprawnie.}
 
 \par{W razie awarii bądź braku odpowiedzi od serwera wysyłany jest TestRequest wymuszający wysłanie Heartbeata. Jeśli mimo to serwer nie odpowiada następuje próba zestawienia połączenia z kolejnym serwerem z listy.}
 
@@ -366,8 +365,8 @@ Decyzja została zatwierdzona przez Prowadzącego. Wynika ona z braku konieczno�
 \hline
 \label{z:ZO8} ZO8 &  \textbf{Komunikacja synchroniczna (aplikacja kliencka)}
 
-Aplikacja kliencka będzie się komunikowała z serwerem w sposób synchroniczny. & 
-Ze względu na ograniczoną funkcjonalność aplikacji klienckiej, sprowadzoną jedynie do wysyłania żądań i uzyskiwania odpowiedzi, ten sposób komunikacji wydaje się najbardziej trafny. \\
+Aplikacja kliencka będzie się komunikowała z serwerem w sposób asynchroniczny. & 
+Ze względu na ograniczoną funkcjonalność aplikacji klienckiej, sprowadzoną jedynie do wysyłania żądań i uzyskiwania odpowiedzi, ten sposób komunikacji wydaje się najbardziej trafny. Jedyna dodatkowa funkcjonalność klienta to wysyłanie co określony interwał czasu Heartbeatów dających znać, że klient jest ciągle podłączony.\\
 \hline
 
 \end{tabularx}
@@ -546,6 +545,10 @@ jdbc.url=jdbc:mysql://localhost:3306/baza
 jdbc.username=user
 jdbc.password=haslo
 init-db=false
+
+# Czas timeoutu (w sekundach)
+# Wewntrzny - oczekiwanie na token; Zewntrzny - oczekiwanie na Heartbeat
+timeout = 30
 \end{lstlisting}
 
 
