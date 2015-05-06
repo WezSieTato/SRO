@@ -2,6 +2,7 @@
 
 \section{Plan testów}
 
+Testy mają za zadanie sprawdzenie poprawności działania systemu, nie tylko w stanie ustabilizowanym, ale także w przypadkach awarii. Pomagają ustalić czy system zachowuje się przewidywanie w konkretnych sytuacjach i przy danych scenariuszach. Test uznawany jest za zaliczony w momencie zachowania się systemu (w danej symulowanej sytuacji) w przewidywany sposób.
 
 \subsection[Test protokołu]{Test protokołu}
 \begin{enumerate}
@@ -11,7 +12,6 @@
 	
 \textit{Testy obejmują sprawdzenie poprawności serializacji oraz deserializacji danych przesyłanych między elementami systemu. Sprawdzone również zostanie połączenie między tymi elementami.}
 
-\subsubsection*[Przebieg testów]{Przebieg testów}
 \begin{enumerate}
 \item zbudowanie wiadomości z danymi z serwera wewnętrznego/zewnętrznego do serwera zewnętrznego/wewnętrznego RSOMessage.
 \item wysłanie tablicy bajtów do serwera zewnętrznego 
@@ -27,15 +27,12 @@
 \item Sprawdzenie redundancji danych.
 \end{enumerate}
 
-
-
 \subsection[Test przetwarzania danych]{Test przetwarzania danych}
 Sprawdzenie czy węzeł zewnętrzny poprawnie przetwarza dane wrażliwe na dane gotowe do wysłania klientowi. Wysyłane dane powinny zawierać numer identyfikacyjny oraz listę przedmiotów.
 
 \subsection[Test algorytmu Heartbeatów]{Test algorytmu Heartbeatów}
 Sprawdzenie czy węzły zewnętrzne poprawnie komunikują się między sobą oraz czy poprawnie interpretowane są braki komunikacji.
 
-\subsubsection*[Przebieg testów]{Przebieg testów}
 Sprawdzenie działania algorytmu dla interwału czasowego równego: 5, 30 oraz 60 sekund:
 \begin{enumerate}
 \item dodanie trzech węzłów zewnętrznych
@@ -48,28 +45,56 @@ Sprawdzenie działania algorytmu dla interwału czasowego równego: 5, 30 oraz 6
 \end{enumerate}
 
 \subsection[Testy połączeniowe węzłów]{Testy połączeniowe węzłów}
+Służą sprawdzeniu czy w przypadkach awaryjnych system zachowa się przewidywalnie i zastosuje odpowiednie operacje służące zachowaniu stanu ustalonego oraz odpowiedniej synchronizacji.
+
 \begin{enumerate}
-\item Test podłączenia oraz odłączenia węzła wewnętrznego
-\begin{enumerate}
-\item Podłączenie nowego węzła przy braku aktywnych innych węzłów wewnętrznych
+\item Test podłączenia węzła wewnętrznego
 	\begin{enumerate}
-	\item włączenie nowego węzła
-	\item sprawdzenie czy węzły zewnętrzne komunikują się z nowym węzłem
+	\item Brak innych węzłów
+	\item Dołączanie do istniejącej struktury pierścienia
 	\end{enumerate}
-\item Podłączenie nowego węzła gdy przynajmniej jeden węzeł wewnętrzny jest aktywny 
+\item Test podłączenia węzła zewnętrznego
 	\begin{enumerate}
-	\item włączenie nowego węzła
-	\item sprawdzenie czy działa przekazanie tokena w warstwie wewnętrznej
+	\item Brak innych węzłów
+	\item Dołączanie do istniejącej struktury pierścienia
+	\end{enumerate}
+\item Test awarii węzła wewnętrznego
+	\begin{enumerate}
+	\item Węzeł rozłącza się permanentnie
+	\item Węzeł rozłącza się, a po chwili podłącza ponownie
+	\item Awaria więcej niż jednego węzła na raz
+	\end{enumerate}
+\item Test awarii węzła zewnętrznego
+	\begin{enumerate}
+	\item Węzeł rozłącza się permanentnie
+			\begin{enumerate}
+			\item Węzeł bezczynny
+			\item Węzeł w trakcie synchronizacji
+			\item Węzeł w trakcie obsługi żądania
+			\end{enumerate}
+	\item Węzeł rozłącza się, a po chwili podłącza ponownie
+			\begin{enumerate}
+			\item Węzeł bezczynny
+			\item Węzeł w trakcie synchronizacji
+			\item Węzeł w trakcie obsługi żądania
+			\end{enumerate}
+	\item Awaria więcej niż jednego węzła na raz
 	\end{enumerate}
 \end{enumerate}
 
-\item Test podłączenia oraz odłączenia węzła zewnętrznego
+\subsection[Testy bezpieczeństwa]{Testy bezpieczeństwa}
+Sprawdzają czy system posiada dostatecznie wysoki poziom bezpieczeństwa przy danych scenariuszach. 
+
 \begin{enumerate}
-\item Podłączenie nowego węzła przy braku aktywnych innych węzłów zewnętrznych
-\item Podłączenie nowego węzła gdy przynajmniej jeden jest węzeł zewnętrzny aktywny
-\item Podłączenie z węzłem wewnętrznym
+\item Test podłączenia ,,obcego'' węzła zewnętrznego
+	\begin{enumerate}
+	\item całkowicie nowy węzeł
+	\item węzeł ,,podszywający'' się pod inny, rozłączony
+	\end{enumerate}
+\item Test podłączenia obcego węzła wewnętrznego
+	\begin{enumerate}
+	\item całkowicie nowy węzeł
+	\item węzeł ,,podszywający'' się pod inny, rozłączony
+	\end{enumerate}
 
 \end{enumerate}
-\end{enumerate}
-
-Scenariusze testowe mają za zadanie sprawdzenie zachowania systemu podczas próby podłączenia nowego węzła w zależności od ilości elementów w danej warstwie oraz zachowanie systemu w zależności od ilości jego elementów.
