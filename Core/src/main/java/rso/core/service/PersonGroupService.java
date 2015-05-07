@@ -45,4 +45,11 @@ public class PersonGroupService {
         return personGroupRepository.findByTimestampGreaterThan(time);
     }
 
+    public void addPersonGroup(PersonGroup personGroup) {
+        personGroupRepository.save(personGroup);
+    }
+
+    public PersonGroup findByUuid(String uuid) {
+        return personGroupRepository.findByUuid(uuid);
+    }
 }
