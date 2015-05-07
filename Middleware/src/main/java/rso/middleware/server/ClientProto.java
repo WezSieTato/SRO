@@ -82,6 +82,12 @@ public class ClientProto implements Runnable{
                 Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
                 builder.setSubjectName("RSO").setNodeId(1);
                 Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
+
+                try {
+                    Thread.sleep(4000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 sender.send(message);
             }
         });
@@ -111,7 +117,7 @@ public class ClientProto implements Runnable{
 
 
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(4000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
