@@ -29,6 +29,7 @@ public class BackendThread implements Runnable {
     private SocketSender socketSender;
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private BackendReciver backendReciver;
+    public static boolean ready = false;
 
     public Date getLastTimestamp() {
         return lastTimestamp;
@@ -81,6 +82,7 @@ public class BackendThread implements Runnable {
         EventManager.addListener(BackendReciveTask.newData, BackendReciveTask.class, new EventManager.EventListener() {
             public void event(RSOEvent event) {
                 setLastTimestamp(new Date());
+                ready = true;
             }
         });
 
@@ -103,12 +105,15 @@ public class BackendThread implements Runnable {
                 socketSender.send(messages.poll());
             }
 
-            Message.MiddlewareRequest.Builder builderRequest = Message.MiddlewareRequest.newBuilder();
-            builderRequest.setNodeId(5).setTimestamp(lastTimestamp.getTime());
+            if(ready){
+                Message.MiddlewareRequest.Builder builderRequest = Message.MiddlewareRequest.newBuilder();
+                builderRequest.setNodeId(5).setTimestamp(lastTimestamp.getTime());
 
-            Message.RSOMessage.Builder snd = Message.RSOMessage.newBuilder().setMiddlewareRequest(builderRequest.build());
+                Message.RSOMessage.Builder snd = Message.RSOMessage.newBuilder().setMiddlewareRequest(builderRequest.build());
 
-            socketSender.send(snd.build());
+                socketSender.send(snd.build());
+            }
+
 
 
 
