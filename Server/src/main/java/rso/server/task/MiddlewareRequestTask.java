@@ -21,7 +21,7 @@ public class MiddlewareRequestTask extends Task{
 
     @Override
     public boolean processMessage(TaskMessage taskMessage) {
-        System.out.println("Siema dostaje messega!!! "  + taskMessage.getMessage().getMiddlewareRequest().getNodeId());
+        System.out.println("Siema dostaje messega!!! "  + taskMessage.getMessage().getMiddlewareRequest().getTimestamp());
 
         long timestamp = taskMessage.getMessage().getMiddlewareRequest().getTimestamp();
         MiddlewareResponseConstructor constructor = new MiddlewareResponseConstructor();

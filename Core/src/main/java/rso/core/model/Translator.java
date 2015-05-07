@@ -38,6 +38,7 @@ public class Translator {
         PersonGroup personGroup = new PersonGroup();
 
         if(personSubject.hasUuid()) personGroup.setUuid(personSubject.getUuid());
+        if(personSubject.hasTimestamp()) personGroup.setTimestamp(new Date(personSubject.getTimestamp()));
 
         PersonService personService = BaseContext.getInstance().getApplicationContext().getBean(PersonService.class);
         Person person = personService.findByUuid(personSubject.getUUIDPerson());
