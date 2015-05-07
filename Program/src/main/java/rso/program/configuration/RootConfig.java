@@ -5,6 +5,7 @@ package rso.program.configuration;
  */
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import rso.client.configuration.ClientConfig;
 import rso.core.configuration.JPAConfig;
 import rso.middleware.configuration.MiddlewareConfig;
 import rso.server.configuration.ServerConfig;
@@ -14,7 +15,7 @@ import rso.server.configuration.ServerConfig;
         basePackages = {"rso"}
 )
 @PropertySource(value = {"file:application.properties"})
-@Import({ ServerConfig.class, MiddlewareConfig.class, JPAConfig.class})
+@Import({ServerConfig.class, MiddlewareConfig.class, ClientConfig.class, JPAConfig.class})
 public class RootConfig {
 
         @Bean
