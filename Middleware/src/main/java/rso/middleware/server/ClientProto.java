@@ -10,7 +10,6 @@ import rso.core.taskmanager.TaskMessage;
 import rso.middleware.MiddlewareLayer;
 
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.logging.Level;
@@ -46,7 +45,7 @@ public class ClientProto implements Runnable{
             });
 
 
-            MiddlewareLayer.taskManager.addTask(new ClientRequestTask());
+            MiddlewareLayer.taskManager.addTask(new MidToClientTask());
 
 
         }
@@ -74,6 +73,18 @@ public class ClientProto implements Runnable{
                 finish = true;
             }
         });
+
+        EventManager.addListener(MidToClientTask.sendToMiddleware, MidToClientTask.class, new EventManager.EventListener() {
+            public void event(RSOEvent event) {
+                Message.MiddlewareHeartbeat.Builder hrt = Message.RSOMessage.newBuilder().getMiddlewareHeartbeatBuilder();
+                hrt.setConnectedClients(69).setServerId(32131).setMessageType(Message.MiddlewareMessageType.Heartbeat);
+
+                Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
+                builder.setSubjectName("RSO").setNodeId(1);
+                Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
+                sender.send(message);
+            }
+        });
         connectedSockets = new LinkedBlockingQueue<SocketIdPair>(100);
 //        for(String s: addresses){
 //            try {
@@ -98,7 +109,7 @@ public class ClientProto implements Runnable{
             Thread tt = new Thread(mrr);
             tt.start();
 
-            while (!finish) {
+
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
@@ -114,7 +125,7 @@ public class ClientProto implements Runnable{
                 sender.send(message);
 
 
-            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
