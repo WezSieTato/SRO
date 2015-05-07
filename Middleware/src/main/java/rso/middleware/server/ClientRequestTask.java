@@ -1,6 +1,10 @@
 package rso.middleware.server;
 
+import rso.core.abstraction.BaseContext;
 import rso.core.events.EventManager;
+import rso.core.model.Message;
+import rso.core.service.GroupService;
+import rso.core.service.PersonGroupService;
 import rso.core.taskmanager.Task;
 import rso.core.taskmanager.TaskMessage;
 
@@ -22,8 +26,18 @@ public class ClientRequestTask extends Task {
     @Override
     public boolean processMessage(TaskMessage taskMessage) {
 
-        LOGGER.log(Level.INFO, "Dosta?em takie cus: " + taskMessage.getMessage().getMiddlewareMessage().getSubjectId());
+        String name = taskMessage.getMessage().getMiddlewareMessage().getSubjectName();
+        LOGGER.log(Level.INFO, "Dosta?em takie cus: " + name);
+        GroupService groupService = BaseContext.getInstance().getApplicationContext().getBean(GroupService.class);
+        int count = groupService.getUsersCountRegisteredForGroup(name);
+
+        Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
+        builder.setRegisteredStudents(count).setSubjectName(name);
+        Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
+        
         EventManager.event(ClientRequestTask.class, sendToClient, "takie tam");
+
+
 
         return false;
     }
