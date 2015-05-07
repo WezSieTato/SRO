@@ -28,7 +28,7 @@ public class Utils {
     @Autowired
     PersonGroupRepository personGroupRepository;
 
-    public Date getOldestDate() {
+    public Date getNewestDate() {
 
         ArrayList<Date> dates = new ArrayList<Date>();
 
@@ -36,11 +36,18 @@ public class Utils {
         Group group = groupRepository.findNewestRecord();
         PersonGroup personGroup = personGroupRepository.findNewestRecord();
 
-        dates.add(person.getTimestamp());
-        dates.add(group.getTimestamp());
-        dates.add(personGroup.getTimestamp());
+        if(person == null && group == null && personGroup == null)
+            return new Date(0);
+
+        if(person == null)
+            dates.add(person.getTimestamp());
+        if(group == null)
+            dates.add(group.getTimestamp());
+        if(personGroup == null)
+            dates.add(personGroup.getTimestamp());
 
         Collections.sort(dates, Collections.reverseOrder());
+
 
         return dates.get(0);
 

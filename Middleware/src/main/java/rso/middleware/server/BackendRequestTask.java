@@ -6,9 +6,6 @@ import rso.core.model.Message;
 import rso.core.taskmanager.Task;
 import rso.core.taskmanager.TaskMessage;
 import rso.core.util.Utils;
-import rso.middleware.MiddlewareLayer;
-
-import java.util.Date;
 
 /**
  * Created by modzelej on 2015-05-06.
@@ -27,7 +24,7 @@ public class BackendRequestTask extends Task {
             Utils util = BaseContext.getInstance().getApplicationContext().getBean(Utils.class);
 
             Message.MiddlewareRequest.Builder builderRequest = Message.MiddlewareRequest.newBuilder();
-            builderRequest.setNodeId(5).setTimestamp(util.getOldestDate().getTime());
+            builderRequest.setNodeId(5).setTimestamp(util.getNewestDate().getTime());
 
             Message.RSOMessage.Builder snd = Message.RSOMessage.newBuilder().setMiddlewareRequest(builderRequest.build());
             EventManager.event(BackendRequestTask.class, requestData, snd.build());
