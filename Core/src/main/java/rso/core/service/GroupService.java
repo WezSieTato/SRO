@@ -35,4 +35,8 @@ public class GroupService {
         return groupRepository.findByUuid(uuid);
     }
 
+    public void addGroup(Group group) {
+        groupRepository.save(group);
+    }
+
 }

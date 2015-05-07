@@ -19,4 +19,6 @@ public interface PersonGroupRepository extends JpaRepository<PersonGroup, Person
 
     @Query(value = "Select * from student_class pg order by pg.timestamp desc limit 0, 1", nativeQuery = true)
     PersonGroup findNewestRecord();
+
+    PersonGroup findByUuid(String uuid);
 }
