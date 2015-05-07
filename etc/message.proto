@@ -62,7 +62,7 @@ enum MiddlewareMessageType{
 
 message MiddlewareMessage{
 required int32 nodeId= 2;
-    optional int32 subjectId = 3;
+    optional string subjectName = 3;
     optional int32 registeredStudents = 4;    
 }
 
