@@ -1,9 +1,11 @@
 package rso.middleware.server;
 
+import rso.core.abstraction.BaseContext;
 import rso.core.events.EventManager;
 import rso.core.model.Message;
 import rso.core.taskmanager.Task;
 import rso.core.taskmanager.TaskMessage;
+import rso.core.util.Utils;
 import rso.middleware.MiddlewareLayer;
 
 import java.util.Date;
@@ -22,9 +24,10 @@ public class BackendRequestTask extends Task {
     @Override
     public boolean processMessage(TaskMessage taskMessage) {
 
+            Utils util = BaseContext.getInstance().getApplicationContext().getBean(Utils.class);
 
             Message.MiddlewareRequest.Builder builderRequest = Message.MiddlewareRequest.newBuilder();
-            builderRequest.setNodeId(5).setTimestamp(new Date().getTime());
+            builderRequest.setNodeId(5).setTimestamp(util.getOldestDate().getTime());
 
             Message.RSOMessage.Builder snd = Message.RSOMessage.newBuilder().setMiddlewareRequest(builderRequest.build());
             EventManager.event(BackendRequestTask.class, requestData, snd.build());

@@ -43,8 +43,9 @@ public class Translator {
         Person person = personService.findByUuid(personSubject.getUUIDPerson());
         personGroup.setPerson(person);
 
-//        GroupService groupService = BaseContext.getInstance().getApplicationContext().getBean(GroupService.class);
-//        Group group = groupService.fi(personSubject.getUUIDPerson());
+        GroupService groupService = BaseContext.getInstance().getApplicationContext().getBean(GroupService.class);
+        Group group = groupService.findByUuid(personSubject.getUUIDSubject());
+        personGroup.setGroup(group);
 
         return personGroup;
     }

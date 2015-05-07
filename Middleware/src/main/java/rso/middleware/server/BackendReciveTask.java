@@ -2,8 +2,9 @@ package rso.middleware.server;
 
 import rso.core.abstraction.BaseContext;
 import rso.core.events.EventManager;
-import rso.core.model.Message;
-import rso.core.model.Person;
+import rso.core.model.*;
+import rso.core.service.GroupService;
+import rso.core.service.PersonGroupService;
 import rso.core.service.PersonService;
 import rso.core.taskmanager.Task;
 import rso.core.taskmanager.TaskMessage;
@@ -28,19 +29,33 @@ public class BackendReciveTask extends Task {
     @Override
     public boolean processMessage(TaskMessage taskMessage) {
 
-            EventManager.event(BackendReciveTask.class, newData, taskMessage.getMessage().getMiddlewareResponse());
-        for(Message.Subject s : taskMessage.getMessage().getMiddlewareResponse().getChanges().getSubjectsList()){
+        EventManager.event(BackendReciveTask.class, newData, taskMessage.getMessage().getMiddlewareResponse());
+        Message.EntityState changes = taskMessage.getMessage().getMiddlewareResponse().getChanges();
+        for(Message.Person s : changes.getStudentsList()){
 
-                LOGGER.log(Level.INFO, "Odebrana wiadomosc " + s.getName());
+            LOGGER.log(Level.INFO, "Odebrany student " + s.getUuid());
+            Person person = Translator.translatePerson(s);
             PersonService personService = BaseContext.getInstance().getApplicationContext().getBean(PersonService.class);
+            personService.addPerson(person);
+        }
 
+        for(Message.Subject s : changes.getSubjectsList()){
 
-            }
+            LOGGER.log(Level.INFO, "Odebrany przedmiot " + s.getName());
+            Group group = Translator.translateSubject(s);
+            GroupService groupService = BaseContext.getInstance().getApplicationContext().getBean(GroupService.class);
+            groupService.addGroup(group);
+        }
 
+        for(Message.PersonSubject s : changes.getPersonSubjectsList()){
 
+            LOGGER.log(Level.INFO, "Odebrany zapis na przedmiot " + s.getUuid());
+            PersonGroup person = Translator.translatePersonSubject(s);
+            PersonGroupService personService = BaseContext.getInstance().getApplicationContext().getBean(PersonGroupService.class);
+            personService.addPersonGroup(person);
+        }
 
-
-            return true;
+        return true;
 
     }
 }
