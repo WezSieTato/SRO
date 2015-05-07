@@ -39,4 +39,8 @@ public class GroupService {
         groupRepository.save(group);
     }
 
+    public int getUsersCountRegisteredForGroup(String name) {
+        return groupRepository.getUsersCountRegisteredForGroup(name);
+    }
+
 }
