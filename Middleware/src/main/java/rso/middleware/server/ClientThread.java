@@ -73,7 +73,7 @@ public class ClientThread implements Runnable {
         EventManager.addListener(ClientRequestTask.sendToClient, ClientRequestTask.class, new EventManager.EventListener() {
             public void event(RSOEvent event) {
                 Message.MiddlewareMessage.Builder builder1 = Message.MiddlewareMessage.newBuilder();
-                builder1.setSubjectId(1337).setNodeId(2);
+                builder1.setSubjectName("RSO").setNodeId(2);
                 Message.RSOMessage.Builder builder2 = Message.RSOMessage.newBuilder();
                 builder2.setMiddlewareMessage(builder1.build());
 

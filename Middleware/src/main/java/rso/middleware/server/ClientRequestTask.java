@@ -32,7 +32,7 @@ public class ClientRequestTask extends Task {
         int count = groupService.getUsersCountRegisteredForGroup(name);
 
         Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
-        builder.setRegisteredStudents(count).setSubjectName(name);
+        builder.setRegisteredStudents(count).setSubjectName(name).setNodeId(1);
         Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
         
         EventManager.event(ClientRequestTask.class, sendToClient, message);

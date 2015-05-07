@@ -109,7 +109,7 @@ public class ClientProto implements Runnable{
                 hrt.setConnectedClients(69).setServerId(32131).setMessageType(Message.MiddlewareMessageType.Heartbeat);
 
                 Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
-                builder.setSubjectName("RSO");
+                builder.setSubjectName("RSO").setNodeId(1);
                 Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
                 sender.send(message);
 
