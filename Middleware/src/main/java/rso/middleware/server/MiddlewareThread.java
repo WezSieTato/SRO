@@ -8,6 +8,7 @@ import rso.core.events.RSOEvent;
 import rso.core.model.Message;
 import rso.core.net.SocketIdPair;
 import rso.core.net.SocketReciver;
+import rso.core.net.SocketSender;
 import rso.core.taskmanager.TaskManager;
 import rso.core.taskmanager.TaskMessage;
 import rso.middleware.MiddlewareLayer;
@@ -39,7 +40,8 @@ public class MiddlewareThread implements Runnable {
         private Socket socket;
 
 
-        public MiddlewareReciver(Socket socket) {
+
+        public MiddlewareReciver(final Socket socket) {
 
             reciver = new SocketReciver(socket);
             this.socket = socket;
@@ -54,11 +56,24 @@ public class MiddlewareThread implements Runnable {
                     Message.MiddlewareHeartbeat mh = (Message.MiddlewareHeartbeat) event.getObject();
                     LOGGER.log(Level.INFO, "Nowy user");
 
+                }
+            });
+
+            EventManager.addListener(ClientRequestTask.sendToClient, ClientRequestTask.class, new EventManager.EventListener() {
+                public void event(RSOEvent event) {
+                    SocketSender snd = null;
+                    try {
+                        snd = new SocketSender(socket);
+                        snd.send((Message.RSOMessage) event.getObject());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
                 }
             });
 
             MiddlewareLayer.taskManager.addTask(new HeartbeatTask());
+            MiddlewareLayer.taskManager.addTask(new ClientRequestTask());
 
 
         }

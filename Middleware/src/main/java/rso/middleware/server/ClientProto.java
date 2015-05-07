@@ -46,7 +46,7 @@ public class ClientProto implements Runnable{
             });
 
 
-            MiddlewareLayer.taskManager.addTask(new HeartbeatTask());
+            MiddlewareLayer.taskManager.addTask(new ClientRequestTask());
 
 
         }
@@ -92,7 +92,7 @@ public class ClientProto implements Runnable{
     public void run() {
         LOGGER.log(Level.INFO, "start Client Thread");
         try {
-            socket = new Socket("192.168.0.39", 6972);
+            socket = new Socket("192.168.0.13", 6971);
             sender = new SocketSender(socket);
             MiddlewareReciver mrr = new MiddlewareReciver(socket);
             Thread tt = new Thread(mrr);
@@ -108,8 +108,10 @@ public class ClientProto implements Runnable{
                 Message.MiddlewareHeartbeat.Builder hrt = Message.RSOMessage.newBuilder().getMiddlewareHeartbeatBuilder();
                 hrt.setConnectedClients(69).setServerId(32131).setMessageType(Message.MiddlewareMessageType.Heartbeat);
 
-                Message.RSOMessage.Builder snd = Message.RSOMessage.newBuilder().setMiddlewareHeartbeat(hrt.build());
-                sender.send(snd.build());
+                Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
+                builder.setSubjectName("RSO");
+                Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
+                sender.send(message);
 
 
             }

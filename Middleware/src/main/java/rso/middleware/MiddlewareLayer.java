@@ -1,7 +1,6 @@
 package rso.middleware;
 
 import org.springframework.stereotype.Component;
-import rso.client.ClientProgram;
 import rso.core.abstraction.BaseNode;
 import rso.core.abstraction.Node;
 import rso.core.taskmanager.TaskManager;

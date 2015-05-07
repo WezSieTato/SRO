@@ -35,7 +35,7 @@ public class ClientRequestTask extends Task {
         builder.setRegisteredStudents(count).setSubjectName(name);
         Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
         
-        EventManager.event(ClientRequestTask.class, sendToClient, "takie tam");
+        EventManager.event(ClientRequestTask.class, sendToClient, message);
 
 
 
