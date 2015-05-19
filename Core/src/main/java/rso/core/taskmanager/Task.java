@@ -9,13 +9,28 @@ import java.lang.ref.WeakReference;
 /**
  * Created by modz on 2015-04-29.
  */
-public abstract class Task {
+public abstract class Task implements Runnable{
 
     private int priority = 4;
     private WeakReference< TaskManager> taskManager = null;
+    private TaskMessage msg;
+
+    public TaskMessage getMsg() {
+        return msg;
+    }
+
+    public void setMsg(TaskMessage msg) {
+        this.msg = msg;
+    }
 
     public static String messageToSend = EventManager.registerEvent(Task.class, "Message to send");
 
+    public void run() {
+        if(msg != null){
+               processMessage(msg);
+        }
+
+    }
 
     public enum ConnectionDirection{
         InnerToInner,
