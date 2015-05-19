@@ -46,7 +46,8 @@ public class PersonGroupService {
     }
 
     public void addPersonGroup(PersonGroup personGroup) {
-        personGroupRepository.save(personGroup);
+        if (personGroupRepository.findByUuid(personGroup.getUuid()) == null)
+            personGroupRepository.save(personGroup.getPerson().getId(), personGroup.getGroup().getId(), personGroup.getUuid(), personGroup.getTimestamp().getTime());
     }
 
     public PersonGroup findByUuid(String uuid) {

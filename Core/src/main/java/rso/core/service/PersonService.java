@@ -62,11 +62,14 @@ public class PersonService {
     }
 
     private void save(Person person) {
-        personRepository.save(person);
+
+        Person p = personRepository.findByUuid(person.getUuid());
+        if (p == null)
+            personRepository.save(person);
     }
 
     public List<Person> findNewerThan(Date time) {
 
-        return personRepository.findByTimestampGreaterThan(time);
+        return collectionToSetToList(personRepository.findByTimestampGreaterThan(time));
     }
 }
