@@ -51,11 +51,11 @@ public class MiddlewareLayer extends BaseNode{
 
         Thread t1 = new Thread(middlewareThread);
         Thread t2 = new Thread(backendThread);
-        Thread t3 = new Thread(clientServer);
+//        Thread t3 = new Thread(clientServer);
 
         t1.start();
         t2.start();
-        t3.start();
+//        t3.start();
 
 //        ClientProgram cp = new ClientProgram();
 //

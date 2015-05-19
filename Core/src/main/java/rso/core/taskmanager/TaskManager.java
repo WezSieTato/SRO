@@ -26,13 +26,15 @@ public class TaskManager implements  Runnable{
 
                 synchronized (taskList) {
                     for (Task task : taskList) {
-                        if (taskMessage != null) {
-                            if (task.canProcessMessage(taskMessage))
-                                if (!task.processMessage(taskMessage))
-                                    break;
+                            if (task.canProcessMessage(taskMessage)){
+                                task.setMsg(taskMessage);
+                                Thread thread = new Thread(task);
+                                thread.run();
+                            }
+
                         }
 
-                    }
+
                 }
 
 
