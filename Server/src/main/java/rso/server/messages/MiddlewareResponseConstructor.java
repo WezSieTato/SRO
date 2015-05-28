@@ -14,6 +14,7 @@ import rso.core.service.PersonService;
 
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by marcin on 06/05/15.
@@ -41,18 +42,26 @@ public class MiddlewareResponseConstructor {
         Date date = new Date(timestamp);
         List<Person> personList = personService.findNewerThan(date);
 
+        int s = 0;
         for (Person person : personList){
             addStudent(person.getUuid(), person.getTimestamp().getTime());
+//            System.out.println("Wysylam  studenta " + person.getUuid());
+            ++s;
         }
+        System.out.println("Wysylam  studentow " + s);
 
         java.util.Collection<Group> groupList = groupService.findNewerThan(date);
         for(Group group : groupList){
             addGroup(group.getUuid(), group.getName(), group.getTimestamp().getTime());
+//            System.out.println("Wysylam  przedmiot " + group.getUuid());
+
         }
 
         for(PersonGroup personGroup : personGroupService.findNewerThan(date)){
             addAssociations(personGroup.getUuid(), personGroup.getPerson().getUuid(),
                     personGroup.getGroup().getUuid(), personGroup.getTimestamp().getTime());
+//            System.out.println("Wysylam  asocjacje " + personGroup.getUuid());
+
         }
 
         Message.MiddlewareResponse.Builder resp = Message.MiddlewareResponse.newBuilder().setChanges(builder);

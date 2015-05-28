@@ -41,13 +41,13 @@ public class Server extends BaseNode {
     public void run() {
         System.out.println("Server. Kopytko");
         serverThread = new ServerThread(6969);
-        serverMiddlewareThread = new ServerThread(6975);
+//        serverMiddlewareThread = new ServerThread(6975);
 
         Thread t1 = new Thread(serverThread);
         t1.start();
 
-        Thread t2 = new Thread(serverMiddlewareThread);
-        t2.start();
+//        Thread t2 = new Thread(serverMiddlewareThread);
+//        t2.start();
 
         Thread t3 = new Thread(taskManager);
         t3.start();

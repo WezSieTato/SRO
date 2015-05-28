@@ -35,10 +35,11 @@ public class SocketReciver {
     }
 
     public TaskMessage read() {
+        LOGGER.log(Level.ALL, "Chuj dupa cycki!");
+
         if (socket != null) {
 
             try {
-
                 Message.RSOMessage msg = Message.RSOMessage.parseDelimitedFrom(socket.getInputStream());
                 LOGGER.log(Level.INFO, "MESSAGE: RECEIVED");
                 return new TaskMessage(msg, socket);
