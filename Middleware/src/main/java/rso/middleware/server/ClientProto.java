@@ -23,45 +23,14 @@ public class ClientProto implements Runnable{
 
 
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    public static String endReciving = EventManager.registerEvent(MiddlewareThread.class, "end reciving");
     private Socket socket;
     private LinkedBlockingQueue<SocketIdPair> connectedSockets;
     private boolean finish = false;
     private SocketSender sender;
-    public static String endReciving = EventManager.registerEvent(MiddlewareThread.class, "end reciving");
 
 
-    private class MiddlewareReciver implements Runnable{
-        private SocketReciver reciver;
-        private boolean end = false;
-
-
-        public MiddlewareReciver(Socket socket) {
-
-            reciver = new SocketReciver(socket);
-            EventManager.addListener(MiddlewareThread.endReciving, MiddlewareThread.class, new EventManager.EventListener() {
-                public void event(RSOEvent event) {
-                    end = true;
-                }
-            });
-
-
-            MiddlewareLayer.taskManager.addTask(new MidToClientTask());
-
-
-        }
-
-        public void run() {
-            while(!end){
-                TaskMessage message = reciver.read();
-
-                MiddlewareLayer.taskManager.putTaskMessage(message);
-
-                LOGGER.log(Level.INFO, message.toString());
-            }
-        }
-    }
-
-    public ClientProto(Socket socket){
+    public ClientProto(Socket socket) {
         this.socket = socket;
 
         init();
@@ -105,11 +74,10 @@ public class ClientProto implements Runnable{
 
     }
 
-
     public void run() {
         LOGGER.log(Level.INFO, "start Client Thread");
         try {
-            socket = new Socket("192.168.0.13", 6971);
+            socket = new Socket("localhost", 6971);
             sender = new SocketSender(socket);
             MiddlewareReciver mrr = new MiddlewareReciver(socket);
             Thread tt = new Thread(mrr);
@@ -122,14 +90,13 @@ public class ClientProto implements Runnable{
                     e.printStackTrace();
                 }
 
-                Message.MiddlewareHeartbeat.Builder hrt = Message.RSOMessage.newBuilder().getMiddlewareHeartbeatBuilder();
-                hrt.setConnectedClients(69).setServerId(32131).setMessageType(Message.MiddlewareMessageType.Heartbeat);
+            Message.MiddlewareHeartbeat.Builder hrt = Message.RSOMessage.newBuilder().getMiddlewareHeartbeatBuilder();
+            hrt.setConnectedClients(69).setServerId(32131).setMessageType(Message.MiddlewareMessageType.Heartbeat);
 
-                Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
-                builder.setSubjectName("RSO").setNodeId(1);
-                Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
+            Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
+            builder.setSubjectName("RSO").setNodeId(1);
+            Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
                 sender.send(message);
-
 
 
         } catch (IOException e) {
@@ -137,5 +104,36 @@ public class ClientProto implements Runnable{
         }
 
 
+    }
+
+    private class MiddlewareReciver implements Runnable {
+        private SocketReciver reciver;
+        private boolean end = false;
+
+
+        public MiddlewareReciver(Socket socket) {
+
+            reciver = new SocketReciver(socket);
+            EventManager.addListener(MiddlewareThread.endReciving, MiddlewareThread.class, new EventManager.EventListener() {
+                public void event(RSOEvent event) {
+                    end = true;
+                }
+            });
+
+
+            MiddlewareLayer.taskManager.addTask(new MidToClientTask());
+
+
+        }
+
+        public void run() {
+            while (!end) {
+                TaskMessage message = reciver.read();
+
+                MiddlewareLayer.taskManager.putTaskMessage(message);
+
+                LOGGER.log(Level.INFO, message.toString());
+            }
+        }
     }
 }

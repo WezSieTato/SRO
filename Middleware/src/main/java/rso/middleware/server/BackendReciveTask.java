@@ -8,7 +8,6 @@ import rso.core.service.PersonGroupService;
 import rso.core.service.PersonService;
 import rso.core.taskmanager.Task;
 import rso.core.taskmanager.TaskMessage;
-import rso.middleware.MiddlewareLayer;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,7 +51,14 @@ public class BackendReciveTask extends Task {
             LOGGER.log(Level.INFO, "Odebrany zapis na przedmiot " + s.getUuid());
             PersonGroup person = Translator.translatePersonSubject(s);
             PersonGroupService personService = BaseContext.getInstance().getApplicationContext().getBean(PersonGroupService.class);
+
             personService.addPersonGroup(person);
+            //personService.addPersonGroup(person);
+//            Group[] groups = {person.getGroup()};
+//            person.getPerson().setupGroups(Arrays.asList(groups));
+//
+//            personService.updatePerson(person.getPerson());
+
         }
 
         return true;
