@@ -6,11 +6,13 @@ import rso.core.events.RSOEvent;
 import rso.core.model.Message;
 import rso.core.net.SocketReciver;
 import rso.core.net.SocketSender;
+import rso.core.taskmanager.TaskManager;
 import rso.core.taskmanager.TaskMessage;
 import rso.core.util.Utils;
 import rso.middleware.MiddlewareLayer;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Date;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -22,18 +24,52 @@ import java.util.logging.Logger;
  */
 public class BackendThread implements Runnable {
 
-    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    public static boolean ready = true;
     private Socket socket;
     private LinkedBlockingQueue<Message.RSOMessage> messages;
     private boolean end = false;
     private Object guard;
     private SocketSender socketSender;
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private BackendReciver backendReciver;
+    public static boolean ready = true;
+
+    public Date getLastTimestamp() {
+        return lastTimestamp;
+    }
+
+    public void setLastTimestamp(Date lastTimestamp) {
+        this.lastTimestamp = lastTimestamp;
+    }
+
     private Date lastTimestamp;
 
-    public BackendThread() {
-        guard = new Object();
+    private class BackendReciver implements Runnable{
+        private SocketReciver reciver;
+        private boolean end = false;
+
+        public BackendReciver(Socket socket) {
+
+        reciver = new SocketReciver(socket);
+
+            MiddlewareLayer.taskManager.addTask(new BackendReciveTask());
+            MiddlewareLayer.taskManager.addTask(new BackendRequestTask());
+
+    }
+
+    public void run() {
+        while(!end){
+            TaskMessage message = reciver.read();
+
+            MiddlewareLayer.taskManager.putTaskMessage(message);
+
+            LOGGER.log(Level.INFO, message.toString());
+        }
+    }
+}
+
+
+    public BackendThread(){
+       guard = new Object();
         messages = new LinkedBlockingQueue<Message.RSOMessage>(100);
 
         EventManager.addListener(BackendRequestTask.requestData, BackendRequestTask.class, new EventManager.EventListener() {
@@ -53,15 +89,9 @@ public class BackendThread implements Runnable {
         });
 
 
+
     }
 
-    public Date getLastTimestamp() {
-        return lastTimestamp;
-    }
-
-    public void setLastTimestamp(Date lastTimestamp) {
-        this.lastTimestamp = lastTimestamp;
-    }
 
     public void run() {
         initConnection();
@@ -79,16 +109,9 @@ public class BackendThread implements Runnable {
 
             if(ready){
                 Message.MiddlewareRequest.Builder builderRequest = Message.MiddlewareRequest.newBuilder();
-                builderRequest.setNodeId(0).setTimestamp(lastTimestamp.getTime());
-
+                builderRequest.setNodeId(5).setTimestamp(lastTimestamp.getTime());
 
                 Message.RSOMessage.Builder snd = Message.RSOMessage.newBuilder().setMiddlewareRequest(builderRequest.build());
-                Utils util = BaseContext.getInstance().getApplicationContext().getBean(Utils.class);
-
-
-                builderRequest.setNodeId(5).setTimestamp(util.getNewestDate().getTime());
-
-
 
                 socketSender.send(snd.build());
                 ready = false;
@@ -115,7 +138,7 @@ public class BackendThread implements Runnable {
             }
             //for po kazdym serwerze wewnetrznym
             try {
-                socket = new Socket("localhost", 6975);
+                socket = new Socket("192.168.1.155", 6969);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -129,33 +152,10 @@ public class BackendThread implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        lastTimestamp = new Date(0);
+        lastTimestamp = BaseContext.getInstance().getApplicationContext().getBean(Utils.class).getNewestDate();
+        ;
         backendReciver = new BackendReciver(socket);
         Thread t = new Thread(backendReciver);
         t.start();
-    }
-
-    private class BackendReciver implements Runnable {
-        private SocketReciver reciver;
-        private boolean end = false;
-
-        public BackendReciver(Socket socket) {
-
-            reciver = new SocketReciver(socket);
-
-            MiddlewareLayer.taskManager.addTask(new BackendReciveTask());
-            MiddlewareLayer.taskManager.addTask(new BackendRequestTask());
-
-        }
-
-        public void run() {
-            while (!end) {
-                TaskMessage message = reciver.read();
-
-                MiddlewareLayer.taskManager.putTaskMessage(message);
-
-                LOGGER.log(Level.INFO, message.toString());
-        }
-    }
     }
 }
