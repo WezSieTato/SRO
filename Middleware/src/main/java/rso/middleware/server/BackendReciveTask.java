@@ -9,6 +9,7 @@ import rso.core.service.PersonService;
 import rso.core.taskmanager.Task;
 import rso.core.taskmanager.TaskMessage;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,6 +20,7 @@ public class BackendReciveTask extends Task {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static String newData = EventManager.registerEvent(BackendReciveTask.class, "new data");
+    public static int num = 0;
 
     public BackendReciveTask() {
         setPriority(2);
@@ -30,9 +32,10 @@ public class BackendReciveTask extends Task {
 
         EventManager.event(BackendReciveTask.class, newData, taskMessage.getMessage().getMiddlewareResponse());
         Message.EntityState changes = taskMessage.getMessage().getMiddlewareResponse().getChanges();
+        LOGGER.log(Level.INFO, "Odebrano tylu studentow " + changes.getStudentsList().size());
         for(Message.Person s : changes.getStudentsList()){
 
-            LOGGER.log(Level.INFO, "Odebrany student " + s.getUuid());
+//            LOGGER.log(Level.INFO, "Odebrany student " + s.getUuid());
             Person person = Translator.translatePerson(s);
             PersonService personService = BaseContext.getInstance().getApplicationContext().getBean(PersonService.class);
             personService.addPerson(person);
@@ -40,19 +43,22 @@ public class BackendReciveTask extends Task {
 
         for(Message.Subject s : changes.getSubjectsList()){
 
-            LOGGER.log(Level.INFO, "Odebrany przedmiot " + s.getName());
+//            LOGGER.log(Level.INFO, "Odebrany przedmiot " + s.getName());
             Group group = Translator.translateSubject(s);
             GroupService groupService = BaseContext.getInstance().getApplicationContext().getBean(GroupService.class);
             groupService.addGroup(group);
         }
-
+        ArrayList<PersonGroup> list = new ArrayList<PersonGroup>();
         for(Message.PersonSubject s : changes.getPersonSubjectsList()){
 
-            LOGGER.log(Level.INFO, "Odebrany zapis na przedmiot " + s.getUuid());
+//            LOGGER.log(Level.INFO, "Odebrany zapis na przedmiot " + s.getUuid());
             PersonGroup person = Translator.translatePersonSubject(s);
-            PersonGroupService personService = BaseContext.getInstance().getApplicationContext().getBean(PersonGroupService.class);
 
-            personService.addPersonGroup(person);
+
+            list.add(person);
+//            personService.addPersonGroup(person);
+
+
             //personService.addPersonGroup(person);
 //            Group[] groups = {person.getGroup()};
 //            person.getPerson().setupGroups(Arrays.asList(groups));
@@ -60,7 +66,9 @@ public class BackendReciveTask extends Task {
 //            personService.updatePerson(person.getPerson());
 
         }
+        PersonGroupService personService = BaseContext.getInstance().getApplicationContext().getBean(PersonGroupService.class);
 
+            personService.addPersonGroup(list);
         return true;
 
     }
