@@ -1,6 +1,5 @@
 package rso.core.model;
 
-import org.hibernate.annotations.Cascade;
 import rso.core.abstraction.Identified;
 
 import javax.persistence.*;
@@ -23,8 +22,8 @@ import java.util.UUID;
 public class Person extends Identified {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "person", orphanRemoval = true, cascade =
-            {CascadeType.PERSIST, CascadeType.MERGE})
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+            {CascadeType.ALL})
+
     List<PersonGroup> personGroups = new ArrayList<PersonGroup>();
     @Column(name = "first_name", nullable = true)
     private String firstName;

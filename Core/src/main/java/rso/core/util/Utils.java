@@ -39,13 +39,15 @@ public class Utils {
         if(person == null && group == null && personGroup == null)
             return new Date(0);
 
-        if(person == null)
+        if (person != null && person.getTimestamp() != null)
             dates.add(person.getTimestamp());
-        if(group == null)
+        if (group != null && group.getTimestamp() != null)
             dates.add(group.getTimestamp());
-        if(personGroup == null)
+        if (personGroup != null && personGroup.getTimestamp() != null)
             dates.add(personGroup.getTimestamp());
 
+//        if(dates.size() ==0)
+//            return new Da
         Collections.sort(dates, Collections.reverseOrder());
 
 

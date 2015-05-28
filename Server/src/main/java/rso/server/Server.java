@@ -7,10 +7,8 @@ import rso.core.events.EventManager;
 import rso.core.events.RSOEvent;
 import rso.core.taskmanager.TaskManager;
 import rso.core.taskmanager.TaskMessage;
-import rso.generator.Generator;
 import rso.server.server.ServerThread;
 import rso.server.task.MiddlewareRequestTask;
-import sun.awt.windows.ThemeReader;
 
 /**
  * Created by kometa on 04.05.2015.
@@ -41,9 +39,9 @@ public class Server extends BaseNode {
     }
 
     public void run() {
-        System.out.println("Server");
+        System.out.println("Server. Kopytko");
         serverThread = new ServerThread(6969);
-        serverMiddlewareThread = new ServerThread(6971);
+        serverMiddlewareThread = new ServerThread(6975);
 
         Thread t1 = new Thread(serverThread);
         t1.start();
