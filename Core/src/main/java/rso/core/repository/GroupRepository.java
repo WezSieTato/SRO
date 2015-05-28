@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface GroupRepository extends JpaRepository<Group, Long> {
 
-    @Query(value = "select count(*) from student_class where name = :name", nativeQuery = true)
+    @Query(value = "select count(*) from student_class sc join class c on sc.id_class = c.id where c.name = :name", nativeQuery = true)
     int getUsersCountRegisteredForGroup(@Param("name") String name);
 
 
