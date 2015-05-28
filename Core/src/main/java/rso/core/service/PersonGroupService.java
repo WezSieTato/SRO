@@ -9,6 +9,7 @@ import rso.core.repository.GroupRepository;
 import rso.core.repository.PersonGroupRepository;
 import rso.core.repository.PersonRepository;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,9 +46,17 @@ public class PersonGroupService {
         return personGroupRepository.findByTimestampGreaterThan(time);
     }
 
-    public void addPersonGroup(PersonGroup personGroup) {
-        if (personGroupRepository.findByUuid(personGroup.getUuid()) == null)
-            personGroupRepository.save(personGroup.getPerson().getId(), personGroup.getGroup().getId(), personGroup.getUuid(), personGroup.getTimestamp().getTime());
+    public void addPersonGroup(List<PersonGroup> list) {
+        List<PersonGroup> listToSet = new ArrayList<PersonGroup>();
+
+        for (PersonGroup personGroup : list) {
+            if (personGroupRepository.findByUuid(personGroup.getUuid()) == null)
+                list.add(personGroup);
+        }
+
+
+        personGroupRepository.saveItems(list);
+        //personGroupRepository.save(personGroup.getPerson().getId(), personGroup.getGroup().getId(), personGroup.getUuid(), personGroup.getTimestamp().getTime());
     }
 
     public PersonGroup findByUuid(String uuid) {
