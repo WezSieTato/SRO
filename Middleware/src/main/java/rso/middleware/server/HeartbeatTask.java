@@ -27,7 +27,9 @@ public class HeartbeatTask implements Runnable{
 
         EventManager.addListener(MiddlewareConnectionsManager.sendHeartbeat, MiddlewareConnectionsManager.class, new EventManager.EventListener() {
             public void event(RSOEvent event) {
-                guard.notify();
+                synchronized (guard){
+                    guard.notify();
+                }
             }
         });
 
