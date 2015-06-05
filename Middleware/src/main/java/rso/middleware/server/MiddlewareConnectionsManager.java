@@ -147,7 +147,7 @@ public class MiddlewareConnectionsManager implements Runnable {
 
         for (String s : MiddlewareLayer.middlwareIPs) {
             try {
-                if(s != InetAddress.getLocalHost().toString()){
+                if(s != InetAddress.getLocalHost().getHostAddress()){
                     MiddlewareReciver mr = null;
 
                         mr = new MiddlewareReciver(null, true, s);
