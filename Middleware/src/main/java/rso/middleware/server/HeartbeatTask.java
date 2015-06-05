@@ -1,6 +1,7 @@
 package rso.middleware.server;
 
 import rso.core.events.EventManager;
+import rso.core.events.RSOEvent;
 import rso.core.model.Message;
 import rso.core.net.SocketSender;
 import rso.core.taskmanager.Task;
@@ -13,23 +14,49 @@ import java.util.logging.Logger;
 /**
  * Created by modzelej on 2015-05-05.
  */
-public class HeartbeatTask extends Task {
+public class HeartbeatTask implements Runnable{
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static String newMiddleServer = EventManager.registerEvent(HeartbeatTask.class, "new middle layer server");
+    public static String sendMidHeartbeat = EventManager.registerEvent(BackendRequestTask.class, "heartbeat");
+    private boolean send = false;
+    private Object guard = new Object();
+    private boolean finish = false;
+    private int connectionNum = 0;
 
     public HeartbeatTask() {
-        setPriority(1);
-        addFilterForConnectionDirection(ConnectionDirection.MiddlewareToMiddleware);
+
+        EventManager.addListener(MiddlewareConnectionsManager.sendHeartbeat, MiddlewareConnectionsManager.class, new EventManager.EventListener() {
+            public void event(RSOEvent event) {
+                guard.notify();
+            }
+        });
+
+        EventManager.addListener(MiddlewareThread.userConnectionsNum, MiddlewareThread.class, new EventManager.EventListener() {
+            public void event(RSOEvent event) {
+                connectionNum = (Integer) event.getObject();
+
+            }
+        });
+
     }
 
-    @Override
-    public boolean processMessage(TaskMessage taskMessage) {
+    public void run() {
+        while(!finish){
+
+            try {
+                guard.wait();
+
+                Message.MiddlewareHeartbeat.Builder builderRequest = Message.MiddlewareHeartbeat.newBuilder();
+                builderRequest.setServerId(1).setConnectedClients(connectionNum);
+
+                Message.RSOMessage.Builder snd = Message.RSOMessage.newBuilder().setMiddlewareHeartbeat(builderRequest.build());
+                EventManager.event(BackendRequestTask.class, sendMidHeartbeat, snd.build());
 
 
-                LOGGER.log(Level.INFO, "Otrzyma?em takiego heartbeata: " + taskMessage.getMessage().toString());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
-                EventManager.event(HeartbeatTask.class, newMiddleServer, taskMessage.getMessage().getMiddlewareHeartbeat());
-
-        return true;
     }
 }
