@@ -102,6 +102,10 @@ public class MiddlewareConnectionsManager implements Runnable {
                     return;
                 }
             }
+            if(socket == null){
+                end = true;
+                return;
+            }
             while(!end){
                 TaskMessage message = reciver.read();
 
