@@ -44,7 +44,9 @@ public class HeartbeatTask implements Runnable{
         while(!finish){
 
             try {
-                guard.wait();
+                synchronized (guard){
+                    guard.wait();
+                }
 
                 Message.MiddlewareHeartbeat.Builder builderRequest = Message.MiddlewareHeartbeat.newBuilder();
                 builderRequest.setServerId(1).setConnectedClients(connectionNum);
