@@ -39,7 +39,8 @@ public class MiddlewareConnectionsManager implements Runnable {
         private Socket socket;
         private boolean gotResponse = false;
         private boolean firstRun = true;
-
+        private boolean init = false;
+        private String ipServer;
         Timer heartTimer = new Timer();
         TimerTask serverDisconnect = new TimerTask() {
             @Override
@@ -61,7 +62,9 @@ public class MiddlewareConnectionsManager implements Runnable {
             }
         };
 
-        public MiddlewareReciver(final Socket socket) {
+        public MiddlewareReciver(final Socket socket, boolean initonnection, String ip) {
+            init = initonnection;
+            ipServer = ip;
 
             reciver = new SocketReciver(socket);
             this.socket = socket;
@@ -91,6 +94,16 @@ public class MiddlewareConnectionsManager implements Runnable {
         }
 
         public void run() {
+            if(init){
+                try {
+                    socket = new Socket(ipServer, 6980);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                finally {
+                    return;
+                }
+            }
             while(!end){
                 TaskMessage message = reciver.read();
 
@@ -128,13 +141,10 @@ public class MiddlewareConnectionsManager implements Runnable {
             try {
                 if(s != InetAddress.getLocalHost().toString()){
                     MiddlewareReciver mr = null;
-                    try {
-                        mr = new MiddlewareReciver(new Socket(s, 6970));
+
+                        mr = new MiddlewareReciver(null, true, s);
                         Thread t = new Thread(mr);
                         t.start();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
                 }
             } catch (UnknownHostException e) {
                 e.printStackTrace();
@@ -147,7 +157,7 @@ public class MiddlewareConnectionsManager implements Runnable {
                 Socket midSoc = serverSocket.accept();
                 LOGGER.log(Level.INFO, "new mid socket connected!");
                 middlewareSockets.add(midSoc);
-                MiddlewareReciver mrr = new MiddlewareReciver(midSoc);
+                MiddlewareReciver mrr = new MiddlewareReciver(midSoc, false, null);
                 Thread tt = new Thread(mrr);
                 tt.start();
             } catch (IOException e) {
