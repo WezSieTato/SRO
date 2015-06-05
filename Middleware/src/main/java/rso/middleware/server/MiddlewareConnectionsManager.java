@@ -96,7 +96,7 @@ public class MiddlewareConnectionsManager implements Runnable {
         public void run() {
             if(init){
                 try {
-                    socket = new Socket(ipServer, 6980);
+                    socket = new Socket(ipServer, 6970);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
