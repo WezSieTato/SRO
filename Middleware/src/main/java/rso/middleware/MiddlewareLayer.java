@@ -4,14 +4,12 @@ import org.springframework.stereotype.Component;
 import rso.core.abstraction.BaseNode;
 import rso.core.abstraction.Node;
 import rso.core.taskmanager.TaskManager;
-import rso.middleware.server.BackendThread;
-import rso.middleware.server.ClientThread;
-import rso.middleware.server.MiddlewareThread;
-import rso.middleware.server.Server;
+import rso.middleware.server.*;
 import rso.middleware.utils.MyLogManager;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.util.ArrayList;
 import java.util.logging.Level;
 
 /**
@@ -24,10 +22,16 @@ public class MiddlewareLayer extends BaseNode{
     private MiddlewareThread middlewareThread;
     private BackendThread backendThread;
     private Server clientServer;
+    private MiddlewareConnectionsManager middlewareConnectionsManager;
     public static final TaskManager taskManager = new TaskManager();
+    public static ArrayList<String> middlwareIPs = new ArrayList<String>();
     static {
         Thread t = new Thread(taskManager);
         t.start();
+
+        middlwareIPs.add("192.168.1.22");
+        middlwareIPs.add("192.168.1.25");
+        middlwareIPs.add("192.168.1.26");
     }
     private void init() {
 //        Test1 t1 = new Test1();
@@ -47,14 +51,17 @@ public class MiddlewareLayer extends BaseNode{
         }
         backendThread = new BackendThread();
         clientServer = new Server(1);
+        middlewareConnectionsManager = new MiddlewareConnectionsManager();
 
 
         Thread t1 = new Thread(middlewareThread);
-        Thread t2 = new Thread(backendThread);
+//        Thread t2 = new Thread(backendThread);
 //        Thread t3 = new Thread(clientServer);
+        Thread t4 = new Thread(middlewareConnectionsManager);
 
         t1.start();
-        t2.start();
+//        t2.start();
+        t4.start();
 //        t3.start();
 
 //        ClientProgram cp = new ClientProgram();
