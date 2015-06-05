@@ -52,7 +52,7 @@ public class BackendReciveTask extends Task {
             PersonGroup person = Translator.translatePersonSubject(s);
             PersonGroupService personService = BaseContext.getInstance().getApplicationContext().getBean(PersonGroupService.class);
 
-            personService.addPersonGroup(person);
+//            personService.addPersonGroup(person);
             //personService.addPersonGroup(person);
 //            Group[] groups = {person.getGroup()};
 //            person.getPerson().setupGroups(Arrays.asList(groups));
