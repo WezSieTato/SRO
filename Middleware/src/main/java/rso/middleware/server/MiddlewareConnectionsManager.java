@@ -99,8 +99,6 @@ public class MiddlewareConnectionsManager implements Runnable {
                     socket = new Socket(ipServer, 6970);
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
-                finally {
                     return;
                 }
             }
@@ -158,7 +156,7 @@ public class MiddlewareConnectionsManager implements Runnable {
         while (!finish) {
             try {
                 Socket midSoc = serverSocket.accept();
-                LOGGER.log(Level.INFO, "new mid socket connected!");
+                LOGGER.log(Level.INFO, "Mid 2 Mid new socket");
                 middlewareSockets.add(midSoc);
                 MiddlewareReciver mrr = new MiddlewareReciver(midSoc, false, null);
                 Thread tt = new Thread(mrr);

@@ -134,7 +134,7 @@ public class MiddlewareThread implements Runnable {
             while (!finish) {
                 try {
                     Socket midSoc = socket.accept();
-                    LOGGER.log(Level.INFO, "new mid socket connected!");
+                    LOGGER.log(Level.INFO, "new client connected!");
                     connectedSockets.put(new SocketIdPair(1, midSoc));
                     EventManager.event(MiddlewareThread.class, MiddlewareThread.userConnectionsNum, connectedSockets.size());
                     MiddlewareReciver mrr = new MiddlewareReciver(midSoc);
