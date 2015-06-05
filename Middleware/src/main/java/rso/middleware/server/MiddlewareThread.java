@@ -32,6 +32,7 @@ public class MiddlewareThread implements Runnable {
     private boolean finish = false;
 
     public static String endReciving = EventManager.registerEvent(MiddlewareThread.class, "end reciving");
+    public static String userConnectionsNum = EventManager.registerEvent(MiddlewareThread.class, "useer connection number");
 
 
     private class MiddlewareReciver implements Runnable{
@@ -72,7 +73,13 @@ public class MiddlewareThread implements Runnable {
                 }
             });
 
-            MiddlewareLayer.taskManager.addTask(new HeartbeatTask());
+            EventManager.addListener(MiddlewareConnectionsManager.requestUserNum, MiddlewareConnectionsManager.class, new EventManager.EventListener() {
+                public void event(RSOEvent event) {
+                    EventManager.event(MiddlewareThread.class, MiddlewareThread.userConnectionsNum, connectedSockets.size());
+                }
+            });
+
+            MiddlewareLayer.taskManager.addTask(new HeartbeatTaskRecive());
             MiddlewareLayer.taskManager.addTask(new ClientRequestTask());
 
 
@@ -129,6 +136,7 @@ public class MiddlewareThread implements Runnable {
                     Socket midSoc = socket.accept();
                     LOGGER.log(Level.INFO, "new mid socket connected!");
                     connectedSockets.put(new SocketIdPair(1, midSoc));
+                    EventManager.event(MiddlewareThread.class, MiddlewareThread.userConnectionsNum, connectedSockets.size());
                     MiddlewareReciver mrr = new MiddlewareReciver(midSoc);
                     Thread tt = new Thread(mrr);
                     tt.start();
