@@ -53,8 +53,6 @@ public class BackendReciveTask extends Task {
 
 //            LOGGER.log(Level.INFO, "Odebrany zapis na przedmiot " + s.getUuid());
             PersonGroup person = Translator.translatePersonSubject(s);
-
-
             list.add(person);
 //            personService.addPersonGroup(person);
 

@@ -551,19 +551,20 @@ timeout = 30
 \section[Potencjalne problematyczne scenariusze]{Potencjalne problematyczne scenariusze}
 
 \begin{itemize}
-\item Podłączenie nowego serwera warstwy wewnętrznej
+\item \textbf{Podłączenie nowego serwera warstwy wewnętrznej}
 \begin{itemize}
 \item Brak innych aktywnych serwerów wewnętrznych
 \item Jest aktywny przynajmniej jeden serwer wewnętrzny
 \end{itemize}
-\item Podłączenie nowego serwera warstwy zewnętrznej
-\begin{itemize}
-\item Brak aktywnego serwera wewnętrznego oraz brak innych aktywnych serwerów zewnętrznych
-\item Brak aktywnego serwera wewnętrznego oraz aktywny przynajmniej jeden serwer zewnętrzny
-\item Aktywny przynajmniej jeden serwer wewnętrzny oraz brak innych aktywnych serwerów zewnętrznych
-\item Aktywny przynajmniej jeden serwer wewnętrzny oraz aktywny przynajmniej jeden serwer zewnętrzny
-\end{itemize}
-\item Awaria węzłów warstwy wewnętrznej serwera
+\item \textbf{Podłączenie nowego serwera warstwy zewnętrznej i sprawdzanie aktywności pozostałych węzłów}
+\begin{enumerate}
+\item Próba połączenia z pozostałymi serwerami zewnętrznymi.
+\item W razie udanego połączenia - serwer uznany za aktywny.
+\item Od tej pory do każdego aktywnego serwera co określony interwał czasu wysyłany jest Heartbeat (chyba, że została wysłana jakakolwiek inna wiadomość). 
+\item Analogicznie co ten sam interwał serwer oczekuje jakiejkolwiek wiadomości od aktywnych węzłów. Jeśli ich nie otrzyma - wysyła wiadomość TestRequest, żeby wymusić wysłanie Heartbeata od danego serwera. Jeśli serwer odpowie - nadal uznawany jest za aktywny - jeśli nie, uznawany jest od tego momentu za nieaktywny.
+\end{enumerate}
+
+\item \textbf{Awaria węzłów warstwy wewnętrznej serwera}
 \begin{itemize}
 \item Nie posiada tokena, brak zadań w toku, brak oczekujących zadań
 \item Nie posiada tokena, brak zadań w toku, oczekujące zadanie od klienta
@@ -572,9 +573,36 @@ timeout = 30
 \item Posiada token, zadanie w toku, brak zadań w toku, oczekujące zadanie od klienta
 \item Posiada token, zadanie w toku
 \end{itemize}
-\item Awaria węzłów warstwy zewnętrznej serwera
-\item Kwestia równomiernego podziału klientów między serwery oraz serwerów zewnętrznych między wewnętrzne
-\item Kwestia rozmieszczenia warstw serwera w obrębie jednego komputera bądź wielu odrębnych
+
+
+\item \textbf{Awaria węzłów warstwy zewnętrznej serwera}
+\par {Węzeł serwera może ulec awarii w sytuacji:}
+\begin{enumerate}
+\item Braku wykonywania konkretnych zadań
+\par{W takim wypadku po rozłączeniu na dłużej niż określony interwał uznany jest przez pozostałe węzły za nieaktywny. Jeśli po krótkiej chwili połączy się ponownie - zostanie uznany za aktywny i cała warstwa będzie działała poprawnie. To samo tyczy się komunikacji serwera z klientami.}
+\par {W przypadku awarii więcej niż jednego węzła na raz - algorytm nadal działa poprawnie (aż do awarii wszystkich serwerów).}
+
+\item W trakcie wykonywania zapytania klienta
+\par{Jeśli węzeł ulegnie awarii w trakcie wykonywania zapytania po określonym interwale klient próbuje się połączyć z innym serwerem (ponawiając proces logowania), jeśli to się powiedzie - ponawia zapytanie. Algorytm ten może mieć dość długi czas realizacji w porównaniu do wykonania samego zapytania (np. jeśli kolejny serwer, zgodnie z algorytmem wyrównującym obciążenie klientami serwerów zewnętrznych, zaproponuje serwer nieaktywny przez klienta) ale zapewnia odpowiednią synchronizację i stan całego systemu.}
+
+\par{Jeśli serwer połączy się ponownie i wyśle odpowiedź do klienta - ten uzna ją za błąd i zgłosi to serwerowi. W tym momencie serwer ten wykreśla ze swojej listy danego klienta i dopisze do listy danego serwera (podanego w wiadomości). Następnie informacja ta zostanie spropagowana do innych serwerów (w Heartbeatach). Dzięki temu informacje lokalne na temat serwerów w warstwie będą poprawne.}
+
+\par{Algorytm ten działa także w przypadku awarii większej liczby serwerów, lecz ma też w związku z tym dłuższy czas realizacji.}
+
+\item W trakcie integracji z serwerem wewnętrznym
+
+\end{enumerate}
+
+\item \textbf{Kwestia równomiernego podziału klientów między serwery oraz serwerów zewnętrznych między wewnętrzne}
+\begin{enumerate}
+\item Wysłanie przez klienta wiadomości logowania do serwera
+\item Serwer porównuje swoją ilość klientów do ilości klientów innych węzłów.
+\item Jeśli serwer otrzymujący wiadomość po dodaniu kolejnego klienta NIE będzie miał przynajmniej o 2 więcej klientów od któregokolwiek innego serwera - loguje klienta, a algorytm zostaje zakończony.
+\item Jeśli serwer otrzymujący wiadomość po dodaniu kolejnego klienta miałby przynajmniej o 2 więcej klientów od któregokolwiek innego serwera - wysyła klientowi informację z adresem serwera aktywnego o najmniejszej ilości podłączonych klientów. Klient ponawia logowanie do podanego serwera.
+\end{enumerate}
+\par{Algorytm zapewnia równomierne rozłożenie klientów pomiędzy aktywne serwery co wpływa pozytywnie na działanie i czas obsługi żądań przez system.}
+
+\item \textbf{Kwestia rozmieszczenia warstw serwera w obrębie jednego komputera bądź wielu odrębnych}
 \end{itemize}
 
 \section[Ograniczenia i możliwe problemy]{Ograniczenia i możliwe problemy}

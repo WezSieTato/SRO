@@ -77,7 +77,7 @@ public class ClientProto implements Runnable{
     public void run() {
         LOGGER.log(Level.INFO, "start Client Thread");
         try {
-            socket = new Socket("localhost", 6971);
+            socket = new Socket("192.168.1.114", 6971);
             sender = new SocketSender(socket);
             MiddlewareReciver mrr = new MiddlewareReciver(socket);
             Thread tt = new Thread(mrr);

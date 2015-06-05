@@ -119,6 +119,8 @@ public class MiddlewareConnectionsManager implements Runnable {
     }
 
     private void init() {
+
+        middlewareSockets = new ArrayList<Socket>();
         EventManager.addListener(MiddlewareThread.userConnectionsNum, MiddlewareThread.class, new EventManager.EventListener() {
             public void event(RSOEvent event) {
                 globalConnections = (Integer) event.getObject();
