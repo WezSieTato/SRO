@@ -41,6 +41,7 @@ public class MiddlewareConnectionsManager implements Runnable {
         private boolean firstRun = true;
         private boolean init = false;
         private String ipServer;
+        private HeartbeatTask ht;
         Timer heartTimer = new Timer();
         TimerTask serverDisconnect = new TimerTask() {
             @Override
@@ -108,6 +109,9 @@ public class MiddlewareConnectionsManager implements Runnable {
             }
             else{
                 reciver = new SocketReciver(socket);
+                ht = new HeartbeatTask();
+                Thread t = new Thread(ht);
+                t.start();
             }
             while(!end){
                 TaskMessage message = reciver.read();
