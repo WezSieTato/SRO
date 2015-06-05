@@ -73,8 +73,21 @@ public class ServerThread implements Runnable{
 
         public void run() {
             while(true) {
-                TaskMessage message = socketReciver.read();
-                EventManager.event(ServerThread.class, messageReceived, message);
+                try {
+                    TaskMessage message = socketReciver.read();
+                    EventManager.event(ServerThread.class, messageReceived, message);
+                } catch (Exception e){
+                    try {
+                        socketReciver.getSocket().close();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    } finally {
+                        break;
+                    }
+
+                } finally {
+                    break;
+                }
             }
         }
     }

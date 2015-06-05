@@ -51,11 +51,11 @@ public class PersonGroupService {
 
         for (PersonGroup personGroup : list) {
             if (personGroupRepository.findByUuid(personGroup.getUuid()) == null)
-                list.add(personGroup);
+                listToSet.add(personGroup);
         }
 
-
-        personGroupRepository.saveItems(list);
+        if(listToSet.size() > 0)
+            personGroupRepository.saveItems(listToSet);
         //personGroupRepository.save(personGroup.getPerson().getId(), personGroup.getGroup().getId(), personGroup.getUuid(), personGroup.getTimestamp().getTime());
     }
 

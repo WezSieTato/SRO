@@ -16,6 +16,7 @@ public class SocketReciver {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private Socket socket;
     private boolean end = false;
+    private int num = 0;
 
 
 
@@ -35,12 +36,14 @@ public class SocketReciver {
     }
 
     public TaskMessage read() {
+        LOGGER.log(Level.ALL, "Chuj dupa cycki!");
+
         if (socket != null) {
 
             try {
-
                 Message.RSOMessage msg = Message.RSOMessage.parseDelimitedFrom(socket.getInputStream());
-                LOGGER.log(Level.INFO, "MESSAGE: RECEIVED");
+                num++;
+                LOGGER.log(Level.INFO, "MESSAGE: RECEIVED " + num);
                 return new TaskMessage(msg, socket);
 
 
