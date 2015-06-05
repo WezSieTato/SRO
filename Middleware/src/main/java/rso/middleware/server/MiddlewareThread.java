@@ -79,7 +79,7 @@ public class MiddlewareThread implements Runnable {
                 }
             });
 
-            MiddlewareLayer.taskManager.addTask(new HeartbeatTaskRecive());
+
             MiddlewareLayer.taskManager.addTask(new ClientRequestTask());
 
 

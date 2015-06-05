@@ -115,6 +115,7 @@ public class MiddlewareConnectionsManager implements Runnable {
     }
 
     public MiddlewareConnectionsManager(){
+        MiddlewareLayer.taskManager.addTask(new HeartbeatTaskRecive());
         init();
     }
 
