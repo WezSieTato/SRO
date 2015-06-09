@@ -127,12 +127,27 @@ public class MiddlewareConnectionsManager implements Runnable {
                 t.start();
                 heartTimer.schedule(timerTask, 10000, 10000);
             }
-            while(!end){
-                TaskMessage message = reciver.read();
+            while(true){
+                try{
+                    TaskMessage message = reciver.read();
 
-                MiddlewareLayer.taskManager.putTaskMessage(message);
+                    MiddlewareLayer.taskManager.putTaskMessage(message);
+                    LOGGER.log(Level.INFO, message.toString());
+                }catch (Exception e){
+                    e.printStackTrace();
+                    try {
+                        reciver.getSocket().close();
+                        middlewareSockets.remove(this);
+                        break;
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
 
-                LOGGER.log(Level.INFO, message.toString());
+
+
+
+
             }
         }
     }
