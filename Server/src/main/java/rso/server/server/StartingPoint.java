@@ -23,6 +23,7 @@ public class StartingPoint implements Runnable {
 
     public void run() {
         Socket socket = null;
+        System.out.println("Szukamy serwerow!");
         for(String ip : ips){
             if(socket != null)
                 break;
@@ -30,13 +31,16 @@ public class StartingPoint implements Runnable {
                 socket = new Socket(ip, port);
             } catch (IOException e) {
                 socket = null;
+                System.out.println("Serwera nie ma z ip" + ip);
             }
         }
 
-        if(socket == null){
+        if(socket != null){
            Message.RSOMessage.Builder builder =  Message.RSOMessage.newBuilder();
             builder.setToken(Message.Token.newBuilder().setTokenType(Message.TokenType.ENTRY));
             Message.RSOMessage msg = builder.build();
+
+            System.out.println("Wyslano zadanie wejscia do " + socket.getInetAddress().getHostAddress());
 
             new SocketSender(socket).send(msg);
         }

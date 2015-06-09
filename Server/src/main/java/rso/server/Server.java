@@ -63,9 +63,9 @@ public class Server extends BaseNode {
         System.out.println("Server. Kopytko");
         serverThread = new ServerThread(portExternal);
 
-        new Thread(new StartingPoint(serverIps, portInternal));
+        new Thread(new StartingPoint(serverIps, portInternal)).start();
 
-        new Thread(new ServerThread(portInternal));
+        new Thread(new ServerThread(portInternal)).start();
         new Thread(serverThread).start();
         new Thread(taskManager).start();
         new Thread(generatorTest).start();
