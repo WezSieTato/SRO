@@ -34,6 +34,16 @@ public class MiddlewareConnectionsManager implements Runnable {
 
 
     private class MiddlewareReciver implements Runnable{
+
+        private class CancelTimerTask extends TimerTask{
+
+            @Override
+            public void run() {
+                LOGGER.log(Level.ALL, "\nPOWINIENEM GO ODLACZYC TERAZ \n");
+
+            }
+        }
+
         private SocketReciver reciver;
         private boolean end = false;
         private Socket socket;
@@ -43,20 +53,16 @@ public class MiddlewareConnectionsManager implements Runnable {
         private String ipServer;
         private HeartbeatTask ht;
         Timer heartTimer = new Timer();
-        TimerTask serverDisconnect = new TimerTask() {
-            @Override
-            public void run() {
+        Timer cancelTimer = new Timer();
 
-                    LOGGER.log(Level.ALL, "\nPOWINIENEM GO ODLACZYC TERAZ \n");
-
-            }
-        };
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
                 EventManager.event(MiddlewareConnectionsManager.class, MiddlewareConnectionsManager.sendHeartbeat, globalConnections);
                 if(firstRun){
-                    heartTimer.schedule(serverDisconnect, 10000);
+                    cancelTimer.cancel();
+                    cancelTimer = new Timer();
+                    cancelTimer.schedule(new CancelTimerTask(), 10000);
                     firstRun = false;
                 }
 
@@ -85,8 +91,9 @@ public class MiddlewareConnectionsManager implements Runnable {
                 public void event(RSOEvent event) {
                     String heszke = (String) event.getObject();
                     LOGGER.log(Level.ALL, heszke);
-                    serverDisconnect.cancel();
-                    heartTimer.schedule(serverDisconnect, 10000);
+                    cancelTimer.cancel();
+                    cancelTimer = new Timer();
+                    cancelTimer.schedule(new CancelTimerTask(), 10000);;
                 }
             });
 
