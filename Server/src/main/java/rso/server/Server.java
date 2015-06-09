@@ -1,6 +1,7 @@
 package rso.server;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import rso.core.abstraction.BaseNode;
 import rso.core.events.EventManager;
@@ -18,7 +19,12 @@ public class Server extends BaseNode {
 
     private TaskManager taskManager;
     private  ServerThread serverThread;
-    private  ServerThread serverMiddlewareThread;
+
+    @Value ("${rso.port.internal}")
+    private int portInternal;
+
+    @Value ("${rso.addresses.server}")
+    private String[] serverIps;
 
     @Autowired
     private GeneratorTest generatorTest;
@@ -40,20 +46,11 @@ public class Server extends BaseNode {
 
     public void run() {
         System.out.println("Server. Kopytko");
-        serverThread = new ServerThread(6969);
-//        serverMiddlewareThread = new ServerThread(6975);
+        serverThread = new ServerThread(portInternal);
 
-        Thread t1 = new Thread(serverThread);
-        t1.start();
-
-//        Thread t2 = new Thread(serverMiddlewareThread);
-//        t2.start();
-
-        Thread t3 = new Thread(taskManager);
-        t3.start();
-
-        Thread t4 = new Thread(generatorTest);
-        t4.start();
+        new Thread(serverThread).start();
+        new Thread(taskManager).start();
+        new Thread(generatorTest).start();
 
     }
 }

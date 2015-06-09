@@ -33,7 +33,7 @@ required int64 timestamp = 3;
 message Token{
     required TokenType tokenType = 1;
     optional int32 serverId = 2;
-    repeated int32 nodeIds = 3;
+    repeated string nodeIds = 3;
     optional int64 timespamp = 4;
 }
 
