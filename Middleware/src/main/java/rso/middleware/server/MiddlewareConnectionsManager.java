@@ -93,11 +93,12 @@ public class MiddlewareConnectionsManager implements Runnable {
                     LOGGER.log(Level.ALL, heszke);
                     cancelTimer.cancel();
                     cancelTimer = new Timer();
-                    cancelTimer.schedule(new CancelTimerTask(), 10000);;
+                    cancelTimer.schedule(new CancelTimerTask(), 10000);
+                    ;
                 }
             });
 
-            heartTimer.schedule(timerTask, 10000, 10000);
+
 
         }
 
@@ -119,6 +120,7 @@ public class MiddlewareConnectionsManager implements Runnable {
                 ht = new HeartbeatTask();
                 Thread t = new Thread(ht);
                 t.start();
+                heartTimer.schedule(timerTask, 10000, 10000);
             }
             while(!end){
                 TaskMessage message = reciver.read();
