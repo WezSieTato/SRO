@@ -44,6 +44,12 @@ public class SocketReciver {
                 Message.RSOMessage msg = Message.RSOMessage.parseDelimitedFrom(socket.getInputStream());
                 num++;
                 LOGGER.log(Level.INFO, "MESSAGE: RECEIVED " + num);
+                if(!(msg.hasMiddlewareHeartbeat() || msg.hasMiddlewareMessage()
+                || msg.hasMiddlewareRequest() || msg.hasMiddlewareResponse() || msg.hasToken() )){
+                    socket.close();
+                    socket = null;
+                    return null;
+                }
                 return new TaskMessage(msg, socket);
 
 
