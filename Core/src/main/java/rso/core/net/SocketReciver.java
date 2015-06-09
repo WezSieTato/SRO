@@ -48,14 +48,20 @@ public class SocketReciver {
 
 
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                try {
+                    socket.close();
+                    socket = null;
+                } catch (IOException e1) {
+//                    e1.printStackTrace();
+                }
+                return null;
             }
 
         } else {
             LOGGER.log(Level.WARNING, "Socket is NULL!!!!");
             return null;
         }
-        return null;
     }
 
 
