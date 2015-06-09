@@ -3,12 +3,7 @@ package rso.middleware.server;
 import rso.core.events.EventManager;
 import rso.core.events.RSOEvent;
 import rso.core.model.Message;
-import rso.core.net.SocketSender;
-import rso.core.taskmanager.Task;
-import rso.core.taskmanager.TaskMessage;
 
-import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -17,7 +12,7 @@ import java.util.logging.Logger;
 public class HeartbeatTask implements Runnable{
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static String newMiddleServer = EventManager.registerEvent(HeartbeatTask.class, "new middle layer server");
-    public static String sendMidHeartbeat = EventManager.registerEvent(BackendRequestTask.class, "heartbeat");
+    public static String sendMidHeartbeat = EventManager.registerEvent(HeartbeatTask.class, "heartbeat");
     private boolean send = false;
     private Object guard = new Object();
     private boolean finish = false;
