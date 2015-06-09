@@ -206,7 +206,14 @@ public class MiddlewareConnectionsManager implements Runnable {
 
             @Override
             public void run() {
-                LOGGER.log(Level.ALL, "\nPOWINIENEM GO ODLACZYC TERAZ \n");
+                end = true;
+                try {
+                    LOGGER.log(Level.ALL, "\nWYWALAM SERWER\n");
+                    middlewareSockets.remove(socket);
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
             }
         }
