@@ -19,10 +19,12 @@ public class Server extends BaseNode {
 
     private TaskManager taskManager;
     private  ServerThread serverThread;
-    private  ServerThread serverMiddlewareThread;
 
     @Value ("${rso.port.internal}")
     private int portInternal;
+
+    @Value ("${rso.addresses.server}")
+    private String[] serverIps;
 
     @Autowired
     private GeneratorTest generatorTest;
