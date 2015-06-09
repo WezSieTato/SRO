@@ -116,6 +116,11 @@ public class MiddlewareConnectionsManager implements Runnable {
                 return;
             }
             else{
+                if(middlewareSockets.contains(socket)){
+                    end = true;
+                    return;
+                }
+                middlewareSockets.add(socket);
                 reciver = new SocketReciver(socket);
                 ht = new HeartbeatTask();
                 Thread t = new Thread(ht);
@@ -177,10 +182,13 @@ public class MiddlewareConnectionsManager implements Runnable {
             try {
                 Socket midSoc = serverSocket.accept();
                 LOGGER.log(Level.INFO, "Mid 2 Mid new socket");
-                middlewareSockets.add(midSoc);
-                MiddlewareReciver mrr = new MiddlewareReciver(midSoc, false, null);
-                Thread tt = new Thread(mrr);
-                tt.start();
+                if(!middlewareSockets.contains(midSoc)){
+                    middlewareSockets.add(midSoc);
+                    MiddlewareReciver mrr = new MiddlewareReciver(midSoc, false, null);
+                    Thread tt = new Thread(mrr);
+                    tt.start();
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
 
