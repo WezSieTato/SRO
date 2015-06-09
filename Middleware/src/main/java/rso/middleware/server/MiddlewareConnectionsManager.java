@@ -208,7 +208,7 @@ public class MiddlewareConnectionsManager implements Runnable {
             public void run() {
                 end = true;
                 try {
-                    LOGGER.log(Level.ALL, "\nWYWALAM SERWER\n");
+                    LOGGER.log(Level.INFO, "\nWYWALAM SERWER\n");
                     middlewareSockets.remove(socket);
                     socket.close();
                 } catch (IOException e) {
