@@ -208,6 +208,7 @@ public class MiddlewareConnectionsManager implements Runnable {
             public void run() {
                 end = true;
                 try {
+                    heartTimer.cancel();
                     LOGGER.log(Level.INFO, "\nWYWALAM SERWER\n");
                     middlewareSockets.remove(socket);
                     socket.close();
