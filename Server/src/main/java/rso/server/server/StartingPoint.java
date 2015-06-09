@@ -1,7 +1,10 @@
 package rso.server.server;
 
+import rso.core.events.EventManager;
+import rso.core.events.RSOEvent;
 import rso.core.model.Message;
 import rso.core.net.SocketSender;
+import rso.server.task.EntryTask;
 
 import java.io.IOException;
 import java.net.Inet4Address;
@@ -15,10 +18,17 @@ public class StartingPoint implements Runnable {
 
     private String[] ips = null;
     private int port;
+    private boolean stop = false;
 
     public StartingPoint(String[] ips, int port) {
         this.ips = ips;
         this.port = port;
+
+        EventManager.addListener(EntryTask.entryEvent, EntryTask.class, new EventManager.EventListener() {
+            public void event(RSOEvent event) {
+                stop = true;
+            }
+        });
     }
 
     public void run() {
@@ -35,7 +45,7 @@ public class StartingPoint implements Runnable {
             }
         }
 
-        if(socket != null){
+        if(socket != null && !stop){
            Message.RSOMessage.Builder builder =  Message.RSOMessage.newBuilder();
             builder.setToken(Message.Token.newBuilder().setTokenType(Message.TokenType.ENTRY));
             Message.RSOMessage msg = builder.build();
