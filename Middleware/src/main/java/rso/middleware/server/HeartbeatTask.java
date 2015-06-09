@@ -54,7 +54,7 @@ public class HeartbeatTask implements Runnable{
                 builderRequest.setServerId(1).setConnectedClients(connectionNum).setMessageType(Message.MiddlewareMessageType.Heartbeat);
 
                 Message.RSOMessage.Builder snd = Message.RSOMessage.newBuilder().setMiddlewareHeartbeat(builderRequest.build());
-                EventManager.event(BackendRequestTask.class, sendMidHeartbeat, snd.build());
+                EventManager.event(HeartbeatTask.class, sendMidHeartbeat, snd.build());
 
 
             } catch (InterruptedException e) {

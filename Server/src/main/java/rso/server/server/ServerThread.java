@@ -21,6 +21,7 @@ public class ServerThread implements Runnable{
     public static String messageReceived = EventManager.registerEvent(ServerThread.class, "message received");
 
     private SocketSender socketSender;
+
     public ServerThread(int port) {
         try {
             serverSocket = new ServerSocket(port);
@@ -50,6 +51,8 @@ public class ServerThread implements Runnable{
                 ServerReceiver rec = new ServerReceiver(socket);
                 Thread thread = new Thread(rec);
                 thread.start();
+
+                System.out.println(socket.getInetAddress().getHostAddress());
 
                 socketSender = new SocketSender(socket);
 
@@ -86,7 +89,7 @@ public class ServerThread implements Runnable{
                     }
 
                 } finally {
-                    break;
+
                 }
             }
         }

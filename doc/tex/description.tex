@@ -106,6 +106,7 @@ uwierzytelniania węzłów w SSH).
 
 \par{Należy pamiętać, że w trakcie zapisywania stanu trzeba sprawdzić, czy nie zmienił się nasz następnik w topologii sieci. Jest to szczególnie istotne w przypadku jednoczesnej awarii wielu węzłów, gdy wiele węzłów wygeneruje nowe tokeny. Jeden z nich zdominuje sieć, a drugi będzie zmuszony do ponownego sprawdzenia braku połączenia ze swoim dawnym następnikiem i ponownego wymuszenia zmiany topologii sieci. Takie rozwiązania zwiększa czas przywracania sieci do działania przy awarii wielu węzłów jednocześnie, niemniej zapewnia spójność jej stanu i istnienie w stanie ustalonym tylko jednego ważnego tokena.}
 
+\par{Ponadto każdy węzeł zapisuje na bieżąco (w pliku na dysku) swój stan i w razie awarii i ponownego włączenia węzła do sieci może kontynuować pracę od momentu, na którym skończył.}
 
 \subsection[Warstwa zewnętrzna serwera]{Warstwa zewnętrzna serwera (warstwa przetwarzająca)}
 
@@ -377,10 +378,10 @@ Ze względu na ograniczoną funkcjonalność aplikacji klienckiej, sprowadzoną 
 \hline
 \textbf{ID} & \textbf{Wymagania}  & \textbf{Powody decyzji} \\
 \hline
-\label{z:ZO9} ZO9 &  \textbf{Brak funkcji ,,heartbeatu'' (aplikacja kliencka)}
+\label{z:ZO9} ZO9 &  \textbf{Wysyłanie ,,heartbeatu'' (aplikacja kliencka)}
 
-Aplikacja kliencka nie będzie na bieżąco sprawdzała stanu węzła do którego jest podłączona. Status serwera będzie przez nią sprawdzany jedynie przy logowaniu i wysyłaniu żądania. W przypadku awarii węzła aplikacja będzie przełączała się na kolejny węzeł z listy, aż do skutku. & 
-Ze względu na naszą koncepcję aplikacji klienckiej ta funkcjonalność nie jest potrzebna. Z punktu widzenia użytkownika stan serwera interesuje go tylko przy wysyłaniu żądania. System heartbeatów dodaje duży narzut i komplikuje samego klienta nie dając w zamian znacznego wzrostu szybkości działania. W sytuacji awarii i tak musi nastąpić przełączenie na inny węzeł. Różnica polega jedynie na tym, że w przypadku systemu hearbeatów następuje to w momencie upływu określonego czasu bez odpowiedzi serwera, a w przeciwnym - jedynie wtedy kiedy serwer jest potrzebny, tzn. przy logowaniu bądź wysłaniu żądania.\\
+Pomimo początkowych założeń, że aplikacja kliencka nie będzie na bieżąco sprawdzała stanu węzła do którego jest podłączona, postanowiliśmy wprowadzić do systemu tą funkcjonalność.  & 
+Celem wprowadzenia tego mechanizmu jest przede wszystkim zrealizowanie algorytmu równomiernego rozłożenia klientów na węzłach serwera. Do tego potrzebna jest znajomość ilości aktywnych klientów, a mechanizm heartbeatów idealnie się do tego nadaje.\\
 \hline
 
 \label{z:ZO10} ZO10 &  \textbf{Brak interaktywności (aplikacja kliencka)}
@@ -552,10 +553,16 @@ timeout = 30
 
 \begin{itemize}
 \item \textbf{Podłączenie nowego serwera warstwy wewnętrznej}
-\begin{itemize}
-\item Brak innych aktywnych serwerów wewnętrznych
-\item Jest aktywny przynajmniej jeden serwer wewnętrzny
-\end{itemize}
+\begin{enumerate}
+\item Wysłanie wiadomości logującej do następnika z listy serwerów zewnętrznych (i oczekiwanie 5 sekund na odpowiedź), a następnie, w przypadku braku odpowiedzi, wysłanie wiadomości do kolejnego serwera z listy
+\item Jeśli serwer odpowie:
+\begin{enumerate}
+\item Serwer, któremu węzeł wysłał wiadomość, wysyła przy najbliższej okazji aktualizacje topologii aktualnej sieci, uwzględniając najnowszy węzeł
+\item Nowy węzeł staje się częścią sieci
+\end{enumerate}
+\item Jeśli żaden serwer nie odpowie węzeł uznaje, że jest pierwszy i działa (do czasu pojawienia się nowego węzła) w pojedynkę
+\item Jeśli dwa serwery na raz będą chciały się ze sobą połączyć (tzn. wyślą do siebie wiadomość logującą) to priorytet w tworzeniu sieci ma węzeł o niższym numerze porządkowym znajdującym się w pliku konfiguracyjnym (każdy z serwerów ma identyczną listę serwerów)
+\end{enumerate}
 \item \textbf{Podłączenie nowego serwera warstwy zewnętrznej i sprawdzanie aktywności pozostałych węzłów}
 \begin{enumerate}
 \item Próba połączenia z pozostałymi serwerami zewnętrznymi.
@@ -566,14 +573,8 @@ timeout = 30
 
 \item \textbf{Awaria węzłów warstwy wewnętrznej serwera}
 \begin{itemize}
-\item Nie posiada tokena, brak zadań w toku, brak oczekujących zadań
-\item Nie posiada tokena, brak zadań w toku, oczekujące zadanie od klienta
-\item Nie posiada tokena, zadanie w toku
-\item Posiada token, brak zadań w toku, brak oczekujących zadań
-\item Posiada token, zadanie w toku, brak zadań w toku, oczekujące zadanie od klienta
-\item Posiada token, zadanie w toku
+\item Wszystkie operacje zapisujemy na dysku (oczekujące oraz wykonywane) w pliku, lokalnie dla każdego węzła. Dzięki temu po ponownym podłączeniu węzła (po chwilowej awarii), ma on stan sprzed awarii i może poprawnie kontynuować pracę. W przypadku dłuższej nieaktywności czy przy całkowitej awarii węzła, system działa zgodnie z algorytmem opisanym w sekcji ,,Warstwa wewnętrzna serwera''.
 \end{itemize}
-
 
 \item \textbf{Awaria węzłów warstwy zewnętrznej serwera}
 \par {Węzeł serwera może ulec awarii w sytuacji:}
@@ -593,7 +594,7 @@ timeout = 30
 
 \end{enumerate}
 
-\item \textbf{Kwestia równomiernego podziału klientów między serwery oraz serwerów zewnętrznych między wewnętrzne}
+\item \textbf{Kwestia równomiernego podziału klientów między serwery}
 \begin{enumerate}
 \item Wysłanie przez klienta wiadomości logowania do serwera
 \item Serwer porównuje swoją ilość klientów do ilości klientów innych węzłów.
@@ -603,10 +604,17 @@ timeout = 30
 \par{Algorytm zapewnia równomierne rozłożenie klientów pomiędzy aktywne serwery co wpływa pozytywnie na działanie i czas obsługi żądań przez system.}
 
 \item \textbf{Kwestia rozmieszczenia warstw serwera w obrębie jednego komputera bądź wielu odrębnych}
+\par{Cały system jak i każda jego warstwa działa za pośrednictwem protokołu TCP/IP. Oznacza to, że poszczególne węzły różnych warstw mogą działać lokalnie, na jednym komputerze i poprawnie komunikować się ze sobą (przy założeniu poprawnych adresów). Problem pojawia się dopiero gdy mamy węzły tej samej warstwy na jednym komputerze - prowadzi to do problemu z adresowaniem (ten sam adres dla dwóch różnych węzłów). W związku z tym na jednym komputerze dopuszczalne są jedynie węzły różnych warstw (w ogólności - jeden klient, jeden serwer zewnętrzny oraz jeden serwer wewnętrzny).}
+
+\par{Zastosowanie takiego mechanizmu nie jest najbardziej optymalne (w związku z możliwością użycia pamięci współdzielonej, dostęp do której jest szybszy niż protokół TPC/IP oraz ze względu na możliwe połączenie ,,krzyżowe'', np. między czterema węzłami serwerów znajdujących się na dwóch komputerach), jednak zapewnia większą uniwersalność i łatwość samego rozwiązania.}
 \end{itemize}
 
 \section[Ograniczenia i możliwe problemy]{Ograniczenia i możliwe problemy}
-\textit{\textbf{TODO}}
+\begin{itemize}
+\item Brak odporności na ataki typu DDOs
+\item Długi czas algorytmów synchronizacji w trakcie awarii (nawet do parudziesięciu sekund w sytuacjach kryzysowych)
+
+\end{itemize}
 
 \section[Organizacja środowiska programistycznego]{Organizacja środowiska programistycznego}
 

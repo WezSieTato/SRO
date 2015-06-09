@@ -66,7 +66,7 @@ public class BackendReciveTask extends Task {
         }
         PersonGroupService personService = BaseContext.getInstance().getApplicationContext().getBean(PersonGroupService.class);
 
-            personService.addPersonGroup(list);
+        personService.addPersonGroup(list);
         return true;
 
     }

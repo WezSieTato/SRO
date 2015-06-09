@@ -147,11 +147,11 @@ public class BackendThread implements Runnable {
             }
         }
 
-        try {
+//        try {
             socketSender = new SocketSender(socket);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         lastTimestamp = BaseContext.getInstance().getApplicationContext().getBean(Utils.class).getNewestDate();
         ;
         backendReciver = new BackendReciver(socket);

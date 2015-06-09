@@ -26,7 +26,9 @@ public class MiddlewareRequestTask extends Task{
         long timestamp = taskMessage.getMessage().getMiddlewareRequest().getTimestamp();
         MiddlewareResponseConstructor constructor = new MiddlewareResponseConstructor();
         Message.RSOMessage message = constructor.construct(timestamp);
-        send(message);
+//        send(message);
+        SocketSender ss = new SocketSender(taskMessage.getSocket());
+        ss.send(message);
 
         return false;
     }

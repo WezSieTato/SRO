@@ -24,4 +24,6 @@ public class TaskMessage {
         this.message = message;
         this.socket = socket;
     }
+
+
 }

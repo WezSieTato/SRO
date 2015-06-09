@@ -52,6 +52,7 @@ public class MiddlewareConnectionsManager implements Runnable {
         private boolean init = false;
         private String ipServer;
         private HeartbeatTask ht;
+        private int numOfHeartbeats = 0;
         Timer heartTimer = new Timer();
         Timer cancelTimer = new Timer();
 
@@ -78,12 +79,18 @@ public class MiddlewareConnectionsManager implements Runnable {
 
             EventManager.addListener(HeartbeatTask.sendMidHeartbeat, HeartbeatTask.class, new EventManager.EventListener() {
                 public void event(RSOEvent event) {
-                    try {
+//                    try {
                         SocketSender snd = new SocketSender(socket);
-                        snd.send((Message.RSOMessage) event.getObject());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                        if(socket != null){
+                            numOfHeartbeats++;
+                            LOGGER.log(Level.ALL, "Przed wyslaniem hb");
+                            snd.send((Message.RSOMessage) event.getObject());
+                            LOGGER.log(Level.ALL, "Wysylam heartbeata o numerze  " + numOfHeartbeats);
+                        }
+
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
                 }
             });
 
