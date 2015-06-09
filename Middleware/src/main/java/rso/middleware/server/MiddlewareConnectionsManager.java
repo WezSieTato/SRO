@@ -73,7 +73,7 @@ public class MiddlewareConnectionsManager implements Runnable {
 
             EventManager.addListener(HeartbeatTask.sendMidHeartbeat, HeartbeatTask.class, new EventManager.EventListener() {
                 public void event(RSOEvent event) {
-                    try {
+//                    try {
                         SocketSender snd = new SocketSender(socket);
                         if(socket != null){
                             numOfHeartbeats++;
@@ -82,9 +82,9 @@ public class MiddlewareConnectionsManager implements Runnable {
                             LOGGER.log(Level.ALL, "Wysylam heartbeata o numerze  " + numOfHeartbeats);
                         }
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
                 }
             });
 

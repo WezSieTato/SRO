@@ -63,12 +63,12 @@ public class MiddlewareThread implements Runnable {
             EventManager.addListener(ClientRequestTask.sendToClient, ClientRequestTask.class, new EventManager.EventListener() {
                 public void event(RSOEvent event) {
                     SocketSender snd = null;
-                    try {
+//                    try {
                         snd = new SocketSender(socket);
                         snd.send((Message.RSOMessage) event.getObject());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
 
                 }
             });

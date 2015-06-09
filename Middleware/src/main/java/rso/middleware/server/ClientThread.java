@@ -82,11 +82,11 @@ public class ClientThread implements Runnable {
         });
 
         if(socket != null){
-            try {
+//            try {
                 sender = new SocketSender(socket);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
             clientReciver = new ClientReciver(socket);
             Thread t = new Thread(clientReciver);
             t.start();
