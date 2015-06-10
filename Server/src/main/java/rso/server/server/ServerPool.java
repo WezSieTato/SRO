@@ -36,6 +36,7 @@ public class ServerPool {
 
     public void send(String id, Message.RSOMessage message){
         socketMap.get(id).send(message);
+        System.out.println("Wysylam pod ip " + id);
     }
 
 }

@@ -77,6 +77,8 @@ public class RingManager {
         ips.addAll(waitingIps);
         waitingIps.clear();
 
+        System.out.println("Tworze druzyne pierscienia!");
+
     }
 
     public void rearrage(Message.Token token, boolean addNew){
