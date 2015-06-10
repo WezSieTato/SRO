@@ -29,9 +29,9 @@ public class MiddlewareLayer extends BaseNode{
         Thread t = new Thread(taskManager);
         t.start();
 
-        middlwareIPs.add("192.168.1.22");
-        middlwareIPs.add("192.168.1.25");
-        middlwareIPs.add("192.168.1.26");
+        middlwareIPs.add("192.168.1.109");
+        middlwareIPs.add("192.168.1.108");
+        middlwareIPs.add("192.168.1.101");
     }
     private void init() {
 //        Test1 t1 = new Test1();

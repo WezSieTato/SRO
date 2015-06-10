@@ -44,18 +44,30 @@ public class SocketReciver {
                 Message.RSOMessage msg = Message.RSOMessage.parseDelimitedFrom(socket.getInputStream());
                 num++;
                 LOGGER.log(Level.INFO, "MESSAGE: RECEIVED " + num);
+                if(!(msg.hasMiddlewareHeartbeat() || msg.hasMiddlewareMessage()
+                || msg.hasMiddlewareRequest() || msg.hasMiddlewareResponse() || msg.hasToken() )){
+                    socket.close();
+                    socket = null;
+                    return null;
+                }
                 return new TaskMessage(msg, socket);
 
 
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                try {
+                    socket.close();
+                    socket = null;
+                } catch (IOException e1) {
+//                    e1.printStackTrace();
+                }
+                return null;
             }
 
         } else {
             LOGGER.log(Level.WARNING, "Socket is NULL!!!!");
             return null;
         }
-        return null;
     }
 
 

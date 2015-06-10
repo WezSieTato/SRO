@@ -3,7 +3,6 @@ package rso.middleware.server;
 import rso.core.events.EventManager;
 import rso.core.events.RSOEvent;
 import rso.core.model.Message;
-import rso.core.net.SocketIdPair;
 import rso.core.net.SocketReciver;
 import rso.core.net.SocketSender;
 import rso.core.taskmanager.TaskMessage;
@@ -24,113 +23,16 @@ import java.util.logging.Logger;
  * Created by modzelej on 2015-06-05.
  */
 public class MiddlewareConnectionsManager implements Runnable {
-    ServerSocket serverSocket;
-    ArrayList<Socket> middlewareSockets;
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    private boolean finish = false;
     public static String requestUserNum = EventManager.registerEvent(MiddlewareConnectionsManager.class, "get user connection number");
     public static String sendHeartbeat = EventManager.registerEvent(MiddlewareConnectionsManager.class, "send heatbeat");
     public Integer globalConnections = 0;
+    ServerSocket serverSocket;
+    ArrayList<Socket> middlewareSockets;
+    private boolean finish = false;
 
 
-    private class MiddlewareReciver implements Runnable{
-        private SocketReciver reciver;
-        private boolean end = false;
-        private Socket socket;
-        private boolean gotResponse = false;
-        private boolean firstRun = true;
-        private boolean init = false;
-        private String ipServer;
-        private HeartbeatTask ht;
-        private int numOfHeartbeats = 0;
-        Timer heartTimer = new Timer();
-        TimerTask serverDisconnect = new TimerTask() {
-            @Override
-            public void run() {
-
-                    LOGGER.log(Level.ALL, "\nPOWINIENEM GO ODLACZYC TERAZ \n");
-
-            }
-        };
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                EventManager.event(MiddlewareConnectionsManager.class, MiddlewareConnectionsManager.sendHeartbeat, globalConnections);
-                if(firstRun){
-                    heartTimer.schedule(serverDisconnect, 10000);
-                    firstRun = false;
-                }
-
-            }
-        };
-
-        public MiddlewareReciver(final Socket socket, boolean initonnection, String ip) {
-            init = initonnection;
-            ipServer = ip;
-
-            reciver = new SocketReciver(socket);
-            this.socket = socket;
-
-            EventManager.addListener(HeartbeatTask.sendMidHeartbeat, HeartbeatTask.class, new EventManager.EventListener() {
-                public void event(RSOEvent event) {
-                    try {
-                        SocketSender snd = new SocketSender(socket);
-                        if(socket != null){
-                            numOfHeartbeats++;
-                            LOGGER.log(Level.ALL, "Przed wyslaniem hb");
-                            snd.send((Message.RSOMessage) event.getObject());
-                            LOGGER.log(Level.ALL, "Wysylam heartbeata o numerze  " + numOfHeartbeats);
-                        }
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-            EventManager.addListener(HeartbeatTaskRecive.response, HeartbeatTaskRecive.class, new EventManager.EventListener() {
-                public void event(RSOEvent event) {
-                    String heszke = (String) event.getObject();
-                    LOGGER.log(Level.ALL, heszke);
-                    serverDisconnect.cancel();
-                    heartTimer.schedule(serverDisconnect, 10000);
-                }
-            });
-
-            heartTimer.schedule(timerTask, 10000, 10000);
-
-        }
-
-        public void run() {
-            if(init){
-                try {
-                    socket = new Socket(ipServer, 6970);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    return;
-                }
-            }
-            if(socket == null){
-                end = true;
-                return;
-            }
-            else{
-                reciver = new SocketReciver(socket);
-                ht = new HeartbeatTask();
-                Thread t = new Thread(ht);
-                t.start();
-            }
-            while(!end){
-                TaskMessage message = reciver.read();
-
-                MiddlewareLayer.taskManager.putTaskMessage(message);
-
-                LOGGER.log(Level.INFO, message.toString());
-            }
-        }
-    }
-
-    public MiddlewareConnectionsManager(){
+    public MiddlewareConnectionsManager() {
         MiddlewareLayer.taskManager.addTask(new HeartbeatTaskRecive());
         init();
     }
@@ -150,7 +52,6 @@ public class MiddlewareConnectionsManager implements Runnable {
             e.printStackTrace();
         }
     }
-
 
     public void run() {
 
@@ -175,16 +76,147 @@ public class MiddlewareConnectionsManager implements Runnable {
             try {
                 Socket midSoc = serverSocket.accept();
                 LOGGER.log(Level.INFO, "Mid 2 Mid new socket");
-                middlewareSockets.add(midSoc);
-                MiddlewareReciver mrr = new MiddlewareReciver(midSoc, false, null);
-                Thread tt = new Thread(mrr);
-                tt.start();
+                if (!middlewareSockets.contains(midSoc)) {
+                    //    middlewareSockets.add(midSoc);
+                    MiddlewareReciver mrr = new MiddlewareReciver(midSoc, false, null);
+                    Thread tt = new Thread(mrr);
+                    tt.start();
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
+
+            }
 
         }
 
     }
 
+    private class MiddlewareReciver implements Runnable {
+
+        Timer heartTimer = new Timer();
+        Timer cancelTimer = new Timer();
+        private SocketReciver reciver;
+        private boolean end = false;
+        private Socket socket;
+        private boolean gotResponse = false;
+        private boolean firstRun = true;
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                EventManager.event(MiddlewareConnectionsManager.class, MiddlewareConnectionsManager.sendHeartbeat, globalConnections);
+                if (firstRun) {
+                    cancelTimer.cancel();
+                    cancelTimer = new Timer();
+                    cancelTimer.schedule(new CancelTimerTask(), 10000);
+                    firstRun = false;
+                }
+
+            }
+        };
+        private boolean init = false;
+        private String ipServer;
+        private HeartbeatTask ht;
+        private int numOfHeartbeats = 0;
+
+        public MiddlewareReciver(final Socket socketa, boolean initonnection, String ip) {
+            init = initonnection;
+            ipServer = ip;
+
+            //reciver = new SocketReciver(socketa);
+            this.socket = socketa;
+
+            EventManager.addListener(HeartbeatTask.sendMidHeartbeat, HeartbeatTask.class, new EventManager.EventListener() {
+                public void event(RSOEvent event) {
+//                    try {
+                    SocketSender snd = new SocketSender(socket);
+                    if (socket != null) {
+                        numOfHeartbeats++;
+                        LOGGER.log(Level.INFO, "Przed wyslaniem hb");
+                        snd.send((Message.RSOMessage) event.getObject());
+                        LOGGER.log(Level.INFO, "Wysylam heartbeata o numerze  " + numOfHeartbeats);
+                    }
+
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+                }
+            });
+
+            EventManager.addListener(HeartbeatTaskRecive.response, HeartbeatTaskRecive.class, new EventManager.EventListener() {
+                public void event(RSOEvent event) {
+                    String heszke = (String) event.getObject();
+                    LOGGER.log(Level.INFO, heszke);
+                    cancelTimer.cancel();
+                    cancelTimer = new Timer();
+                    cancelTimer.schedule(new CancelTimerTask(), 10000);
+                }
+            });
+
+
+
+        }
+
+        public void run() {
+            if (init) {
+                try {
+                    socket = new Socket(ipServer, 6970);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return;
+                }
+            }
+            if (socket == null) {
+                end = true;
+                return;
+            } else {
+                if (middlewareSockets.contains(socket)) {
+                    end = true;
+                    return;
+                }
+                middlewareSockets.add(socket);
+                reciver = new SocketReciver(socket);
+                ht = new HeartbeatTask();
+                Thread t = new Thread(ht);
+                t.start();
+                heartTimer.schedule(timerTask, 10000, 10000);
+            }
+            while (true) {
+                try {
+                    TaskMessage message = reciver.read();
+
+                    MiddlewareLayer.taskManager.putTaskMessage(message);
+                    LOGGER.log(Level.INFO, message.toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    try {
+                        reciver.getSocket().close();
+                        middlewareSockets.remove(this);
+                        break;
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+
+
+            }
+        }
+
+        private class CancelTimerTask extends TimerTask {
+
+            @Override
+            public void run() {
+                end = true;
+                try {
+                    heartTimer.cancel();
+                    LOGGER.log(Level.INFO, "\nWYWALAM SERWER\n");
+                    middlewareSockets.remove(socket);
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
     }
 }

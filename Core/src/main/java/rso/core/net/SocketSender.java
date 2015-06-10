@@ -17,7 +17,7 @@ public class SocketSender{
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private Socket socket;
 
-    public SocketSender(Socket socket) throws IOException {
+    public SocketSender(Socket socket) {
         this.socket = socket;
 
         init();

@@ -1,14 +1,20 @@
 package rso.server;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import rso.core.abstraction.BaseNode;
 import rso.core.events.EventManager;
 import rso.core.events.RSOEvent;
 import rso.core.taskmanager.TaskManager;
 import rso.core.taskmanager.TaskMessage;
+import rso.server.server.RingManager;
 import rso.server.server.ServerThread;
+import rso.server.server.StartingPoint;
+import rso.server.task.EntryTask;
 import rso.server.task.MiddlewareRequestTask;
+
+import java.net.Socket;
 
 /**
  * Created by kometa on 04.05.2015.
@@ -18,7 +24,16 @@ public class Server extends BaseNode {
 
     private TaskManager taskManager;
     private  ServerThread serverThread;
-    private  ServerThread serverMiddlewareThread;
+    private RingManager ringManager = new RingManager();
+
+    @Value ("${rso.port.internal}")
+    private int portInternal;
+
+    @Value ("${rso.port.external}")
+    private int portExternal;
+
+    @Value ("${rso.addresses.server}")
+    private String[] serverIps;
 
     @Autowired
     private GeneratorTest generatorTest;
@@ -34,26 +49,26 @@ public class Server extends BaseNode {
             }
         });
 
-        taskManager.addTask(new MiddlewareRequestTask());
+        EventManager.addListener(EntryTask.entryEvent, EntryTask.class, new EventManager.EventListener() {
+            public void event(RSOEvent event) {
+                System.out.println("Nowy serwer! " + ((Socket) event.getObject()).getInetAddress().getHostAddress());
+            }
+        });
 
+        taskManager.addTask(new MiddlewareRequestTask());
+        taskManager.addTask(new EntryTask());
     }
 
     public void run() {
         System.out.println("Server. Kopytko");
-        serverThread = new ServerThread(6969);
-//        serverMiddlewareThread = new ServerThread(6975);
+        serverThread = new ServerThread(portExternal);
 
-        Thread t1 = new Thread(serverThread);
-        t1.start();
+        new Thread(new StartingPoint(serverIps, portInternal)).start();
 
-//        Thread t2 = new Thread(serverMiddlewareThread);
-//        t2.start();
-
-        Thread t3 = new Thread(taskManager);
-        t3.start();
-
-        Thread t4 = new Thread(generatorTest);
-        t4.start();
+        new Thread(new ServerThread(portInternal)).start();
+        new Thread(serverThread).start();
+        new Thread(taskManager).start();
+        new Thread(generatorTest).start();
 
     }
 }
