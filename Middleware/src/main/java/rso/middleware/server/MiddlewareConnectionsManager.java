@@ -31,9 +31,9 @@ public class MiddlewareConnectionsManager implements Runnable {
     public static String redirectServer = EventManager.registerEvent(MiddlewareConnectionsManager.class, "get redirect server id");
     public Integer globalConnections = 0;
     ServerSocket serverSocket;
-    ArrayList<SocketIdPair> middlewareSockets;
+    public static ArrayList<SocketIdPair> middlewareSockets;
     private boolean finish = false;
-    private Object guard = new Object();
+    private static Object guard = new Object();
 
     public MiddlewareConnectionsManager() {
         MiddlewareLayer.taskManager.addTask(new HeartbeatTaskRecive());
@@ -99,11 +99,27 @@ public class MiddlewareConnectionsManager implements Runnable {
 
     }
 
+    public static int getBestServer(){
+        SocketIdPair tmp = (middlewareSockets.size() > 0 ? middlewareSockets.get(0) : null);
+        int pos = -1;
+        synchronized (guard){
+            for(int i = 0; i < middlewareSockets.size(); ++i) {
+                if(tmp != null && tmp.getId() < middlewareSockets.get(i).getId()){
+                    tmp  = middlewareSockets.get(i);
+                    pos = i;
+                }
+            }
+        }
+
+        return pos;
+    }
+
     private class MiddlewareReciver implements Runnable {
 
         Timer heartTimer = new Timer();
         Timer cancelTimer = new Timer();
         Timer clientNumTimer = new Timer();
+        Timer bestServerTimer = new Timer();
         private SocketReciver reciver;
         private boolean end = false;
         private Socket socket;
@@ -126,7 +142,29 @@ public class MiddlewareConnectionsManager implements Runnable {
             @Override
             public void run() {
                 SocketIdPair tmp = (middlewareSockets.size() > 0 ? middlewareSockets.get(0) : null);
+                int pos = -1;
+                synchronized (guard){
+                    for(int i = 0; i < middlewareSockets.size(); ++i) {
+                        if(tmp != null && tmp.getId() < middlewareSockets.get(i).getId()){
+                            tmp  = middlewareSockets.get(i);
+                            pos = i;
+                        }
+                    }
+                }
 
+
+                for(String s: MiddlewareLayer.middlwareIPs){
+                    if(tmp != null && s.equals(tmp.getSocket().getInetAddress().getHostAddress())){
+                        EventManager.event(MiddlewareConnectionsManager.class, MiddlewareConnectionsManager.requestUserNum, pos);
+                    }
+                }
+            }
+        };
+
+        TimerTask bestServerTask = new TimerTask() {
+            @Override
+            public void run() {
+                SocketIdPair tmp = (middlewareSockets.size() > 0 ? middlewareSockets.get(0) : null);
                 synchronized (guard){
                     for(int i = 0; i < middlewareSockets.size(); ++i) {
                         if(tmp != null && tmp.getId() < middlewareSockets.get(i).getId()){
@@ -135,14 +173,14 @@ public class MiddlewareConnectionsManager implements Runnable {
                     }
                 }
 
+                EventManager.event(MiddlewareConnectionsManager.class, MiddlewareConnectionsManager.redirectServer, tmp.getId());
 
-                for(String s: MiddlewareLayer.middlwareIPs){
-                    if(tmp != null && s.equals(tmp.getSocket().getInetAddress().getHostAddress())){
-                        EventManager.event(MiddlewareConnectionsManager.class, MiddlewareConnectionsManager.requestUserNum, tmp.getId());
-                    }
-                }
+
+
+
             }
         };
+
         private boolean init = false;
         private String ipServer;
         private HeartbeatTask ht;
@@ -176,21 +214,20 @@ public class MiddlewareConnectionsManager implements Runnable {
                 public void event(RSOEvent event) {
                     Integer clientNum = (Integer) event.getObject();
                     LOGGER.log(Level.INFO, clientNum.toString());
-                    synchronized (guard){
-                        for(int i = 0; i < middlewareSockets.size(); ++i) {
+                    synchronized (guard) {
+                        for (int i = 0; i < middlewareSockets.size(); ++i) {
                             if (middlewareSockets.get(i).getSocket().equals(socket)) {
                                 middlewareSockets.get(i).setId(clientNum.intValue());
                             }
                         }
                     }
-                    EventManager.event(MiddlewareConnectionsManager.class, MiddlewareConnectionsManager.redirectServer, clientNum);
                     cancelTimer.cancel();
                     cancelTimer = new Timer();
                     cancelTimer.schedule(new CancelTimerTask(), 20000);
                 }
             });
 
-            clientNumTimer.schedule(clientNumTask, 1000);
+            clientNumTimer.schedule(clientNumTask, 1000, 1000);
 
         }
 
