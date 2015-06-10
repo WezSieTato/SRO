@@ -31,6 +31,8 @@ public class TaskManager implements  Runnable{
                                 task.setMsg(taskMessage);
                                 Thread thread = new Thread(task);
                                 thread.run();
+
+                                break;
                             }
 
                         }

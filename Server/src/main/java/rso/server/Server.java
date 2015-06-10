@@ -9,12 +9,9 @@ import rso.core.events.RSOEvent;
 import rso.core.model.Message;
 import rso.core.taskmanager.RequestSend;
 import rso.core.taskmanager.Task;
-import rso.server.server.ServerPool;
+import rso.server.server.*;
 import rso.core.taskmanager.TaskManager;
 import rso.core.taskmanager.TaskMessage;
-import rso.server.server.RingManager;
-import rso.server.server.ServerThread;
-import rso.server.server.StartingPoint;
 import rso.server.task.*;
 
 import java.net.Socket;
@@ -66,6 +63,8 @@ public class Server extends BaseNode {
                 Socket socket = ((Socket) event.getObject());
                 String ip = socket.getInetAddress().getHostAddress();
                 System.out.println("Nowy serwer! " + ip);
+
+                new Thread(new ServerReceiver(socket)).start();
 
                 serverPool.addSender(ip, socket);
 

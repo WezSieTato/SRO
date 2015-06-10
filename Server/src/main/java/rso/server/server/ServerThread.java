@@ -1,12 +1,6 @@
 package rso.server.server;
 
 import rso.core.events.EventManager;
-import rso.core.events.RSOEvent;
-import rso.core.model.Message;
-import rso.core.net.SocketReciver;
-import rso.core.net.SocketSender;
-import rso.core.taskmanager.Task;
-import rso.core.taskmanager.TaskMessage;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -62,39 +56,6 @@ public class ServerThread implements Runnable{
 
 
 
-        }
-    }
-
-    private  class ServerReceiver implements  Runnable{
-
-        private  SocketReciver socketReciver;
-        public ServerReceiver(Socket socket) {
-
-            socketReciver = new SocketReciver(socket);
-
-        }
-
-        public void run() {
-            while(true) {
-                try {
-                    TaskMessage message = socketReciver.read();
-                    if(message == null){
-                        break;
-                    }
-                    EventManager.event(ServerThread.class, messageReceived, message);
-                } catch (Exception e){
-                    try {
-                        socketReciver.getSocket().close();
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    } finally {
-                        break;
-                    }
-
-                } finally {
-
-                }
-            }
         }
     }
 
