@@ -147,7 +147,9 @@ uwierzytelniania węzłów w SSH).
 
 \subsection[Sposób synchronizacji danych między warstwami]{Sposób synchronizacji danych między warstwami}
 
-\textit{\textbf{TODO}}
+\par{W momencie rozpoczęcia synchronizacji serwer zewnętrzny nie wprowadza od razu pobranych danych do bazy. Przechowuje je lokalnie dopóki nie otrzyma całości danych. Dopiero wtedy wprowadza je do bazy (wszystkie jako jeden INSERT). Zapewnia to albo wprowadzanie danych w całości albo w ogóle.}
+
+\par{Jeśli w trakcie synchronizacji nastąpi błąd serwera zewnętrznego a potem jego ponowne podłączenie cała synchronizacja rozpoczyna się od nowa (należy przypomnieć, że pobierane są ostatnie zmiany, a nie cała baza). Podobnie w przypadku awarii serwera wewnętrznego - serwer zewnętrzny łączy się z kolejnym węzłem z listy i z nim rozpoczyna synchronizację. Jeśli poprzedni serwer będzie ponownie aktywny (ale serwer zewnętrzny zdąży rozpocząć synchronizację z innym węzłem) to informacje przez niego wysłane są ignorowane. Mimo narzutu związanego z duplikacją wysyłanych danych jest to najbezpieczniejsze rozwiązanie w związku z tym, że dane mogą być już nieaktualne.}
 
 \section[Wymagania i założenia]{Wymagania i założenia}
 
@@ -165,7 +167,7 @@ Każdy z węzłów danej warstwy będzie posiadała plik konfiguracyjny o tej sa
 Takie rozwiązanie jest wymagane w treści zadania. Ponadto ujednolica i ułatwia konfigurację projektu bez potrzeby ponownej kompilacji.\\
 \hline
 
-\label{z:WF2} WF2 &  \textbf{Zmiana jednego rekordu na raz }
+\label{z:WF2} WF2 &  \textbf{Zmiana jednego rekordu na raz}
 
 Jeśli dany węzeł chce dodać/usunąć/zmodyfikować dane o studencie musi posiadać token, który przesyła do kolejnych serwerów na końcu otrzymując potwierdzenie, że każdy z węzłów wprowadził żądaną zmianę. & 
 Ze względu na to, że w sieci warstwy wewnętrznej serwera istnieje jeden token jest sensowne przyjąć założenie, że na raz można wprowadzić jedną modyfikację w bazie. Ponadto pozwala to utrzymać nieduży rozmiar tokena, co sprzyja jego szybszemu przesyłaniu między węzłami. Nawet w przypadku wielu żądań (od każdego węzła jedno) powinno to działać na tyle szybko, że osoby wprowadzające dane nie odczują opóźnienia. Dodatkowo wprowadzanie pojedynczych informacji pozwala na szybsze wykrycie awarii węzła serwera oraz zaoszczędza więcej czasu, niż w przypadku wpisywania dużej ilości danych na raz, a dopiero potem sprawdzania czy węzeł działa poprawnie. \\
@@ -617,6 +619,16 @@ timeout = 30
 \item \textbf{Długi czas algorytmów synchronizacji w trakcie awarii} (nawet do parudziesięciu sekund w sytuacjach kryzysowych)
 \par{Czas trwania tej synchronizacji jest efektem zastosowanych przez nas rozwiązań. Najwyższym priorytetem w trakcie projektowania i implementacji systemu było bezpieczeństwo danych. Nawet kosztem dłuższego czasu oczekiwania użytkownika na działanie systemu po awarii.}
 
+\end{itemize}
+
+\section[Problemy w trakcie tworzenia projektu]{Problemy w trakcie tworzenia projektu}
+\begin{itemize}
+\item \textbf{Błędy bizantyjskie}
+\par{W trakcie tworzenia i debugowania projektu często występowały trudne do znalezienia błędy, objawiające się w najmniej oczekiwanych momentach. Ciężko było je znaleźć, ze względu na to, że pojawiały się losowo i czasami (mimo ich obecności) program działał pozornie poprawnie. Część z nich została znaleziona dopiero na końcowych etapach pracy.}
+\item \textbf{Komunikacja między trzema warstwami jednocześnie}
+\par{Z początku ciężko było zestawić połączenie między trzema warstwami (klienty, serwery zewnętrzne oraz serwery wewnętrzne), tak, żeby każdy z węzłów w danej warstwie działał stabilnie. Te próby pozwalały wykryć błędy, które wcześniej się nie pojawiały (w przypadku łączenia dwóch warstw na raz).}
+\item \textbf{Zbyt mała ilość osób w projekcie}
+\par{Mimo wielu ograniczeń i zmniejszenia ilości założeń w projekcie brakowało w grupie jednej, dwóch dodatkowych osób. Było to choćby związane z kwestią samego pisania kodu źródłowego (który pisały tylko trzy osoby). Tym sposobem odpowiedzialność za jedną warstwę spadała w całości na jedną osobę. Mimo późniejszej wspólnej pracy nad całością do końca doskwierał brak osób.}
 \end{itemize}
 
 \section[Organizacja środowiska programistycznego]{Organizacja środowiska programistycznego}
