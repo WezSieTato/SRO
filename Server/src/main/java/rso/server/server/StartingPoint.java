@@ -42,8 +42,9 @@ public class StartingPoint implements Runnable {
             e.printStackTrace();
         }
 
+        System.out.println("Moje ip to " + myIp);
         for(String ip : ips){
-            if(socket.equals(myIp))
+            if(ip.equals(myIp))
                 continue;
             if(socket != null)
                 break;
@@ -51,7 +52,7 @@ public class StartingPoint implements Runnable {
                 socket = new Socket(ip, port);
             } catch (IOException e) {
                 socket = null;
-                System.out.println("Serwera nie ma z ip" + ip);
+                System.out.println("Serwera nie ma z ip " + ip);
             }
         }
 
