@@ -29,11 +29,11 @@ public class JoinNewServersTask extends RingTask {
 
         RingManager ringManager = getRingManager();
 
-        if(ringManager.isRing()){
-            ringManager.createRing();
-        } else {
+//        if(ringManager.isRing()){
+//            ringManager.createRing();
+//        } else {
             ringManager.rearrage(taskMessage.getMessage().getToken(), true);
-        }
+//        }
 
         RequestSend req = new RequestSend(ringManager.getNext(), ringManager.tokenBuilder(Message.TokenType.NONE).build());
         send(req);

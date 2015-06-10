@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import rso.core.abstraction.BaseNode;
 import rso.core.events.EventManager;
 import rso.core.events.RSOEvent;
+import rso.core.model.Message;
 import rso.core.taskmanager.RequestSend;
 import rso.core.taskmanager.Task;
 import rso.server.server.ServerPool;
@@ -69,7 +70,9 @@ public class Server extends BaseNode {
                 serverPool.addSender(ip, socket);
 
                 if (!ringManager.isRing()) {
+                        ringManager.createRing();
 
+                    serverPool.send(ringManager.getNext(), ringManager.tokenBuilder(Message.TokenType.NONE).build());
                 } else {
                     ringManager.addToQueue(ip);
                 }
