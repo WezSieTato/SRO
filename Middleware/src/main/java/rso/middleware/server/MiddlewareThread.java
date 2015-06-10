@@ -102,7 +102,7 @@ public class MiddlewareThread implements Runnable {
                     if(!MiddlewareLayer.middlwareIPs[bestServerId].equals(InetAddress.getLocalHost().getHostAddress())){
 
                         Message.MiddlewareHeartbeat.Builder hrt = Message.RSOMessage.newBuilder().getMiddlewareHeartbeatBuilder();
-                        hrt.setConnectedClients(1).setServerId(bestServerId).setMessageType(Message.MiddlewareMessageType.Heartbeat);
+                        hrt.setConnectedClients(1).setServerId(bestServerId).setMessageType(Message.MiddlewareMessageType.Redirect);
 
                         Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
                         builder.setSubjectName("RSO").setNodeId(1);
