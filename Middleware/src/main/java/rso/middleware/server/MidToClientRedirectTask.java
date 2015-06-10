@@ -22,7 +22,7 @@ public class MidToClientRedirectTask extends Task {
     }
     @Override
     public boolean processMessage(TaskMessage taskMessage) {
-        if(taskMessage.getMessage().getMiddlewareHeartbeat().getMessageType() == Message.MiddlewareMessageType.Redirect){
+        if(taskMessage.getMessage().getMiddlewareHeartbeat().getMessageType().equals(Message.MiddlewareMessageType.Redirect)){
             int id = taskMessage.getMessage().getMiddlewareHeartbeat().getServerId();
             LOGGER.log(Level.INFO, "Przekierowanie na  " + id + " - - - - UWAGA ZMIANA SOCKETA ");
 

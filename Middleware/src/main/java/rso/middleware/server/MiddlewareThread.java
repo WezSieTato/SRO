@@ -95,6 +95,7 @@ public class MiddlewareThread implements Runnable {
         }
 
         public void run() {
+            bestServerId = MiddlewareConnectionsManager.getBestServer();
 
             if(bestServerId != -1){
 
