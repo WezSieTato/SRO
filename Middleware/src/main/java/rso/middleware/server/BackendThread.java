@@ -138,7 +138,7 @@ public class BackendThread implements Runnable {
             }
             //for po kazdym serwerze wewnetrznym
             try {
-                socket = new Socket("192.168.1.155", 6969);
+                socket = new Socket("192.168.1.110", 6969);
             } catch (IOException e) {
                 e.printStackTrace();
             }
