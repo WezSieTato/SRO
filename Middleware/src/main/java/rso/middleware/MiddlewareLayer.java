@@ -23,6 +23,7 @@ public class MiddlewareLayer extends BaseNode{
 
     public static final TaskManager taskManager = new TaskManager();
     @Value("${rso.addresses.middleware}")
+    public String[] midIps;
     public static String[] middlwareIPs;
 
     static {
@@ -37,6 +38,7 @@ public class MiddlewareLayer extends BaseNode{
     private MiddlewareConnectionsManager middlewareConnectionsManager;
 
     private void init() {
+        middlwareIPs = midIps;
 //        Test1 t1 = new Test1();
 //        Test3 t3 = new Test3();
 //

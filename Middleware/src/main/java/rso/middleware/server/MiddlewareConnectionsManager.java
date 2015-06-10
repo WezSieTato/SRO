@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 /**
  * Created by modzelej on 2015-06-05.
  */
+
 public class MiddlewareConnectionsManager implements Runnable {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static String requestUserNum = EventManager.registerEvent(MiddlewareConnectionsManager.class, "get user connection number");
@@ -58,6 +59,7 @@ public class MiddlewareConnectionsManager implements Runnable {
     public void run() {
 
         LOGGER.log(Level.INFO, "start Middlware-Middleware Thread");
+
 
         for (String s : MiddlewareLayer.middlwareIPs) {
             try {
