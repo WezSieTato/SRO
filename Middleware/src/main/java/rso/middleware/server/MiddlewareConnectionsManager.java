@@ -32,7 +32,7 @@ public class MiddlewareConnectionsManager implements Runnable {
     ServerSocket serverSocket;
     ArrayList<SocketIdPair> middlewareSockets;
     private boolean finish = false;
-
+    private Object guard = new Object();
 
     public MiddlewareConnectionsManager() {
         MiddlewareLayer.taskManager.addTask(new HeartbeatTaskRecive());
@@ -78,12 +78,15 @@ public class MiddlewareConnectionsManager implements Runnable {
             try {
                 Socket midSoc = serverSocket.accept();
                 LOGGER.log(Level.INFO, "Mid 2 Mid new socket");
-                if (!middlewareSockets.contains(midSoc)) {
-                    //    middlewareSockets.add(midSoc);
-                    MiddlewareReciver mrr = new MiddlewareReciver(midSoc, false, null);
-                    Thread tt = new Thread(mrr);
-                    tt.start();
+                synchronized (guard){
+                    if (!middlewareSockets.contains(midSoc)) {
+                        //    middlewareSockets.add(midSoc);
+                        MiddlewareReciver mrr = new MiddlewareReciver(midSoc, false, null);
+                        Thread tt = new Thread(mrr);
+                        tt.start();
+                    }
                 }
+
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -121,11 +124,15 @@ public class MiddlewareConnectionsManager implements Runnable {
             @Override
             public void run() {
                 SocketIdPair tmp = (middlewareSockets.size() > 0 ? middlewareSockets.get(0) : null);
-                for(int i = 0; i < middlewareSockets.size(); ++i) {
-                    if(tmp != null && tmp.getId() < middlewareSockets.get(i).getId()){
-                        tmp  = middlewareSockets.get(i);
+
+                synchronized (guard){
+                    for(int i = 0; i < middlewareSockets.size(); ++i) {
+                        if(tmp != null && tmp.getId() < middlewareSockets.get(i).getId()){
+                            tmp  = middlewareSockets.get(i);
+                        }
                     }
                 }
+
 
                 for(String s: MiddlewareLayer.middlwareIPs){
                     if(tmp != null && s.equals(tmp.getSocket().getInetAddress().getHostAddress())){
@@ -167,11 +174,14 @@ public class MiddlewareConnectionsManager implements Runnable {
                 public void event(RSOEvent event) {
                     Integer clientNum = (Integer) event.getObject();
                     LOGGER.log(Level.INFO, clientNum.toString());
-                    for(int i = 0; i < middlewareSockets.size(); ++i) {
-                        if (middlewareSockets.get(i).getSocket().equals(socket)) {
-                            middlewareSockets.get(i).setId(clientNum.intValue());
+                    synchronized (guard){
+                        for(int i = 0; i < middlewareSockets.size(); ++i) {
+                            if (middlewareSockets.get(i).getSocket().equals(socket)) {
+                                middlewareSockets.get(i).setId(clientNum.intValue());
+                            }
                         }
                     }
+
                     cancelTimer.cancel();
                     cancelTimer = new Timer();
                     cancelTimer.schedule(new CancelTimerTask(), 10000);
@@ -195,11 +205,15 @@ public class MiddlewareConnectionsManager implements Runnable {
                 end = true;
                 return;
             } else {
-                if (middlewareSockets.contains(socket)) {
-                    end = true;
-                    return;
+                synchronized (guard){
+                    if (middlewareSockets.contains(socket)) {
+                        end = true;
+                        return;
+                    }
+                    middlewareSockets.add(new SocketIdPair(999, socket));
                 }
-                middlewareSockets.add(new SocketIdPair(999, socket));
+
+
                 reciver = new SocketReciver(socket);
                 ht = new HeartbeatTask();
                 Thread t = new Thread(ht);
@@ -216,7 +230,9 @@ public class MiddlewareConnectionsManager implements Runnable {
                     e.printStackTrace();
                     try {
                         reciver.getSocket().close();
-                        middlewareSockets.remove(this);
+                        synchronized (guard){
+                            middlewareSockets.remove(this);
+                        }
                         break;
                     } catch (IOException e1) {
                         e1.printStackTrace();
@@ -235,11 +251,14 @@ public class MiddlewareConnectionsManager implements Runnable {
                 try {
                     heartTimer.cancel();
                     LOGGER.log(Level.INFO, "\nWYWALAM SERWER\n");
-                    for(int i = 0; i < middlewareSockets.size(); ++i) {
-                        if (middlewareSockets.get(i).getSocket().equals(socket)) {
-                            middlewareSockets.remove(i);
+                    synchronized (guard){
+                        for(int i = 0; i < middlewareSockets.size(); ++i) {
+                            if (middlewareSockets.get(i).getSocket().equals(socket)) {
+                                middlewareSockets.remove(i);
+                            }
                         }
                     }
+
                     socket.close();
                 } catch (IOException e) {
                     e.printStackTrace();
