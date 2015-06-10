@@ -99,7 +99,7 @@ public class MiddlewareThread implements Runnable {
             if(bestServerId != -1){
 
                 try {
-                    if(!MiddlewareLayer.middlwareIPs.get(bestServerId).equals(InetAddress.getLocalHost().getHostAddress())){
+                    if(!MiddlewareLayer.middlwareIPs[bestServerId].equals(InetAddress.getLocalHost().getHostAddress())){
 
                         Message.MiddlewareHeartbeat.Builder hrt = Message.RSOMessage.newBuilder().getMiddlewareHeartbeatBuilder();
                         hrt.setConnectedClients(1).setServerId(bestServerId).setMessageType(Message.MiddlewareMessageType.Heartbeat);
