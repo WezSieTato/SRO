@@ -611,8 +611,11 @@ timeout = 30
 
 \section[Ograniczenia i możliwe problemy]{Ograniczenia i możliwe problemy}
 \begin{itemize}
-\item Brak odporności na ataki typu DDOs
-\item Długi czas algorytmów synchronizacji w trakcie awarii (nawet do parudziesięciu sekund w sytuacjach kryzysowych)
+\item \textbf{Brak odporności na ataki typu DDOs}
+\par{System nie jest odporny na ataki typu DDOs w związku z brakiem czasu i skupieniu się na wymaganiach o wyższym priorytecie.}
+
+\item \textbf{Długi czas algorytmów synchronizacji w trakcie awarii} (nawet do parudziesięciu sekund w sytuacjach kryzysowych)
+\par{Czas trwania tej synchronizacji jest efektem zastosowanych przez nas rozwiązań. Najwyższym priorytetem w trakcie projektowania i implementacji systemu było bezpieczeństwo danych. Nawet kosztem dłuższego czasu oczekiwania użytkownika na działanie systemu po awarii.}
 
 \end{itemize}
 
