@@ -25,7 +25,7 @@ public class HeartbeatTaskRecive extends Task {
     public boolean processMessage(TaskMessage taskMessage) {
 
 
-        EventManager.event(HeartbeatTaskRecive.class, response, "heszke w meszke");
+        EventManager.event(HeartbeatTaskRecive.class, response, new Integer(taskMessage.getMessage().getMiddlewareHeartbeat().getConnectedClients()));
 
         return true;
     }

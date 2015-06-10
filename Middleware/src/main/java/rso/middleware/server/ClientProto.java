@@ -60,6 +60,14 @@ public class ClientProto implements Runnable{
                 sender.send(message);
             }
         });
+        EventManager.addListener(MidToClientRedirectTask.redirectEvent, MidToClientRedirectTask.class, new EventManager.EventListener() {
+            public void event(RSOEvent event) {
+                LOGGER.log(Level.INFO, "------------- WYLACZAm SOKET ------------");
+                EventManager.event(ClientProto.class, endReciving, "koniec pracy!");
+                redirect(((Integer) event.getObject()).intValue());
+            }
+        });
+
         connectedSockets = new LinkedBlockingQueue<SocketIdPair>(100);
 //        for(String s: addresses){
 //            try {
@@ -96,7 +104,7 @@ public class ClientProto implements Runnable{
             Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
             builder.setSubjectName("RSO").setNodeId(1);
             Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
-                sender.send(message);
+            sender.send(message);
 
 
         } catch (IOException e) {
@@ -104,6 +112,36 @@ public class ClientProto implements Runnable{
         }
 
 
+    }
+
+    private void redirect(int id){
+        LOGGER.log(Level.INFO, "redirecting");
+        try {
+            socket = new Socket("192.168.1.114", 6971);
+            sender = new SocketSender(socket);
+            MiddlewareReciver mrr = new MiddlewareReciver(socket);
+            Thread tt = new Thread(mrr);
+            tt.start();
+
+
+            try {
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Message.MiddlewareHeartbeat.Builder hrt = Message.RSOMessage.newBuilder().getMiddlewareHeartbeatBuilder();
+            hrt.setConnectedClients(69).setServerId(32131).setMessageType(Message.MiddlewareMessageType.Heartbeat);
+
+            Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
+            builder.setSubjectName("RSO").setNodeId(1);
+            Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
+            sender.send(message);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private class MiddlewareReciver implements Runnable {
@@ -122,6 +160,7 @@ public class ClientProto implements Runnable{
 
 
             MiddlewareLayer.taskManager.addTask(new MidToClientTask());
+            MiddlewareLayer.taskManager.addTask(new MidToClientRedirectTask());
 
 
         }

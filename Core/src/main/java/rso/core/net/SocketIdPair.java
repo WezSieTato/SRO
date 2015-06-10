@@ -8,6 +8,11 @@ import java.net.Socket;
 public class SocketIdPair {
 
     private int id;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private Socket socket;
 
     public SocketIdPair(int id, Socket socket) {

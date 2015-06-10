@@ -14,8 +14,10 @@ import rso.core.taskmanager.TaskMessage;
 import rso.middleware.MiddlewareLayer;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +32,8 @@ public class MiddlewareThread implements Runnable {
     private ServerSocket socket;
     private LinkedBlockingQueue<SocketIdPair> connectedSockets;
     private boolean finish = false;
+    private int bestServerId = -1;
+
 
     public static String endReciving = EventManager.registerEvent(MiddlewareThread.class, "end reciving");
     public static String userConnectionsNum = EventManager.registerEvent(MiddlewareThread.class, "useer connection number");
@@ -79,6 +83,11 @@ public class MiddlewareThread implements Runnable {
                 }
             });
 
+            EventManager.addListener(MiddlewareConnectionsManager.redirectServer, MiddlewareConnectionsManager.class, new EventManager.EventListener() {
+                public void event(RSOEvent event) {
+                    bestServerId = ((Integer) event.getObject()).intValue();
+                }
+            });
 
             MiddlewareLayer.taskManager.addTask(new ClientRequestTask());
 
@@ -86,6 +95,35 @@ public class MiddlewareThread implements Runnable {
         }
 
         public void run() {
+
+            if(bestServerId != -1){
+
+                try {
+                    if(!MiddlewareLayer.middlwareIPs.get(bestServerId).equals(InetAddress.getLocalHost().getHostAddress())){
+
+                        Message.MiddlewareHeartbeat.Builder hrt = Message.RSOMessage.newBuilder().getMiddlewareHeartbeatBuilder();
+                        hrt.setConnectedClients(1).setServerId(bestServerId).setMessageType(Message.MiddlewareMessageType.Heartbeat);
+
+                        Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
+                        builder.setSubjectName("RSO").setNodeId(1);
+                        Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
+
+                        SocketSender snd = new SocketSender(socket);
+                        snd.send(message);
+
+
+                        end = true;
+                        try {
+                            socket.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                }
+            }
+
             while(!end){
                TaskMessage message = reciver.read();
 

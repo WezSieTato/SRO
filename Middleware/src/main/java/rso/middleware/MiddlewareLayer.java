@@ -1,15 +1,17 @@
 package rso.middleware;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import rso.core.abstraction.BaseNode;
-import rso.core.abstraction.Node;
 import rso.core.taskmanager.TaskManager;
-import rso.middleware.server.*;
+import rso.middleware.server.BackendThread;
+import rso.middleware.server.MiddlewareConnectionsManager;
+import rso.middleware.server.MiddlewareThread;
+import rso.middleware.server.Server;
 import rso.middleware.utils.MyLogManager;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.ArrayList;
 import java.util.logging.Level;
 
 /**
@@ -19,20 +21,21 @@ import java.util.logging.Level;
 public class MiddlewareLayer extends BaseNode{
 
 
-    private MiddlewareThread middlewareThread;
-    private BackendThread backendThread;
-    private Server clientServer;
-    private MiddlewareConnectionsManager middlewareConnectionsManager;
     public static final TaskManager taskManager = new TaskManager();
-    public static ArrayList<String> middlwareIPs = new ArrayList<String>();
+    @Value("${rso.addresses.middleware}")
+    public static String[] middlwareIPs;
+
     static {
         Thread t = new Thread(taskManager);
         t.start();
 
-        middlwareIPs.add("192.168.1.109");
-        middlwareIPs.add("192.168.1.108");
-        middlwareIPs.add("192.168.1.101");
     }
+
+    private MiddlewareThread middlewareThread;
+    private BackendThread backendThread;
+    private Server clientServer;
+    private MiddlewareConnectionsManager middlewareConnectionsManager;
+
     private void init() {
 //        Test1 t1 = new Test1();
 //        Test3 t3 = new Test3();
@@ -54,8 +57,8 @@ public class MiddlewareLayer extends BaseNode{
         middlewareConnectionsManager = new MiddlewareConnectionsManager();
 
 
-//        t1.start();
-//        t2.start();
+//     //        t2.start();   t1.start();
+
 //        t3.start();
 
 //        ClientProgram cp = new ClientProgram();

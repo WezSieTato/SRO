@@ -3,6 +3,7 @@ package rso.middleware.server;
 import rso.core.events.EventManager;
 import rso.core.events.RSOEvent;
 import rso.core.model.Message;
+import rso.core.net.SocketIdPair;
 import rso.core.net.SocketReciver;
 import rso.core.net.SocketSender;
 import rso.core.taskmanager.TaskMessage;
@@ -26,9 +27,10 @@ public class MiddlewareConnectionsManager implements Runnable {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static String requestUserNum = EventManager.registerEvent(MiddlewareConnectionsManager.class, "get user connection number");
     public static String sendHeartbeat = EventManager.registerEvent(MiddlewareConnectionsManager.class, "send heatbeat");
+    public static String redirectServer = EventManager.registerEvent(MiddlewareConnectionsManager.class, "get redirect server id");
     public Integer globalConnections = 0;
     ServerSocket serverSocket;
-    ArrayList<Socket> middlewareSockets;
+    ArrayList<SocketIdPair> middlewareSockets;
     private boolean finish = false;
 
 
@@ -39,7 +41,7 @@ public class MiddlewareConnectionsManager implements Runnable {
 
     private void init() {
 
-        middlewareSockets = new ArrayList<Socket>();
+        middlewareSockets = new ArrayList<SocketIdPair>();
         EventManager.addListener(MiddlewareThread.userConnectionsNum, MiddlewareThread.class, new EventManager.EventListener() {
             public void event(RSOEvent event) {
                 globalConnections = (Integer) event.getObject();
@@ -96,6 +98,7 @@ public class MiddlewareConnectionsManager implements Runnable {
 
         Timer heartTimer = new Timer();
         Timer cancelTimer = new Timer();
+        Timer clientNumTimer = new Timer();
         private SocketReciver reciver;
         private boolean end = false;
         private Socket socket;
@@ -112,6 +115,23 @@ public class MiddlewareConnectionsManager implements Runnable {
                     firstRun = false;
                 }
 
+            }
+        };
+        TimerTask clientNumTask = new TimerTask() {
+            @Override
+            public void run() {
+                SocketIdPair tmp = (middlewareSockets.size() > 0 ? middlewareSockets.get(0) : null);
+                for(int i = 0; i < middlewareSockets.size(); ++i) {
+                    if(tmp != null && tmp.getId() < middlewareSockets.get(i).getId()){
+                        tmp  = middlewareSockets.get(i);
+                    }
+                }
+
+                for(String s: MiddlewareLayer.middlwareIPs){
+                    if(tmp != null && s.equals(tmp.getSocket().getInetAddress().getHostAddress())){
+                        EventManager.event(MiddlewareConnectionsManager.class, MiddlewareConnectionsManager.requestUserNum, tmp.getId());
+                    }
+                }
             }
         };
         private boolean init = false;
@@ -145,15 +165,20 @@ public class MiddlewareConnectionsManager implements Runnable {
 
             EventManager.addListener(HeartbeatTaskRecive.response, HeartbeatTaskRecive.class, new EventManager.EventListener() {
                 public void event(RSOEvent event) {
-                    String heszke = (String) event.getObject();
-                    LOGGER.log(Level.INFO, heszke);
+                    Integer clientNum = (Integer) event.getObject();
+                    LOGGER.log(Level.INFO, clientNum.toString());
+                    for(int i = 0; i < middlewareSockets.size(); ++i) {
+                        if (middlewareSockets.get(i).getSocket().equals(socket)) {
+                            middlewareSockets.get(i).setId(clientNum.intValue());
+                        }
+                    }
                     cancelTimer.cancel();
                     cancelTimer = new Timer();
                     cancelTimer.schedule(new CancelTimerTask(), 10000);
                 }
             });
 
-
+            clientNumTimer.schedule(clientNumTask, 1000);
 
         }
 
@@ -174,7 +199,7 @@ public class MiddlewareConnectionsManager implements Runnable {
                     end = true;
                     return;
                 }
-                middlewareSockets.add(socket);
+                middlewareSockets.add(new SocketIdPair(999, socket));
                 reciver = new SocketReciver(socket);
                 ht = new HeartbeatTask();
                 Thread t = new Thread(ht);
@@ -210,7 +235,11 @@ public class MiddlewareConnectionsManager implements Runnable {
                 try {
                     heartTimer.cancel();
                     LOGGER.log(Level.INFO, "\nWYWALAM SERWER\n");
-                    middlewareSockets.remove(socket);
+                    for(int i = 0; i < middlewareSockets.size(); ++i) {
+                        if (middlewareSockets.get(i).getSocket().equals(socket)) {
+                            middlewareSockets.remove(i);
+                        }
+                    }
                     socket.close();
                 } catch (IOException e) {
                     e.printStackTrace();
