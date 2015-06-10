@@ -116,7 +116,7 @@ public class MiddlewareConnectionsManager implements Runnable {
                 if (firstRun) {
                     cancelTimer.cancel();
                     cancelTimer = new Timer();
-                    cancelTimer.schedule(new CancelTimerTask(), 10000);
+                    cancelTimer.schedule(new CancelTimerTask(), 20000);
                     firstRun = false;
                 }
 
@@ -186,7 +186,7 @@ public class MiddlewareConnectionsManager implements Runnable {
 
                     cancelTimer.cancel();
                     cancelTimer = new Timer();
-                    cancelTimer.schedule(new CancelTimerTask(), 10000);
+                    cancelTimer.schedule(new CancelTimerTask(), 20000);
                 }
             });
 
