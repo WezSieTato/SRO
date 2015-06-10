@@ -17,6 +17,7 @@ public class EmptyTokenTask extends RingTask {
 
     @Override
     public boolean processMessage(TaskMessage taskMessage) {
+        System.out.println("EmptyTokenTask");
 
         RingManager ringManager = getRingManager();
         ringManager.rearrage(taskMessage.getMessage().getToken(), true);

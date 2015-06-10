@@ -26,6 +26,7 @@ public class JoinNewServersTask extends RingTask {
 
     @Override
     public boolean processMessage(TaskMessage taskMessage) {
+        System.out.println("JoinNewServersTask");
 
         RingManager ringManager = getRingManager();
 

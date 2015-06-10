@@ -70,7 +70,8 @@ public class Server extends BaseNode {
                 serverPool.addSender(ip, socket);
 
                 if (!ringManager.isRing()) {
-                        ringManager.createRing();
+                    ringManager.addToQueue(ip);
+                    ringManager.createRing();
 
                     serverPool.send(ringManager.getNext(), ringManager.tokenBuilder(Message.TokenType.NONE).build());
                 } else {

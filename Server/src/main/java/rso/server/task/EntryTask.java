@@ -23,6 +23,8 @@ public class EntryTask extends RingTask {
 
     @Override
     public boolean processMessage(TaskMessage taskMessage) {
+        System.out.println("EntryTask");
+
         EventManager.event(EntryTask.class, entryEvent, taskMessage.getSocket());
 
         return false;
