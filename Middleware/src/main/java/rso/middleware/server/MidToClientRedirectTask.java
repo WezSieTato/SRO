@@ -1,6 +1,7 @@
 package rso.middleware.server;
 
 import rso.core.events.EventManager;
+import rso.core.model.Message;
 import rso.core.taskmanager.Task;
 import rso.core.taskmanager.TaskMessage;
 
@@ -21,11 +22,13 @@ public class MidToClientRedirectTask extends Task {
     }
     @Override
     public boolean processMessage(TaskMessage taskMessage) {
+        if(taskMessage.getMessage().getMiddlewareHeartbeat().getMessageType() == Message.MiddlewareMessageType.Redirect){
+            int id = taskMessage.getMessage().getMiddlewareHeartbeat().getServerId();
+            LOGGER.log(Level.INFO, "Przekierowanie na  " + id + " - - - - UWAGA ZMIANA SOCKETA ");
 
-        int id = taskMessage.getMessage().getMiddlewareHeartbeat().getServerId();
-        LOGGER.log(Level.INFO, "PRzekierowanie na  " + id + " - - - - UWAGA ZMIANA SOCKETA ");
+            EventManager.event(MidToClientRedirectTask.class, redirectEvent, new Integer(id));
+        }
 
-        EventManager.event(MidToClientRedirectTask.class, redirectEvent, new Integer(id));
 
 
 
