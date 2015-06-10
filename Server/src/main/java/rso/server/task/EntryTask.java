@@ -8,13 +8,9 @@ import rso.core.taskmanager.TaskMessage;
 /**
  * Created by marcin on 05/05/15.
  */
-public class EntryTask extends Task {
+public class EntryTask extends RingTask {
 
     public static String entryEvent = EventManager.registerEvent(EntryTask.class, "Entry event");
-
-    public EntryTask() {
-        addFilterForConnectionDirection(ConnectionDirection.InnerToInner);
-    }
 
     @Override
     public boolean canProcessMessage(TaskMessage taskMessage) {

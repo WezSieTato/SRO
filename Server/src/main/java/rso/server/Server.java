@@ -14,8 +14,7 @@ import rso.core.taskmanager.TaskMessage;
 import rso.server.server.RingManager;
 import rso.server.server.ServerThread;
 import rso.server.server.StartingPoint;
-import rso.server.task.EntryTask;
-import rso.server.task.MiddlewareRequestTask;
+import rso.server.task.*;
 
 import java.net.Socket;
 
@@ -55,7 +54,7 @@ public class Server extends BaseNode {
 
         EventManager.addListener(Task.messageToSend, Task.class, new EventManager.EventListener() {
             public void event(RSOEvent event) {
-                RequestSend req = (RequestSend)event.getObject();
+                RequestSend req = (RequestSend) event.getObject();
                 serverPool.send(req.getIp(), req.getMessage());
 
             }
@@ -77,8 +76,16 @@ public class Server extends BaseNode {
             }
         });
 
+        addRingTask(new JoinNewServersTask());
+        addRingTask(new EmptyTokenTask());
+        addRingTask(new EntryTask());
+
         taskManager.addTask(new MiddlewareRequestTask());
-        taskManager.addTask(new EntryTask());
+    }
+
+    private void addRingTask(RingTask ringTask){
+        ringTask.setRingManager(ringManager);
+        taskManager.addTask(ringTask);
     }
 
     public void run() {

@@ -79,10 +79,22 @@ public class RingManager {
 
     }
 
+    public void rearrage(Message.Token token, boolean addNew){
+        ips.clear();
+        for (int i = 0; i < token.getNodeIdsCount(); i++) {
+            ips.addLast(token.getNodeIds(i));
+        }
+
+        if(addNew){
+            ips.addAll(waitingIps);
+            waitingIps.clear();
+        }
+    }
 
     public Message.RSOMessage.Builder tokenBuilder(Message.TokenType type){
         Message.Token.Builder builder = Message.Token.newBuilder();
         builder.setTokenType(type);
+        builder.addAllNodeIds(ips);
 
         return Message.RSOMessage.newBuilder().setToken(builder);
 

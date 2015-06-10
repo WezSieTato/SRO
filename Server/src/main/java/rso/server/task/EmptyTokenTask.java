@@ -9,36 +9,20 @@ import rso.server.server.RingManager;
 /**
  * Created by marcin on 10/06/15.
  */
-public class JoinNewServersTask extends RingTask {
+public class EmptyTokenTask extends RingTask {
 
-    public JoinNewServersTask() {
-        setPriority(3);
-    }
-
-    @Override
-    public boolean canProcessMessage(TaskMessage taskMessage) {
-        if( super.canProcessMessage(taskMessage)){
-            return getRingManager().isWaiting();
-        }
-
-        return false;
+    public EmptyTokenTask() {
+        setPriority(5);
     }
 
     @Override
     public boolean processMessage(TaskMessage taskMessage) {
 
         RingManager ringManager = getRingManager();
-
-        if(ringManager.isRing()){
-            ringManager.createRing();
-        } else {
-            ringManager.rearrage(taskMessage.getMessage().getToken(), true);
-        }
-
+        ringManager.rearrage(taskMessage.getMessage().getToken(), true);
         RequestSend req = new RequestSend(ringManager.getNext(), ringManager.tokenBuilder(Message.TokenType.NONE).build());
         send(req);
 
         return false;
     }
-
 }
