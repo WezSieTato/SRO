@@ -183,7 +183,7 @@ public class MiddlewareConnectionsManager implements Runnable {
                             }
                         }
                     }
-
+                    EventManager.event(MiddlewareConnectionsManager.class, MiddlewareConnectionsManager.redirectServer, clientNum);
                     cancelTimer.cancel();
                     cancelTimer = new Timer();
                     cancelTimer.schedule(new CancelTimerTask(), 20000);
