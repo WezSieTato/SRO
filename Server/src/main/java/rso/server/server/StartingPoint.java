@@ -63,6 +63,8 @@ public class StartingPoint implements Runnable {
 
             System.out.println("Wyslano zadanie wejscia do " + socket.getInetAddress().getHostAddress());
 
+            new Thread(new ServerReceiver(socket)).start();
+
             new SocketSender(socket).send(msg);
         }
 
