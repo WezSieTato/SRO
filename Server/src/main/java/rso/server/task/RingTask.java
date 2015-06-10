@@ -11,7 +11,7 @@ public abstract class RingTask extends Task {
     private RingManager ringManager;
 
     public RingTask() {
-        addFilterForConnectionDirection(Task.ConnectionDirection.MiddlewareToInner);
+        addFilterForConnectionDirection(Task.ConnectionDirection.InnerToInner);
     }
 
     public RingManager getRingManager() {
