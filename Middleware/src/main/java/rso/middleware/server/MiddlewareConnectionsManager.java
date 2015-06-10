@@ -104,7 +104,7 @@ public class MiddlewareConnectionsManager implements Runnable {
         int pos = -1;
         synchronized (guard){
             for(int i = 0; i < middlewareSockets.size(); ++i) {
-                if(tmp != null && tmp.getId() < middlewareSockets.get(i).getId()){
+                if(tmp != null && tmp.getId() <= middlewareSockets.get(i).getId()){
                     tmp  = middlewareSockets.get(i);
                     pos = i;
                 }
