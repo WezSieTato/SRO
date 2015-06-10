@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 /**
  * Created by marcin on 09/06/15.
@@ -34,7 +35,16 @@ public class StartingPoint implements Runnable {
     public void run() {
         Socket socket = null;
         System.out.println("Szukamy serwerow!");
+        String myIp = null;
+        try {
+            myIp = InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+
         for(String ip : ips){
+            if(socket.equals(myIp))
+                continue;
             if(socket != null)
                 break;
             try {

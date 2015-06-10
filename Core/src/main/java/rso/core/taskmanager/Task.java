@@ -43,7 +43,7 @@ public abstract class Task implements Runnable{
     private ConnectionDirection connectionDirection;
     private boolean connectionDirectionFilter = false;
 
-    protected void send(Message.RSOMessage message){
+    protected void send(RequestSend message){
         EventManager.event(Task.class, messageToSend, message);
     }
 

@@ -1,6 +1,7 @@
-package rso.core.net;
+package rso.server.server;
 
 import rso.core.model.Message;
+import rso.core.net.SocketSender;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -13,9 +14,9 @@ import java.util.Hashtable;
  * Created by marcin on 06/05/15.
  */
 public class ServerPool {
-    private Dictionary<Integer, SocketSender> socketMap = new Hashtable<Integer, SocketSender>();
+    private Dictionary<String, SocketSender> socketMap = new Hashtable<String, SocketSender>();
 
-    public void addSender(int id, String ip, int port){
+    public void addSender(String id, String ip, int port){
         try {
             Socket socket = new Socket(InetAddress.getByName(ip), port);
             SocketSender socketSender = new SocketSender(socket);
@@ -25,11 +26,15 @@ public class ServerPool {
         }
     }
 
-    public void addSender(int id, SocketSender socketSender){
+    public void addSender(String id, SocketSender socketSender){
         socketMap.put(id, socketSender);
     }
 
-    public void send(int id, Message.RSOMessage message){
+    public void addSender(String id, Socket socketSender){
+        socketMap.put(id, new SocketSender(socketSender));
+    }
+
+    public void send(String id, Message.RSOMessage message){
         socketMap.get(id).send(message);
     }
 

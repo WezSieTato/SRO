@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 import rso.core.abstraction.BaseNode;
 import rso.core.events.EventManager;
 import rso.core.events.RSOEvent;
+import rso.core.taskmanager.RequestSend;
+import rso.core.taskmanager.Task;
+import rso.server.server.ServerPool;
 import rso.core.taskmanager.TaskManager;
 import rso.core.taskmanager.TaskMessage;
 import rso.server.server.RingManager;
@@ -25,6 +28,7 @@ public class Server extends BaseNode {
     private TaskManager taskManager;
     private  ServerThread serverThread;
     private RingManager ringManager = new RingManager();
+    private ServerPool serverPool = new ServerPool();
 
     @Value ("${rso.port.internal}")
     private int portInternal;
@@ -49,9 +53,27 @@ public class Server extends BaseNode {
             }
         });
 
+        EventManager.addListener(Task.messageToSend, Task.class, new EventManager.EventListener() {
+            public void event(RSOEvent event) {
+                RequestSend req = (RequestSend)event.getObject();
+                serverPool.send(req.getIp(), req.getMessage());
+
+            }
+        });
+
         EventManager.addListener(EntryTask.entryEvent, EntryTask.class, new EventManager.EventListener() {
             public void event(RSOEvent event) {
-                System.out.println("Nowy serwer! " + ((Socket) event.getObject()).getInetAddress().getHostAddress());
+                Socket socket = ((Socket) event.getObject());
+                String ip = socket.getInetAddress().getHostAddress();
+                System.out.println("Nowy serwer! " + ip);
+
+                serverPool.addSender(ip, socket);
+
+                if (!ringManager.isRing()) {
+
+                } else {
+                    ringManager.addToQueue(ip);
+                }
             }
         });
 

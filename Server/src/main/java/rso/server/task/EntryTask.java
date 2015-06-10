@@ -12,7 +12,6 @@ public class EntryTask extends Task {
 
     public static String entryEvent = EventManager.registerEvent(EntryTask.class, "Entry event");
 
-
     public EntryTask() {
         addFilterForConnectionDirection(ConnectionDirection.InnerToInner);
     }
