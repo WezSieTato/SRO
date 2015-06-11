@@ -36,7 +36,6 @@ public class SocketReciver {
     }
 
     public TaskMessage read() {
-        LOGGER.log(Level.ALL, "Chuj dupa cycki!");
 
         if (socket != null) {
 
