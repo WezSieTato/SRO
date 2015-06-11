@@ -87,7 +87,7 @@ public class TaskManager implements  Runnable{
         try {
             messageQueue.put(taskMessage);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+
         }
     }
 

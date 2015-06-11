@@ -17,6 +17,10 @@ public class SocketSender{
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private Socket socket;
 
+    public Socket getSocket() {
+        return socket;
+    }
+
     public SocketSender(Socket socket) {
         this.socket = socket;
 
@@ -33,7 +37,7 @@ public class SocketSender{
             try {
                 message.writeDelimitedTo(socket.getOutputStream());
             } catch (IOException e) {
-                e.printStackTrace();
+
             }
 
         }

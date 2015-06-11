@@ -53,7 +53,7 @@ public class SocketReciver {
 
 
             } catch (Exception e) {
-//                e.printStackTrace();
+//
                 try {
                     socket.close();
                     socket = null;

@@ -31,7 +31,7 @@ String s = stringBuilder.toString();
 try {
     entityManager.createNativeQuery(s).executeUpdate();
 }catch(Exception e ){
-    e.printStackTrace();
+
 }
     }
 
@@ -55,7 +55,7 @@ try {
             append(personGroup.getUuid()).
             append("')");
 }catch(Exception e ){
-    e.printStackTrace();
+
     return "";
 }
         return stringBuilder.toString();
