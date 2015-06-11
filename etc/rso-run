@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Skrypt do uruchomienia w kontenerze
+
+EXEC="Program-1.0-SNAPSHOT-jar-with-dependencies.jar"
+
+case "$1" in
+  middleware)
+    ;;
+  server)
+    ;;
+  client)
+    ;;
+
+  *)
+  echo "Usage: {middleware|server|client"
+  exit 1
+  ;;
+esac
+
+service mysql start
+java -jar $EXEC --rso.type=$1
+
