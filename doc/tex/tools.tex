@@ -81,6 +81,42 @@
 
 \end{itemize}
 
+\subsection[Środowisko uruchomieniowe]{Środowisko uruchomieniowe}
+
+\par{Z racji na testowanie oprogramowania na różnych systemach operacyjnych przygotowany został obraz VirtualBox systemu Debian z zainstalowanym programem Docker. }
+
+\par{System Debian posiada dwóch użytkowników:}
+\begin{itemize}
+\item Nazwa: user hasło: 1234
+\item Nazwa: root hasło: 1234 (użytkownik z prawami administracyjnymi)
+\end{itemize}
+
+
+\par{W przygotowanym obrazie dostępny jest skrypt powłoki Bash \textit{rso} przyjmujący jeden z trzech parametrów: }
+\begin{itemize}
+\item middleware
+\item server 
+\item client
+\end{itemize}
+
+\par{Skrypt ten ma za zadanie uruchomienie przygotowanego kontenera Docker. Zależnie od podanego argumentu dobierane są odpowiednie parametry przekierowania portów dla danego kontenera. Skrypt po dobraniu odpowiednich parametrów wywołuje następujące polecenie:} 
+
+\par{\textit{docker run -t -i \$PORT \$IMAGE \$CMD \$1}}
+
+\par{gdzie: }
+\begin{itemize}
+\item \$PORT to odpowiednie porty do przekierowania (na przykład \textit{-p 6971:6971 -p 6969:6969})
+\item \$IMAGE to obraz do uruchomienia (\textit{pankropka/rso:java})
+\item \$CMD to komenda do uruchomienia w kontenerze (\textit{/bin/bash rso-run} uruchamiająca opisany niżej skrypt uruchomieniowy w kontenerze)
+\item \$1 to argument wejściowy przekazywany do skryptu w kontenerze (\textit{middleware/server/client}, w przypadku nieznanego argumentu następuje wypisanie możliwych argumentów).
+\end{itemize}
+
+
+\par{Skrypt powłoki Bash \textit{rso-run} wywoływany w uruchomionym kontenerze ma za zadanie uruchomić serwer MySQL oraz program. }
+
+\par{Możliwe jest również pominięcie użycia obrazu VirtualBox i bezpośrednie uruchomienie programu poprzez skrypt \textit{rso} (który uruchomi kontener, a w nim skrypt \textit{rso-run}).}
+
+
 \section[Google Protocol Buffers]{Google Protocol Buffers} \label{protobuf}
 
 \par{Jest to elastyczna i wydajna metoda serializacji strukturyzowanych danych do wykorzystania między innymi w protokołach komunikacyjnych oraz przechowywaniu danych. Określana jest struktura informacji która będzie serializowana poprzez zdefiniowanie typu wiadomości w pliku ,,.proto''. Każda taka wiadomość jest logicznym rekordem informacji zawierającym pary nazwa-wartość. Format takiej wiadomości jest prosty, każdy typ składa się z jednego lub więcej unikatowych, ponumerowanych pól z których każdy ma nazwę i typ wartości. Typem wartości pola mogą być liczby, zmienne logiczne, łańcuchy znaków oraz inne wiadomości PBM. Pozwala to na hierarchiczne ułożenie struktury. Każde pole może być oznaczone na trzy sposoby: opcjonalne, wymagane, powtarzające się z zachowaniem kolejności.}

@@ -507,7 +507,17 @@ message RSOMessage{
 \textbf{Komunikacja między warstwą zewnętrzną a klientem} \\
 \textit{Wysyłanie i odbieranie danych} - na porcie 6972 \\
 
+\subsection[Struktura bazy danych]{Struktura bazy danych}
 
+\begin{figure}[h!tb]
+\begin{center}
+\includegraphics[width=0.5\linewidth]{img/diagram_db.png} 
+\caption{Schemat bazy danych}
+\label{img:schem_kom}
+\end{center}
+\end{figure}
+
+\par{W trakcie uruchamiania serwer wewnętrzny, w celu poprawnego działania, musi posiadać gotową listę przedmiotów na jakie mogą być zapisani studenci. Natomiast serwer zewnętrzny nie powinien posiadać na ten temat żadnych informacji - wszystkie je uzyska dopiero w momencie synchronizacji z serwerem wewnętrznym. Mechanizm ten zapewnia większe bezpieczeństwo danych i sprawia, że system jest mniej podatny na błędy.}
 
 
 \subsection[Struktura pliku konfiguracyjnego]{Struktura pliku konfiguracyjnego}
@@ -516,22 +526,22 @@ message RSOMessage{
 
 # Typ wezla.
 # Mozliwe wartosci: server, middleware, client
-
 rso.type = middleware
 
-# Lista adresow IP wezlow
+# Lista adresow IP wezlow middleware
 # Wartosci oddzielone przecinkami
+rso.addresses.middleware = 192.168.1.25, 8.8.8.8, 192.168.1.1
 
-rso.addresses = 127.0.0.1, 8.8.8.8, 192.168.1.1
+# Lista adresow IP wezlow servera
+# Wartosci oddzielone przecinkami
+rso.addresses.server = 192.168.1.108, 192.168.1.108
 
 # Port na ktorym dziala serwer wewnetrzny/zewnetrzny
 # Wewnetrzny: 6969; Zewnetrzny :6970
-
 rso.port.external = 6969
 
-# Port na ktorym dziala serwer wewnetrzny/zewnetrzny: 6971;
-
-rso.port.internal = 6969
+# Port na ktorym dziala serwer wewnetrzny/wewnetrzny: 6971;
+rso.port.internal = 6971
 
 # Port na ktorym laczy sie klient: 6972
 
@@ -540,9 +550,10 @@ rso.port.client = 6972
 # Baza (nie dotyczy klienta)
 
 jdbc.driverClassName=com.mysql.jdbc.Driver
-jdbc.url=jdbc:mysql://localhost:3306/baza
-jdbc.username=user
-jdbc.password=haslo
+jdbc.url=jdbc:mysql://localhost:3306/RSO
+jdbc.username=root
+jdbc.password=
+
 init-db=false
 
 # Czas timeoutu (w sekundach)
@@ -618,6 +629,9 @@ timeout = 30
 
 \item \textbf{Długi czas algorytmów synchronizacji w trakcie awarii} (nawet do parudziesięciu sekund w sytuacjach kryzysowych)
 \par{Czas trwania tej synchronizacji jest efektem zastosowanych przez nas rozwiązań. Najwyższym priorytetem w trakcie projektowania i implementacji systemu było bezpieczeństwo danych. Nawet kosztem dłuższego czasu oczekiwania użytkownika na działanie systemu po awarii.}
+
+\item \textbf{Po jednej instancji węzła danej warstwy na komputerze}
+\par{Ze względu na komunikację TCP/IP na jednym komputerze może być jedynie jedna instancja klienta, serwera zewnętrznego bądź serwera wewnętrznego. Wyjątkiem jest uruchamianie instancji na przykład w maszynach wirtualnych przez co mogą mieć one różne IP.}
 
 \end{itemize}
 
