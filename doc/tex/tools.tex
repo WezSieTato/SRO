@@ -116,6 +116,66 @@
 
 \par{Możliwe jest również pominięcie użycia obrazu VirtualBox i bezpośrednie uruchomienie programu poprzez skrypt \textit{rso} (który uruchomi kontener, a w nim skrypt \textit{rso-run}).}
 
+\subsection[Skrypt rso]{Skrypt rso}
+\begin{lstlisting}
+#!/bin/bash
+
+# Skrypt do uruchomienia kontenera
+
+IMAGE="pankropka/rso:java"
+CMD="/bin/bash rso-run"
+
+#Start-Stop here
+case "$1" in
+  middleware)
+    PORT="-p 6971:6971 -p 6970:6970"
+    TYPE="middleware"
+    ;;
+  server)
+    PORT="-p 6971:6971 -p 6969:6969"
+    TYPE="server"
+    ;;
+  client)
+    ;;
+
+  *)
+  echo "Usage: {server|middleware|client}"
+  exit 1
+  ;;
+esac
+
+docker run -t -i $PORT $IMAGE $CMD $1
+
+exit 0
+\end{lstlisting}
+
+\subsection[Skrypt rso-run]{Skrypt rso-run}
+\begin{lstlisting}
+#!/bin/bash
+
+# Skrypt do uruchomienia w kontenerze
+
+EXEC="Program-1.0-SNAPSHOT-jar-with-dependencies.jar"
+
+case "$1" in
+  middleware)
+    ;;
+  server)
+    ;;
+  client)
+    ;;
+
+  *)
+  echo "Usage: {middleware|server|client"
+  exit 1
+  ;;
+esac
+
+service mysql start
+java -jar $EXEC --rso.type=$1
+\end{lstlisting}
+
+
 
 \section[Google Protocol Buffers]{Google Protocol Buffers} \label{protobuf}
 

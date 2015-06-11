@@ -443,8 +443,8 @@ message EntityState{
 }
 
 message MiddlewareRequest{
-	required int32 nodeId= 4;
-    required int64 timestamp = 1;
+	required int32 nodeId= 1;
+    required int64 timestamp = 2;
 }
 
 message MiddlewareResponse{
@@ -459,9 +459,9 @@ enum MiddlewareMessageType{
 }
 
 message MiddlewareMessage{
-	required int32 nodeId= 2;
-    optional string subjectName = 3;
-    optional int32 registeredStudents = 4;    
+	required int32 nodeId= 1;
+    optional string subjectName = 2;
+    optional int32 registeredStudents = 3;    
 }
 
 message MiddlewareHeartbeat{
@@ -480,6 +480,8 @@ message RSOMessage{
 \end{lstlisting}
 
 \subsection[Zastosowanie struktur tokena i wiadomości]{Zastosowanie struktur tokena i wiadomości}
+
+\par{Struktury tokena i wiadomości są stworzone w taki sposób, aby ułatwić komunikację między warstwami. Zależnie od stron komunikacji wybierane są konkretne typy wiadomości, które zawierają pola niezbędne w wymianie informacji. Można by zastosować bardziej uniwersalną strukturę wiadomości, jednak ta jest bardziej przejrzysta i wyraźnie pokazuje różnice między informacjami przesyłanymi w różnych warstwach. Ponadto bardziej uniwersalna struktura mogłaby skutkować niepotrzebnie większą ilością danych przesyłanych przez sieć w wypadku, np. Heartbeatów.}
 
 \subsection[Komunikacja i adresacja]{Komunikacja i adresacja}
 
