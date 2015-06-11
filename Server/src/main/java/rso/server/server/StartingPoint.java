@@ -20,6 +20,7 @@ public class StartingPoint implements Runnable {
     private String[] ips = null;
     private int port;
     private boolean stop = false;
+    private ServerPool serverPool;
 
     public StartingPoint(String[] ips, int port) {
         this.ips = ips;
@@ -42,6 +43,7 @@ public class StartingPoint implements Runnable {
             e.printStackTrace();
         }
 
+        String ipp = null;
         System.out.println("Moje ip to " + myIp);
         for(String ip : ips){
             if(ip.equals(myIp))
@@ -50,6 +52,7 @@ public class StartingPoint implements Runnable {
                 break;
             try {
                 socket = new Socket(ip, port);
+                ipp = ip;
             } catch (IOException e) {
                 socket = null;
                 System.out.println("Serwera nie ma z ip " + ip);
@@ -63,10 +66,20 @@ public class StartingPoint implements Runnable {
 
             System.out.println("Wyslano zadanie wejscia do " + socket.getInetAddress().getHostAddress());
 
+            serverPool.addSender(ipp, socket);
+
             new Thread(new ServerReceiver(socket)).start();
 
             new SocketSender(socket).send(msg);
         }
 
+    }
+
+    public ServerPool getServerPool() {
+        return serverPool;
+    }
+
+    public void setServerPool(ServerPool serverPool) {
+        this.serverPool = serverPool;
     }
 }

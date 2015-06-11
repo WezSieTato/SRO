@@ -52,7 +52,7 @@ public class MiddlewareConnectionsManager implements Runnable {
         try {
             serverSocket = new ServerSocket(6970);
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 
@@ -71,7 +71,7 @@ public class MiddlewareConnectionsManager implements Runnable {
                         t.start();
                 }
             } catch (UnknownHostException e) {
-                e.printStackTrace();
+
             }
 
         }
@@ -91,7 +91,7 @@ public class MiddlewareConnectionsManager implements Runnable {
 
 
             } catch (IOException e) {
-                e.printStackTrace();
+
 
             }
 
@@ -205,7 +205,7 @@ public class MiddlewareConnectionsManager implements Runnable {
                     }
 
 //                    } catch (IOException e) {
-//                        e.printStackTrace();
+//
 //                    }
                 }
             });
@@ -236,7 +236,7 @@ public class MiddlewareConnectionsManager implements Runnable {
                 try {
                     socket = new Socket(ipServer, 6970);
                 } catch (IOException e) {
-                    e.printStackTrace();
+
                     return;
                 }
             }
@@ -266,7 +266,7 @@ public class MiddlewareConnectionsManager implements Runnable {
                     MiddlewareLayer.taskManager.putTaskMessage(message);
                     LOGGER.log(Level.INFO, message.toString());
                 } catch (Exception e) {
-                    e.printStackTrace();
+
                     try {
                         reciver.getSocket().close();
                         synchronized (guard){
@@ -300,7 +300,7 @@ public class MiddlewareConnectionsManager implements Runnable {
 
                     socket.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+
                 }
 
             }

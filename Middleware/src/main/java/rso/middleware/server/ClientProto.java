@@ -55,7 +55,7 @@ public class ClientProto implements Runnable{
                 try {
                     Thread.sleep(4000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+
                 }
                 sender.send(message);
             }
@@ -76,7 +76,7 @@ public class ClientProto implements Runnable{
 //                    connectedSockets.add(tmp);
 //                }
 //            } catch (IOException e) {
-//                e.printStackTrace();
+//
 //            }
 //        }
 
@@ -85,7 +85,7 @@ public class ClientProto implements Runnable{
     public void run() {
         LOGGER.log(Level.INFO, "start Client Thread");
         try {
-            socket = new Socket("192.168.1.114", 6971);
+            socket = new Socket("192.168.1.40", 6971);
             sender = new SocketSender(socket);
             MiddlewareReciver mrr = new MiddlewareReciver(socket);
             Thread tt = new Thread(mrr);
@@ -95,7 +95,7 @@ public class ClientProto implements Runnable{
                 try {
                     Thread.sleep(4000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+
                 }
 
             Message.MiddlewareHeartbeat.Builder hrt = Message.RSOMessage.newBuilder().getMiddlewareHeartbeatBuilder();
@@ -108,7 +108,7 @@ public class ClientProto implements Runnable{
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
 
 
@@ -117,7 +117,12 @@ public class ClientProto implements Runnable{
     private void redirect(int id){
         LOGGER.log(Level.INFO, "redirecting");
         try {
-            socket = new Socket("192.168.1.114", 6971);
+            socket.close();
+        } catch (IOException e) {
+
+        }
+        try {
+            socket = new Socket(MiddlewareLayer.middlwareIPs[id], 6971);
             sender = new SocketSender(socket);
             MiddlewareReciver mrr = new MiddlewareReciver(socket);
             Thread tt = new Thread(mrr);
@@ -127,7 +132,7 @@ public class ClientProto implements Runnable{
             try {
                 Thread.sleep(4000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+
             }
 
             Message.MiddlewareHeartbeat.Builder hrt = Message.RSOMessage.newBuilder().getMiddlewareHeartbeatBuilder();
@@ -140,7 +145,7 @@ public class ClientProto implements Runnable{
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 

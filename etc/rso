@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Skrypt do uruchomienia kontenera
+
+IMAGE="pankropka/rso:java"
+CMD="/bin/bash rso-run"
+
+#Start-Stop here
+case "$1" in
+  middleware)
+    PORT="-p 6971:6971 -p 6970:6970"
+    TYPE="middleware"
+    ;;
+  server)
+    PORT="-p 6971:6971 -p 6969:6969"
+    TYPE="server"
+    ;;
+  client)
+    ;;
+
+  *)
+  echo "Usage: {server|middleware|client}"
+  exit 1
+  ;;
+esac
+
+docker run -t -i $PORT $IMAGE $CMD $1
+
+exit 0

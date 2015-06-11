@@ -59,7 +59,7 @@ public class MiddlwareServer {
                 setOnline(true);
                 return socket;
             } catch (IOException e) {
-                e.printStackTrace();
+                 
             }
             finally {
                 return null;
