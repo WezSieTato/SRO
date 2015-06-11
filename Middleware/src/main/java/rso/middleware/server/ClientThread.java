@@ -65,7 +65,7 @@ public class ClientThread implements Runnable {
                 try {
                     socket.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+
                 }
             }
         });
@@ -85,7 +85,7 @@ public class ClientThread implements Runnable {
 //            try {
                 sender = new SocketSender(socket);
 //            } catch (IOException e) {
-//                e.printStackTrace();
+//
 //            }
             clientReciver = new ClientReciver(socket);
             Thread t = new Thread(clientReciver);
@@ -103,7 +103,7 @@ public class ClientThread implements Runnable {
         try {
             socket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 }

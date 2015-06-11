@@ -71,7 +71,7 @@ public class MiddlewareThread implements Runnable {
                         snd = new SocketSender(socket);
                         snd.send((Message.RSOMessage) event.getObject());
 //                    } catch (IOException e) {
-//                        e.printStackTrace();
+//
 //                    }
 
                 }
@@ -117,11 +117,11 @@ public class MiddlewareThread implements Runnable {
                         try {
                             socket.close();
                         } catch (IOException e) {
-                            e.printStackTrace();
+
                         }
                     }
                 } catch (UnknownHostException e) {
-                    e.printStackTrace();
+
                 }
             }
 
@@ -155,7 +155,7 @@ public class MiddlewareThread implements Runnable {
 //                    connectedSockets.add(tmp);
 //                }
 //            } catch (IOException e) {
-//                e.printStackTrace();
+//
 //            }
 //        }
 
@@ -180,9 +180,9 @@ public class MiddlewareThread implements Runnable {
                     Thread tt = new Thread(mrr);
                     tt.start();
                 } catch (IOException e) {
-                    e.printStackTrace();
+
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+
                 }
 
             }
