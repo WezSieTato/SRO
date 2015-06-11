@@ -39,7 +39,7 @@ public class Server implements Runnable{
         try {
             welcomeSocket = new ServerSocket(6972);
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
 
     }
@@ -52,7 +52,7 @@ public class Server implements Runnable{
         try {
             welcomeSocket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 
@@ -84,7 +84,7 @@ public class Server implements Runnable{
                 clients.add(ct);
                 clientId++;
             } catch (IOException e) {
-                e.printStackTrace();
+
             }
         }
     }

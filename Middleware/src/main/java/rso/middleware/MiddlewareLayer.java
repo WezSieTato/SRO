@@ -52,7 +52,7 @@ public class MiddlewareLayer extends BaseNode{
         try {
             middlewareThread = new MiddlewareThread(new ServerSocket(6971));
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
         backendThread = new BackendThread();
         clientServer = new Server(1);

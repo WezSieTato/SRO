@@ -100,7 +100,7 @@ public class BackendThread implements Runnable {
                 try {
                     guard.wait(5000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+
                 }
             }
             while (!messages.isEmpty()){
@@ -133,14 +133,14 @@ public class BackendThread implements Runnable {
                 try {
                     connectionGuard.wait(100);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+
                 }
             }
             //for po kazdym serwerze wewnetrznym
             try {
                 socket = new Socket("192.168.1.110", 6969);
             } catch (IOException e) {
-                e.printStackTrace();
+
             }
             if(socket != null){
                 connected = true;
@@ -150,7 +150,7 @@ public class BackendThread implements Runnable {
 //        try {
             socketSender = new SocketSender(socket);
 //        } catch (IOException e) {
-//            e.printStackTrace();
+//
 //        }
         lastTimestamp = BaseContext.getInstance().getApplicationContext().getBean(Utils.class).getNewestDate();
         ;

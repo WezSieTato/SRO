@@ -52,7 +52,7 @@ public class HeartbeatTask implements Runnable{
 
 
             } catch (InterruptedException e) {
-                e.printStackTrace();
+
             }
         }
 
