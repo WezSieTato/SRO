@@ -85,7 +85,7 @@ public class ClientProto implements Runnable{
     public void run() {
         LOGGER.log(Level.INFO, "start Client Thread");
         try {
-            socket = new Socket("192.168.43.141", 6971);
+            socket = new Socket("192.168.43.57", 6971);
             sender = new SocketSender(socket);
             MiddlewareReciver mrr = new MiddlewareReciver(socket);
             Thread tt = new Thread(mrr);
@@ -104,7 +104,9 @@ public class ClientProto implements Runnable{
             Message.MiddlewareMessage.Builder builder = Message.MiddlewareMessage.newBuilder();
             builder.setSubjectName("RSO").setNodeId(1);
             Message.RSOMessage message = Message.RSOMessage.newBuilder().setMiddlewareMessage(builder).build();
-            sender.send(message);
+            if(sender.getSocket() != null){
+                sender.send(message);
+            }
 
 
         } catch (IOException e) {
